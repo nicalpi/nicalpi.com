@@ -1,0 +1,84 @@
+---
+---
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white;
+  margin: auto;
+  padding: 20px;
+  max-width: 720px;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6em;
+  color: #000;
+  font-size: 1.25rem;
+}
+
+main {
+  max-width: 900px;
+  margin: 0px auto;
+  @apply p-6;
+}
+
+.image-centered img {
+    @apply m-auto my-12;
+}
+
+nav a {
+    margin-right: 10px;
+}
+
+main p {
+    @apply mb-5;
+}
+
+
+h1 {
+  @apply text-4xl font-bold w-full mb-6 mt-6;
+}
+
+h2 {
+  @apply text-3xl font-bold w-full mb-6;
+}
+
+h3 {
+  @apply text-2xl font-bold w-full mb-6;
+}
+
+h4 {
+  @apply text-xl font-bold w-full;
+}
+
+h5 {
+  @apply text-xl font-bold w-full;
+}
+
+h6 {
+  @apply text-xl font-bold w-full;
+}
+
+li {
+  @apply mb-5;
+}
+
+
+main.homepage h1 {
+  @apply text-6xl text-center;
+}
+
+main.homepage h2 {
+  @apply text-3xl text-center;
+}
+
+
+.site-title--title {
+  @apply text-xl font-bold mr-3;
+}
+
+.site-title--subtitle {
+  @apply text-lg text-gray-800;
+}
