@@ -77,6 +77,18 @@ main.homepage h2 {
   @apply text-3xl text-center my-12;
 }
 
+.callout-yellow {
+  @apply bg-yellow-100 p-2 border-2 border-yellow-200 border-l-8 mt-12;
+}
+
+.callout-yellow h2 {
+  @apply !mt-3 mb-6 underline;
+}
+
+.callout-yellow p {
+  @apply px-6;
+}
+
 nav.main-nav {
   @apply text-center mb-6;
 }

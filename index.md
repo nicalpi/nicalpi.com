@@ -23,3 +23,10 @@ Alongside my role at Amba, I’m also a CTO in residence in SetSquared Bristol a
 For 10 years, I’ve been concentrating on starting and growing a business. While this was an extremely rewarding experience, I might have (sometimes) lost myself along the way. So this website is my way of reclaiming my personal side on the web.
 
 I like to write, teach and podcast, therefore I expect this space to be filled with content around entrepreneurship, agency building as well as my first passion, Ruby on Rails and web development in general.
+
+<div class="callout-yellow">
+  <h2>Let's get in touch</h2>
+  <p>I'm currently not actively looking for a new role or taking on new clients,
+  but, if you have any questions and think I can help, feel free to get in touch
+  at <a href="mailto:hi@nicalpi.com">hi@nicalpi.com</a></p>
+</div>
