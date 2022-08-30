@@ -9,19 +9,22 @@ body {
   @apply bg-white;
   margin: auto;
   padding: 20px;
-  max-width: 720px;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.6em;
-  color: #000;
   font-size: 1.25rem;
+  @apply text-gray-700;
 }
 
 main {
   max-width: 900px;
   margin: 0px auto;
   @apply p-6;
+}
+
+main.reduced-width {
+  max-width: 720px;
 }
 
 .image-centered img {
@@ -71,9 +74,16 @@ main.homepage h1 {
 }
 
 main.homepage h2 {
-  @apply text-3xl text-center;
+  @apply text-3xl text-center my-12;
 }
 
+nav.main-nav {
+  @apply text-center mb-6;
+}
+
+p.site-title {
+  @apply text-center;
+}
 
 .site-title--title {
   @apply text-xl font-bold mr-3;
@@ -81,4 +91,25 @@ main.homepage h2 {
 
 .site-title--subtitle {
   @apply text-lg text-gray-800;
+}
+
+main.post-layout h1 {
+  @apply text-6xl font-bold mr-3 text-center;
+}
+
+.post-subtitle {
+  @apply text-4xl text-gray-800 mb-6 text-center;
+  line-height: 1.25em;
+}
+
+.post-tag {
+  @apply mb-6 text-center;
+}
+
+svg {
+  @apply inline-block;
+}
+
+.post-date {
+  @apply mb-6 block text-gray-600 text-center;
 }
