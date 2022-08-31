@@ -20,11 +20,22 @@
 
 title: Nicolas Alpi
 subtitle: Bristol CTO, Founder, Ruby on Rails developer
-email: your-email@example.com
+tagline: Bristol CTO, Founder, Ruby on Rails developer
+url: www.nicalpi.com
+twitter:
+  username: nicalpi
+  card: summary_large_image
+social:
+  name: Nic Alpi
+  links:
+    - https://twitter.com/nicalpi
+    - https://www.linkedin.com/in/nicolasalpi
+    - https://github.com/nicalpi
+email: hi@nicalpi.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Nicolas Alpi, Ruby on Rails developer in Bristol, CTO, Entrepreneur.
+  I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UX
+  I’ve got more than 20 years of experience building software for early-stage startups, scale-ups up and enterprise organisations.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nicalpi
@@ -36,6 +47,7 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-postcss
+  - jekyll-seo-tag
 
 postcss:
   cache: false

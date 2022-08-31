@@ -2,6 +2,8 @@
 layout: post
 title: "The fear of publishing"
 subtitle: "Or why it took me nearly a year to write my first post here. Exploring my own fear and possible impostor syndrome."
+description: "Or why it took me nearly a year to write my first post here. Exploring my own fear and possible impostor syndrome."
+image: "assets/images/posts/the-fear-of-publishing.png"
 tags: thoughs
 ---
 I bought this domain name nearly a year ago, full of enthusiasm.

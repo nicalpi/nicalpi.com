@@ -2,7 +2,11 @@
 layout: post
 title: "Why you can't find a job as a junior (ruby on rails) developer"
 subtitle: When I sat down to write this blog post, it was going to be titled "Tips and tricks to find your first junior (ruby on rails) developer role"
+description: When I sat down to write this blog post, it was going to be titled "Tips and tricks to find your first junior (ruby on rails) developer role"
 tags: thoughs
+image: "assets/images/posts/why-you-cannot-find-a-junior-job.png"
+
+
 ---
 But, as I was writing it, I couldn't shake off the feeling that I was repeating what everyone else was saying. They are common sense tips that you will probably read in every shape and form elsewhere.
 

@@ -82,6 +82,7 @@ DEPENDENCIES
   jekyll-bear-theme
   jekyll-feed (~> 0.12)
   jekyll-postcss
+  jekyll-seo-tag
   kramdown
   minima (~> 2.5)
   rouge
