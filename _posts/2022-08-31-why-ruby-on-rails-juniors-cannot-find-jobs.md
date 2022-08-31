@@ -36,7 +36,8 @@ Unfortunately, at the moment, Ruby on Rails seems to be a double-edged sword. Ru
 
 See, some recruitment manager or some teams only see in bringing juniors to their team the productivity impact this will cause (either because of the time they will take away from more senior folks, or because they could have hired a mid-level/senior instead).
 
-::Now, on this point, realistically, there's nothing you can do to change their mind. It's a difficult decision to reason because one side of the equation is true (yes, taking a junior in a team will have an impact on productivity), but the other side is entirely narrow minded (more on that later).::
+Now, on this point, realistically, there's nothing you can do to change their mind. It's a difficult decision to reason because one side of the equation is true (yes, taking a junior in a team will have an impact on productivity), but the other side is entirely narrow minded (more on that later).
+{: .callout-yellow}
 
 So, yes, it's not you. It's Rails. But, the community is becoming more aware of the issue. Most of us have a deep sense of pride and attachment to Rails as a framework but also realise that we need to solve this issue for Rails to strive in its renaissance. For Ruby on Rails to continue its journey, we need to get more people (juniors) to experience it.
 

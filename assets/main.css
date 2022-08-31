@@ -13,7 +13,7 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.6em;
-  font-size: 1.25rem;
+  font-size: 1.20rem;
   @apply text-gray-700;
 }
 
@@ -53,11 +53,11 @@ h3 {
 }
 
 h4 {
-  @apply text-xl font-bold w-full;
+  @apply text-xl font-bold w-full mb-4;
 }
 
 h5 {
-  @apply text-xl font-bold w-full;
+  @apply text-xl font-bold w-full mb-4;
 }
 
 h6 {
@@ -78,15 +78,15 @@ main.homepage h2 {
 }
 
 .callout-yellow {
-  @apply bg-yellow-100 p-2 border-2 border-yellow-200 border-l-8 mt-12;
+  @apply bg-yellow-50 p-2 border border-yellow-300 border-l-8 px-6;
+}
+
+main.homepage .callout-yellow {
+  @apply mt-12;
 }
 
 .callout-yellow h2 {
   @apply !mt-3 mb-6 underline;
-}
-
-.callout-yellow p {
-  @apply px-6;
 }
 
 nav.main-nav {
@@ -110,7 +110,8 @@ main.post-layout h1 {
 }
 
 main.post-layout h2 {
-  @apply mt-6 inline-block w-full border-b-2 border-pink-300
+  @apply mt-6 inline-block w-full border-b-2;
+  border-color: #cd2653;
 }
 
 .post-subtitle {
