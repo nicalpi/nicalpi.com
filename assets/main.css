@@ -114,6 +114,10 @@ main.post-layout h2 {
   border-color: #cd2653;
 }
 
+main.post-layout ul {
+  @apply list-disc ml-12;
+}
+
 .post-subtitle {
   @apply text-2xl text-gray-800 mb-6 text-center;
   line-height: 1.25em;
