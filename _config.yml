@@ -21,7 +21,7 @@
 title: Nicolas Alpi
 subtitle: Bristol CTO, Founder, Ruby on Rails developer
 tagline: Bristol CTO, Founder, Ruby on Rails developer
-url: www.nicalpi.com
+url: "https://www.nicalpi.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter:
   username: nicalpi
   card: summary_large_image
@@ -37,7 +37,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UX
   I’ve got more than 20 years of experience building software for early-stage startups, scale-ups up and enterprise organisations.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nicalpi
 github_username:  nicalpi
 
