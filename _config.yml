@@ -22,6 +22,8 @@ title: Nicolas Alpi
 subtitle: Bristol CTO, Founder, Ruby on Rails developer
 tagline: Bristol CTO, Founder, Ruby on Rails developer
 url: "https://www.nicalpi.com" # the base hostname & protocol for your site, e.g. http://example.com
+locale: en_GB
+author: nicalpi
 twitter:
   username: nicalpi
   card: summary_large_image
