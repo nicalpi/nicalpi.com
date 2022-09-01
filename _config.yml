@@ -43,12 +43,12 @@ twitter_username: nicalpi
 github_username:  nicalpi
 
 # Build settings
-theme: jekyll-bear-theme
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-postcss
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 postcss:
   cache: false
