@@ -36,7 +36,7 @@ social:
 email: hi@nicalpi.com
 description: >- # this means to ignore newlines until "baseurl:"
   Nicolas Alpi, Ruby on Rails developer in Bristol, CTO, Entrepreneur.
-  I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UX
+  I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UK
   I’ve got more than 20 years of experience building software for early-stage startups, scale-ups up and enterprise organisations.
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: nicalpi
