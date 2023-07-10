@@ -119,8 +119,8 @@ main.post-layout ul {
 }
 
 .post-subtitle {
-  @apply text-2xl text-gray-800 mb-6 text-center;
-  line-height: 1.25em;
+  @apply text-2xl text-gray-800 mb-6 text-left;
+  line-height: 1.5em;
 }
 
 .post-tag {

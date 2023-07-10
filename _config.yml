@@ -19,8 +19,8 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Nicolas Alpi
-subtitle: Bristol CTO, Founder, Ruby on Rails developer
-tagline: Bristol CTO, Founder, Ruby on Rails developer
+subtitle: CTO driving high-performing teams, business strategy, technology, entrepreneur
+tagline: CTO driving high-performing teams, business strategy, technology, entrepreneur
 url: "https://www.nicalpi.com" # the base hostname & protocol for your site, e.g. http://example.com
 locale: en_GB
 author: nicalpi

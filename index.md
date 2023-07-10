@@ -9,7 +9,8 @@ main_class: "homepage"
 ![Nic Alpi face round](/assets/images/avatar-round-300.png)
 {: .image-centered }
 
-I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UK
+I’m a CTO, Ruby on Rails developer and entrepreneur based in Bristol, UK.
+
 I’ve got more than 20 years of experience building software for early-stage startups, scale-ups up and enterprise organisations.
 
 In 2011, I co-founded a software consultancy called CookiesHQ. For 10 years I grew the company alongside Nat, my wife to a 15+ people operation and 7 figures revenue.
