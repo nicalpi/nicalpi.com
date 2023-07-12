@@ -39,7 +39,7 @@ This new full-time job provided me with some financial stability and indeed remo
 
 ### Moving to a new country
 
-After a year together, her studies bought her to the UK for an internship, and I decided to follow her. We settled around Bristol, and I found a software developer job at Hewlett and Packard (HP).  Fast forward a year in the country, and I was missing the freedom again in this new role. We're now circa 2019; I've been crafting things in Ruby on Rails and enjoyed the framework. So I set out to be a Ruby on Rails freelancer.
+After a year together, her studies bought her to the UK for an internship, and I decided to follow her. We settled around Bristol, and I found a software developer job at Hewlett and Packard (HP).  Fast forward a year in the country, and I was missing the freedom again in this new role. We're now circa 2009; I've been crafting things in Ruby on Rails and enjoyed the framework. So I set out to be a Ruby on Rails freelancer.
 
 But this time, I would treat it differently than my early attempt in France. I would have a reasonable day rate, monitor my time and focus on building good case studies.
 
@@ -58,7 +58,7 @@ After two years of freelance work, I had a good run and was working on exciting 
 
 We then decided to team up, building a company that would sell software development and marketing to early-stage startups.
 
-It was the beginning of our grown-up entrepreneurial journey. And by working together, we would be (at least we thought) in control of our destiny and freedom. So, in 2021 we decided to incorporate our agency, get married and conceive our first child. It's a make-or-break year.
+It was the beginning of our grown-up entrepreneurial journey. And by working together, we would be (at least we thought) in control of our destiny and freedom. So, in 2011 we decided to incorporate our agency, get married and conceive our first child. It's a make-or-break year.
 
 But when I think about it with more insight, this decision set our mindset for the next ten years. We were young, in a new country and without any safety net. **Failure wasn't a luxury that we could afford.**
 
