@@ -235,7 +235,7 @@ Make sure your leadership team is trained in fostering an open culture. Beat tha
 
 ### 9. Regular Check-ins
 
-Remember to underestimate the power of a one-on-one.
+Remember to not underestimate the power of a one-on-one.
 
 These private conversations can be the perfect setting for questions that team members might hesitate to ask in public.
 
