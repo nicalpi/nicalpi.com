@@ -34,7 +34,17 @@ psychology and, strangely enough, physiology.
 
 ### Social Psychology and Group Dynamics
 
-The fear of looking stupid in a group setting isn't just a personal quirk; it's deeply rooted in social psychology. Solomon Asch's conformity experiments in the 1950s demonstrated how powerful the need to conform can be. In his studies, participants were more likely to agree with an obviously incorrect answer if the rest of the group endorsed it. This phenomenon is known as "conformity pressure," it can make individuals reluctant to ask questions that might set them apart from the group.
+The fear of looking stupid in a group setting isn't just a personal quirk; it's deeply rooted in social psychology.
+
+Solomon Asch's conformity experiments in the 1950s demonstrated how powerful the need to conform can be.
+
+
+<div class="callout-yellow mb-5">
+  <p class="mb-0">In his studies, participants were more likely to agree with an obviously
+  incorrect answer if the rest of the group endorsed it.</p>
+</div>
+
+This phenomenon is known as "conformity pressure," it can make individuals reluctant to ask questions that might set them apart from the group.
 
 > **Study Reference**: [Solomon Asch - Conformity Experiment](https://www.simplypsychology.org/asch-conformity.html)
 
@@ -44,17 +54,21 @@ Our brains are wired with cognitive biases that influence our behaviour, often w
 
 One such bias is the "Spotlight Effect," which makes us believe we're being noticed more than we actually are.
 
-A study by Thomas Gilovich, Victoria Husted Medvec, and Kenneth Savitsky found that people overestimate how much others observe them, making the fear of asking a "stupid" question seem like a bigger deal than it actually is.
+<div class="callout-yellow mb-5">
+  <p class="mb-0">A study by Thomas Gilovich, Victoria Husted Medvec, and Kenneth Savitsky found that people overestimate how much others observe them, making the fear of asking a "stupid" question seem like a bigger deal than it actually is.
+In his studies, participants were more likely to agree with an obviously</p>
+</div>
 
 > **Study Reference**: [The Spotlight Effect in Social Judgment](https://journals.sagepub.com/doi/10.1177/0146167201277008)
 
 ### Imposter Syndrome
 
-Imposter Syndrome is another psychological factor that contributes to the fear
-of asking questions. This term was first coined by psychologists Pauline Rose
-Clance and Suzanne Imes in 1978. They found that high-achieving individuals
-often doubt their accomplishments and fear being exposed as a "fraud." This
-syndrome can make team members hesitant to ask questions, as they may feel that doing so would expose their perceived inadequacies.
+Imposter Syndrome is another psychological factor that contributes to the fear of asking questions.
+
+This term was first coined by psychologists Pauline Rose Clance and Suzanne Imes in 1978. They found that high-achieving individuals
+often doubt their accomplishments and fear being exposed as a "fraud."
+
+This syndrome can make team members hesitant to ask questions, as they may feel that doing so would expose their perceived inadequacies.
 
 > **Study Reference**: [The Impostor Phenomenon in High Achieving Women: Dynamics and Therapeutic Intervention](https://www.paulineroseclance.com/pdf/ip_high_achieving_women.pdf)
 
@@ -77,9 +91,11 @@ Amy Edmondson's "psychological safety" work provides another lens to understand 
 
 Social ridicule or embarrassment triggers the same areas in our brain as physical pain. So, the fear of looking stupid isn't just psychological. It's biological.
 
-However, being rejected, however distressing, seems different from physical
-pain; it does not result from a noxious bodily stimulus. Thus, failure to
-observe activations in brain regions that support the bodily representation of physical pain in response to rejection is not surprising.
+<div class="callout-yellow mb-5">
+  <p>However, being rejected, however distressing, seems different from physical pain; it does not result from a noxious bodily stimulus.</p>
+  <p class="mb-0">Thus, failure to observe activations in brain regions that support the bodily representation of physical pain in response to rejection is not surprising.</p>
+
+</div>
 
 > **Study reference**: [Social rejection shares somatosensory representations
 with physical pain](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3076808/)
