@@ -115,7 +115,7 @@ Something culture needs to be better communicated, but individuals will still va
 
 ### 1. Embrace Your Inner Novice
 
-Hey, let's get real for a second: Nobody knows everything. You, me, your boss, and certainly not your coworker, who seems to have all the answers.
+**Let's get real for a second:** Nobody knows everything. You, me, your boss, and certainly not your coworker, who seems to have all the answers.
 
 And guess what? That's perfectly OK! The first step in mustering the courage to ask questions is admitting to yourself that you don't know something—and that's not bad. It's how we grow.
 
@@ -162,7 +162,7 @@ In fact, sometimes it's the best position to be in. Embrace not understanding so
 
 By asking questions, answers will benefit everyone in the room and help clarify things for other individuals who haven't mastered your courage yet.
 
-Hell, if it's good enough for Simon Sinek, it's good enough for me.
+If it's good enough for Simon Sinek, it's good enough for me.
 
 {% include youtubePlayer.html id="BkLzo_oNVho" %}
 
