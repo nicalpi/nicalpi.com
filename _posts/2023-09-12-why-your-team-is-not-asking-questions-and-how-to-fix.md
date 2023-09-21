@@ -4,7 +4,7 @@ title: "Why Your Team Isn't Asking Questions (And How to Fix It)"
 subtitle: "<b>Picture this:</b> You're in a team meeting, and you can sense that something's off. You've just explained a new project, but the room is silent. You ask, \"Any questions?\". And ... crickets."
 description: "Unlock the power of questions in your team. Explore the science behind the fear of asking and get actionable tips for managers and team members."
 image: "assets/images/posts/why-is-your-team-not-asking-questions.jpg"
-tags: lessons, team management
+tags: lessons
 ---
 
 Later, you discover that many team members were confused but didn't speak up. Sound familiar? If so, you're not alone.
