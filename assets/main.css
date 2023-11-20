@@ -18,9 +18,14 @@ body {
 }
 
 main {
-  max-width: 900px;
   margin: 0px auto;
+  @apply mx-auto w-full max-w-7xl;
   @apply p-6;
+  @apply bg-white;
+}
+
+main .main-content {
+  @apply mx-auto w-full max-w-4xl;
 }
 
 main.reduced-width {
@@ -110,8 +115,11 @@ main.post-layout h1 {
 }
 
 main.post-layout h2 {
-  @apply mt-6 inline-block w-full border-b-2;
-  border-color: #cd2653;
+  @apply mt-20;
+}
+
+main.post-layout h3 {
+  @apply mt-12;
 }
 
 main.post-layout ul {
