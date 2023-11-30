@@ -19,7 +19,7 @@ body {
 
 main {
   margin: 0px auto;
-  @apply mx-auto w-full max-w-7xl;
+  @apply mx-auto w-full;
   @apply p-6;
   @apply bg-white;
 }
@@ -84,6 +84,15 @@ main.homepage h2 {
 
 .callout-yellow {
   @apply bg-yellow-50 p-2 border border-yellow-300 border-l-8 px-6;
+}
+
+.homepage--header img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+main.homepage .homepage--header h2 {
+  @apply text-left;
 }
 
 main.homepage .callout-yellow {
