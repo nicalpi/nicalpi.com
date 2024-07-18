@@ -14,12 +14,12 @@
         </svg>
         <span> {{ page.date | date: "%b %d, %Y" }}</span>
       </p>
-      <p class="post-tag">
-        {% for tag in page.tags %}
-          {% assign tag_slug = tag %}
-          <a href="{{ 'tagged/' | relative_url }}{{ tag_slug }}" title="See all posts by {{ tag_slug }} tag">#{{ tag_slug }}</a>
-        {% endfor %}
-      </p>
+      <!--<p class="post-tag">-->
+        <!--{% for tag in page.tags %}-->
+          <!--{% assign tag_slug = tag %}-->
+          <!--<a href="{{ 'tagged/' | relative_url }}{{ tag_slug }}" title="See all posts by {{ tag_slug }} tag">#{{ tag_slug }}</a>-->
+        <!--{% endfor %}-->
+      <!--</p>-->
 
       {{ page.content }}
 
