@@ -38,7 +38,7 @@ main_class: "homepage"
 
               <div class="mt-5 max-w-xl text-base leading-7 text-gray-700
               relative sm:max-w-md lg:max-w-none">
-                <p>Back in 2011, I embarked on an entrepreneurial adventure with my wife, Nat. We founded CookiesHQ, a software consultancy that we nurtured from a fledgling idea into a robust 15-person team, achieving seven-figure revenues.</p>
+                <p>Back in 2011, I embarked on an entrepreneurial adventure as the co-founder (responsible for tech and sales) of CookiesHQ, a software consultancy that was nurtured from a fledgling idea into a robust 15-person team, achieving seven-figure revenues.</p>
                 <p class="mt-5">Fast forward to 2021, our dream materalised and
                 our consultancy was aquired by one of our customers, leading to an acquisition that marked a new chapter
                 in my career.</p>
