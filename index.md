@@ -63,7 +63,7 @@ main_class: "homepage"
               </div>
               <div class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                 <div class="relative">
-                  <img src="https://assets.cookieshq.co.uk/wp-content/uploads/2020/06/Nic-and-Nat_May-2019-960x1280.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
+                  <img src="/assets/nic_wall.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
                   <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
                 </div>
                 <div class="relative">
