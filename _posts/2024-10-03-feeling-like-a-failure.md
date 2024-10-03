@@ -8,7 +8,8 @@ tags: lessons
 ---
 The last 12 months have been challenging—more challenging than I’d like to admit.
 Life threw some unexpected changes my way, some good, some not so good.
-Looking back, I realise I’ve been running on autopilot for much of this time, trying to numb myself from emotions I wasn’t ready to face.
+
+Looking back, I realise I’ve been running on autopilot for much of this time, **trying to numb myself from emotions I wasn’t ready to face**.
 It wasn’t the wisest approach, but it was survival mode kicking in.
 
 Recently, though, those emotions caught up with me.
@@ -41,11 +42,11 @@ future, I knew I could do something about it.
 
 It wasn’t easy, but it was necessary.
 
-## Gratefulness shit
+## Gracefulness shit
 
 Next, I decided to take a moment to write down what I was grateful for.
 
-This is usually a struggle for me—I’ve always found the “what are you grateful for” exercises to be a bit fluffy. But I gave it a shot.
+This is usually a struggle for me—I’ve always found the “what are you grateful for” exercises to be a bit fluffy, to stay polite. But I gave it a shot.
 
 I started with the obvious—my kids, who, by the way, are objectively the best kids on the planet.
 From there, I acknowledged the things I was grateful for from my past and the opportunities I have now.
