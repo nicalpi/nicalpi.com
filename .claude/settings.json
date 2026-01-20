@@ -1,0 +1,8 @@
+{
+  "skills": {
+    "calm-cto-brand": {
+      "description": "Generate on-brand visual assets and web pages for The Calm CTO. Use for HTML pages, UI components, diagrams, quote cards, social images, infographics, or any visual content. Supports both web development (Tailwind CSS) and image export (HTML to JPEG/PNG).",
+      "path": ".claude/skills/calm-cto-brand/SKILL.md"
+    }
+  }
+}
