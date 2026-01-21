@@ -51,7 +51,7 @@ body {
    =========================================== */
 
 .quote-mark::before {
-  content: '\201C';
+  content: '"';
   @apply absolute -top-8 left-0;
   font-size: 8rem;
   font-family: Georgia, serif;
@@ -60,7 +60,7 @@ body {
 }
 
 .quote-block::before {
-  content: '\201C';
+  content: '"';
   @apply absolute -top-1 left-2;
   font-size: 5rem;
   font-family: Georgia, serif;
