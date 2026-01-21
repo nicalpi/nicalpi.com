@@ -17,6 +17,10 @@ youtube_username: nicalpi
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-postcss
+
+postcss:
+  cache: false
 
 # Exclude from processing
 exclude:
@@ -27,6 +31,10 @@ exclude:
   - Gemfile.lock
   - node_modules/
   - vendor/
+  - package.json
+  - postcss.config.js
+  - tailwind.config.js
+  - yarn.lock
 
 # Collections
 collections:

@@ -1,0 +1,157 @@
+---
+---
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   BASE STYLES
+   =========================================== */
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================================
+   ACCESSIBILITY
+   =========================================== */
+
+.skip-link {
+  @apply absolute z-[9999];
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  @apply top-4;
+}
+
+*:focus-visible {
+  outline: 3px solid #2563EB;
+  outline-offset: 2px;
+}
+
+.dark-section *:focus-visible,
+.dark-focus:focus-visible {
+  outline-color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================================
+   QUOTE MARKS
+   =========================================== */
+
+.quote-mark::before {
+  content: '"';
+  @apply absolute -top-8 left-0;
+  font-size: 8rem;
+  font-family: Georgia, serif;
+  color: rgba(78, 122, 74, 0.1);
+  line-height: 1;
+}
+
+.quote-block::before {
+  content: '"';
+  @apply absolute -top-1 left-2;
+  font-size: 5rem;
+  font-family: Georgia, serif;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+}
+
+/* ===========================================
+   PROSE STYLES (Blog Content)
+   =========================================== */
+
+.prose {
+  @apply text-lg leading-relaxed;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply text-text-heading font-heading font-bold;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.prose h2 {
+  @apply text-2xl pb-2 inline-block;
+  border-bottom: 3px solid #4E7A4A;
+}
+
+.prose h3 {
+  @apply text-xl;
+}
+
+.prose p {
+  @apply mb-6;
+}
+
+.prose a {
+  @apply text-sage-text underline underline-offset-[3px];
+  text-decoration-color: #D4E4D2;
+}
+
+.prose a:hover {
+  text-decoration-color: #4E7A4A;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-6 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-sage pl-6 italic text-text-muted my-8;
+}
+
+.prose .quote-block blockquote {
+  @apply border-l-0 pl-0 not-italic text-white m-0;
+}
+
+.prose code {
+  @apply bg-cream px-1.5 py-0.5 rounded font-mono text-[0.9em];
+}
+
+.prose pre {
+  @apply bg-charcoal text-cream p-6 rounded-xl overflow-x-auto my-8;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose hr {
+  @apply border-none h-px bg-border my-12;
+}
+
+.prose strong {
+  @apply text-text-heading font-semibold;
+}
+
+.prose .lead {
+  @apply text-xl text-text-body;
+}
+
+/* ===========================================
+   LISTS
+   =========================================== */
+
+ul {
+  @apply list-disc;
+}
