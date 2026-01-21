@@ -12,7 +12,7 @@ og_image: /assets/images/og/ai-code-explain.jpg
 
 I've been quiet for three years.
 
-Not because I stopped thinking. I stopped publishing. Life happened. A divorce, a company acquisition, losing 35 kilos. I went heads down and rebuilt things.
+Not because I stopped thinking. I stopped publishing. Life happened. A company acquisition, some personal stuff. I went heads down and rebuilt things.
 
 Meanwhile, AI pulled software into a new phase. Now I watch people talk about it in a way that bothers me. They're missing the real change.
 
@@ -26,7 +26,7 @@ When output gets cheap, output stops being a strong signal. "I shipped a lot thi
 
 That's the shift. Not "developers are doomed". Not "we're all ten times faster". Value just moved somewhere else.
 
-Here's my thesis: if you can't explain the code, AI is not helping you.
+Here's what I think: if you can't explain the code, AI is not helping you.
 
 It might feel like help. You moved faster. The diff is bigger. But if you can't explain what you just shipped, you didn't gain leverage. You lost ownership.
 
@@ -75,7 +75,7 @@ It generates implementations. It doesn't decide what matters.
 
 That decision is where value moved.
 
-This sounds abstract. Let me make it concrete.
+This sounds abstract. Here's a real example.
 
 ## Verification debt
 
