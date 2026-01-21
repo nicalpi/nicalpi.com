@@ -1,0 +1,13 @@
+{% comment %}
+  Quote block component for blog posts
+  Usage: {% include quote-block.html quote="Speed without direction is just chaos with better tooling." caption="On AI and developer productivity" %}
+{% endcomment %}
+
+<figure class="relative bg-gradient-to-br from-sage-text to-sage-dark rounded-lg p-5 md:p-6 my-6 overflow-hidden quote-block">
+  <blockquote class="text-lg md:text-xl font-semibold text-white leading-relaxed relative z-10">
+    {{ include.quote }}
+  </blockquote>
+  {% if include.caption %}
+  <figcaption class="text-sm text-white mt-2 relative z-10">&mdash; {{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

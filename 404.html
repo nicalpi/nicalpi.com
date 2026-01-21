@@ -1,25 +1,30 @@
 ---
+layout: default
+title: Page Not Found
 permalink: /404.html
-layout: page
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<main id="main-content">
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center">
 
-<div class="container">
-  <h1>404</h1>
+      <p class="font-annotation text-6xl text-sage mb-4">404</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-text-heading mb-6">
+        Page not found.
+      </h1>
+      <p class="text-xl text-text-body mb-8">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/" class="bg-sage-text text-white px-6 py-3 rounded-lg font-semibold hover:bg-sage-dark transition-colors">
+          Go home &rarr;
+        </a>
+        <a href="/blog" class="bg-cream text-text-heading px-6 py-3 rounded-lg font-semibold hover:bg-sand transition-colors">
+          Read the blog
+        </a>
+      </div>
+
+    </div>
+  </section>
+</main>

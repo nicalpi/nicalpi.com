@@ -1,0 +1,52 @@
+---
+layout: default
+title: Writing
+description: Essays on sustainable technical leadership, boring technology, and calm execution.
+permalink: /blog/
+og_image: /assets/images/og/blog.jpg
+---
+
+<main id="main-content">
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="max-w-3xl mb-16">
+        <p class="font-annotation text-2xl text-text-annotation mb-4">Writing</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-text-heading mb-6">
+          Essays on building calmly.
+        </h1>
+        <p class="text-xl text-text-body">
+          Thoughts on sustainable technical leadership, boring technology that ships, and optimising for life — not just work.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {% for post in site.posts %}
+        <a href="{{ post.url }}" class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow group block border border-border">
+          <div class="flex items-center gap-2 mb-3">
+            {% if post.category %}
+            <span class="bg-sage-text text-white text-xs font-medium px-2 py-0.5 rounded-full">{{ post.category }}</span>
+            {% endif %}
+            <span class="text-xs text-text-muted">{{ post.date | date: "%B %-d, %Y" }}</span>
+          </div>
+          <h2 class="text-xl font-bold text-text-heading mb-2 group-hover:text-sage-text transition-colors">
+            {{ post.title }}
+          </h2>
+          {% if post.description %}
+          <p class="text-text-body">
+            {{ post.description }}
+          </p>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+
+      {% if site.posts.size == 0 %}
+      <div class="bg-cream rounded-xl p-8 text-center">
+        <p class="text-text-muted">Coming soon. Check back for new essays.</p>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+</main>

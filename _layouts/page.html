@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<main id="main-content">
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-6">
+
+      {% if page.title %}
+      <h1 class="text-3xl md:text-4xl font-bold text-text-heading mb-8">{{ page.title }}</h1>
+      {% endif %}
+
+      <div class="prose max-w-none">
+        {{ content }}
+      </div>
+
+    </div>
+  </section>
+</main>
