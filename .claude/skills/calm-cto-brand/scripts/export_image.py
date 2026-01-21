@@ -67,9 +67,8 @@ async def export_image(
         await page.wait_for_load_state('networkidle')
         await asyncio.sleep(0.5)  # Extra time for font rendering
 
-        # Take screenshot
+        # Take screenshot at high resolution
         screenshot_options = {
-            'path': str(output_file),
             'type': 'jpeg' if is_jpeg else 'png',
             'clip': {
                 'x': 0,
@@ -82,7 +81,30 @@ async def export_image(
         if is_jpeg:
             screenshot_options['quality'] = quality
 
-        await page.screenshot(**screenshot_options)
+        screenshot_bytes = await page.screenshot(**screenshot_options)
+
+        # If scale > 1, resize back to target dimensions for correct OG image size
+        if scale > 1:
+            try:
+                from PIL import Image
+                import io
+
+                img = Image.open(io.BytesIO(screenshot_bytes))
+                img = img.resize((width, height), Image.Resampling.LANCZOS)
+
+                if is_jpeg:
+                    img.save(str(output_file), 'JPEG', quality=quality)
+                else:
+                    img.save(str(output_file), 'PNG')
+            except ImportError:
+                # Fallback: save at scaled size if PIL not available
+                print("Warning: PIL not installed. Output will be scaled up.")
+                print("Run: pip install Pillow --break-system-packages")
+                with open(output_file, 'wb') as f:
+                    f.write(screenshot_bytes)
+        else:
+            with open(output_file, 'wb') as f:
+                f.write(screenshot_bytes)
 
         await browser.close()
 
@@ -90,7 +112,7 @@ async def export_image(
     size_kb = output_file.stat().st_size / 1024
 
     print(f"Exported: {output_file.name}")
-    print(f"   Size: {width * scale:.0f} x {height * scale:.0f}px ({size_kb:.1f} KB)")
+    print(f"   Size: {width} x {height}px ({size_kb:.1f} KB)")
 
 
 def main():
