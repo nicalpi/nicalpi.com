@@ -5,17 +5,26 @@
 
 <!-- Navigation -->
 <nav class="sticky top-0 bg-off-white/95 backdrop-blur-sm border-b border-gray-100 z-50" role="navigation" aria-label="Main navigation">
-  <div class="max-w-5xl mx-auto px-6 py-4">
-    <div class="flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 group" aria-label="The Calm CTO - Home">
-        <div class="w-2 h-2 bg-sage rounded-full" aria-hidden="true"></div>
-        <span class="text-sm font-medium text-text-muted group-hover:text-sage-text transition-colors">THE CALM CTO</span>
-      </a>
+  <div class="max-w-5xl mx-auto px-6 py-3 md:py-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-0">
+      <!-- Row 1 on mobile: Logo + Button -->
+      <div class="flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 group" aria-label="The Calm CTO - Home">
+          <div class="w-2 h-2 bg-sage rounded-full" aria-hidden="true"></div>
+          <span class="text-sm font-medium text-text-muted group-hover:text-sage-text transition-colors whitespace-nowrap">THE CALM CTO</span>
+        </a>
+        <!-- Button visible only on mobile -->
+        <a href="/contact" class="md:hidden bg-sage-text text-white px-4 py-2 rounded-lg font-medium hover:bg-sage-dark transition-colors whitespace-nowrap text-sm">
+          Work with me
+        </a>
+      </div>
 
-      <div class="flex items-center gap-8">
-        <a href="/blog" class="text-text-body font-medium hover:text-sage-text transition-colors">Writing</a>
-        <a href="/about" class="text-text-body font-medium hover:text-sage-text transition-colors">About</a>
-        <a href="/contact" class="bg-sage-text text-white px-4 py-2 rounded-lg font-medium hover:bg-sage-dark transition-colors">
+      <!-- Row 2 on mobile: Nav links centered -->
+      <div class="flex items-center justify-center md:justify-end gap-6 md:gap-8">
+        <a href="/blog" class="text-text-body font-medium hover:text-sage-text transition-colors text-sm md:text-base">Writing</a>
+        <a href="/about" class="text-text-body font-medium hover:text-sage-text transition-colors text-sm md:text-base">About</a>
+        <!-- Button visible only on desktop -->
+        <a href="/contact" class="hidden md:block bg-sage-text text-white px-4 py-2 rounded-lg font-medium hover:bg-sage-dark transition-colors">
           Work with me
         </a>
       </div>
