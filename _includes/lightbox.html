@@ -1,0 +1,148 @@
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-charcoal/95 backdrop-blur-sm" id="lightbox-backdrop"></div>
+
+  <!-- Close button -->
+  <button
+    id="lightbox-close"
+    class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+    aria-label="Close image viewer"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Image container -->
+  <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8">
+    <img
+      id="lightbox-img"
+      src=""
+      alt=""
+      class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+    >
+  </div>
+
+  <!-- Caption -->
+  <div id="lightbox-caption" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm text-center max-w-xl px-4"></div>
+</div>
+
+<style>
+  /* Lightbox animations */
+  #lightbox {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  #lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #lightbox-img {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+  }
+
+  #lightbox.active #lightbox-img {
+    transform: scale(1);
+  }
+
+  /* Make article images clickable */
+  .prose img {
+    cursor: zoom-in;
+    transition: opacity 0.15s ease;
+  }
+
+  .prose img:hover {
+    opacity: 0.9;
+  }
+
+  /* Prevent body scroll when lightbox is open */
+  body.lightbox-open {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+(function() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+  let previouslyFocused = null;
+
+  function openLightbox(img) {
+    previouslyFocused = document.activeElement;
+
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = img.alt;
+
+    lightbox.classList.remove('hidden');
+    // Trigger reflow for animation
+    lightbox.offsetHeight;
+    lightbox.classList.add('active');
+    document.body.classList.add('lightbox-open');
+
+    // Focus close button for accessibility
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.classList.remove('lightbox-open');
+
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    }, 200);
+
+    // Restore focus
+    if (previouslyFocused) {
+      previouslyFocused.focus();
+    }
+  }
+
+  // Attach click handlers to all article images
+  document.querySelectorAll('.prose img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Click to enlarge: ' + (img.alt || 'image'));
+
+    // Allow keyboard activation
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img);
+      }
+    });
+  });
+
+  // Close handlers
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxBackdrop.addEventListener('click', closeLightbox);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  // Trap focus within lightbox when open
+  lightbox.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      // Only the close button is focusable, so just keep focus there
+      e.preventDefault();
+      lightboxClose.focus();
+    }
+  });
+})();
+</script>

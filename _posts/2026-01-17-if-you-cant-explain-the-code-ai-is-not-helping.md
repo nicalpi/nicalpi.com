@@ -45,6 +45,8 @@ I mean you can answer basic questions without hesitating:
 
 That's the bar. That's engineering with the theatre cut out.
 
+![Can you explain your code? Six questions checklist](/assets/images/ai-code-explain/six-questions.jpg)
+
 For most of my career, nobody asked these questions. Or at least, not consistently. The industry rewarded something else.
 
 ## The old deal
@@ -75,6 +77,8 @@ It generates implementations. It doesn't decide what matters.
 
 That decision is where value moved.
 
+![What AI replaces vs what it doesn't](/assets/images/ai-code-explain/replaces-vs-not.jpg)
+
 This sounds abstract. Here's a real example.
 
 ## Verification debt
@@ -88,6 +92,8 @@ But real systems fail in places you don't see in a clean demo. Weird data shapes
 If you ship AI-assisted code you can't explain, you create verification debt. You borrow certainty now. You pay later in bugs, rework, incidents. Slow loss of trust in the codebase. Slow loss of trust in the team.
 
 AI lets you generate that debt faster than most teams are ready for.
+
+![Verification debt flow](/assets/images/ai-code-explain/verification-debt.jpg)
 
 I watched a team ship an AI-generated authentication flow last month. It looked clean. Passed code review. Two weeks later, a race condition in the session handling took down their checkout for six hours.
 
@@ -127,6 +133,8 @@ The code is mine because the decisions are mine. The trade-offs are mine. The re
 
 If you can explain those decisions, the code is yours. If you can't, you're not the director. You're hoping the camera crew guessed what scene you needed.
 
+![The director problem - AI is the camera crew, you're the director](/assets/images/ai-code-explain/director-metaphor.jpg)
+
 So what does this mean for your career? What actually makes a developer valuable now?
 
 ## What valuable looks like now
@@ -148,6 +156,8 @@ If you can't explain the code, AI is not helping you. It's hiding the gap until 
 If you can explain it, AI becomes leverage. You keep authorship. You ship faster without guessing.
 
 That's the line.
+
+![The line - can't explain vs can explain](/assets/images/ai-code-explain/the-line.jpg)
 
 ---
 
