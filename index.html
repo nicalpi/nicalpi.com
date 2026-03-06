@@ -1,430 +1,231 @@
 ---
 layout: default
-title: Technical Leadership Without the Chaos
-description: I help tech leaders ship quality work without burning out. Fractional CTO, advisor, and writer. 20+ years in Rails, built and sold a consultancy. Based in Bristol.
+title: "NicAlpi — Real talk from the trenches"
+description: "I write about what leading a dev team actually looks like. 20+ years in software, CTO, agency founder, 3 kids. Not a navy seal."
 og_image: /assets/images/og/homepage.jpg
 ---
+
+<style>
+  .wav { display:inline-block; animation:wave 2.5s ease-in-out infinite; transform-origin:70% 70%; }
+  @keyframes wave { 0%,100%{transform:rotate(0)} 25%{transform:rotate(18deg)} 75%{transform:rotate(-8deg)} }
+  .latest-sidebar a:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+  .post-row { grid-template-columns:56px 1fr auto; }
+  .nin-focus:focus { border-color:#3B82F6 !important; }
+</style>
 
 <main id="main-content">
 
   <!-- ====================================
        HERO
        ==================================== -->
-  <section class="py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="max-w-3xl">
+  <section class="py-20 md:py-24">
+    <div class="max-w-[860px] mx-auto px-6">
+      <div class="grid md:grid-cols-[2fr_1fr] gap-14 items-start">
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-heading tracking-tight leading-tight mb-6">
-          You didn't become a CTO<br>
-          <span class="text-sage-text">to burn out.</span>
-        </h1>
+        <!-- Left: personal intro -->
+        <div>
+          <div class="font-annotation text-[22px] text-blue-dark flex items-center gap-2 mb-5" style="font-weight:500;">
+            Hi, I'm Nic <span class="wav">👋</span>
+          </div>
 
-        <p class="text-xl md:text-2xl text-text-body leading-relaxed mb-8 max-w-2xl">
-          I help tech leaders ship quality work without sacrificing their health, their relationships, or their sanity.
-        </p>
+          <h1 class="text-[clamp(34px,4.5vw,52px)] font-extrabold text-ink leading-tight mb-6" style="letter-spacing:-1.5px;">
+            I write about what<br>this job <span class="text-blue">actually</span> looks like.
+          </h1>
 
-        <div class="flex flex-wrap gap-4 mb-12">
-          <a href="/contact" class="bg-sage-text text-white px-6 py-3 rounded-lg font-semibold hover:bg-sage-dark transition-colors">
-            Work with me &rarr;
-          </a>
-          <a href="/blog" class="bg-cream text-text-heading px-6 py-3 rounded-lg font-semibold hover:bg-sand transition-colors">
-            Read my writing
-          </a>
+          <p class="text-lg text-muted leading-relaxed mb-4 max-w-[460px]">
+            I've been building software for <strong class="text-text-body font-semibold">20+ years</strong>. Co-founded an agency, grew it to 20 people, sold it in 2021. Now CTO at a health tech company in Bristol. I have 3 kids and I'm home by 4pm every day.
+          </p>
+          <p class="text-lg text-muted leading-relaxed max-w-[460px]">
+            I write about team management, agency life, AI, and the reality of doing this job without performing about it.
+          </p>
+
+          <div class="flex items-center gap-5 mt-8">
+            <a href="/blog" class="inline-flex items-center gap-2 bg-ink text-white text-[15px] font-bold px-6 py-[13px] rounded-lg hover:opacity-90 transition-opacity">
+              Start reading &rarr;
+            </a>
+            <a href="/about" class="text-muted text-[15px] font-medium hover:text-ink transition-colors">
+              More about me
+            </a>
+          </div>
         </div>
 
-        <p class="text-text-muted text-sm">
-          Currently CTO at Amba. Fractional CTO services launching January 2026.
-        </p>
+        <!-- Right: latest articles sidebar -->
+        <aside class="latest-sidebar bg-off-white border border-border rounded-2xl p-6">
+          <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted mb-5 block">Latest</span>
+          {% for post in site.posts limit:3 %}
+          <a href="{{ post.url }}" class="block mb-4 pb-4 border-b border-border group">
+            {% if post.category %}
+            <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
+            {% endif %}
+            <span class="font-bold text-sm text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="text-decoration:none;">{{ post.title }}</span>
+            <span class="text-xs text-muted mt-1 block">{{ post.date | date: "%-d %b" }} &middot; {{ post.reading_time | default: "5" }} min</span>
+          </a>
+          {% endfor %}
+        </aside>
 
       </div>
     </div>
   </section>
 
   <!-- ====================================
-       STORY (Brief)
+       ABOUT — off-white band
        ==================================== -->
-  <section class="py-16 bg-cream">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+  <section class="bg-off-white border-t border-border border-b py-16">
+    <div class="max-w-[860px] mx-auto px-6">
+      <p class="font-annotation text-[22px] text-muted mb-6" style="font-weight:500;">A bit more about me...</p>
+      <div class="bg-white border border-border rounded-2xl p-10 md:p-11">
+        <p class="text-[17px] leading-[1.8] text-text-body mb-5">
+          I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, my wife and I started a Rails consultancy. We grew it to <strong class="text-ink">20 people and over a million in revenue</strong> before selling to Amba in 2021.
+        </p>
+        <p class="text-[17px] leading-[1.8] text-text-body mb-5">
+          Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. I train HYROX at 5:30am. I have a <span class="text-blue-dark font-semibold">hard 4pm rule</span> — phone down, family time, non-negotiable.
+        </p>
+        <p class="text-[17px] leading-[1.8] text-text-body">
+          I write because I kept seeing advice from navy seals and billionaires performing certainty they don't have. I'm not any of those things. I'm genuinely confused about AI, I sometimes ship things late, and I'm still figuring this out. I figure that's more useful to write about.
+        </p>
+        <div class="font-annotation text-[26px] text-ink mt-7 pt-5 border-t border-border">— Nic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       POSTS — browse + numbered list
+       ==================================== -->
+  <section class="py-16" aria-labelledby="writing-heading">
+    <div class="max-w-[860px] mx-auto px-6">
+
+      <!-- Browse by topic -->
+      <div class="mb-10">
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-muted mb-4 block">Browse by topic</span>
+        <div class="flex flex-wrap gap-2">
+          <a href="/blog" class="text-sm font-semibold px-[18px] py-2 bg-ink text-white rounded-full" style="font-size:14px;">All</a>
+          {% assign all_categories = site.posts | map: 'category' | uniq | compact %}
+          {% for cat in all_categories %}
+          <a href="/blog" class="text-sm font-medium px-[18px] py-2 bg-white border border-border text-text-body rounded-full hover:border-blue-mid hover:text-blue-dark transition-colors" style="font-size:14px;">{{ cat }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Numbered list -->
+      <h2 id="writing-heading" class="sr-only">Recent writing</h2>
+      <div>
+        {% for post in site.posts %}
+        <a href="{{ post.url }}" class="post-row group grid gap-6 py-7 border-b border-border items-start block no-underline">
+          <span class="font-extrabold text-[30px] text-border leading-none group-hover:text-blue-mid transition-colors" style="letter-spacing:-1.5px;">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <div>
+            {% if post.category %}
+            <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
+            {% endif %}
+            <span class="font-bold text-lg text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="letter-spacing:-0.3px;">{{ post.title }}</span>
+            {% if post.description %}
+            <span class="text-sm text-muted leading-relaxed mt-1 block">{{ post.description }}</span>
+            {% endif %}
+          </div>
+          <div class="text-xs text-muted text-right whitespace-nowrap pt-1">
+            {{ post.date | date: "%-d %b" }}<br>
+            {{ post.reading_time | default: "5" }} min
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================
+       QUOTE — blockquote interlude
+       ==================================== -->
+  <section class="py-16">
+    <div class="max-w-[860px] mx-auto px-6">
+      <div class="bg-blue-light border-l-4 border-blue p-7 md:p-8" style="border-radius:0 14px 14px 0;">
+        <p class="font-bold text-xl text-ink mb-3 leading-snug" style="letter-spacing:-0.3px;">The gap isn't better advice from extreme people. It's advice from someone who's actually like you — confused, doing their best, and still figuring it out.</p>
+        <div class="font-annotation text-lg text-muted">— what this is all about</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       BELIEFS — off-white band
+       ==================================== -->
+  <section class="bg-off-white border-t border-border border-b py-16">
+    <div class="max-w-[860px] mx-auto px-6">
+      <p class="font-annotation text-[22px] text-text-annotation mb-3" style="font-weight:600;">What I've learned</p>
+      <h2 class="text-3xl font-extrabold text-ink mb-10" style="letter-spacing:-0.5px;">Six things I believe after 20 years.</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">The best CTOs aren't the busiest.</h3>
+          <p class="text-sm text-muted leading-relaxed">They've designed systems, teams, and lives that don't require heroics.</p>
+        </div>
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Boring technology wins.</h3>
+          <p class="text-sm text-muted leading-relaxed">Rails has been declared dead for 15 years. Still ships faster than most alternatives.</p>
+        </div>
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Complexity is a choice.</h3>
+          <p class="text-sm text-muted leading-relaxed">Most teams don't have scaling problems. They have simplicity problems.</p>
+        </div>
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Meetings are debt.</h3>
+          <p class="text-sm text-muted leading-relaxed">Every recurring meeting is a tax on your team's ability to think deeply.</p>
+        </div>
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">AI changes the game, not the fundamentals.</h3>
+          <p class="text-sm text-muted leading-relaxed">Context engineering — treating AI like a junior who needs proper onboarding.</p>
+        </div>
+        <div class="border-t-2 border-blue pt-5">
+          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Burnout is a systems problem.</h3>
+          <p class="text-sm text-muted leading-relaxed">If your company needs heroes to function, your systems are broken.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       NEWSLETTER — dark section
+       ==================================== -->
+  <section class="bg-ink py-20 dark-section" aria-labelledby="newsletter-heading">
+    <div class="max-w-[860px] mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-14 items-center">
 
         <div>
-          <p class="font-annotation text-2xl text-text-annotation mb-4">Here's what happened</p>
-
-          <h2 class="text-3xl font-bold text-text-heading mb-6">
-            I built a successful company and nearly destroyed myself doing it.
-          </h2>
-
-          <p class="text-lg text-text-body mb-4">
-            In 2011, I co-founded CookiesHQ — a Ruby on Rails consultancy. We grew from two people to twenty, hit seven-figure revenue, and got acquired in 2021.
-          </p>
-
-          <p class="text-lg text-text-body mb-4">
-            On paper, it was everything I wanted.
-          </p>
-
-          <p class="text-lg text-text-body">
-            In reality, I was exhausted and running on fumes. I'd optimised for success but forgotten to optimise for life.
-          </p>
+          <span class="text-[11px] font-bold tracking-[3px] uppercase block mb-3" style="color:rgba(255,255,255,0.45);">Newsletter</span>
+          <h2 id="newsletter-heading" class="text-2xl font-extrabold text-white mb-3" style="letter-spacing:-0.8px;">Get the honest take, every fortnight</h2>
+          <p class="text-white text-[15px] leading-relaxed">Real stuff from 20 years in the trenches. No navy seals. No hustle bro advice.</p>
         </div>
 
-        <div class="relative">
-          <div class="bg-white rounded-2xl p-8 shadow-sm">
-            <div class="space-y-6">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-sage-light flex items-center justify-center">
-                  <span class="text-sage-text font-bold">11</span>
-                </div>
-                <div>
-                  <p class="font-semibold text-text-heading">Years building CookiesHQ</p>
-                  <p class="text-sm text-text-muted">From spare room to acquisition</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-coral-light flex items-center justify-center">
-                  <span class="text-coral-text font-bold">20</span>
-                </div>
-                <div>
-                  <p class="font-semibold text-text-heading">People at peak</p>
-                  <p class="text-sm text-text-muted">&pound;1M+ annual revenue</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-sky-light flex items-center justify-center">
-                  <span class="text-sky-text font-bold">20+</span>
-                </div>
-                <div>
-                  <p class="font-semibold text-text-heading">Years in web development</p>
-                  <p class="text-sm text-text-muted">Still writing code daily</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <form class="flex flex-col gap-3" action="#" method="post">
+          <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            class="nin-focus px-[18px] py-[13px] rounded-lg text-white text-sm outline-none font-body"
+            style="background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.12);font-family:inherit;"
+          >
+          <button type="submit" class="bg-blue text-white px-[22px] py-[13px] rounded-lg text-sm font-bold hover:bg-blue-dark transition-colors">
+            Subscribe — it's free &rarr;
+          </button>
+          <p class="text-xs" style="color:rgba(255,255,255,0.3);">No spam. Unsubscribe anytime.</p>
+        </form>
 
       </div>
-    </div>
-  </section>
-
-  <!-- ====================================
-       THE SHIFT
-       ==================================== -->
-  <section class="py-20">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="font-annotation text-2xl text-text-annotation mb-4">The rebuild</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text-heading mb-6">
-          The acquisition gave me space to change everything.
-        </h2>
-        <p class="text-lg text-text-body">
-          I simplified my systems and found a pace I could actually sustain. Now I help other technical leaders do the same.
-        </p>
-      </div>
-
-      <!-- Transformation -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-        <!-- From -->
-        <div class="bg-coral-light/50 rounded-2xl p-8">
-          <p class="text-sm font-semibold text-coral-dark uppercase tracking-wider mb-6">From</p>
-          <ul class="space-y-4">
-            <li class="flex items-center gap-3">
-              <span class="text-coral-text" aria-hidden="true">&#10007;</span>
-              <span class="text-text-heading">Reactive firefighting</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-coral-text" aria-hidden="true">&#10007;</span>
-              <span class="text-text-heading">Heroic all-nighters</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-coral-text" aria-hidden="true">&#10007;</span>
-              <span class="text-text-heading">Complex tool sprawl</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-coral-text" aria-hidden="true">&#10007;</span>
-              <span class="text-text-heading">Meeting overload</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-coral-text" aria-hidden="true">&#10007;</span>
-              <span class="text-text-heading">Optimising one variable</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- To -->
-        <div class="bg-sage-light/50 rounded-2xl p-8">
-          <p class="text-sm font-semibold text-sage-dark uppercase tracking-wider mb-6">To</p>
-          <ul class="space-y-4">
-            <li class="flex items-center gap-3">
-              <span class="text-sage-text" aria-hidden="true">&#10003;</span>
-              <span class="text-text-heading">Proactive systems</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-sage-text" aria-hidden="true">&#10003;</span>
-              <span class="text-text-heading">Sustainable pace</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-sage-text" aria-hidden="true">&#10003;</span>
-              <span class="text-text-heading">Boring technology that works</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-sage-text" aria-hidden="true">&#10003;</span>
-              <span class="text-text-heading">Async by default</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="text-sage-text" aria-hidden="true">&#10003;</span>
-              <span class="text-text-heading">Optimising for life</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ====================================
-       WHAT I BELIEVE
-       ==================================== -->
-  <section class="py-20 bg-charcoal text-white dark-section">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="font-annotation text-2xl text-sage mb-4">What I've learned</p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Six things I believe after 20 years.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <div class="border-t-4 border-sage pt-6">
-          <h3 class="text-xl font-bold mb-3">The best CTOs aren't the busiest.</h3>
-          <p class="text-gray-400">
-            They're the ones who've designed systems, teams, and lives that don't require heroics.
-          </p>
-        </div>
-
-        <div class="border-t-4 border-sage pt-6">
-          <h3 class="text-xl font-bold mb-3">Boring technology wins.</h3>
-          <p class="text-gray-400">
-            Rails has been declared dead for 15 years. It still ships faster than most alternatives.
-          </p>
-        </div>
-
-        <div class="border-t-4 border-sage pt-6">
-          <h3 class="text-xl font-bold mb-3">Complexity is a choice.</h3>
-          <p class="text-gray-400">
-            Most teams don't have scaling problems. They have simplicity problems.
-          </p>
-        </div>
-
-        <div class="border-t-4 border-coral pt-6">
-          <h3 class="text-xl font-bold mb-3">Meetings are debt.</h3>
-          <p class="text-gray-400">
-            Every recurring meeting is a tax on your team's ability to think deeply.
-          </p>
-        </div>
-
-        <div class="border-t-4 border-coral pt-6">
-          <h3 class="text-xl font-bold mb-3">AI changes the game, not the fundamentals.</h3>
-          <p class="text-gray-400">
-            The skill is context engineering — treating AI like a junior dev who needs proper onboarding.
-          </p>
-        </div>
-
-        <div class="border-t-4 border-coral pt-6">
-          <h3 class="text-xl font-bold mb-3">Burnout is a systems problem.</h3>
-          <p class="text-gray-400">
-            If your company needs heroes to function, your systems are broken.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ====================================
-       WHAT I OFFER
-       ==================================== -->
-  <section class="py-20" aria-labelledby="services-heading">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="font-annotation text-2xl text-text-annotation mb-4">How I can help</p>
-        <h2 id="services-heading" class="text-3xl md:text-4xl font-bold text-text-heading">
-          Ways to work together.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-
-        <!-- Writing -->
-        <article class="bg-white rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-sage-text flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text-heading mb-3">Writing &amp; Newsletter</h3>
-          <p class="text-text-body mb-6">
-            Weekly essays on sustainable technical leadership. What I've learned, what I got wrong, and why I disagree with the conventional wisdom.
-          </p>
-          <a href="/blog" class="text-sage-text font-semibold underline underline-offset-2 decoration-sage-light hover:decoration-sage-text">
-            Read the blog &rarr;
-          </a>
-        </article>
-
-        <!-- Fractional CTO -->
-        <article class="bg-white rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow relative overflow-hidden">
-          <div class="absolute top-4 right-4">
-            <span class="bg-coral-text text-white text-xs font-medium px-2 py-1 rounded-full">Jan 2026</span>
-          </div>
-          <div class="w-12 h-12 rounded-xl bg-coral-text flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text-heading mb-3">Fractional CTO</h3>
-          <p class="text-text-body mb-6">
-            Senior technical leadership for 1-2 days per week. Strategy, team structure, delivery systems. You pay for results, not my calendar.
-          </p>
-          <a href="/contact" class="text-sage-text font-semibold underline underline-offset-2 decoration-sage-light hover:decoration-sage-text">
-            Join the waitlist &rarr;
-          </a>
-        </article>
-
-        <!-- Advisory -->
-        <article class="bg-white rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-sky-text flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text-heading mb-3">Advisory</h3>
-          <p class="text-text-body mb-6">
-            Lighter-touch support for founders. Monthly calls, async access, and a second opinion when you need one.
-          </p>
-          <a href="/contact" class="text-sage-text font-semibold underline underline-offset-2 decoration-sage-light hover:decoration-sage-text">
-            Let's talk &rarr;
-          </a>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ====================================
-       QUOTE
-       ==================================== -->
-  <section class="py-16 bg-cream">
-    <div class="max-w-4xl mx-auto px-6">
-      <figure class="relative quote-mark pl-4 md:pl-8">
-        <blockquote class="text-2xl md:text-3xl font-bold text-text-heading leading-relaxed">
-          It's not about working less — it's about working better. Choosing boring technology that actually ships. Building teams that don't need heroes.
-        </blockquote>
-        <figcaption class="mt-6 text-text-muted">
-          — On The Calm CTO philosophy
-        </figcaption>
-      </figure>
     </div>
   </section>
 
   <!-- ====================================
        SOCIAL PROOF
        ==================================== -->
-  <section class="py-16" aria-labelledby="clients-heading">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <p id="clients-heading" class="text-center text-text-muted text-sm uppercase tracking-wider mb-10">
+  <section class="py-14" aria-labelledby="clients-heading">
+    <div class="max-w-[860px] mx-auto px-6">
+      <p id="clients-heading" class="text-center text-[11px] font-bold uppercase tracking-[3px] text-muted mb-8">
         Companies I've worked with over 20 years
       </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-12 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-        <img src="/assets/images/logos/bbc-maestro.png" alt="BBC Maestro" class="h-8 object-contain">
-        <img src="/assets/images/logos/stornaway.png" alt="Stornaway" class="h-8 object-contain">
-        <img src="/assets/images/logos/rough-trade.png" alt="Rough Trade" class="h-10 object-contain">
-        <img src="/assets/images/logos/patternbank.svg" alt="Patternbank" class="h-6 object-contain">
+      <div class="flex flex-wrap items-center justify-center gap-10 opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300">
+        <img src="/assets/images/logos/bbc-maestro.png" alt="BBC Maestro" class="h-7 object-contain">
+        <img src="/assets/images/logos/stornaway.png" alt="Stornaway" class="h-7 object-contain">
+        <img src="/assets/images/logos/rough-trade.png" alt="Rough Trade" class="h-9 object-contain">
+        <img src="/assets/images/logos/patternbank.svg" alt="Patternbank" class="h-5 object-contain">
       </div>
-
-    </div>
-  </section>
-
-  <!-- ====================================
-       LATEST WRITING
-       ==================================== -->
-  <section class="py-20 bg-cream" aria-labelledby="writing-heading">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <div class="flex items-end justify-between mb-10">
-        <div>
-          <p class="font-annotation text-2xl text-text-annotation mb-2">Latest thinking</p>
-          <h2 id="writing-heading" class="text-3xl font-bold text-text-heading">Recent writing</h2>
-        </div>
-        <a href="/blog" class="text-sage-text font-semibold underline underline-offset-2 decoration-sage-light hover:decoration-sage-text hidden md:block">
-          View all &rarr;
-        </a>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {% for post in site.posts limit:2 %}
-        <a href="{{ post.url }}" class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow group block">
-          <div class="flex items-center gap-2 mb-3">
-            {% if post.category %}
-            <span class="bg-sage-text text-white text-xs font-medium px-2 py-0.5 rounded-full">{{ post.category }}</span>
-            {% endif %}
-            <span class="text-xs text-text-muted">{{ post.date | date: "%b %-d, %Y" }}</span>
-          </div>
-          <h3 class="text-xl font-bold text-text-heading mb-2 group-hover:text-sage-text transition-colors">
-            {{ post.title }}
-          </h3>
-          {% if post.description %}
-          <p class="text-text-body text-sm">
-            {{ post.description }}
-          </p>
-          {% endif %}
-        </a>
-        {% endfor %}
-      </div>
-
-      <a href="/blog" class="text-sage-text font-semibold underline underline-offset-2 decoration-sage-light hover:decoration-sage-text block text-center mt-8 md:hidden">
-        View all writing &rarr;
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ====================================
-       FINAL CTA
-       ==================================== -->
-  <section class="py-20 bg-charcoal text-white dark-section" aria-labelledby="cta-heading">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-
-      <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
-        Let's talk.
-      </h2>
-
-      <p class="text-xl text-gray-400 mb-8">
-        Whether you need a fractional CTO, advisory support, or just want to follow along with the writing.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/contact" class="bg-sage-text text-white px-8 py-4 rounded-lg font-semibold hover:bg-sage-dark transition-colors">
-          Get in touch &rarr;
-        </a>
-        <a href="/blog" class="bg-white/10 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/20 transition-colors">
-          Read the blog
-        </a>
-      </div>
-
-      <p class="text-sm text-gray-500 mt-8">
-        Based in Bristol, UK. Working with teams worldwide.
-      </p>
-
     </div>
   </section>
 

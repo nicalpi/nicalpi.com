@@ -10,40 +10,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        sage: {
-          DEFAULT: '#8FAE8B',
-          text: '#4E7A4A',
-          dark: '#3D6339',
-          light: '#D4E4D2'
+        // NicAlpi brand palette
+        'off-white': '#F5F4F1',
+        ink: '#111111',
+        muted: '#717171',
+        border: '#E3E1DD',
+        blue: {
+          DEFAULT: '#3B82F6',
+          dark: '#1A4FA8',
+          light: '#EFF6FF',
+          mid: '#BFDBFE',
         },
-        coral: {
-          DEFAULT: '#E8998D',
-          text: '#A8584F',
-          dark: '#8B4840',
-          light: '#F4DCD8'
-        },
-        sky: {
-          DEFAULT: '#89B9C4',
-          text: '#357A8A',
-          dark: '#28606E',
-          light: '#D0E5EA'
-        },
-        cream: '#F8F6F3',
-        'off-white': '#FDFCFB',
-        charcoal: '#2D3436',
-        sand: '#D4C5B5',
-        border: '#E5E7EB',
-        'text-heading': '#2D3436',
-        'text-body': '#4B5563',
-        'text-muted': '#5C6370',
-        'text-annotation': '#4F5662',
-        focus: '#2563EB',
+        // Semantic text aliases
+        'text-heading': '#111111',
+        'text-body': '#3A3A3A',
+        'text-muted': '#717171',
+        'text-annotation': '#1A4FA8',
       },
       fontFamily: {
         heading: ['DM Sans', 'system-ui', 'sans-serif'],
         body: ['DM Sans', 'system-ui', 'sans-serif'],
         annotation: ['Caveat', 'cursive'],
         mono: ['JetBrains Mono', 'monospace'],
+      },
+      maxWidth: {
+        article: '640px',
       },
       borderRadius: {
         'xl': '16px',

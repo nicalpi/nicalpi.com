@@ -30,7 +30,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 3px solid #2563EB;
+  outline: 3px solid #3B82F6;
   outline-offset: 2px;
 }
 
@@ -54,7 +54,7 @@ body {
   @apply absolute -top-8 left-0 select-none pointer-events-none;
   font-size: 8rem;
   font-family: Georgia, serif;
-  color: rgba(78, 122, 74, 0.1);
+  color: rgba(59, 130, 246, 0.1);
   line-height: 1;
 }
 
@@ -78,18 +78,18 @@ body {
 .prose h2,
 .prose h3,
 .prose h4 {
-  @apply text-text-heading font-heading font-bold;
+  @apply text-text-heading font-heading font-extrabold;
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
 .prose h2 {
   @apply text-2xl pb-2 inline-block;
-  border-bottom: 3px solid #4E7A4A;
+  border-bottom: 3px solid #3B82F6;
 }
 
 .prose h3 {
-  @apply text-xl;
+  @apply text-xl font-bold;
 }
 
 .prose p {
@@ -97,12 +97,13 @@ body {
 }
 
 .prose a {
-  @apply text-sage-text underline underline-offset-[3px];
-  text-decoration-color: #D4E4D2;
+  @apply text-blue-dark underline underline-offset-[3px];
+  text-decoration-color: #BFDBFE;
 }
 
 .prose a:hover {
-  text-decoration-color: #4E7A4A;
+  @apply text-blue;
+  text-decoration-color: #3B82F6;
 }
 
 .prose ul,
@@ -115,19 +116,41 @@ body {
 }
 
 .prose blockquote {
-  @apply border-l-4 border-sage pl-6 italic text-text-muted my-8;
+  @apply border-l-4 border-blue pl-6 my-8;
+  background: #EFF6FF;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  font-style: normal;
+}
+
+.prose blockquote p {
+  font-weight: 700;
+  font-size: 19px;
+  color: #111111;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.prose blockquote cite {
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  color: #717171;
+  font-style: normal;
 }
 
 .prose .quote-block blockquote {
-  @apply border-l-0 pl-0 not-italic text-white m-0;
+  @apply border-l-0 pl-0 not-italic text-text-heading font-bold m-0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
 }
 
 .prose code {
-  @apply bg-cream px-1.5 py-0.5 rounded font-mono text-[0.9em];
+  @apply bg-off-white px-1.5 py-0.5 rounded font-mono text-[0.9em];
 }
 
 .prose pre {
-  @apply bg-charcoal text-cream p-6 rounded-xl overflow-x-auto my-8;
+  @apply bg-ink text-off-white p-6 rounded-xl overflow-x-auto my-8;
 }
 
 .prose pre code {
@@ -152,4 +175,25 @@ body {
 
 ul {
   @apply list-disc;
+}
+
+/* ===========================================
+   HOMEPAGE — POST ROW LIST
+   =========================================== */
+
+.post-row {
+  grid-template-columns: 56px 1fr auto;
+  text-decoration: none;
+}
+
+.post-row:first-child {
+  padding-top: 0;
+}
+
+/* ===========================================
+   NEWSLETTER FORM — FOCUS STATE
+   =========================================== */
+
+.nin-focus:focus {
+  border-color: #3B82F6 !important;
 }

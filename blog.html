@@ -1,52 +1,69 @@
 ---
 layout: default
 title: Writing
-description: Essays on sustainable technical leadership, boring technology, and calm execution.
+description: "Honest writing about team management, agency life, AI, and what the job actually looks like. From someone still figuring it out."
 permalink: /blog/
 og_image: /assets/images/og/blog.jpg
 ---
 
 <main id="main-content">
   <section class="py-20">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-[860px] mx-auto px-6">
 
-      <div class="max-w-3xl mb-16">
-        <p class="font-annotation text-2xl text-text-annotation mb-4">Writing</p>
-        <h1 class="text-4xl md:text-5xl font-bold text-text-heading mb-6">
-          Essays on building calmly.
+      <!-- Header -->
+      <div class="max-w-[600px] mb-14">
+        <p class="font-annotation text-[22px] text-text-annotation mb-3" style="font-weight:500;">Writing</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-ink mb-5" style="letter-spacing:-1px;">
+          What the job actually looks like.
         </h1>
-        <p class="text-xl text-text-body">
-          Thoughts on sustainable technical leadership, boring technology that ships, and optimising for life — not just work.
+        <p class="text-lg text-muted leading-relaxed">
+          Team management, agency life, AI honestly, and the reality of doing this without performing about it.
         </p>
       </div>
 
-      <div class="space-y-6">
+      <!-- Browse by topic -->
+      <div class="mb-10">
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-muted mb-4 block">Browse by topic</span>
+        <div class="flex flex-wrap gap-2">
+          <a href="/blog" class="text-sm font-semibold px-[18px] py-2 bg-ink text-white rounded-full" style="font-size:14px;text-decoration:none;">All</a>
+          {% assign all_categories = site.posts | map: 'category' | uniq | compact %}
+          {% for cat in all_categories %}
+          <a href="/blog" class="text-sm font-medium px-[18px] py-2 bg-white border border-border text-text-body rounded-full hover:border-blue-mid hover:text-blue-dark transition-colors" style="font-size:14px;text-decoration:none;">{{ cat }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Numbered list -->
+      {% if site.posts.size > 0 %}
+      <div id="post-list">
         {% for post in site.posts %}
-        <a href="{{ post.url }}" class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow group block border border-border">
-          <div class="flex items-center gap-2 mb-3">
+        <a href="{{ post.url }}"
+           class="post-row group grid gap-6 py-7 border-b border-border items-start block no-underline"
+           style="text-decoration:none;">
+          <span class="font-extrabold text-[30px] text-border leading-none group-hover:text-blue-mid transition-colors" style="letter-spacing:-1.5px;">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <div>
             {% if post.category %}
-            <span class="bg-sage-text text-white text-xs font-medium px-2 py-0.5 rounded-full">{{ post.category }}</span>
+            <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
             {% endif %}
-            <span class="text-xs text-text-muted">{{ post.date | date: "%B %-d, %Y" }}</span>
+            <span class="font-bold text-lg text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="letter-spacing:-0.3px;">{{ post.title }}</span>
+            {% if post.description %}
+            <span class="text-sm text-muted leading-relaxed mt-1 block">{{ post.description }}</span>
+            {% endif %}
           </div>
-          <h2 class="text-xl font-bold text-text-heading mb-2 group-hover:text-sage-text transition-colors">
-            {{ post.title }}
-          </h2>
-          {% if post.description %}
-          <p class="text-text-body">
-            {{ post.description }}
-          </p>
-          {% endif %}
+          <div class="text-xs text-muted text-right whitespace-nowrap pt-1">
+            {{ post.date | date: "%-d %b %Y" }}<br>
+            {{ post.reading_time | default: "5" }} min
+          </div>
         </a>
         {% endfor %}
       </div>
-
-      {% if site.posts.size == 0 %}
-      <div class="bg-cream rounded-xl p-8 text-center">
-        <p class="text-text-muted">Coming soon. Check back for new essays.</p>
+      {% else %}
+      <div class="bg-off-white border border-border rounded-xl p-8 text-center">
+        <p class="text-muted">Nothing here yet. Check back soon.</p>
       </div>
       {% endif %}
 
     </div>
   </section>
 </main>
+

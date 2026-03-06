@@ -1,11 +1,10 @@
 # Site settings
-title: The Calm CTO — Nic Alpi
+title: NicAlpi
 email: hi@nicalpi.com
-description: >-
-  I help tech leaders ship quality work without burning out. Fractional CTO,
-  advisor, and writer. 20+ years in Rails, built and sold a consultancy. Based in Bristol.
+description: "Real talk from someone who's been there. CTO, agency founder, writer. Not a navy seal."
 baseurl: ""
 url: "https://www.nicalpi.com"
+author: Nic Alpi
 twitter_username: nicalpi
 github_username: nicalpi
 

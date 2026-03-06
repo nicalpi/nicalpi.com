@@ -1,17 +1,17 @@
 {% comment %}
   Callout component for blog posts
   Usage: {% include callout.html type="warning" title="The scary part" content="It's that AI makes mistakes that look reasonable." %}
-  Types: tip (sage), warning (coral), note (sky)
+  Types: tip (blue), warning (neutral), note (blue-light)
 {% endcomment %}
 
-{% assign bg_class = "bg-sage-light border-sage-text" %}
-{% assign title_class = "text-sage-dark" %}
+{% assign bg_class = "bg-blue-light border-blue" %}
+{% assign title_class = "text-blue-dark" %}
 {% if include.type == "warning" %}
-  {% assign bg_class = "bg-coral-light border-coral-text" %}
-  {% assign title_class = "text-coral-dark" %}
+  {% assign bg_class = "bg-off-white border-border" %}
+  {% assign title_class = "text-text-heading" %}
 {% elsif include.type == "note" %}
-  {% assign bg_class = "bg-sky-light border-sky-text" %}
-  {% assign title_class = "text-sky-dark" %}
+  {% assign bg_class = "bg-blue-light border-blue-mid" %}
+  {% assign title_class = "text-blue-dark" %}
 {% endif %}
 
 <div class="{{ bg_class }} border-l-4 p-4 rounded-r-lg my-6" role="note">

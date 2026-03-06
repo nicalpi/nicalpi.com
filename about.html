@@ -1,82 +1,109 @@
 ---
 layout: default
 title: About
-description: 20+ years in web development. Built and sold a consultancy. Now helping CTOs build sustainably.
+description: "I'm Nic Alpi — French developer, CTO, agency founder. Co-founded CookiesHQ, grew it to 20 people, sold in 2021. Now building in Bristol. 3 kids. Home by 4pm."
 permalink: /about/
 og_image: /assets/images/og/about.jpg
 ---
 
 <main id="main-content">
   <section class="py-20">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-[860px] mx-auto px-6">
 
-      <div class="grid md:grid-cols-3 gap-12">
+      <div class="grid md:grid-cols-[2fr_1fr] gap-12">
 
-        <div class="md:col-span-2">
-          <p class="font-annotation text-2xl text-text-annotation mb-4">About me</p>
-          <h1 class="text-4xl md:text-5xl font-bold text-text-heading mb-8">
+        <!-- Main content -->
+        <div>
+          <p class="font-annotation text-[22px] text-muted mb-4" style="font-weight:500;">A bit more about me...</p>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-ink mb-8" style="letter-spacing:-1px;">
             I'm Nic Alpi.
           </h1>
 
-          <div class="prose max-w-none text-lg text-text-body space-y-6">
-            <p>
-              I'm a technical leader with 20+ years in web development, most of that in Ruby on Rails. I co-founded CookiesHQ in 2011, grew it to a 20-person consultancy with seven-figure revenue, and saw it through an acquisition in 2021.
+          <div class="space-y-5">
+            <p class="text-[17px] leading-[1.8] text-text-body">
+              I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, my wife and I started a Rails consultancy called CookiesHQ. We grew it to <strong class="text-ink">20 people and over a million in revenue</strong> before selling to Amba in 2021.
             </p>
-
-            <p>
-              Currently, I'm CTO at Amba, where I lead the technical strategy for a healthcare monitoring platform. In January 2026, I'm launching fractional CTO services to help other tech leaders build sustainable systems.
+            <p class="text-[17px] leading-[1.8] text-text-body">
+              Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. It's meaningful work. I train HYROX at 5:30am. I have 3 kids. I have a <span class="text-blue-dark font-semibold">hard 4pm rule</span> — phone down, family time, non-negotiable.
             </p>
-
-            <p>
-              The Calm CTO is where I write about what I got wrong, what eventually worked, and why I keep betting on boring technology.
+            <p class="text-[17px] leading-[1.8] text-text-body">
+              I write because I kept seeing advice from navy seals and billionaires performing certainty they don't have. I'm not any of those things. I'm genuinely confused about AI, I sometimes ship things late, and I'm still figuring this out. I figure that's more useful to write about.
             </p>
-
-            <h2 class="text-2xl font-bold text-text-heading mt-12 mb-4">What I believe</h2>
-
-            <ul class="space-y-3">
-              <li><strong>Boring technology wins.</strong> Rails, PostgreSQL, and simple architectures ship faster than you think.</li>
-              <li><strong>Complexity is a choice.</strong> Most teams don't have scaling problems. They have simplicity problems.</li>
-              <li><strong>Burnout is a systems problem.</strong> If your company needs heroes, your systems are broken.</li>
-              <li><strong>AI changes the game, not the fundamentals.</strong> Context engineering is the new skill.</li>
-            </ul>
-
-            <h2 class="text-2xl font-bold text-text-heading mt-12 mb-4">Outside of work</h2>
-
-            <p>
-              I live in Bristol with my family. Usually walking, reading, or trying to remember that not everything needs to be optimised.
+            <p class="text-[17px] leading-[1.8] text-text-body">
+              I live in Bristol with my family. I'm usually reading, walking, or trying to remember that not everything needs to be optimised.
             </p>
+          </div>
+
+          <div class="font-annotation text-[26px] text-ink mt-8 pt-6 border-t border-border">— Nic</div>
+
+          <!-- Fast facts -->
+          <div class="mt-10 pt-8 border-t border-border">
+            <span class="text-[11px] font-bold tracking-[3px] uppercase text-muted block mb-5">Fast facts</span>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-off-white border border-border rounded-xl p-4">
+                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Experience</span>
+                <span class="font-bold text-ink">20+ years</span>
+                <span class="text-sm text-muted block">in web development</span>
+              </div>
+              <div class="bg-off-white border border-border rounded-xl p-4">
+                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Agency</span>
+                <span class="font-bold text-ink">CookiesHQ</span>
+                <span class="text-sm text-muted block">Co-founded, 2011–2021</span>
+              </div>
+              <div class="bg-off-white border border-border rounded-xl p-4">
+                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Currently</span>
+                <span class="font-bold text-ink">CTO at Amba</span>
+                <span class="text-sm text-muted block">Bristol, UK</span>
+              </div>
+              <div class="bg-off-white border border-border rounded-xl p-4">
+                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Stack</span>
+                <span class="font-bold text-ink">Ruby on Rails</span>
+                <span class="text-sm text-muted block">boring technology wins</span>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- Sidebar -->
         <div>
-          <div class="sticky top-24">
-            <div class="bg-cream rounded-2xl p-6 mb-6">
-              <h3 class="font-semibold text-text-heading mb-4">Connect</h3>
-              <ul class="space-y-3">
-                <li>
-                  <a href="https://twitter.com/nicalpi" class="text-sage-text hover:underline">Twitter &rarr;</a>
-                </li>
-                <li>
-                  <a href="https://github.com/nicalpi" class="text-sage-text hover:underline">GitHub &rarr;</a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/nicolasalpi/" class="text-sage-text hover:underline">LinkedIn &rarr;</a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@nicalpi" class="text-sage-text hover:underline">YouTube &rarr;</a>
-                </li>
+          <div class="sticky top-24 space-y-4">
+
+            <!-- Latest posts -->
+            <div class="bg-off-white border border-border rounded-2xl p-6">
+              <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted block mb-4">Latest writing</span>
+              {% for post in site.posts limit:3 %}
+              <a href="{{ post.url }}" class="block mb-4 pb-4 border-b border-border last:mb-0 last:pb-0 last:border-b-0 group">
+                {% if post.category %}
+                <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
+                {% endif %}
+                <span class="font-bold text-sm text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="text-decoration:none;">{{ post.title }}</span>
+              </a>
+              {% endfor %}
+              <a href="/blog" class="text-sm text-blue-dark font-semibold hover:text-blue mt-2 block" style="text-decoration:none;">All writing &rarr;</a>
+            </div>
+
+            <!-- Connect -->
+            <div class="bg-off-white border border-border rounded-2xl p-6">
+              <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted block mb-4">Connect</span>
+              <ul class="space-y-2">
+                <li><a href="https://twitter.com/nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">Twitter / X &rarr;</a></li>
+                <li><a href="https://github.com/nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">GitHub &rarr;</a></li>
+                <li><a href="https://www.linkedin.com/in/nicolasalpi/" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">LinkedIn &rarr;</a></li>
+                <li><a href="https://www.youtube.com/@nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">YouTube &rarr;</a></li>
               </ul>
             </div>
 
-            <div class="bg-sage-light/50 rounded-2xl p-6">
-              <h3 class="font-semibold text-text-heading mb-4">Work with me</h3>
-              <p class="text-sm text-text-body mb-4">
-                Fractional CTO services launching January 2026. Advisory available now.
+            <!-- Work with me -->
+            <div class="bg-blue-light border border-blue-mid rounded-2xl p-6">
+              <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-3">Work with me</span>
+              <p class="text-sm text-text-body mb-4 leading-relaxed">
+                Fractional CTO and advisory. If you're building a Rails product and need a second brain, get in touch.
               </p>
-              <a href="/contact" class="bg-sage-text text-white px-4 py-2 rounded-lg font-medium hover:bg-sage-dark transition-colors inline-block">
+              <a href="/contact" class="bg-blue text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-dark transition-colors inline-block" style="text-decoration:none;">
                 Get in touch &rarr;
               </a>
             </div>
+
           </div>
         </div>
 

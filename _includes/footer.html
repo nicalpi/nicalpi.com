@@ -1,51 +1,18 @@
 <!-- Footer -->
-<footer class="bg-cream py-12" role="contentinfo">
-  <div class="max-w-5xl mx-auto px-6">
+<footer class="bg-white border-t border-border py-8 px-14" role="contentinfo">
+  <div class="max-w-[860px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
+    <a href="/" style="font-family:'DM Sans',system-ui,sans-serif;font-weight:800;font-size:20px;color:#111111;letter-spacing:-0.5px;text-decoration:none;">NicAlpi</a>
 
-      <div>
-        <a href="/" class="flex items-center gap-2 mb-4">
-          <div class="w-2 h-2 bg-sage rounded-full" aria-hidden="true"></div>
-          <span class="text-sm font-medium text-text-muted">THE CALM CTO</span>
-        </a>
-        <p class="text-sm text-text-muted max-w-xs">
-          Technical leadership without the chaos. Weekly writing on boring technology, sustainable pace, and calm execution.
-        </p>
-      </div>
+    <nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-2">
+      <a href="/blog" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Writing</a>
+      <a href="/about" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">About</a>
+      <a href="/contact" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Contact</a>
+      <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">LinkedIn</a>
+      <a href="https://twitter.com/{{ site.twitter_username }}" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Twitter/X</a>
+    </nav>
 
-      <div class="flex flex-col md:flex-row gap-8">
-        <nav aria-label="Footer navigation">
-          <p class="text-sm font-semibold text-text-heading mb-3">Navigate</p>
-          <ul class="space-y-2">
-            <li><a href="/" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">Home</a></li>
-            <li><a href="/blog" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">Writing</a></li>
-            <li><a href="/about" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">About</a></li>
-            <li><a href="/contact" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">Contact</a></li>
-          </ul>
-        </nav>
-
-        <nav aria-label="Social links">
-          <p class="text-sm font-semibold text-text-heading mb-3">Connect</p>
-          <ul class="space-y-2">
-            <li><a href="https://twitter.com/{{ site.twitter_username }}" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">Twitter</a></li>
-            <li><a href="https://github.com/{{ site.github_username }}" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">GitHub</a></li>
-            <li><a href="https://www.youtube.com/@{{ site.youtube_username }}" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">YouTube</a></li>
-            <li><a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="text-sm text-text-muted hover:text-sage-text transition-colors underline-offset-2 hover:underline">LinkedIn</a></li>
-          </ul>
-        </nav>
-      </div>
-
-    </div>
-
-    <div class="border-t border-border pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <p class="text-sm text-text-muted">
-        &copy; {{ 'now' | date: "%Y" }} Nicolas Alpi. All rights reserved.
-      </p>
-      <p class="text-sm text-text-muted">
-        Built with <span class="text-coral">&#9829;</span> and boring technology.
-      </p>
-    </div>
+    <p class="text-[13px] text-muted">&copy; {{ 'now' | date: "%Y" }} Nic Alpi &middot; Bristol, UK</p>
 
   </div>
 </footer>
