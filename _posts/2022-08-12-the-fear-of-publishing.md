@@ -2,7 +2,7 @@
 layout: post
 title: "The Fear of Publishing"
 subtitle: "Or why it took me nearly a year to write my first post here."
-description: "Exploring my own fear and possible impostor syndrome. Why it took me nearly a year to write my first post here."
+description: "It took me nearly a year to write my first post here. This is the fear — and maybe the impostor syndrome — that got in the way."
 category: Personal
 reading_time: 4
 date: 2022-08-12

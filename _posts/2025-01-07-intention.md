@@ -2,7 +2,7 @@
 layout: post
 title: "2025's Word is Intention"
 subtitle: "Ditching perfect plans and embracing freedom with intention."
-description: "Tired of setting New Year's goals that fail by February? Discover how focusing on intention and experimentation helped me transform my health and happiness in 2024."
+description: "I stopped setting New Year's goals that fail by February. A year of small intentions and experiments did more for my health and happiness than any resolution."
 category: Personal
 reading_time: 5
 date: 2025-01-07

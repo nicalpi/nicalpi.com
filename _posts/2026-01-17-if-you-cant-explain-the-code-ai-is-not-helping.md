@@ -59,7 +59,7 @@ That deal is changing. Worth being specific about which parts AI actually touche
 
 ## What AI replaces
 
-AI replaces drafting and pattern matching.
+AI can automate much of the drafting and pattern matching that used to consume engineering time.
 
 It replaces the loop of "search, paste, tweak until it compiles". It replaces writing the boring parts. It replaces the first version of almost everything.
 
@@ -71,7 +71,7 @@ Here's where people get confused. They see AI writing code and assume it's doing
 
 AI doesn't replace responsibility.
 
-It doesn't carry the context of your system's history. It doesn't feel the pain of a production incident at 2am. It doesn't own the trade-offs when a quick fix creates a long-term mess.
+You can feed it the context of your system's history, but it won't maintain that context, judge what matters, or own the consequences. It doesn't feel the pain of a production incident at 2am. It doesn't own the trade-offs when a quick fix creates a long-term mess.
 
 It generates implementations. It doesn't decide what matters.
 
@@ -161,4 +161,4 @@ That's the line.
 
 ---
 
-*I'm Nic Alpi. After 20 years in tech and building a consultancy to £1M+ revenue before acquisition, I help technical leaders build sustainable systems. Writing weekly on boring technology, calm execution, and working without burning out.*
+*I'm Nic Alpi. After 20 years in tech and building a consultancy to £1M+ revenue before acquisition, I'm now a working CTO writing field notes on attention, judgement, and leading engineering teams in the AI era. One field-tested practice every fortnight — what worked, what failed, and what I'm changing next.*

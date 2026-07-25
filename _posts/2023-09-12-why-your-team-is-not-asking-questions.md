@@ -2,7 +2,7 @@
 layout: post
 title: "Why Your Team Isn't Asking Questions (And How to Fix It)"
 subtitle: "The science behind the fear of looking stupid—and actionable tips for managers and team members."
-description: "Unlock the power of questions in your team. Explore the science behind the fear of asking and get actionable tips for managers and team members."
+description: "When capable developers stop asking questions, the problem is rarely curiosity. It's usually the environment around them."
 category: Leadership
 reading_time: 10
 date: 2023-09-12

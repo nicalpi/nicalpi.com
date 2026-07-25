@@ -2,7 +2,7 @@
 layout: post
 title: "The CTO's Wardrobe"
 subtitle: "Balancing innovation, representation, and leadership through the playful analogy of wearing different tops."
-description: "Discover the multifaceted role of a CTO through the playful analogy of wearing different tops. From hoodies that symbolise innovation to crisp white shirts for board meetings."
+description: "A CTO doesn't have one job. I use clothes to explain the roles I switch between — and why wearing the wrong one creates problems."
 category: Leadership
 reading_time: 5
 date: 2024-07-18
