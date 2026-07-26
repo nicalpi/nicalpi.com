@@ -33,6 +33,7 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 - `_data/field_notes.yml` — queued experiments
 - `assets/social-templates/` — social image templates: OG generator templates (filled by `scripts/generate-og.py` → `assets/images/og/*.jpg`) + hand-edited promo cards (exported with `scripts/export-social.mjs`). See its README.
 - `styleguide.html` → `/styleguide/` — living component reference (noindex)
+- `docs/guide.md` — **maintainer guide**: social images, template gallery, components how-to, field-note/progress-note authoring (excluded from the build)
 
 ## Field notes collection
 

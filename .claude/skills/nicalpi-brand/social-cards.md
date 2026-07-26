@@ -2,7 +2,7 @@
 
 The canonical templates live in `assets/social-templates/` — self-contained
 HTML files sharing the site tokens via `social.css`. Don't rebuild cards from
-scratch. Full usage doc: `assets/social-templates/README.md`.
+scratch. Full usage doc: `docs/guide.md` (gallery + workflows) and `assets/social-templates/README.md`.
 
 ## OG images (generated — don't hand-edit the jpgs)
 
@@ -13,6 +13,7 @@ installed Chrome).
 
 | Template | Fed by |
 |---|---|
+| `og-home.html` | bespoke homepage brand card (static) |
 | `og-post.html` | posts: title, subtitle/description, category, reading_time; slug from `og_image` |
 | `og-field-note.html` | briefs: `home`-flagged metrics (or `facts`), status_label, verdict · progress notes: metrics, next_label |
 | `og-page.html` | `PAGES` list in the script (home, writing, about, contact, field-notes index) |

@@ -161,8 +161,6 @@ def field_note_jobs():
 
 
 PAGES = [
-    ("homepage", "field notes from a working cto", "AI made output cheap. Good judgement is now the advantage.",
-     "Practical experiments on AI, attention, management and delivery — published with what worked, what failed, and what changes next.", "cto · bristol"),
     ("blog", "writing", "What the job actually looks like.",
      "Team management, agency life, AI honestly, and the reality of doing this without performing about it.", "writing"),
     ("about", "about", "A bit more about me…",
@@ -171,10 +169,16 @@ PAGES = [
      "Fractional CTO and advisory support — a second brain on engineering leadership and AI adoption.", "work with me"),
     ("field-notes", "field notes — the public cto lab", "Change one thing. Measure it. Publish the result.",
      "Experiments with a baseline, a protocol, guardrails, and a verdict published either way — including the failures.", "field notes"),
+    ("styleguide", "styleguide", "The v3 component library, live.",
+     "Every token, type style and component of the Field Notes system — in light and dark.", "styleguide"),
+    ("404", "not found", "Nothing here. That's a finding too.",
+     "Every experiment gets published, even the failures — but this URL isn't one of them.", "404"),
 ]
 
 
 def page_jobs():
+    # bespoke brand card for the homepage — the template is the content
+    yield "homepage", (TEMPLATES / "og-home.html").read_text(encoding="utf-8")
     for slug, kicker, title, dek, top_right in PAGES:
         yield slug, fill("og-page.html", {
             "KICKER": esc(kicker),
@@ -183,13 +187,82 @@ def page_jobs():
             "TOP_RIGHT": esc(top_right),
         })
 
+# ---------------------------------------------------------- template examples
+
+# The hand-edited promo templates, rendered as-is at native size — used as
+# the gallery in docs/guide.md. (The og-* templates are generator-driven and
+# their examples are real files in assets/images/og/.)
+EXAMPLE_TEMPLATES = {
+    "quote-square": (1080, 1080),
+    "verdict-square": (1080, 1080),
+    "post-promo-portrait": (1080, 1350),
+    "newsletter-og": (1200, 630),
+}
+EXAMPLES_OUT = ROOT / "assets" / "images" / "social" / "examples"
+
+
+def example_jobs():
+    for name, (w, h) in EXAMPLE_TEMPLATES.items():
+        yield name, (TEMPLATES / f"{name}.html").read_text(encoding="utf-8"), w, h
+
+# ----------------------------------------------------------------------- check
+
+def check():
+    """Verify every published page declares og_image and the file exists."""
+    problems = []
+
+    def check_fm(path, required=True):
+        fm = parse_front_matter(path)
+        if fm.get("published") == "false":
+            return
+        og = fm.get("og_image")
+        if not og:
+            if required:
+                problems.append(f"{path.relative_to(ROOT)}: no og_image in front matter")
+            return
+        if not (ROOT / og.lstrip("/")).is_file():
+            problems.append(f"{path.relative_to(ROOT)}: og_image {og} does not exist")
+
+    for path in sorted(ROOT.glob("_posts/*.md")):
+        check_fm(path)
+    for path in sorted(ROOT.glob("_field_notes/*.md")) + sorted(ROOT.glob("_field_notes/*/*.md")):
+        check_fm(path)
+    for name in ("index.html", "blog.html", "about.html", "contact.html",
+                 "field-notes.html", "styleguide.html", "404.html"):
+        check_fm(ROOT / name)
+
+    if problems:
+        print("\n".join(problems))
+        sys.exit(1)
+    print("✓ every page has an og_image and the file exists")
+
 # ------------------------------------------------------------------------ main
 
+def render(page, html_src, out_path, width, height):
+    tmp = TEMPLATES / f".tmp-{out_path.stem}.html"
+    tmp.write_text(html_src, encoding="utf-8")
+    try:
+        page.set_viewport_size({"width": width, "height": height})
+        page.goto(tmp.as_uri(), wait_until="networkidle")
+        page.evaluate("() => document.fonts.ready")
+        page.screenshot(path=str(out_path), type="jpeg", quality=JPEG_QUALITY,
+                        clip={"x": 0, "y": 0, "width": width, "height": height})
+        print(f"✓ {out_path.relative_to(ROOT)}")
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 def main():
-    only = set(sys.argv[1:])
+    args = sys.argv[1:]
+    if "--check" in args:
+        check()
+        return
+    examples = "--examples" in args
+    only = {a for a in args if not a.startswith("--")}
+
     jobs = [(slug, html_src) for gen in (post_jobs, field_note_jobs, page_jobs)
             for slug, html_src in gen() if not only or slug in only]
-    if not jobs:
+    if not jobs and not examples:
         sys.exit(f"No jobs matched {sorted(only)}")
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -200,17 +273,11 @@ def main():
             browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": WIDTH, "height": HEIGHT}, device_scale_factor=SCALE)
         for slug, html_src in jobs:
-            tmp = TEMPLATES / f".tmp-{slug}.html"
-            tmp.write_text(html_src, encoding="utf-8")
-            try:
-                page.goto(tmp.as_uri(), wait_until="networkidle")
-                page.evaluate("() => document.fonts.ready")
-                out = OUT / f"{slug}.jpg"
-                page.screenshot(path=str(out), type="jpeg", quality=JPEG_QUALITY,
-                                clip={"x": 0, "y": 0, "width": WIDTH, "height": HEIGHT})
-                print(f"✓ {out.relative_to(ROOT)}")
-            finally:
-                tmp.unlink(missing_ok=True)
+            render(page, html_src, OUT / f"{slug}.jpg", WIDTH, HEIGHT)
+        if examples:
+            EXAMPLES_OUT.mkdir(parents=True, exist_ok=True)
+            for name, html_src, w, h in example_jobs():
+                render(page, html_src, EXAMPLES_OUT / f"{name}.jpg", w, h)
         browser.close()
 
 

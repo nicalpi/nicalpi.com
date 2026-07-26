@@ -40,6 +40,8 @@ exclude:
   - tailwind.config.js
   - yarn.lock
   - _assets/
+  - docs/
+  - scripts/
 
 # Collections
 collections:

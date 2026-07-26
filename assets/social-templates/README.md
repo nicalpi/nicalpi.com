@@ -11,6 +11,7 @@ produce every `og_image` under `assets/images/og/`.
 
 | Template | Size | Fed by |
 |---|---|---|
+| `og-home.html` | 1200×630 | bespoke homepage brand card — static, the template is the content |
 | `og-post.html` | 1200×630 | `_posts/*` front matter (title, subtitle/description, category, reading_time) |
 | `og-field-note.html` | 1200×630 | experiment briefs (`home`-flagged metrics or `facts`) and progress notes (metrics) |
 | `og-page.html` | 1200×630 | the `PAGES` list inside the script (home, writing, about, contact, field-notes index) |
@@ -19,6 +20,8 @@ produce every `og_image` under `assets/images/og/`.
 pip3 install playwright                      # once; uses your installed Chrome
 python3 scripts/generate-og.py               # regenerate every OG jpg
 python3 scripts/generate-og.py intention exp-01   # only these slugs
+python3 scripts/generate-og.py --examples         # render the promo-card gallery
+python3 scripts/generate-og.py --check            # every page has og_image + file
 ```
 
 Slugs come from each post's `og_image` filename. New post → set
@@ -44,3 +47,5 @@ Add `?theme=dark` to the URL for the dark variant.
 - Metrics always read `before → now` with the "now" in accent.
 - The verdict card is the only solid-accent surface; use it sparingly.
 - OG images ship at 2× (2400×1260) for retina-crisp unfurls.
+
+Full how-to (with a rendered example of every template): `docs/guide.md`.
