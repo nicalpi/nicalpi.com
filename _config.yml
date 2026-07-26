@@ -42,6 +42,7 @@ exclude:
   - _assets/
   - docs/
   - scripts/
+  - dist/
 
 # Collections
 collections:

@@ -195,3 +195,36 @@ Set `status: closed`, `verdict: kept|dropped|inconclusive`,
 `status_label: "closed · kept"`, `progress_pct: 100`, add a `## Verdict — …`
 section to the body, regenerate its card (the stats column flips to "the
 verdict"), and celebrate publishing a failure if it is one.
+
+## 5. The authoring skills
+
+Seven skills automate the workflows above — in Claude Code here, and in
+your personal Claude Web account. The pattern is always **think → write**:
+a THINK skill interviews you and applies judgment until the idea is framed;
+a WRITE skill turns the frame into on-brand files.
+
+| Skill | What it does |
+|---|---|
+| `field-note-think` | Braindump → experiment frame (question, baseline, hypothesis, protocol, metrics, guardrails, window) |
+| `field-note-write` | Frame → `_field_notes/exp-NN.md` + queue update + OG image |
+| `progress-think` | Checkpoint debrief → progress frame (numbers vs baseline, what went wrong, guardrail check, adjustments) |
+| `progress-write` | Frame → `_field_notes/exp-NN/<slug>.md` + brief updates (field log, progress %, roadmap) + OG image |
+| `post-think` | Post idea → thesis frame (claim, reader, stories, counterargument, outline) |
+| `post-write` | Frame → `_posts/…` draft in Nic's voice + OG image |
+| `social-image` | Any card, from the right template — generated OG or hand-edited promo |
+
+**Typical flows**
+
+- New experiment: `field-note-think` → `field-note-write` → (fortnight of
+  baseline) → live.
+- Checkpoint: `progress-think` → `progress-write` → share with
+  `social-image` (quote card from the note's blockquote).
+- Essay: `post-think` → `post-write` → `humaziner` pass → `social-image`.
+
+**Using them on Claude Web (personal, not org-shared)**
+
+1. `./scripts/package-skills.sh` → zips in `dist/claude-web-skills/`.
+2. claude.ai → **Settings → Capabilities → Skills → Upload skill**, upload
+   each zip. They stay private to your account.
+3. On the web the write skills can't touch the repo — they output complete
+   file contents to paste, plus the generator commands to run locally.
