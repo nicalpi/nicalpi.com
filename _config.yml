@@ -13,13 +13,18 @@ linkedin_username: nicolasalpi
 youtube_username: nicalpi
 
 # Build settings
+# future: hard-coded launch content for the field-notes lab is dated ahead
+# of today (Aug 2026 progress note); keep building it.
+future: true
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-postcss
 
-postcss:
-  cache: false
+# CSS is compiled by the Tailwind CLI, not Jekyll:
+#   yarn css        one-off build (_assets/main.css → assets/main.css)
+#   yarn css:watch  rebuild on change during development
+# The compiled assets/main.css is committed.
 
 # Exclude from processing
 exclude:
@@ -34,12 +39,20 @@ exclude:
   - postcss.config.js
   - tailwind.config.js
   - yarn.lock
+  - _assets/
 
 # Collections
 collections:
   posts:
     output: true
     permalink: /blog/:slug
+  # Field notes — the public CTO lab. Two document kinds share the
+  # collection: `kind: experiment` (the brief, /field-notes/exp-NN/) and
+  # `kind: progress` (dated updates, /field-notes/exp-NN/<slug>/).
+  # See _field_notes/README.md for the authoring guide.
+  field_notes:
+    output: true
+    permalink: /field-notes/:path/
 
 # Defaults
 defaults:
@@ -48,6 +61,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "field_notes"
+    values:
+      layout: "field_note"
 
 # Markdown settings
 markdown: kramdown

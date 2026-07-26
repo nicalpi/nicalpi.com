@@ -1,0 +1,26 @@
+{% comment %}
+  Metrics table — metric / before / now / target.
+  Desktop: 4-column grid. Mobile: stacked "before → now" rows.
+
+  Usage (front matter drives the data):
+    {% include fn/metrics.html rows=page.metrics %}
+    {% include fn/metrics.html rows=page.metrics caption="Small sample. Read the direction, not the decimals." %}
+
+  Each row: { label, before, now, target }
+{% endcomment %}
+<div class="metrics mb-[26px]" role="table" aria-label="Experiment metrics">
+  <div class="metrics-head" role="row">
+    <span role="columnheader">metric</span><span role="columnheader">before</span><span role="columnheader">now</span><span role="columnheader">target</span>
+  </div>
+  {% for row in include.rows %}
+  <div class="metrics-row" role="row">
+    <span class="m-label" role="cell">{{ row.label }}</span>
+    <span class="m-before" role="cell">{{ row.before }}</span>
+    <span class="m-now" role="cell">{{ row.now }}</span>
+    <span class="m-target" role="cell">{{ row.target }}</span>
+  </div>
+  {% endfor %}
+</div>
+{% if include.caption %}
+<p class="text-[13px] leading-[1.8] text-muted -mt-3 mb-[26px]">{{ include.caption }}</p>
+{% endif %}

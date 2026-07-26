@@ -1,0 +1,45 @@
+/* NicAlpi v3 — shared styles for social image templates.
+   Same tokens as the site (assets/main.css). Toggle themes by adding
+   ?theme=dark to the URL or data-theme="dark" on <html>. */
+
+:root {
+  --canvas: #E4E2DC; --panel: #FCFCFA; --raise: #F5F3ED; --ink: #191917;
+  --body: #4A4A45; --muted: #77776E; --faint: #C4C2B8; --line: #E4E2DA;
+  --line2: #EDEBE4; --accent: #1E4FD8; --accent-soft: #EAF0FE;
+  --accent-line: #BDCDF5; --on-accent: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --canvas: #0C0E11; --panel: #171A1F; --raise: #1D2127; --ink: #F1F1ED;
+  --body: #BFC2BE; --muted: #8B8F96; --faint: #4B505A; --line: #272B32;
+  --line2: #1F232A; --accent: #82A9FF; --accent-soft: #182339;
+  --accent-line: #2E4368; --on-accent: #0C0E11;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1, h2, p, blockquote { margin: 0; }
+h1 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.kicker { letter-spacing: 0.12em; text-transform: uppercase; }
+.accent { color: var(--accent); }
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+.ink { color: var(--ink); }

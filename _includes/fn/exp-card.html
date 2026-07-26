@@ -1,0 +1,31 @@
+{% comment %}
+  Experiment card — used on /field-notes/ and the styleguide.
+  Usage: {% include fn/exp-card.html e=experiment_doc %}
+  Reads: exp_id, theme_tag, status, status_label, title, summary,
+  progress_pct, facts[] ({label, value, accent}).
+{% endcomment %}
+{% assign e = include.e %}
+<a href="{{ e.url }}" class="fn-card{% if e.status == 'running' %} is-running{% endif %}">
+  <div class="fn-card-strip">
+    <span>{{ e.exp_id }} · {{ e.theme_tag }}</span>
+    <span{% if e.status == 'closed' %} class="text-accent"{% endif %}>{{ e.status_label }}</span>
+  </div>
+  <div class="grid md:grid-cols-[minmax(0,1fr)_260px] gap-5 md:gap-8 p-4 md:py-5">
+    <div class="flex flex-col gap-[9px]">
+      <span class="text-[17px] md:text-[19px] leading-[1.4] font-bold tracking-[-0.015em]">{{ e.title }}</span>
+      {% if e.summary %}<span class="text-[13px] md:text-[13.5px] leading-[1.8] text-body">{{ e.summary }}</span>{% endif %}
+      {% if e.status == 'running' and e.progress_pct %}
+      <div class="progress-track" role="progressbar" aria-valuenow="{{ e.progress_pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="Experiment progress">
+        <div class="progress-fill" style="width:{{ e.progress_pct }}%;"></div>
+      </div>
+      {% endif %}
+    </div>
+    {% if e.facts %}
+    <div class="flex flex-row flex-wrap md:flex-col gap-x-4 gap-y-[5px] text-[12px] md:text-[12.5px] text-muted md:border-l md:border-line md:pl-[18px]">
+      {% for fact in e.facts %}
+      <span>{{ fact.label }} · <span class="{% if fact.accent %}text-accent{% else %}text-ink{% endif %}">{{ fact.value }}</span></span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</a>

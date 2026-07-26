@@ -1,18 +1,11 @@
-<!-- Footer -->
-<footer class="bg-white border-t border-border py-8 px-14" role="contentinfo">
-  <div class="max-w-[860px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-
-    <a href="/" style="font-family:'DM Sans',system-ui,sans-serif;font-weight:800;font-size:20px;color:#111111;letter-spacing:-0.5px;text-decoration:none;">NicAlpi</a>
-
-    <nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-2">
-      <a href="/blog" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Writing</a>
-      <a href="/about" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">About</a>
-      <a href="/contact" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Contact</a>
-      <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">LinkedIn</a>
-      <a href="https://twitter.com/{{ site.twitter_username }}" class="text-sm text-muted hover:text-ink transition-colors" style="text-decoration:none;">Twitter/X</a>
-    </nav>
-
-    <p class="text-[13px] text-muted">&copy; {{ 'now' | date: "%Y" }} Nic Alpi &middot; Bristol, UK</p>
-
-  </div>
+<footer class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-8 px-6 md:px-14 py-5 border-t border-line text-[12px] text-muted" role="contentinfo">
+  <span>© {{ 'now' | date: "%Y" }} Nic Alpi · Bristol, UK</span>
+  <nav aria-label="Footer navigation" class="flex flex-wrap gap-x-[18px] gap-y-1">
+    <a href="/blog/" class="no-underline">writing</a>
+    <a href="/field-notes/" class="no-underline">field notes</a>
+    <a href="/about/" class="no-underline">about</a>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="no-underline">linkedin</a>
+    <a href="https://twitter.com/{{ site.twitter_username }}" class="no-underline">twitter/x</a>
+    <a href="/feed.xml" class="no-underline">rss</a>
+  </nav>
 </footer>

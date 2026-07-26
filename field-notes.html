@@ -1,0 +1,52 @@
+---
+layout: default
+title: "Field notes — the public CTO lab"
+description: "A public CTO lab: change one thing, measure what happens, publish the result — including the experiments that fail. No productivity theatre, no new system to adopt."
+permalink: /field-notes/
+---
+
+{% assign experiments = site.field_notes | where: "kind", "experiment" | sort: "exp" | reverse %}
+{% assign running = experiments | where: "status", "running" %}
+{% assign closed = experiments | where: "status", "closed" %}
+
+<div class="with-sidebar" id="main-content">
+  {% include sidebar.html context="notes" %}
+
+  <div class="flex flex-col min-w-0">
+    {% include mobile-bar.html back_url="/" back_label="home" label="field notes" %}
+
+    <div class="crumbs hidden md:flex">
+      <span><a href="/">home</a> / field notes</span>
+      <span>{{ running.size }} running · {{ closed.size }} closed · {{ site.data.field_notes.queued.size }} planned</span>
+    </div>
+
+    <div class="flex flex-col gap-[14px] px-5 pt-7 pb-5 md:px-10 md:pt-11 md:pb-8 max-w-[900px]">
+      <h1 class="m-0 text-[24px] md:text-[28px] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Field notes</h1>
+      <p class="m-0 text-[13.5px] md:text-[14.5px] leading-[1.85] text-body">I treat my work as a public CTO lab: change one thing, measure what happens, publish the result — including the experiments that fail. No productivity theatre, no new system to adopt.</p>
+      <div class="flex gap-2 flex-wrap pt-1" aria-hidden="true">
+        <span class="chip chip-solid">running</span>
+        <span class="chip">closed</span>
+        <span class="chip">planned</span>
+        {% assign themes = experiments | map: "theme_tag" | uniq %}
+        {% for t in themes %}<span class="chip">{{ t }}</span>{% endfor %}
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-[14px] px-5 pb-10 md:px-10 md:pb-12 max-w-[900px] w-full">
+      {% for e in experiments %}
+        {% include fn/exp-card.html e=e %}
+      {% endfor %}
+
+      <div class="queued-box">
+        <span class="kicker">queued</span>
+        <div class="checklist" style="font-size:13.5px;">
+          {% for q in site.data.field_notes.queued %}
+          <span class="check">{{ q.id }} — {{ q.text }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-auto">{% include footer.html %}</div>
+  </div>
+</div>

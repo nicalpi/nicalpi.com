@@ -1,0 +1,13 @@
+{% comment %}
+  Experiment meta block — the "front matter strip" between ink rules.
+
+  Usage:
+    {% include fn/meta-block.html rows=page.meta_rows %}
+
+  Each row: { label, value, status (bool — renders in accent) }
+{% endcomment %}
+<div class="meta-block mb-[30px]">
+  {% for row in include.rows %}
+  <span>{{ row.label }}: <b{% if row.status %} class="is-status"{% endif %}>{{ row.value }}</b></span>
+  {% endfor %}
+</div>

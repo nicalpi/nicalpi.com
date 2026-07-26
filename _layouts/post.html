@@ -2,88 +2,67 @@
 layout: default
 og_type: article
 ---
+{% assign cat = page.category | downcase %}
+{% assign flagship = site.field_notes | where: "kind", "experiment" | where: "status", "running" | first %}
 
-<!-- Article Header -->
-<header class="bg-ink text-white dark-section">
-  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24">
-    <!-- Tags -->
-    <div class="flex items-center gap-3 mb-6">
-      {% if page.category %}
-      <span class="bg-blue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest" style="letter-spacing:2.5px;font-size:11px;">{{ page.category }}</span>
-      {% endif %}
-      {% if page.reading_time %}
-      <span class="bg-white/10 text-white/65 text-xs font-medium px-3 py-1 rounded-full">{{ page.reading_time }} min read</span>
-      {% endif %}
+<div class="with-sidebar" id="main-content">
+  {% include sidebar.html context="post" %}
+
+  <div class="flex flex-col min-w-0">
+    {% include mobile-bar.html back_url="/blog/" back_label="writing" label=cat %}
+
+    <div class="crumbs hidden md:flex">
+      <span><a href="/">home</a> / <a href="/blog/">writing</a> / {{ cat }}</span>
+      <span>{{ page.date | date: "%-d %b %Y" }}{% if page.reading_time %} · {{ page.reading_time }} min read{% endif %}</span>
     </div>
 
-    <!-- Title -->
-    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4" style="letter-spacing:-1px;">
-      {% if page.title_html %}
-        {{ page.title_html }}
-      {% else %}
-        {{ page.title }}
+    <article class="flex flex-col px-5 pt-6 pb-10 md:px-10 md:pt-10 md:pb-14 max-w-article">
+      <span class="text-[12px] text-accent mb-3">{{ cat }}</span>
+      <h1 class="m-0 mb-4 text-[24px] md:text-[30px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>{{ page.title }}</h1>
+      {% if page.subtitle or page.description %}
+      <p class="m-0 mb-6 text-[14px] md:text-[15px] leading-[1.85] text-body">{{ page.subtitle | default: page.description }}</p>
       {% endif %}
-    </h1>
 
-    {% if page.subtitle %}
-    <p class="text-xl text-white/65 max-w-2xl">
-      {{ page.subtitle }}
-    </p>
-    {% endif %}
+      <!-- mobile meta line -->
+      <div class="md:hidden text-[11.5px] text-muted mb-5">{{ page.date | date: "%-d %b %Y" }}{% if page.reading_time %} · {{ page.reading_time }} min read{% endif %} · Nic Alpi</div>
 
-    <!-- Meta -->
-    <div class="flex items-center gap-4 mt-8 text-sm text-white/65">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-      <span aria-hidden="true">&bull;</span>
-      <span>Nicolas Alpi</span>
-    </div>
-  </div>
-</header>
-
-<!-- Article Content -->
-<main id="article-content" class="max-w-article mx-auto px-6 py-12 md:py-16">
-  <article class="prose">
-    {{ content }}
-  </article>
-
-  <!-- Author Card -->
-  <aside class="bg-off-white border border-border rounded-xl p-8 mt-12" aria-labelledby="author-heading">
-    <div class="flex flex-col sm:flex-row items-start gap-6">
-      {% if site.author_image %}
-      <img src="{{ site.author_image }}" alt="" class="w-20 h-20 rounded-full" aria-hidden="true">
+      {% if page.cover_image %}
+      <figure class="m-0 mb-7">
+        <img src="{{ page.cover_image }}" alt="{{ page.cover_alt | default: '' }}" class="w-full rounded-brand border border-line">
+        {% if page.cover_caption %}<figcaption class="img-caption">{{ page.cover_caption }}</figcaption>{% endif %}
+      </figure>
       {% endif %}
-      <div>
-        <h2 id="author-heading" class="text-lg font-extrabold text-text-heading mb-1">Nicolas Alpi</h2>
-        <p class="text-text-muted mb-4">CTO at Amba &bull; Fractional CTO &bull; Built and sold CookiesHQ</p>
-        <p class="text-text-body">
-          Working CTO writing field notes on attention, judgement, and leading teams in the AI era. Small experiments, real measures, honest results — after 20 years in tech and one burnout too many.
-        </p>
-        <div class="flex gap-4 mt-4">
-          <a href="https://twitter.com/{{ site.twitter_username }}" class="text-text-muted hover:text-blue-dark transition-colors underline-offset-2 hover:underline">Twitter</a>
-          <a href="https://github.com/{{ site.github_username }}" class="text-text-muted hover:text-blue-dark transition-colors underline-offset-2 hover:underline">GitHub</a>
-          <a href="https://www.youtube.com/@{{ site.youtube_username }}" class="text-text-muted hover:text-blue-dark transition-colors underline-offset-2 hover:underline">YouTube</a>
-        </div>
+
+      <div class="prose">
+        {{ content }}
       </div>
-    </div>
-  </aside>
 
-  <!-- CTA -->
-  <section class="bg-ink text-white rounded-xl p-8 md:p-12 mt-12 text-center dark-section" aria-labelledby="cta-heading">
-    <h2 id="cta-heading" class="text-2xl font-extrabold mb-2">One field-tested CTO practice, every fortnight</h2>
-    <p class="text-white mb-6">What changed, what worked, what failed, and what I'm trying next.</p>
-    <p class="text-lg text-white mb-6">"Not 10x faster. Still here in three years."</p>
-    <a href="/#newsletter" class="inline-block bg-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-dark transition-colors dark-focus">
-      Get the next field note &rarr;
-    </a>
-  </section>
+      <div class="mt-6 border-t border-line pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12.5px] text-muted">
+        <span>Filed under <a href="/blog/#{{ cat }}" class="no-underline">{{ cat }}</a></span>
+        <span class="flex gap-4">
+          {% capture share_url %}{{ page.url | absolute_url }}{% endcapture %}
+          <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ share_url | url_encode }}" class="no-underline">share</a>
+          <a href="mailto:{{ site.email }}?subject={{ page.title | url_encode }}" class="no-underline">reply by email</a>
+        </span>
+      </div>
 
-  <!-- Back Link -->
-  <div class="mt-12 pt-8 border-t border-border">
-    <a href="/blog" class="text-blue-dark font-semibold underline underline-offset-2 decoration-blue-mid hover:decoration-blue hover:text-blue">
-      &larr; Back to all writing
-    </a>
+      <div class="mt-6 grid sm:grid-cols-2 gap-3">
+        {% if page.previous %}
+          {% capture prev_kicker %}← previous · {{ page.previous.category | downcase }}{% endcapture %}
+          {% include fn/xcard.html url=page.previous.url kicker=prev_kicker title=page.previous.title %}
+        {% elsif page.next %}
+          {% capture next_kicker %}next · {{ page.next.category | downcase }}{% endcapture %}
+          {% include fn/xcard.html url=page.next.url kicker=next_kicker title=page.next.title %}
+        {% endif %}
+        {% if flagship %}
+          {% capture fn_kicker %}field note · {{ flagship.exp_id }} running{% endcapture %}
+          {% include fn/xcard.html url=flagship.url kicker=fn_kicker title=flagship.title accent=true %}
+        {% endif %}
+      </div>
+    </article>
+
+    <div class="mt-auto">{% include footer.html %}</div>
   </div>
-
-</main>
+</div>
 
 {% include lightbox.html %}

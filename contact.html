@@ -6,59 +6,45 @@ permalink: /contact/
 og_image: /assets/images/og/contact.jpg
 ---
 
-<main id="main-content">
-  <section class="py-20">
-    <div class="max-w-3xl mx-auto px-6">
+<div class="with-sidebar" id="main-content">
+  {% include sidebar.html context="about" %}
 
-      <p class="font-annotation text-2xl text-text-annotation mb-4">Get in touch</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-text-heading mb-6" style="letter-spacing:-1px;">
-        Let's talk.
-      </h1>
+  <div class="flex flex-col min-w-0">
+    {% include mobile-bar.html back_url="/" back_label="home" label="work with me" %}
 
-      <p class="text-xl text-text-body mb-12">
-        Whether you're interested in fractional CTO services, advisory support, or just want to connect — I'd love to hear from you.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-
-        <div class="bg-off-white border border-border rounded-2xl p-8">
-          <div class="w-12 h-12 rounded-xl bg-blue flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-          </div>
-          <h2 class="text-xl font-extrabold text-text-heading mb-3">Fractional CTO</h2>
-          <p class="text-text-body mb-4">
-            Senior technical leadership for 1&ndash;2 days per week. A second brain for teams that need experience without a full-time hire.
-          </p>
-          <span class="bg-blue-light text-blue-dark text-xs font-bold px-2 py-1 rounded-full border border-blue-mid" style="letter-spacing:2.5px;font-size:11px;text-transform:uppercase;">Limited availability</span>
-        </div>
-
-        <div class="bg-off-white border border-border rounded-2xl p-8">
-          <div class="w-12 h-12 rounded-xl bg-blue flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-          </div>
-          <h2 class="text-xl font-extrabold text-text-heading mb-3">Advisory</h2>
-          <p class="text-text-body mb-4">
-            Lighter-touch support for founders. Monthly calls and async access. Available now.
-          </p>
-          <span class="bg-blue text-white text-xs font-bold px-2 py-1 rounded-full" style="letter-spacing:2.5px;font-size:11px;text-transform:uppercase;">Available</span>
-        </div>
-
-      </div>
-
-      <div class="bg-ink text-white rounded-2xl p-8 text-center dark-section">
-        <h2 class="text-2xl font-extrabold mb-4">Email me directly</h2>
-        <p class="text-white mb-6">
-          The best way to reach me is via email. I read everything and respond to most.
-        </p>
-        <a href="mailto:hi@nicalpi.com" class="bg-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-dark transition-colors inline-block dark-focus">
-          hi@nicalpi.com
-        </a>
-      </div>
-
+    <div class="crumbs hidden md:flex">
+      <span><a href="/">home</a> / work with me</span>
+      <span>bristol, uk · remote-friendly</span>
     </div>
-  </section>
-</main>
+
+    <div class="flex flex-col px-5 pt-7 pb-10 md:px-10 md:pt-11 md:pb-14 max-w-article">
+      <h1 class="m-0 mb-4 text-[24px] md:text-[28px] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Let's talk.</h1>
+      <p class="m-0 mb-8 text-[14px] md:text-[15px] leading-[1.85] text-body">Whether you're interested in fractional CTO services, advisory support, or just want to connect — I'd love to hear from you.</p>
+
+      <div class="grid sm:grid-cols-2 gap-3 mb-8">
+        <div class="border border-line rounded-brand p-[18px] flex flex-col gap-2">
+          <span class="kicker">fractional cto</span>
+          <strong class="text-[14.5px] text-ink">1–2 days per week</strong>
+          <p class="m-0 text-[13px] leading-[1.8] text-body">Senior technical leadership without a full-time hire. A second brain for teams that need experience on tap.</p>
+          <span class="chip mt-auto self-start">limited availability</span>
+        </div>
+        <div class="border border-line rounded-brand p-[18px] flex flex-col gap-2">
+          <span class="kicker">advisory</span>
+          <strong class="text-[14.5px] text-ink">Monthly calls + async access</strong>
+          <p class="m-0 text-[13px] leading-[1.8] text-body">Lighter-touch support for founders on engineering leadership or AI adoption.</p>
+          <span class="chip chip-solid mt-auto self-start">available</span>
+        </div>
+      </div>
+
+      <div class="border border-accent-line bg-accent-soft rounded-brand p-[18px] md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <strong class="text-[14.5px] text-ink">Email me directly</strong>
+          <span class="text-[13px] leading-[1.8] text-body">The best way to reach me. I read everything and respond to most.</span>
+        </div>
+        <a href="mailto:hi@nicalpi.com" class="btn whitespace-nowrap">hi@nicalpi.com</a>
+      </div>
+    </div>
+
+    <div class="mt-auto">{% include footer.html %}</div>
+  </div>
+</div>

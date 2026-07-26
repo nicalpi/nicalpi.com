@@ -1,0 +1,16 @@
+{% comment %}
+  Field log — dated timeline of an experiment. Future entries are dimmed.
+
+  Usage:
+    {% include fn/field-log.html entries=page.field_log %}
+
+  Each entry: { date, strong (optional lead sentence), text, planned (bool) }
+{% endcomment %}
+<div class="field-log">
+  {% for entry in include.entries %}
+  <div class="field-log-entry{% if entry.planned %} is-planned{% endif %}">
+    <span class="log-date">{{ entry.date }}</span>
+    <span class="log-text">{% if entry.strong %}<strong>{{ entry.strong }}</strong> {% endif %}{{ entry.text }}</span>
+  </div>
+  {% endfor %}
+</div>

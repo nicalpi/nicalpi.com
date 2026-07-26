@@ -3,47 +3,49 @@ module.exports = {
     './_drafts/**/*.html',
     './_includes/**/*.html',
     './_layouts/**/*.html',
+    './_field_notes/**/*.md',
     './_posts/*.md',
     './*.md',
     './*.html',
+    './assets/js/*.js',
   ],
   theme: {
     extend: {
+      // NicAlpi v3 "Field Notes" tokens.
+      // Values live as CSS variables in assets/main.css (:root = light,
+      // [data-theme="dark"] = dark) so every utility is theme-aware.
       colors: {
-        // NicAlpi brand palette
-        'off-white': '#F5F4F1',
-        ink: '#111111',
-        muted: '#717171',
-        border: '#E3E1DD',
-        blue: {
-          DEFAULT: '#3B82F6',
-          dark: '#1A4FA8',
-          light: '#EFF6FF',
-          mid: '#BFDBFE',
+        canvas: 'var(--canvas)',
+        panel: 'var(--panel)',
+        side: 'var(--side)',
+        raise: 'var(--raise)',
+        ink: 'var(--ink)',
+        body: 'var(--body)',
+        muted: 'var(--muted)',
+        faint: 'var(--faint)',
+        line: {
+          DEFAULT: 'var(--line)',
+          2: 'var(--line2)',
         },
-        // Semantic text aliases
-        'text-heading': '#111111',
-        'text-body': '#3A3A3A',
-        'text-muted': '#717171',
-        'text-annotation': '#1A4FA8',
+        accent: {
+          DEFAULT: 'var(--accent)',
+          soft: 'var(--accent-soft)',
+          line: 'var(--accent-line)',
+        },
+        'on-accent': 'var(--on-accent)',
       },
       fontFamily: {
-        heading: ['DM Sans', 'system-ui', 'sans-serif'],
-        body: ['DM Sans', 'system-ui', 'sans-serif'],
-        annotation: ['Caveat', 'cursive'],
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       maxWidth: {
-        article: '640px',
+        frame: '1280px',
+        article: '820px',
       },
       borderRadius: {
-        'xl': '16px',
-        'lg': '12px',
-        'md': '8px',
-      }
-    }
+        brand: '4px',
+        panel: '6px',
+      },
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography')
-  ]
+  plugins: [],
 }

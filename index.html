@@ -5,234 +5,174 @@ description: "AI made output cheap. Good judgement is now the advantage. Field n
 og_image: /assets/images/og/homepage.jpg
 ---
 
-<style>
-  .wav { display:inline-block; animation:wave 2.5s ease-in-out infinite; transform-origin:70% 70%; }
-  @keyframes wave { 0%,100%{transform:rotate(0)} 25%{transform:rotate(18deg)} 75%{transform:rotate(-8deg)} }
-  .latest-sidebar a:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
-  .post-row { grid-template-columns:56px 1fr auto; }
-  .nin-focus:focus { border-color:#3B82F6 !important; }
-</style>
+{% assign experiments = site.field_notes | where: "kind", "experiment" | sort: "exp" | reverse %}
+{% assign flagship = experiments | where: "status", "running" | first %}
+{% assign flagship_notes = site.field_notes | where: "kind", "progress" | where: "experiment", flagship.exp_id | sort: "date" | reverse %}
+
+{% include nav-top.html %}
+{% include sidebar.html context="drawer" %}
 
 <main id="main-content">
 
-  <!-- ====================================
-       HERO
-       ==================================== -->
-  <section class="py-20 md:py-24">
-    <div class="max-w-[860px] mx-auto px-6">
-      <div class="grid md:grid-cols-[2fr_1fr] gap-14 items-start">
-
-        <!-- Left: personal intro -->
-        <div>
-          <div class="font-annotation text-[22px] text-blue-dark flex items-center gap-2 mb-5" style="font-weight:500;">
-            Hi, I'm Nic <span class="wav">👋</span>
-          </div>
-
-          <h1 class="text-[clamp(34px,4.5vw,52px)] font-extrabold text-ink leading-tight mb-6" style="letter-spacing:-1.5px;">
-            AI made output cheap.<br>Good <span class="text-blue">judgement</span> is now the advantage.
-          </h1>
-
-          <p class="text-lg text-muted leading-relaxed mb-4 max-w-[460px]">
-            Field notes from a working CTO on leading teams, using AI without losing ownership, and getting useful work done without adding another system.
-          </p>
-          <p class="text-lg text-muted leading-relaxed mb-4 max-w-[460px]">
-            I've been building software for <strong class="text-text-body font-semibold">20+ years</strong>. Co-founded a Rails consultancy, grew it to 20 people and over £1 million in revenue, sold it in 2021. Now I lead engineering at an age-tech company in Bristol.
-          </p>
-          <p class="text-lg text-muted leading-relaxed max-w-[460px]">
-            I run practical experiments on AI, attention, management and delivery — then publish <strong class="text-text-body font-semibold">what worked, what failed, and what I'm changing next</strong>.
-          </p>
-
-          <div class="flex items-center gap-5 mt-8">
-            <a href="#newsletter" class="inline-flex items-center gap-2 bg-ink text-white text-[15px] font-bold px-6 py-[13px] rounded-lg hover:opacity-90 transition-opacity">
-              Get the next field note &rarr;
-            </a>
-            <a href="/blog" class="text-muted text-[15px] font-medium hover:text-ink transition-colors">
-              Start reading
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: latest articles sidebar -->
-        <aside class="latest-sidebar bg-off-white border border-border rounded-2xl p-6">
-          <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted mb-5 block">Latest</span>
-          {% for post in site.posts limit:3 %}
-          <a href="{{ post.url }}" class="block mb-4 pb-4 border-b border-border group">
-            {% if post.category %}
-            <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
-            {% endif %}
-            <span class="font-bold text-sm text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="text-decoration:none;">{{ post.title }}</span>
-            <span class="text-xs text-muted mt-1 block">{{ post.date | date: "%-d %b" }} &middot; {{ post.reading_time | default: "5" }} min</span>
-          </a>
-          {% endfor %}
-        </aside>
-
+  <!-- ============ HERO ============ -->
+  <section class="grid md:grid-cols-[minmax(0,1fr)_300px] gap-8 md:gap-14 items-start px-6 md:px-14 pt-8 pb-8 md:pt-[72px] md:pb-14">
+    <div class="flex flex-col gap-4 md:gap-[22px]">
+      <span class="text-[12px] md:text-[12.5px] text-muted">hi, i'm nic — cto, bristol</span>
+      <h1 class="m-0 text-[25px] md:text-[36px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>AI made output cheap. Good judgement is now the advantage.</h1>
+      <p class="m-0 max-w-[70ch] text-[14px] md:text-[15px] leading-[1.85] text-body">Field notes from a working CTO on leading teams, using AI without losing ownership, and getting useful work done without adding another system.</p>
+      <p class="m-0 max-w-[70ch] text-[13.5px] md:text-[14.5px] leading-[1.85] text-body border-l-2 border-line pl-[18px]">I've been building software for <strong class="text-ink">20+ years</strong>. Co-founded a Rails consultancy, grew it to 20 people and over £1 million in revenue, sold it in 2021. Now I lead engineering at an age-tech company in Bristol. I run practical experiments on AI, attention, management and delivery — then publish <strong class="text-ink">what worked, what failed, and what I'm changing next</strong>.</p>
+      <div class="flex flex-col sm:flex-row gap-[10px] pt-1">
+        <a href="#newsletter" class="btn">Get the next field note →</a>
+        <a href="/blog/" class="btn btn-ghost">Start reading</a>
       </div>
+    </div>
+    <div class="flex flex-col gap-[10px]">
+      {% if site.portrait_image %}
+      <img src="{{ site.portrait_image }}" alt="Portrait of Nic Alpi" class="w-full md:w-[300px] h-[200px] md:h-[340px] object-cover rounded-brand border border-line" width="300" height="340">
+      {% else %}
+      <div class="w-full md:w-[300px] h-[200px] md:h-[340px] rounded-brand border border-dashed border-line bg-side flex items-center justify-center text-[11.5px] text-muted" aria-hidden="true">portrait of nic</div>
+      {% endif %}
+      <span class="text-[11.5px] text-muted leading-[1.6]">Bristol · HYROX at 5:30am · hard 4pm stop, non-negotiable</span>
     </div>
   </section>
 
-  <!-- ====================================
-       ABOUT — off-white band
-       ==================================== -->
-  <section class="bg-off-white border-t border-border border-b py-16">
-    <div class="max-w-[860px] mx-auto px-6">
-      <p class="font-annotation text-[22px] text-muted mb-6" style="font-weight:500;">A bit more about me...</p>
-      <div class="bg-white border border-border rounded-2xl p-10 md:p-11">
-        <p class="text-[17px] leading-[1.8] text-text-body mb-5">
-          I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, Catherine and I started a Rails consultancy. We grew it to <strong class="text-ink">20 people and over a million in revenue</strong> before selling to Amba in 2021.
-        </p>
-        <p class="text-[17px] leading-[1.8] text-text-body mb-5">
-          Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. I train HYROX at 5:30am. I have a <span class="text-blue-dark font-semibold">hard 4pm rule</span> — phone down, family time, non-negotiable.
-        </p>
-        <p class="text-[17px] leading-[1.8] text-text-body mb-5">
-          I write because I kept seeing advice from navy seals and billionaires performing certainty they don't have. I'm not any of those things. I stopped publishing for a few years while I rebuilt parts of my life and career after the sale. Now I'm starting again, differently.
-        </p>
-        <p class="text-[17px] leading-[1.8] text-text-body">
-          I'm treating my work as a public CTO lab: change one thing, measure what happens, publish the result. Including the experiments that fail. No productivity theatre, no new system to adopt.
-        </p>
-        <div class="font-annotation text-[26px] text-ink mt-7 pt-5 border-t border-border">— Nic</div>
+  <!-- ============ FIELD NOTES — THE PUBLIC CTO LAB ============ -->
+  <section class="flex flex-col gap-4 md:gap-[26px] px-6 md:px-14 py-7 md:py-[52px] bg-accent-soft border-t border-b border-accent-line" aria-labelledby="lab-heading">
+    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8">
+      <div class="flex flex-col gap-2">
+        <span class="kicker kicker-accent">field notes — the public cto lab</span>
+        <h2 id="lab-heading" class="m-0 text-[18px] md:text-[22px] font-bold tracking-[-0.015em] text-ink"><span class="on-accent-mark">## </span>Change one thing. Measure it. Publish the result.</h2>
+        <p class="m-0 max-w-[78ch] text-[13px] md:text-[14px] leading-[1.8] text-body">A field note is not an essay. It is an experiment I am running on my own work — with a baseline, a protocol, guardrails, and a verdict I publish even when the answer is "this did nothing".</p>
+      </div>
+      <a href="/field-notes/" class="no-underline text-[12px] whitespace-nowrap">all experiments →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-accent-line border border-accent-line rounded-brand overflow-hidden">
+      <div class="bg-panel p-[14px] md:px-5 md:py-[18px] flex flex-col gap-[7px]">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="5"></circle><path d="M11 11l4 4"></path></svg>
+        <strong class="text-[13px] md:text-[14px] text-ink">01 · Question &amp; baseline</strong>
+        <span class="text-[12.5px] leading-[1.7] text-muted">Two weeks of counting before I change anything. No baseline, no note.</span>
+      </div>
+      <div class="bg-panel p-[14px] md:px-5 md:py-[18px] flex flex-col gap-[7px]">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.4" aria-hidden="true"><path d="M2 12h3V7H2zM6.5 12h3V3h-3zM11 12h3V9h-3z"></path></svg>
+        <strong class="text-[13px] md:text-[14px] text-ink">02 · Protocol &amp; guardrails</strong>
+        <span class="text-[12.5px] leading-[1.7] text-muted">One intervention, a fixed window, and the conditions that stop it early.</span>
+      </div>
+      <div class="bg-panel p-[14px] md:px-5 md:py-[18px] flex flex-col gap-[7px]">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.4" aria-hidden="true"><path d="M3 8.5l3 3 7-7"></path></svg>
+        <strong class="text-[13px] md:text-[14px] text-ink">03 · Verdict, either way</strong>
+        <span class="text-[12.5px] leading-[1.7] text-muted">Kept, dropped or inconclusive — published with the numbers behind it.</span>
       </div>
     </div>
-  </section>
 
-  <!-- ====================================
-       POSTS — browse + numbered list
-       ==================================== -->
-  <section class="py-16" aria-labelledby="writing-heading">
-    <div class="max-w-[860px] mx-auto px-6">
-
-      <!-- Browse by topic -->
-      <div class="mb-10">
-        <span class="text-[11px] font-bold tracking-[3px] uppercase text-muted mb-4 block">Browse by topic</span>
-        <div class="flex flex-wrap gap-2">
-          <a href="/blog" class="text-sm font-semibold px-[18px] py-2 bg-ink text-white rounded-full" style="font-size:14px;">All</a>
-          {% assign all_categories = site.posts | map: 'category' | uniq | compact %}
-          {% for cat in all_categories %}
-          <a href="/blog" class="text-sm font-medium px-[18px] py-2 bg-white border border-border text-text-body rounded-full hover:border-blue-mid hover:text-blue-dark transition-colors" style="font-size:14px;">{{ cat }}</a>
+    {% if flagship %}
+    <!-- flagship running experiment -->
+    <div class="bg-panel border border-accent-line rounded-brand overflow-hidden">
+      <div class="flex items-center justify-between gap-3 md:gap-5 py-[9px] px-[14px] md:py-[11px] md:px-5 bg-accent text-on-accent text-[10.5px] md:text-[11.5px] tracking-[0.06em] uppercase">
+        <span>{{ flagship.exp_id }} · {{ flagship.theme_tag }} · {{ flagship.status }}</span>
+        <span>{{ flagship.window }}{% if flagship.next_label %} · next: {{ flagship.next_label }}{% endif %}</span>
+      </div>
+      <div class="grid md:grid-cols-[minmax(0,1fr)_320px] gap-5 md:gap-10 py-4 px-[14px] md:py-6 md:px-5">
+        <div class="flex flex-col gap-3">
+          <a href="{{ flagship.url }}" class="no-underline text-ink text-[17px] md:text-[21px] leading-[1.4] font-bold tracking-[-0.015em]">{{ flagship.title }}</a>
+          <p class="m-0 text-[13px] md:text-[13.5px] leading-[1.8] text-body">{{ flagship.summary }}</p>
+          {% if flagship.progress_pct %}
+          <div class="progress-track" role="progressbar" aria-valuenow="{{ flagship.progress_pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="Experiment progress">
+            <div class="progress-fill" style="width:{{ flagship.progress_pct }}%;"></div>
+          </div>
+          {% endif %}
+          {% if flagship.tags %}
+          <div class="flex gap-2 flex-wrap">
+            {% for t in flagship.tags %}<span class="chip text-muted">{{ t }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% assign hm = flagship.metrics | where: "home", true %}
+        <div class="flex flex-col border border-line rounded-brand overflow-hidden text-[12.5px]">
+          <div class="hidden md:grid grid-cols-[minmax(0,1fr)_54px_54px_58px] gap-[10px] py-2 px-3 bg-raise border-b border-line text-[11px] text-muted"><span>metric</span><span>before</span><span>now</span><span>target</span></div>
+          {% for m in hm %}
+          <div class="hidden md:grid grid-cols-[minmax(0,1fr)_54px_54px_58px] gap-[10px] py-2 px-3 {% unless forloop.last %}border-b border-line-2{% endunless %}"><span>{{ m.home_label | default: m.label }}</span><span>{{ m.before }}</span><span class="text-accent">{{ m.now }}</span><span>{{ m.target }}</span></div>
+          <div class="flex md:hidden justify-between gap-3 py-2 px-3 {% unless forloop.last %}border-b border-line-2{% endunless %}"><span class="text-muted">{{ m.home_label | default: m.label }}</span><span>{{ m.before }} <span class="text-faint">→</span> <span class="text-accent">{{ m.now }}</span></span></div>
           {% endfor %}
         </div>
       </div>
-
-      <!-- Numbered list -->
-      <h2 id="writing-heading" class="sr-only">Recent writing</h2>
-      <div>
-        {% for post in site.posts %}
-        <a href="{{ post.url }}" class="post-row group grid gap-6 py-7 border-b border-border items-start block no-underline">
-          <span class="font-extrabold text-[30px] text-border leading-none group-hover:text-blue-mid transition-colors" style="letter-spacing:-1.5px;">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <div>
-            {% if post.category %}
-            <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
-            {% endif %}
-            <span class="font-bold text-lg text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="letter-spacing:-0.3px;">{{ post.title }}</span>
-            {% if post.description %}
-            <span class="text-sm text-muted leading-relaxed mt-1 block">{{ post.description }}</span>
-            {% endif %}
-          </div>
-          <div class="text-xs text-muted text-right whitespace-nowrap pt-1">
-            {{ post.date | date: "%-d %b" }}<br>
-            {{ post.reading_time | default: "5" }} min
-          </div>
+      <div class="flex flex-col border-t border-line-2">
+        {% for n in flagship_notes limit: 1 %}
+        <a href="{{ n.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 border-b border-line-2 text-ink text-[12.5px] md:text-[13.5px]">
+          <span class="text-[12px] text-muted">{{ n.note_id }}</span>
+          <span class="max-md:hidden">{{ n.title | downcase }}</span>
+          <span class="text-[12px] text-muted">progress · {{ n.date | date: "%b" }}</span>
         </a>
         {% endfor %}
+        {% assign closed_exp = experiments | where: "status", "closed" | first %}
+        {% if closed_exp %}
+        <a href="{{ closed_exp.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 text-ink text-[12.5px] md:text-[13.5px]">
+          <span class="text-[12px] text-muted">{{ closed_exp.exp_id }}</span>
+          <span class="max-md:hidden">{{ closed_exp.title | downcase }}</span>
+          <span class="text-[12px] text-accent">{{ closed_exp.status_label }}</span>
+        </a>
+        {% endif %}
       </div>
+    </div>
+    {% endif %}
+  </section>
 
+  <!-- ============ RECENT WRITING ============ -->
+  <section class="flex flex-col gap-4 px-6 md:px-14 pt-7 pb-7 md:pt-[52px] md:pb-11" aria-labelledby="writing-heading">
+    <div class="flex items-baseline justify-between gap-6">
+      <h2 id="writing-heading" class="m-0 text-[17px] md:text-[19px] font-bold text-ink"><span class="md-mark">## </span>Recent writing</h2>
+      <span class="hidden md:flex gap-[14px] text-[12px] text-muted">
+        <a href="/blog/" class="no-underline text-accent">all</a>
+        {% assign cats = site.posts | map: "category" | uniq | compact %}
+        {% for cat in cats %}<a href="/blog/#{{ cat | downcase }}" class="no-underline">{{ cat | downcase }}</a>{% endfor %}
+      </span>
+    </div>
+    <div class="flex flex-col">
+      {% for post in site.posts %}
+      <a href="{{ post.url }}" class="no-underline text-ink grid max-md:flex max-md:flex-col grid-cols-[34px_minmax(0,1fr)_max-content] gap-1 md:gap-[22px] items-baseline py-[14px] md:py-[15px] border-b border-line-2 group">
+        <span class="hidden md:block text-[12px] text-faint">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="md:hidden text-[11.5px] text-muted">{{ post.category | downcase }} · {{ post.date | date: "%-d %b" }} · {{ post.reading_time | default: "5" }} min</span>
+        <span class="flex flex-col gap-1">
+          <span class="text-[14.5px] md:text-[15.5px] font-bold tracking-[-0.01em] leading-[1.45] group-hover:text-accent">{{ post.title }}</span>
+          {% if post.description %}<span class="hidden md:block text-[13px] text-muted leading-[1.7]">{{ post.description | truncate: 120 }}</span>{% endif %}
+        </span>
+        <span class="hidden md:block text-[12px] text-muted text-right whitespace-nowrap">{{ post.category | downcase }} · {{ post.date | date: "%-d %b" }} · {{ post.reading_time | default: "5" }} min</span>
+      </a>
+      {% endfor %}
     </div>
   </section>
 
-  <!-- ====================================
-       QUOTE — blockquote interlude
-       ==================================== -->
-  <section class="py-16">
-    <div class="max-w-[860px] mx-auto px-6">
-      <div class="bg-blue-light border-l-4 border-blue p-7 md:p-8" style="border-radius:0 14px 14px 0;">
-        <p class="font-bold text-xl text-ink mb-3 leading-snug" style="letter-spacing:-0.3px;">Most technical leaders don't need another tool. They need clearer attention, better decisions and stronger follow-through.</p>
-        <div class="font-annotation text-lg text-muted">— what this is all about</div>
-      </div>
+  <!-- ============ BELIEFS ============ -->
+  <section class="grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-5 md:gap-12 px-6 md:px-14 py-7 md:py-11 bg-raise border-t border-line" aria-labelledby="beliefs-heading">
+    <div class="flex flex-col gap-[10px]">
+      <span class="kicker">what I've learned</span>
+      <h2 id="beliefs-heading" class="m-0 text-[17px] md:text-[19px] font-bold text-ink"><span class="md-mark">## </span>Six things I believe after 20 years.</h2>
+      <p class="m-0 text-[13.5px] leading-[1.8] text-muted">Most technical leaders don't need another tool. They need clearer attention, better decisions and stronger follow-through.</p>
+    </div>
+    <div class="flex flex-col gap-[9px] text-[13px] md:text-[13.5px] leading-[1.8] text-body">
+      <div><span class="text-faint">- </span><strong class="text-ink">The best CTOs aren't the busiest.</strong> They've designed systems, teams and lives that don't require heroics.</div>
+      <div><span class="text-faint">- </span><strong class="text-ink">Boring technology wins.</strong> Rails has been declared dead for 15 years. Still ships faster.</div>
+      <div><span class="text-faint">- </span><strong class="text-ink">Complexity is a choice.</strong> Most teams have simplicity problems, not scaling problems.</div>
+      <div><span class="text-faint">- </span><strong class="text-ink">Unexamined meetings become debt.</strong> A recurring meeting nobody questions taxes deep thinking.</div>
+      <div><span class="text-faint">- </span><strong class="text-ink">AI made output cheap, not judgement.</strong> Attention before automation.</div>
+      <div><span class="text-faint">- </span><strong class="text-ink">Burnout exposes a systems problem.</strong> If your company needs heroes, your systems are broken.</div>
     </div>
   </section>
 
-  <!-- ====================================
-       BELIEFS — off-white band
-       ==================================== -->
-  <section class="bg-off-white border-t border-border border-b py-16">
-    <div class="max-w-[860px] mx-auto px-6">
-      <p class="font-annotation text-[22px] text-text-annotation mb-3" style="font-weight:600;">What I've learned</p>
-      <h2 class="text-3xl font-extrabold text-ink mb-10" style="letter-spacing:-0.5px;">Six things I believe after 20 years.</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">The best CTOs aren't the busiest.</h3>
-          <p class="text-sm text-muted leading-relaxed">They've designed systems, teams, and lives that don't require heroics.</p>
-        </div>
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Boring technology wins.</h3>
-          <p class="text-sm text-muted leading-relaxed">Rails has been declared dead for 15 years. Still ships faster than most alternatives.</p>
-        </div>
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Complexity is a choice.</h3>
-          <p class="text-sm text-muted leading-relaxed">Most teams don't have scaling problems. They have simplicity problems.</p>
-        </div>
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Unexamined meetings become debt.</h3>
-          <p class="text-sm text-muted leading-relaxed">A recurring meeting nobody questions is a tax on your team's ability to think deeply.</p>
-        </div>
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">AI made output cheap, not judgement.</h3>
-          <p class="text-sm text-muted leading-relaxed">Value moved from writing code to owning outcomes. Attention before automation.</p>
-        </div>
-        <div class="border-t-2 border-blue pt-5">
-          <h3 class="font-bold text-base text-ink mb-2 leading-snug">Burnout often exposes a systems problem.</h3>
-          <p class="text-sm text-muted leading-relaxed">If your company needs heroes to function, your systems are broken.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ NEWSLETTER ============ -->
+  {% include newsletter.html %}
 
-  <!-- ====================================
-       NEWSLETTER — dark section
-       ==================================== -->
-  <section id="newsletter" class="bg-ink py-20 dark-section" aria-labelledby="newsletter-heading">
-    <div class="max-w-[860px] mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-14 items-center">
-
-        <div>
-          <span class="text-[11px] font-bold tracking-[3px] uppercase block mb-3" style="color:rgba(255,255,255,0.45);">CTO Field Notes</span>
-          <h2 id="newsletter-heading" class="text-2xl font-extrabold text-white mb-3" style="letter-spacing:-0.8px;">One field-tested CTO practice, every fortnight</h2>
-          <p class="text-white text-[15px] leading-relaxed">Field notes from 20 years of building software, companies and engineering teams. Real experiments, honest results, and no pretend certainty.</p>
-        </div>
-
-        <form class="flex flex-col gap-3" action="#" method="post">
-          <input
-            type="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            class="nin-focus px-[18px] py-[13px] rounded-lg text-white text-sm outline-none font-body"
-            style="background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.12);font-family:inherit;"
-          >
-          <button type="submit" class="bg-blue text-white px-[22px] py-[13px] rounded-lg text-sm font-bold hover:bg-blue-dark transition-colors">
-            Get the next field note &rarr;
-          </button>
-          <p class="text-xs" style="color:rgba(255,255,255,0.3);">No spam. Unsubscribe anytime.</p>
-        </form>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================
-       SOCIAL PROOF
-       ==================================== -->
-  <section class="py-14" aria-labelledby="clients-heading">
-    <div class="max-w-[860px] mx-auto px-6">
-      <p id="clients-heading" class="text-center text-[11px] font-bold uppercase tracking-[3px] text-muted mb-8">
-        Companies I've worked with over 20 years
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-10 opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300">
-        <img src="/assets/images/logos/bbc-maestro.png" alt="BBC Maestro" class="h-7 object-contain">
-        <img src="/assets/images/logos/stornaway.png" alt="Stornaway" class="h-7 object-contain">
-        <img src="/assets/images/logos/rough-trade.png" alt="Rough Trade" class="h-9 object-contain">
-        <img src="/assets/images/logos/patternbank.svg" alt="Patternbank" class="h-5 object-contain">
-      </div>
+  <!-- ============ WORKED WITH ============ -->
+  <section class="flex flex-col md:flex-row md:items-center gap-4 md:gap-9 px-6 md:px-14 py-5 md:py-6 border-t border-line bg-raise" aria-label="Companies I've worked with">
+    <span class="kicker whitespace-nowrap">worked with</span>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-[14px] flex-1 items-center">
+      <img src="/assets/images/logos/bbc-maestro.png" alt="BBC Maestro" class="logo-img h-[30px] md:h-[38px] w-full object-contain">
+      <img src="/assets/images/logos/stornaway.png" alt="Stornaway" class="logo-img h-[30px] md:h-[38px] w-full object-contain">
+      <img src="/assets/images/logos/rough-trade.png" alt="Rough Trade" class="logo-img h-[30px] md:h-[38px] w-full object-contain">
+      <img src="/assets/images/logos/patternbank.svg" alt="Patternbank" class="logo-img h-[22px] md:h-[26px] w-full object-contain">
     </div>
   </section>
 
 </main>
+
+{% include footer.html %}

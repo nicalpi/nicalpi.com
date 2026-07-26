@@ -1,0 +1,157 @@
+---
+layout: default
+title: Styleguide
+description: "Living styleguide for the NicAlpi v3 component library."
+permalink: /styleguide/
+sitemap: false
+---
+
+<meta name="robots" content="noindex">
+
+{% include nav-top.html %}
+{% include sidebar.html context="drawer" %}
+
+<main id="main-content" class="flex flex-col gap-10 px-6 md:px-14 py-10 md:py-14">
+
+  <div class="flex flex-col gap-2 max-w-article">
+    <h1 class="m-0 text-[24px] md:text-[28px] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Styleguide</h1>
+    <p class="m-0 text-[13.5px] leading-[1.8] text-body">Every component in the v3 system, live. Usage snippets are in <code class="bg-raise border border-line-2 rounded px-1">.claude/skills/nicalpi-brand/components.md</code>. Toggle the theme (⌥T) to check both modes.</p>
+  </div>
+
+  <!-- tokens -->
+  <section class="flex flex-col gap-3">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Colour tokens</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-[11.5px]">
+      {% assign tokens = "canvas,panel,side,raise,ink,body,muted,faint,line,line2,accent,accent-soft,accent-line,on-accent" | split: "," %}
+      {% for t in tokens %}
+      <div class="border border-line rounded-brand overflow-hidden">
+        <div style="height:44px; background:var(--{{ t }});"></div>
+        <div class="px-2 py-1 text-muted">--{{ t }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- type -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Type</h2>
+    <h1 class="m-0 text-[30px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Page title — 30px / 700</h1>
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Section heading — 17px / 700</h2>
+    <p class="m-0 text-[15px] leading-[1.85] text-body">Lead paragraph — 15px, line-height 1.85.</p>
+    <p class="m-0 text-[14.5px] leading-[1.9] text-body">Body prose — 14.5px, line-height 1.9. <strong class="text-ink">Strong is ink.</strong> <a href="#">Links are accent</a>.</p>
+    <span class="kicker">kicker — 11px uppercase 0.12em</span>
+    <span class="kicker kicker-accent">kicker accent</span>
+  </section>
+
+  <!-- buttons + chips -->
+  <section class="flex flex-col gap-4">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Buttons &amp; chips</h2>
+    <div class="flex flex-wrap items-center gap-3">
+      <a href="#" class="btn">Primary →</a>
+      <a href="#" class="btn btn-ghost">Ghost</a>
+      <a href="#" class="btn btn-sm">Small</a>
+      <button type="button" class="theme-pill" data-theme-toggle><span data-theme-label>light</span></button>
+      <button type="button" class="icon-btn" aria-label="Example icon button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"></path></svg></button>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="chip chip-solid">running</span>
+      <span class="chip">closed</span>
+      <span class="chip">attention</span>
+      <a href="#" class="chip">link chip</a>
+    </div>
+  </section>
+
+  <!-- meta block -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Meta block <span class="text-[12px] text-muted font-normal">fn/meta-block.html</span></h2>
+    <div class="meta-block">
+      <span>experiment: <b>01 · attention</b></span>
+      <span>status: <b class="is-status">running</b></span>
+      <span>window: <b>Aug → Sept</b></span>
+      <span>next: <b>Sept checkpoint</b></span>
+    </div>
+  </section>
+
+  <!-- metrics -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Metrics table <span class="text-[12px] text-muted font-normal">fn/metrics.html</span></h2>
+    <div class="metrics">
+      <div class="metrics-head"><span>metric</span><span>before</span><span>now</span><span>target</span></div>
+      <div class="metrics-row"><span class="m-label">unplanned interruptions / wk</span><span class="m-before">31</span><span class="m-now">19</span><span class="m-target">&lt; 12</span></div>
+      <div class="metrics-row"><span class="m-label">strategic hours / wk</span><span class="m-before">3.5</span><span class="m-now">5.0</span><span class="m-target">9.5</span></div>
+    </div>
+  </section>
+
+  <!-- checklist -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Checklist <span class="text-[12px] text-muted font-normal">fn/checklist.html</span></h2>
+    <div class="checklist">
+      <span class="check">an open guardrail</span>
+      <span class="check done">a satisfied guardrail <span class="note text-muted">— with a note</span></span>
+    </div>
+  </section>
+
+  <!-- field log -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Field log <span class="text-[12px] text-muted font-normal">fn/field-log.html</span></h2>
+    <div class="field-log">
+      <div class="field-log-entry"><span class="log-date">early Aug</span><span class="log-text"><strong>A past entry.</strong> With detail after the lead.</span></div>
+      <div class="field-log-entry is-planned"><span class="log-date">Oct</span><span class="log-text">A planned entry, dimmed.</span></div>
+    </div>
+  </section>
+
+  <!-- progress -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Progress bar</h2>
+    <div class="progress-track"><div class="progress-fill" style="width:23%;"></div></div>
+  </section>
+
+  <!-- experiment card -->
+  <section class="flex flex-col gap-3 max-w-[900px]">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Experiment card <span class="text-[12px] text-muted font-normal">fn/exp-card.html</span></h2>
+    {% assign sg_exp = site.field_notes | where: "exp_id", "exp-01" | first %}
+    {% include fn/exp-card.html e=sg_exp %}
+  </section>
+
+  <!-- xcards -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Cross-link cards <span class="text-[12px] text-muted font-normal">fn/xcard.html</span></h2>
+    <div class="grid sm:grid-cols-2 gap-3">
+      {% include fn/xcard.html url="#" kicker="← previous · leadership" title="A neutral cross-link card" %}
+      {% include fn/xcard.html url="#" kicker="field note · exp-01 running" title="An accent cross-link card" accent=true %}
+    </div>
+  </section>
+
+  <!-- follow cta -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Follow CTA <span class="text-[12px] text-muted font-normal">fn/follow-cta.html</span></h2>
+    {% include fn/follow-cta.html %}
+  </section>
+
+  <!-- queued box -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Queued box</h2>
+    <div class="queued-box">
+      <span class="kicker">queued</span>
+      <div class="checklist" style="font-size:13.5px;">
+        <span class="check">exp-02 — a queued experiment</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- prose -->
+  <section class="flex flex-col gap-3 max-w-article">
+    <h2 class="m-0 text-[17px] font-bold text-ink"><span class="md-mark">## </span>Prose (markdown bodies)</h2>
+    <div class="prose border border-line rounded-brand p-5">
+      <h2 id="sg-h2">A section heading</h2>
+      <p>Paragraph with a <a href="#">link</a>, some <strong>strong text</strong> and <code>inline code</code>.</p>
+      <blockquote>A pulled hypothesis or key claim sits in an accent-ruled blockquote.</blockquote>
+      <ul><li>List item one</li><li>List item two</li></ul>
+      <pre><code>bundle exec jekyll serve   # code block</code></pre>
+    </div>
+  </section>
+
+</main>
+
+{% include newsletter.html %}
+{% include footer.html %}

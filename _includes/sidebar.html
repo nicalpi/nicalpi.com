@@ -1,0 +1,184 @@
+{% comment %}
+  Sidebar — desktop column on inner pages, contents drawer on mobile.
+
+  Usage:
+    {% include sidebar.html context="notes" %}    field-notes index
+    {% include sidebar.html context="note" body=content %}  experiment brief / progress note
+    {% include sidebar.html context="post" %}     blog post
+    {% include sidebar.html context="writing" %}  blog index
+    {% include sidebar.html context="about" %}    about page
+    {% include sidebar.html context="drawer" %}   full-width pages (drawer only)
+
+  context="note" expects the page to be part of the field_notes collection
+  (kind: experiment) or reference one via page.experiment (kind: progress).
+  Passing body=content lets the "on this page" list read the rendered h2s.
+{% endcomment %}
+
+{% assign ctx = include.context | default: "drawer" %}
+
+{% comment %} — resolve experiments — {% endcomment %}
+{% assign experiments = site.field_notes | where: "kind", "experiment" | sort: "exp" | reverse %}
+{% assign running = experiments | where: "status", "running" %}
+
+{% if ctx == "note" %}
+  {% if page.kind == "experiment" %}
+    {% assign exp = page %}
+  {% else %}
+    {% assign exp = site.field_notes | where: "exp_id", page.experiment | first %}
+  {% endif %}
+  {% assign exp_notes = site.field_notes | where: "kind", "progress" | where: "experiment", exp.exp_id | sort: "date" %}
+{% endif %}
+
+<aside class="sidebar{% if ctx == 'drawer' %} drawer-only{% endif %}" id="contents-drawer" aria-label="Site navigation">
+  <div class="sidebar-sticky">
+
+  <!-- brand -->
+  <div class="flex items-start justify-between gap-3 px-[18px]">
+    <span class="flex flex-col gap-[4px]">
+      <a href="/" class="no-underline text-ink text-[15px] font-bold">nicalpi</a>
+      <span class="text-[11.5px] text-muted">cto · bristol · writing in public</span>
+    </span>
+    <button type="button" class="icon-btn sidebar-close -mt-1" data-drawer-close aria-label="Close menu">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"></path></svg>
+    </button>
+  </div>
+
+  {% if ctx == "note" %}
+  <!-- current experiment tree -->
+  <nav class="flex flex-col gap-[2px]" aria-label="This experiment">
+    <span class="sidebar-label">{{ exp.exp_id }} · {{ exp.theme_tag }}</span>
+    <a href="{{ exp.url }}" class="sidebar-link{% if page.url == exp.url %} is-active{% else %} is-sub{% endif %}">
+      {%- if page.url == exp.url %}<span class="dot-running" aria-hidden="true">●</span><span>brief</span>{% else %}brief{% endif -%}
+    </a>
+    {% for note in exp_notes %}
+    <a href="{{ note.url }}" class="sidebar-link{% if page.url == note.url %} is-active{% else %} is-sub{% endif %}">
+      {%- if page.url == note.url %}<span class="dot-running" aria-hidden="true">●</span><span>{{ note.nav_label }}</span>{% else %}{{ note.nav_label }}{% endif -%}
+    </a>
+    {% endfor %}
+    {% for step in exp.roadmap %}
+    <span class="sidebar-link is-sub is-dim">{{ step }}</span>
+    {% endfor %}
+  </nav>
+
+  <!-- on this page -->
+  {% assign heads = include.body | split: '<h2' %}
+  {% if heads.size > 1 %}
+  <nav class="flex flex-col gap-[2px]" aria-label="On this page">
+    <span class="sidebar-label">on this page</span>
+    {% for h in heads offset: 1 %}
+      {% assign hid = h | split: 'id="' | last | split: '"' | first %}
+      {% assign htitle = h | split: '</h2>' | first | prepend: '<h2' | append: '</h2>' | strip_html | strip %}
+      <a href="#{{ hid }}" class="sidebar-link" style="padding-top:4px;padding-bottom:4px;">{{ htitle | downcase }}</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+  {% endif %}
+
+  {% if ctx == "notes" %}
+  <!-- experiments tree, running one expanded -->
+  <nav class="flex flex-col gap-[2px]" aria-label="Field notes">
+    <span class="sidebar-label">field notes</span>
+    {% for e in experiments %}
+      {% if e.status == "running" %}
+      <a href="{{ e.url }}" class="sidebar-link is-active"><span class="dot-running" aria-hidden="true">●</span><span>{{ e.exp_id }} · {{ e.theme_tag }}</span></a>
+      <a href="{{ e.url }}" class="sidebar-link is-sub">brief</a>
+      {% assign e_notes = site.field_notes | where: "kind", "progress" | where: "experiment", e.exp_id | sort: "date" %}
+      {% for n in e_notes %}
+      <a href="{{ n.url }}" class="sidebar-link is-sub">{{ n.nav_label }}</a>
+      {% endfor %}
+      {% for step in e.roadmap %}
+      <span class="sidebar-link is-sub is-dim">{{ step }}</span>
+      {% endfor %}
+      {% else %}
+      <a href="{{ e.url }}" class="sidebar-link"><span class="dot-closed" aria-hidden="true">○</span><span>{{ e.exp_id }} · {{ e.short_title | default: e.theme_tag }}</span></a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  {% if ctx == "post" %}
+  <!-- recent writing, current post highlighted -->
+  <nav class="flex flex-col gap-[2px]" aria-label="Writing">
+    <span class="sidebar-label">writing{% if page.category %} · {{ page.category | downcase }}{% endif %}</span>
+    {% assign shown = 0 %}
+    {% for p in site.posts %}
+      {% if shown < 5 %}
+        {% if p.url == page.url %}
+        <a href="{{ p.url }}" class="sidebar-link is-active">{{ p.short_title | default: p.title | downcase | truncate: 28 }}</a>
+        {% assign shown = shown | plus: 1 %}
+        {% elsif shown < 4 %}
+        <a href="{{ p.url }}" class="sidebar-link">{{ p.short_title | default: p.title | downcase | truncate: 28 }}</a>
+        {% assign shown = shown | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% assign more = site.posts.size | minus: shown %}
+    {% if more > 0 %}
+    <a href="/blog/" class="sidebar-link is-dim">+ {{ more }} more</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+  {% if ctx == "post" or ctx == "about" or ctx == "drawer" or ctx == "writing" %}
+  <!-- experiments overview -->
+  <nav class="flex flex-col gap-[2px]" aria-label="Field notes">
+    <span class="sidebar-label">field notes</span>
+    {% for e in experiments %}
+    <a href="{{ e.url }}" class="sidebar-link">
+      {% if e.status == "running" %}<span class="dot-running" aria-hidden="true">●</span><span>{{ e.exp_id }} · running</span>
+      {% else %}<span class="dot-closed" aria-hidden="true">○</span><span>{{ e.exp_id }} · {{ e.status }}</span>{% endif %}
+    </a>
+    {% endfor %}
+    <a href="/field-notes/" class="sidebar-link is-dim">all experiments</a>
+  </nav>
+  {% endif %}
+
+  {% unless ctx == "post" %}
+  <!-- writing categories -->
+  <nav class="flex flex-col gap-[2px]" aria-label="Writing">
+    <span class="sidebar-label">writing</span>
+    <a href="/blog/" class="sidebar-link{% if ctx == 'writing' and page.topic == nil %} is-active{% endif %}">all posts</a>
+    {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
+    {% for cat in cats %}
+    <a href="/blog/#{{ cat | downcase | replace: ' ', '-' }}" class="sidebar-link">{{ cat | downcase }}</a>
+    {% endfor %}
+  </nav>
+  {% endunless %}
+
+  {% if ctx == "about" %}
+  <nav class="flex flex-col gap-[2px]" aria-label="Elsewhere">
+    <span class="sidebar-label">elsewhere</span>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="sidebar-link">linkedin</a>
+    <a href="https://twitter.com/{{ site.twitter_username }}" class="sidebar-link">twitter/x</a>
+    <a href="https://github.com/{{ site.github_username }}" class="sidebar-link">github</a>
+  </nav>
+  {% endif %}
+
+  <!-- meta + theme, pinned to the bottom -->
+  <div class="mt-auto flex flex-col gap-3 px-[18px]">
+    <div class="flex flex-col gap-[2px] border-t border-line pt-3">
+      <span class="sidebar-label" style="padding-left:0;">meta</span>
+      <a href="/about/" class="no-underline block py-[3px] text-[12.5px] {% if ctx == 'about' %}text-accent{% else %}text-body hover:text-ink{% endif %}">about</a>
+      <a href="/contact/" class="no-underline block py-[3px] text-[12.5px] text-body hover:text-ink">work with me</a>
+      <a href="/feed.xml" class="no-underline block py-[3px] text-[12.5px] text-body hover:text-ink">newsletter · rss</a>
+    </div>
+
+    <button type="button" class="theme-row" data-theme-toggle aria-pressed="false" title="Toggle theme (Alt+T)">
+      <span><span data-theme-label>light</span> theme</span>
+      <span class="key" aria-hidden="true">⌥T</span>
+    </button>
+
+    {% if ctx == "notes" or ctx == "drawer" or ctx == "writing" %}
+    <a href="/#newsletter" class="btn btn-sm" style="display:block;">get the next note →</a>
+    {% elsif ctx == "post" %}
+    <a href="/about/" class="btn btn-sm btn-ghost" style="display:block;">about nic</a>
+    {% elsif ctx == "note" %}
+    <div class="border-t border-line pt-[10px] flex flex-col gap-1 text-[11.5px] text-muted leading-[1.7]">
+      <span>this note is not</span>
+      <span>a recommendation. one cto, one team, one month.</span>
+    </div>
+    {% endif %}
+  </div>
+
+  </div>
+</aside>

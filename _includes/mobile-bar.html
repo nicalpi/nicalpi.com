@@ -1,0 +1,19 @@
+{% comment %}
+  Sticky mobile header for sidebar pages.
+  Params: back_url, back_label (left link) · label (centre) — all optional.
+{% endcomment %}
+<div class="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-5 py-[10px] bg-panel border-b border-line">
+  {% if include.back_url %}
+  <a href="{{ include.back_url }}" class="no-underline flex items-center gap-2 text-[13px] text-body">
+    <span class="text-accent" aria-hidden="true">←</span><span>{{ include.back_label | default: "home" }}</span>
+  </a>
+  {% else %}
+  <a href="/" class="no-underline text-[15px] font-bold text-ink">nicalpi</a>
+  {% endif %}
+
+  {% if include.label %}<span class="text-[12.5px] text-muted truncate">{{ include.label }}</span>{% endif %}
+
+  <button type="button" class="icon-btn drawer-toggle shrink-0" data-drawer-toggle aria-expanded="false" aria-controls="contents-drawer" aria-label="Open contents">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"></path></svg>
+  </button>
+</div>
