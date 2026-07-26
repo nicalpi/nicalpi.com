@@ -1,0 +1,66 @@
+---
+layout: default
+og_type: article
+---
+{% comment %}
+  Experiment brief — /field-notes/exp-NN/.
+  Front matter contract: kind, exp, exp_id, title, lead, theme_tag,
+  status (running|closed|planned), status_label, started, window, measure,
+  next_label, verdict (closed only), roadmap[], metrics[], guardrails[],
+  field_log[]. Body: markdown + fn/* includes.
+{% endcomment %}
+
+<div class="with-sidebar" id="main-content">
+  {% include sidebar.html context="note" body=content %}
+
+  <div class="flex flex-col min-w-0">
+    {% include mobile-bar.html back_url="/field-notes/" back_label="field notes" %}
+
+    <!-- mobile status strip -->
+    <div class="md:hidden flex items-center justify-between gap-3 px-5 py-[10px] bg-accent text-on-accent text-[11px] tracking-[0.06em] uppercase">
+      <span>{{ page.exp_id }} · brief</span>
+      <span>{{ page.status_label }}</span>
+    </div>
+
+    <!-- breadcrumbs (desktop) -->
+    <div class="crumbs hidden md:flex">
+      <span><a href="/">home</a> / <a href="/field-notes/">field notes</a> / {{ page.exp_id }} / brief</span>
+      <span class="{% if page.status == 'running' %}text-accent{% endif %}">{% if page.status == 'running' %}● {% endif %}{{ page.status_label }}</span>
+    </div>
+
+    <article class="flex flex-col px-5 pt-6 pb-10 md:px-10 md:pt-10 md:pb-14 max-w-article">
+      <div class="meta-block mb-[30px]">
+        <span>experiment: <b>{{ page.exp | prepend: '0' | slice: -2, 2 }}{% if page.theme_tag %} · {{ page.theme_tag }}{% endif %}</b></span>
+        <span>status: <b class="is-status">{{ page.status }}{% if page.verdict %} · {{ page.verdict }}{% endif %}</b></span>
+        {% if page.started %}<span>started: <b>{{ page.started }}</b></span>{% endif %}
+        {% if page.window %}<span>window: <b>{{ page.window }}</b></span>{% endif %}
+        {% if page.measure %}<span>measure: <b>{{ page.measure }}</b></span>{% endif %}
+        {% if page.next_label %}<span>next: <b>{{ page.next_label }}</b></span>{% endif %}
+      </div>
+
+      <h1 class="m-0 mb-4 text-[24px] md:text-[30px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>{{ page.title }}</h1>
+      {% if page.lead %}
+      <p class="m-0 mb-[26px] text-[14px] md:text-[15px] leading-[1.85] text-body">{{ page.lead }}</p>
+      {% endif %}
+
+      <div class="prose">
+        {{ content }}
+      </div>
+
+      {% assign next_notes = site.field_notes | where: "kind", "progress" | where: "experiment", page.exp_id | sort: "date" %}
+      {% if next_notes.size > 0 %}
+      {% assign latest = next_notes | last %}
+      <a href="{{ latest.url }}" class="xcard is-accent mt-6">
+        <span class="xcard-kicker">next in this experiment</span>
+        <span class="xcard-title">{{ latest.title }} →</span>
+      </a>
+      {% endif %}
+
+      {% if page.status == "running" %}
+      {% include fn/follow-cta.html %}
+      {% endif %}
+    </article>
+
+    <div class="mt-auto">{% include footer.html %}</div>
+  </div>
+</div>

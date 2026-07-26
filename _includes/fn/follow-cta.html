@@ -1,0 +1,10 @@
+{% comment %}
+  Follow CTA — accent-tinted banner pointing at the newsletter.
+
+  Usage:
+    {% include fn/follow-cta.html text="The next note lands in the newsletter first." button="follow this experiment →" %}
+{% endcomment %}
+<div class="mt-[34px] border border-accent-line bg-accent-soft rounded-brand p-[18px] md:px-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  <span class="text-[13.5px] text-body">{{ include.text | default: "The next note lands in the newsletter first." }}</span>
+  <a href="/#newsletter" class="btn btn-sm whitespace-nowrap">{{ include.button | default: "follow this experiment →" }}</a>
+</div>

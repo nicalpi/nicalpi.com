@@ -4,57 +4,75 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- `bundle install` - Install Ruby dependencies
-- `bundle exec jekyll serve` - Start local development server with auto-regeneration (http://localhost:4000)
-- `bundle exec jekyll build` - Build static site to `_site/` directory
+- `bundle install` — install Ruby dependencies
+- `yarn install` — install node dependencies (Tailwind)
+- `yarn css` — compile CSS (`_assets/main.css` → `assets/main.css`, minified). **Run after any CSS/template class change**; the compiled file is committed.
+- `yarn css:watch` — recompile CSS on change during development
+- `bundle exec jekyll serve` — local dev server (http://localhost:4000)
+- `bundle exec jekyll build` — build to `_site/`
 
-## Project Structure
+CSS is compiled by the Tailwind CLI, not a Jekyll plugin. (jekyll-postcss was
+removed: it talks to a hardcoded localhost:8124 compile server, which breaks
+with parallel checkouts and caused stale-CSS bugs.)
 
-This is a Jekyll 4.4 static site using the Minima theme.
+## Architecture
 
-- `_posts/` - Blog posts in Markdown (format: `YYYY-MM-DD-title.markdown`)
-- `_config.yml` - Site configuration (requires server restart when changed)
-- `index.markdown` - Homepage
-- `about.markdown` - About page
-- `_site/` - Generated output (gitignored)
+Jekyll 4.4. Brand: **NicAlpi v3 "Field Notes"** — JetBrains Mono, warm paper
+palette, blue accent, light/dark themes via CSS variables and `data-theme` on
+`<html>`. See `.claude/skills/nicalpi-brand/` for the full system and
+`/styleguide/` for live components.
 
-## Content Guidelines
+- `_assets/main.css` — token + component CSS **source** (edit this, then `yarn css`)
+- `assets/main.css` — compiled output (committed, don't hand-edit)
+- `tailwind.config.js` — maps Tailwind colours to the CSS variables
+- `assets/js/site.js` — theme toggle (⌥T), mobile contents drawer
+- `_layouts/` — `default` (shell), `post`, `field_note` (experiment brief), `progress_note`
+- `_includes/` — `nav-top`, `sidebar` (desktop column / mobile drawer, parameterised by `context`), `mobile-bar`, `newsletter`, `footer`, `lightbox`, and `fn/*` field-note components (metrics, checklist, field-log, exp-card, xcard, follow-cta, meta-block)
+- `_posts/` — blog posts (`YYYY-MM-DD-title.md`, permalink `/blog/:slug`)
+- `_field_notes/` — the experiments collection (see below)
+- `_data/field_notes.yml` — queued experiments
+- `assets/social-templates/` — social image templates + `scripts/export-social.mjs`
+- `styleguide.html` → `/styleguide/` — living component reference (noindex)
 
-### Creating Posts
+## Field notes collection
 
-Posts must follow the naming convention `YYYY-MM-DD-title.markdown` and include front matter:
+Two document kinds, both in `_field_notes/`:
+
+- **Experiment brief** — `_field_notes/exp-NN.md`, `kind: experiment`, URL `/field-notes/exp-NN/`
+- **Progress note** — `_field_notes/exp-NN/<slug>.md`, `kind: progress`, `layout: progress_note`, URL `/field-notes/exp-NN/<slug>/`
+
+Full front-matter schema and authoring guide: `_field_notes/README.md`.
+Structured blocks (metrics, guardrails, field log) are front-matter data
+rendered with `{% include fn/... %}` inside the markdown body, so section
+order is free and every `##` heading lands in the sidebar "on this page" list.
+
+`future: true` is set in `_config.yml` because launch content is dated ahead.
+
+## Creating Posts
+
+`_posts/YYYY-MM-DD-title.md` with front matter:
 
 ```yaml
 ---
 layout: post
 title: "Post Title"
-date: YYYY-MM-DD HH:MM:SS +0000
-categories: category1 category2
+subtitle: "Optional dek shown under the title"
+description: "SEO + list description"
+category: AI            # one of: AI, Business, Career, Leadership, Personal
+reading_time: 9
+date: YYYY-MM-DD
+og_image: /assets/images/og/slug.jpg
 ---
 ```
 
-### Customizing Theme
+Optional: `cover_image`, `cover_caption`, `short_title` (sidebar label).
+Don't use `title_html` (retired with the v2 brand).
 
-Override Minima theme defaults by creating matching files in the project root. See https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+## Notes
 
-## Skills
-
-### `/calm-cto-brand`
-
-Complete design system for "The Calm CTO" brand. Use for any visual content or web pages.
-
-**Capabilities:**
-- WCAG AA accessible colour palette (Sage `#5F8A5A`, Coral `#C4716A`, Sky `#4A8FA0`)
-- DM Sans typography with Caveat for annotations, JetBrains Mono for code
-- Tailwind CSS configuration for web development
-- CSS design tokens (`assets/design-tokens.css`)
-- Visual templates for image generation (`references/visual-templates.md`)
-- Web component patterns (`references/web-components.md`)
-- HTML to JPEG/PNG export script (`scripts/export_image.py`)
-
-**Visual Templates:** Process Flow, Quote Card, Concept Grid, Comparison, Stats Card, Timeline, List Card, Social Post, Bold Statement
-
-**Export Images:**
-```bash
-python3 .claude/skills/calm-cto-brand/scripts/export_image.py input.html output.jpg
-```
+- The site renders inside a 1280px panel; inner pages have a sidebar that
+  becomes a contents drawer under 900px.
+- Portrait/photo slots on home + about read `site.portrait_image` from
+  `_config.yml`; until it's set they show an on-brand placeholder.
+- `node_modules/` is committed (pre-existing choice); don't prune it in
+  unrelated PRs.

@@ -4,11 +4,12 @@
   {% include head.html %}
 </head>
 
-<body class="bg-white font-body text-text-body">
-  {% include nav.html %}
+<body class="font-mono{% if page.body_class %} {{ page.body_class }}{% endif %}">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <button class="drawer-overlay" data-drawer-close tabindex="-1" aria-hidden="true"></button>
 
-  {{ content }}
-
-  {% include footer.html %}
+  <div class="site-frame">
+    {{ content }}
+  </div>
 </body>
 </html>

@@ -1,0 +1,27 @@
+{% comment %}
+  Top navigation bar for full-width pages (home).
+  Desktop: inline links + theme pill + CTA. Mobile: theme + drawer buttons.
+{% endcomment %}
+<nav class="flex items-center justify-between gap-8 px-6 md:px-14 py-[14px] md:py-[18px] border-b border-line sticky top-0 bg-panel z-40" role="navigation" aria-label="Main navigation">
+  <a href="/" class="no-underline text-ink font-bold tracking-[0.02em] text-[15px]" aria-label="nicalpi — home">nicalpi</a>
+
+  <div class="hidden md:flex items-center gap-[26px] text-[13px]">
+    <a href="/blog/" class="no-underline text-body hover:text-ink">writing</a>
+    <a href="/field-notes/" class="no-underline text-accent">field notes</a>
+    <a href="/about/" class="no-underline text-body hover:text-ink">about</a>
+    <button type="button" class="theme-pill" data-theme-toggle aria-pressed="false" title="Toggle theme (⌥T)">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3.4"></circle><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M12.8 3.2l-1.4 1.4M4.6 11.4l-1.4 1.4"></path></svg>
+      <span data-theme-label>light</span>
+    </button>
+    <a href="/contact/" class="btn btn-sm">work with me</a>
+  </div>
+
+  <div class="flex md:hidden items-center gap-[10px]">
+    <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3.4"></circle><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M12.8 3.2l-1.4 1.4M4.6 11.4l-1.4 1.4"></path></svg>
+    </button>
+    <button type="button" class="icon-btn drawer-toggle" data-drawer-toggle aria-expanded="false" aria-label="Open menu">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"></path></svg>
+    </button>
+  </div>
+</nav>

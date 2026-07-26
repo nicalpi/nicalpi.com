@@ -1,0 +1,14 @@
+{% comment %}
+  Checklist — the brand's "- [ ] / - [x]" marks, used for guardrails,
+  adjustments and queued experiments.
+
+  Usage:
+    {% include fn/checklist.html items=page.guardrails %}
+
+  Each item: { text, done (bool), note (optional muted suffix) }
+{% endcomment %}
+<div class="checklist mb-[26px]">
+  {% for item in include.items %}
+  <span class="check{% if item.done %} done{% endif %}">{{ item.text }}{% if item.note %} <span class="note text-muted">— {{ item.note }}</span>{% endif %}</span>
+  {% endfor %}
+</div>

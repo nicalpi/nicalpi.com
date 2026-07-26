@@ -1,0 +1,22 @@
+{% comment %}
+  Newsletter signup band. Params:
+    id      — anchor id (default "newsletter")
+    kicker  — small accent label (default "cto field notes")
+    title   — heading
+    text    — supporting line
+{% endcomment %}
+<section id="{{ include.id | default: 'newsletter' }}" class="grid md:grid-cols-[minmax(0,1fr)_360px] gap-6 md:gap-12 md:items-end px-6 md:px-14 py-9 md:py-11 border-t border-line" aria-labelledby="newsletter-heading">
+  <div class="flex flex-col gap-2">
+    <span class="kicker kicker-accent">{{ include.kicker | default: "cto field notes" }}</span>
+    <h2 id="newsletter-heading" class="m-0 text-[18px] md:text-[21px] font-bold tracking-[-0.015em] text-ink">{{ include.title | default: "One field-tested CTO practice, every fortnight" }}</h2>
+    <p class="m-0 max-w-[66ch] text-[13.5px] leading-[1.8] text-muted">{{ include.text | default: "Real experiments, honest results, and no pretend certainty." }}</p>
+  </div>
+  <form class="flex flex-col gap-2" action="#" method="post">
+    <div class="flex flex-col sm:flex-row gap-2">
+      <label for="newsletter-email" class="sr-only">Email address</label>
+      <input id="newsletter-email" type="email" name="email" required placeholder="you@company.com" class="news-input flex-1 sm:h-[42px] h-[46px]">
+      <button type="submit" class="btn btn-sm sm:h-[42px] h-[46px] whitespace-nowrap">subscribe</button>
+    </div>
+    <span class="text-[11.5px] text-muted">No spam. Unsubscribe anytime.</span>
+  </form>
+</section>

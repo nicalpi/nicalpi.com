@@ -1,0 +1,11 @@
+{% comment %}
+  Cross-link card — prev/next navigation and field-note cross-promotion.
+
+  Usage:
+    {% include fn/xcard.html url="/blog/foo" kicker="← previous · leadership" title="Post title" %}
+    {% include fn/xcard.html url="/field-notes/exp-01/" kicker="field note · exp-01 running" title="…" accent=true %}
+{% endcomment %}
+<a href="{{ include.url }}" class="xcard{% if include.accent %} is-accent{% endif %}">
+  <span class="xcard-kicker">{{ include.kicker }}</span>
+  <span class="xcard-title">{{ include.title }}</span>
+</a>

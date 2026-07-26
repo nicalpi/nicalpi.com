@@ -1,0 +1,846 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NICALPI v3 — "FIELD NOTES"
+   Design tokens. Single source of truth for both themes.
+   Tailwind utilities reference these via tailwind.config.js.
+   ============================================================ */
+
+:root {
+  --canvas: #E4E2DC;       /* page surround, outside the frame */
+  --panel: #FCFCFA;        /* main page surface */
+  --side: #F5F3ED;         /* sidebar surface */
+  --raise: #F9F8F4;        /* raised bands, table heads */
+  --ink: #191917;          /* headings, strong text */
+  --body: #4A4A45;         /* body text */
+  --muted: #77776E;        /* meta, secondary */
+  --faint: #C4C2B8;        /* markdown marks, big numbers */
+  --line: #E4E2DA;         /* primary borders */
+  --line2: #EDEBE4;        /* subtle row dividers */
+  --accent: #1E4FD8;       /* links, running state, CTAs */
+  --accent-soft: #EAF0FE;  /* accent tint surfaces */
+  --accent-line: #BDCDF5;  /* borders on accent surfaces */
+  --on-accent: #FFFFFF;    /* text on accent */
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0C0E11;
+  --panel: #171A1F;
+  --side: #13161A;
+  --raise: #1D2127;
+  --ink: #F1F1ED;
+  --body: #BFC2BE;
+  --muted: #8B8F96;
+  --faint: #4B505A;
+  --line: #272B32;
+  --line2: #1F232A;
+  --accent: #82A9FF;
+  --accent-soft: #182339;
+  --accent-line: #2E4368;
+  --on-accent: #0C0E11;
+  color-scheme: dark;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+p, li { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+a { color: var(--accent); }
+a:hover { opacity: 0.78; }
+
+input::placeholder { color: var(--muted); }
+
+/* The site lives inside a 1280px panel on the warm canvas,
+   exactly like the design artboards. Full-bleed below 1280px. */
+.site-frame {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: var(--panel);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1281px) {
+  .site-frame {
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+}
+
+/* Markdown mark — the faint "#" prefixes used on headings in layouts */
+.md-mark {
+  color: var(--faint);
+  font-weight: 400;
+}
+
+.on-accent-mark { color: var(--accent-line); font-weight: 400; }
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+.skip-link {
+  position: absolute;
+  z-index: 9999;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.15s ease;
+  background: var(--ink);
+  color: var(--panel);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.skip-link:focus { top: 12px; }
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   COMPONENTS
+   Documented in .claude/skills/nicalpi-brand/components.md
+   and rendered live at /styleguide/.
+   ============================================================ */
+
+/* ---- Buttons ------------------------------------------------ */
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover { opacity: 0.88; color: var(--on-accent); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.btn-ghost:hover { opacity: 1; border-color: var(--muted); color: var(--ink); }
+
+.btn-sm { padding: 9px 15px; font-size: 12.5px; }
+
+/* ---- Chips / status pills ----------------------------------- */
+
+.chip {
+  display: inline-block;
+  border: 1px solid var(--line);
+  color: var(--body);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.chip:hover { border-color: var(--accent-line); color: var(--accent); opacity: 1; }
+
+.chip-solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
+
+/* ---- Section labels (uppercase kickers) ---------------------- */
+
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker-accent { color: var(--accent); }
+
+/* ---- Breadcrumb bar ------------------------------------------ */
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 40px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.crumbs a { text-decoration: none; }
+
+/* The mobile-bar replaces breadcrumbs below the sidebar breakpoint */
+@media (max-width: 767px) {
+  .crumbs { display: none; }
+}
+
+/* ---- Status dots ---------------------------------------------- */
+
+.dot-running { color: var(--accent); }
+.dot-closed { color: var(--faint); }
+
+/* ---- Experiment meta block (front-matter strip) --------------- */
+
+.meta-block {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 32px;
+  font-size: 12.5px;
+  color: var(--body);
+}
+
+.meta-block b, .meta-block strong { color: var(--ink); font-weight: 400; }
+.meta-block .is-status { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .meta-block { grid-template-columns: 1fr; gap: 3px; padding: 12px 0; }
+}
+
+/* ---- Metrics table (before / now / target) -------------------- */
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  font-size: 13.5px;
+}
+
+.metrics-head,
+.metrics-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px 96px 96px;
+  gap: 16px;
+}
+
+.metrics-head {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metrics-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line2);
+  color: var(--body);
+}
+
+.metrics-row .m-now { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .metrics { font-size: 13px; }
+  .metrics-head { display: none; }
+  .metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2px 12px;
+    padding: 9px 0;
+  }
+  .metrics-row .m-label { color: var(--muted); }
+  .metrics-row .m-before::after { content: " →"; color: var(--faint); }
+  .metrics-row .m-target {
+    flex-basis: 100%;
+    text-align: right;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .metrics-row .m-target::before { content: "target "; }
+}
+
+/* ---- Checklists (guardrails, adjustments, queue) --------------- */
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--body);
+}
+
+.checklist .check::before {
+  content: "- [ ] ";
+  color: var(--faint);
+  white-space: pre;
+}
+
+.checklist .check.done::before {
+  content: "- [x] ";
+  color: var(--accent);
+}
+
+.checklist .check small,
+.checklist .check .note { color: var(--muted); font-size: inherit; }
+
+/* ---- Field log (timeline) --------------------------------------- */
+
+.field-log {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.field-log-entry {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.field-log-entry .log-date { color: var(--accent); }
+.field-log-entry .log-text { color: var(--body); }
+.field-log-entry .log-text strong { color: var(--ink); font-weight: 400; }
+
+.field-log-entry.is-planned .log-date,
+.field-log-entry.is-planned .log-text { color: var(--muted); }
+
+@media (max-width: 640px) {
+  .field-log {
+    border-left: 1px solid var(--line);
+    padding-left: 16px;
+    gap: 12px;
+    font-size: 13.5px;
+  }
+  .field-log-entry { display: flex; flex-direction: column; gap: 1px; }
+  .field-log-entry .log-date { font-size: 11.5px; }
+}
+
+/* ---- Progress bar ------------------------------------------------ */
+
+.progress-track {
+  height: 3px;
+  background: var(--line2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill { height: 100%; background: var(--accent); }
+
+/* ---- Experiment card (field notes index, home) ------------------- */
+
+.fn-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fn-card:hover { opacity: 1; border-color: var(--muted); }
+
+.fn-card.is-running { border-color: var(--accent-line); }
+.fn-card.is-running:hover { border-color: var(--accent); }
+
+.fn-card-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 18px;
+  background: var(--raise);
+  border-bottom: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.fn-card.is-running > .fn-card-strip {
+  background: var(--accent-soft);
+  border-bottom-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.fn-card-strip-solid {
+  background: var(--accent);
+  color: var(--on-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.fn-card.is-running > .fn-card-strip.fn-card-strip-solid {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---- Queued experiments box -------------------------------------- */
+
+.queued-box {
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ---- Cross-link cards (prev/next, note CTA) ----------------------- */
+
+.xcard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.xcard:hover { opacity: 1; border-color: var(--muted); }
+
+.xcard.is-accent {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.xcard.is-accent:hover { border-color: var(--accent); }
+
+.xcard .xcard-kicker { font-size: 11.5px; color: var(--muted); }
+.xcard.is-accent .xcard-kicker { color: var(--accent); }
+.xcard .xcard-title { font-size: 14.5px; font-weight: 700; line-height: 1.45; }
+
+/* ---- Newsletter row ------------------------------------------------ */
+
+.news-input {
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.news-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ---- Sidebar (desktop) / drawer (mobile) --------------------------- */
+
+.with-sidebar {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  flex: 1;
+  align-items: stretch;
+}
+
+.sidebar {
+  background: var(--side);
+  border-right: 1px solid var(--line);
+  padding: 22px 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex: 1;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.sidebar-label {
+  padding: 0 18px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 18px;
+  font-size: 12.5px;
+  color: var(--body);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-link:hover { color: var(--ink); opacity: 1; }
+
+.sidebar-link.is-active {
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+  color: var(--ink);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.sidebar-link.is-sub { padding-left: 36px; }
+.sidebar-link.is-dim { color: var(--muted); }
+
+.sidebar .sidebar-close { display: none; }
+
+@media (min-width: 901px) {
+  .drawer-toggle, .drawer-overlay { display: none; }
+  /* Full-width pages carry the sidebar for the mobile drawer only */
+  .sidebar.drawer-only { display: none; }
+}
+
+@media (max-width: 900px) {
+  .with-sidebar { display: block; }
+
+  .sidebar {
+    position: fixed;
+    z-index: 60;
+    inset: 0 0 0 60px;
+    border-right: 0;
+    border-left: 1px solid var(--line);
+    transform: translateX(102%);
+    transition: transform 0.22s ease;
+    overflow-y: auto;
+    visibility: hidden;
+  }
+
+  body.drawer-open .sidebar {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  body.drawer-open .drawer-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.drawer-open { overflow: hidden; }
+
+  .sidebar .sidebar-close { display: flex; }
+
+  .sidebar-link { padding-top: 8px; padding-bottom: 8px; font-size: 13px; }
+  .sidebar-link.is-sub { padding-left: 34px; }
+}
+
+/* ---- Client logos — neutralized, readable in both themes ------------- */
+
+.logo-img {
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+
+[data-theme="dark"] .logo-img {
+  filter: grayscale(1) invert(1);
+  opacity: 0.6;
+}
+
+/* ---- Icon buttons (mobile header) ----------------------------------- */
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon-btn:hover { border-color: var(--muted); }
+
+/* ---- Theme toggle pill (top nav) ------------------------------------- */
+
+.theme-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11.5px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+.theme-pill:hover { border-color: var(--muted); color: var(--ink); }
+
+.theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11.5px;
+  padding: 8px 11px;
+  cursor: pointer;
+}
+
+.theme-row:hover { color: var(--ink); border-color: var(--muted); }
+.theme-row .key { color: var(--accent); }
+
+/* ============================================================
+   PROSE — markdown article bodies
+   The art direction is "rendered markdown": faint #-marks on
+   headings, checkbox lists kept as - [ ] text, accent rules.
+   ============================================================ */
+
+.prose {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--body);
+}
+
+.prose > *:first-child { margin-top: 0; }
+
+.prose h2, .prose h3, .prose h4 {
+  color: var(--ink);
+  font-weight: 700;
+  margin: 34px 0 10px;
+}
+
+.prose h2 { font-size: 17px; }
+.prose h3 { font-size: 15px; }
+.prose h4 { font-size: 14.5px; }
+
+.prose h2::before { content: "## "; color: var(--faint); font-weight: 400; }
+.prose h3::before { content: "### "; color: var(--faint); font-weight: 400; }
+.prose h4::before { content: "#### "; color: var(--faint); font-weight: 400; }
+
+.prose p { margin: 0 0 16px; }
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover { text-decoration-color: var(--accent); opacity: 1; }
+
+.prose strong { color: var(--ink); font-weight: 700; }
+.prose em { font-style: italic; }
+
+.prose ul, .prose ol {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li::marker { color: var(--faint); }
+
+.prose blockquote {
+  margin: 20px 0 24px;
+  padding: 2px 0 2px 20px;
+  border-left: 2px solid var(--accent);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.prose blockquote p { margin-bottom: 10px; color: inherit; }
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+.prose code {
+  background: var(--raise);
+  border: 1px solid var(--line2);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+.prose pre {
+  background: var(--raise);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.prose pre code { background: transparent; border: 0; padding: 0; font-size: inherit; }
+
+.prose img {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose figure { margin: 24px 0; }
+
+.prose figcaption,
+.prose .img-caption {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px dashed var(--line);
+  margin: 32px 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin: 0 0 20px;
+}
+
+.prose thead th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 9px 12px 9px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.prose tbody td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--line2);
+}
+
+/* GFM task lists render as disabled checkboxes — restyle them
+   as the brand's "- [ ]" text marks */
+.prose ul.task-list, .prose .task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  position: absolute;
+}
+
+.prose .task-list-item::before {
+  content: "- [ ] ";
+  color: var(--faint);
+  white-space: pre;
+}
+
+.prose .task-list-item:has(input:checked)::before {
+  content: "- [x] ";
+  color: var(--accent);
+}
+
+/* Larger intro paragraph */
+.prose .lead, .lead {
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ---- Rouge syntax highlighting — restrained, two-tone ------------- */
+
+.highlight .c, .highlight .c1, .highlight .cm { color: var(--muted); font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kw { color: var(--accent); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb { color: var(--body); }
+.highlight .nf, .highlight .nc, .highlight .nn { color: var(--ink); font-weight: 700; }
+.highlight .mi, .highlight .mf { color: var(--accent); }
+
+/* ============================================================
+   MOBILE ADJUSTMENTS — content scale
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .crumbs { padding: 14px 20px; }
+  .prose { font-size: 13.5px; line-height: 1.85; }
+  .prose h2 { font-size: 16px; }
+  .prose blockquote { font-size: 14.5px; padding-left: 16px; }
+  .checklist { font-size: 13.5px; }
+  .btn { padding: 14px 18px; font-size: 13.5px; }
+}

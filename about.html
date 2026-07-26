@@ -6,126 +6,62 @@ permalink: /about/
 og_image: /assets/images/og/about.jpg
 ---
 
-<main id="main-content">
-  <section class="py-20">
-    <div class="max-w-[860px] mx-auto px-6">
+<div class="with-sidebar" id="main-content">
+  {% include sidebar.html context="about" %}
 
-      <div class="grid md:grid-cols-[2fr_1fr] gap-12">
+  <div class="flex flex-col min-w-0">
+    {% include mobile-bar.html back_url="/" back_label="home" label="about" %}
 
-        <!-- Main content -->
-        <div>
-          <p class="font-annotation text-[22px] text-muted mb-4" style="font-weight:500;">A bit more about me...</p>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-ink mb-8" style="letter-spacing:-1px;">
-            I'm Nic Alpi.
-          </h1>
+    <div class="crumbs hidden md:flex">
+      <span><a href="/">home</a> / about</span>
+      <span>french · in the UK since 2008</span>
+    </div>
 
-          <div class="space-y-5">
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, Catherine and I started a Rails consultancy called CookiesHQ. We grew it to <strong class="text-ink">20 people and over a million in revenue</strong> before selling to Amba in 2021.
-            </p>
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. It's meaningful work. I train HYROX at 5:30am. I have 3 kids. I have a <span class="text-blue-dark font-semibold">hard 4pm rule</span> — phone down, family time, non-negotiable.
-            </p>
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              I write because too much leadership advice performs a certainty the author doesn't have. I stopped publishing for a few years while I rebuilt parts of my life and career after the sale. Now I'm starting again, differently.
-            </p>
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              This site is <strong class="text-ink">CTO Field Notes</strong>: small experiments from my actual job. AI made output cheap, so judgement, ownership and follow-through are where the advantage sits now. I change one thing at a time — how questions reach me, how we review AI-written code, how the team ships — measure what happens, and publish the result. Including the failures.
-            </p>
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              People sometimes call this the "calm CTO" thing. To be clear: calm isn't the opposite of ambition. It's what leadership looks like when the system works — and it takes standards, decisions, and follow-through to get there.
-            </p>
-            <p class="text-[17px] leading-[1.8] text-text-body">
-              I live in Bristol with my family. I'm usually reading, walking, or trying to remember that not everything needs to be optimised.
-            </p>
-          </div>
+    <div class="grid md:grid-cols-[minmax(0,1fr)_280px] gap-8 md:gap-12 px-5 pt-7 pb-10 md:px-10 md:pt-11 md:pb-14">
+      <div class="flex flex-col max-w-[74ch]">
+        <h1 class="m-0 mb-[18px] text-[24px] md:text-[28px] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>A bit more about me…</h1>
 
-          <div class="font-annotation text-[26px] text-ink mt-8 pt-6 border-t border-border">— Nic</div>
-
-          <!-- Fast facts -->
-          <div class="mt-10 pt-8 border-t border-border">
-            <span class="text-[11px] font-bold tracking-[3px] uppercase text-muted block mb-5">Fast facts</span>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-off-white border border-border rounded-xl p-4">
-                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Experience</span>
-                <span class="font-bold text-ink">20+ years</span>
-                <span class="text-sm text-muted block">in web development</span>
-              </div>
-              <div class="bg-off-white border border-border rounded-xl p-4">
-                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Agency</span>
-                <span class="font-bold text-ink">CookiesHQ</span>
-                <span class="text-sm text-muted block">Co-founded, 2011–2021</span>
-              </div>
-              <div class="bg-off-white border border-border rounded-xl p-4">
-                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Currently</span>
-                <span class="font-bold text-ink">CTO at Amba</span>
-                <span class="text-sm text-muted block">Bristol, UK</span>
-              </div>
-              <div class="bg-off-white border border-border rounded-xl p-4">
-                <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">Stack</span>
-                <span class="font-bold text-ink">Ruby on Rails</span>
-                <span class="text-sm text-muted block">boring technology wins</span>
-              </div>
-            </div>
-          </div>
+        <div class="prose">
+          <p>I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, Catherine and I started a Rails consultancy called CookiesHQ. We grew it to <strong>20 people and over a million in revenue</strong> before selling to Amba in 2021.</p>
+          <p>Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. It's meaningful work. I train HYROX at 5:30am. I have 3 kids. I have a <strong>hard 4pm rule</strong> — phone down, family time, non-negotiable. <a href="/field-notes/exp-00/">I tested it for ninety days</a> before calling it a rule.</p>
+          <p>I write because too much leadership advice performs a certainty the author doesn't have. I stopped publishing for a few years while I rebuilt parts of my life and career after the sale. Now I'm starting again, differently.</p>
+          <blockquote>This site is CTO Field Notes: I'm treating my work as a public CTO lab — change one thing, measure what happens, publish the result. Including the experiments that fail. No productivity theatre, no new system to adopt.</blockquote>
+          <p>AI made output cheap, so judgement, ownership and follow-through are where the advantage sits now. I change one thing at a time — how questions reach me, how we review AI-written code, how the team ships — measure what happens, and publish the result.</p>
+          <p>People sometimes call this the "calm CTO" thing. To be clear: calm isn't the opposite of ambition. It's what leadership looks like when the system works — and it takes standards, decisions, and follow-through to get there.</p>
+          <p>I live in Bristol with my family. I'm usually reading, walking, or trying to remember that not everything needs to be optimised.</p>
+          <p class="text-muted">— Nic</p>
         </div>
-
-        <!-- Sidebar -->
-        <div>
-          <div class="sticky top-24 space-y-4">
-
-            <!-- Newsletter -->
-            <div class="bg-ink rounded-2xl p-6 dark-section">
-              <span class="text-[11px] font-bold tracking-[2px] uppercase block mb-3" style="color:rgba(255,255,255,0.45);">CTO Field Notes</span>
-              <p class="text-sm text-white mb-4 leading-relaxed">
-                One field-tested CTO practice, every fortnight. What worked, what failed, what's next.
-              </p>
-              <a href="/#newsletter" class="bg-blue text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-dark transition-colors inline-block" style="text-decoration:none;">
-                Get the next field note &rarr;
-              </a>
-            </div>
-
-            <!-- Latest posts -->
-            <div class="bg-off-white border border-border rounded-2xl p-6">
-              <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted block mb-4">Latest writing</span>
-              {% for post in site.posts limit:3 %}
-              <a href="{{ post.url }}" class="block mb-4 pb-4 border-b border-border last:mb-0 last:pb-0 last:border-b-0 group">
-                {% if post.category %}
-                <span class="text-[10px] font-bold tracking-[2px] uppercase text-blue-dark block mb-1">{{ post.category }}</span>
-                {% endif %}
-                <span class="font-bold text-sm text-ink leading-snug group-hover:text-blue-dark transition-colors block" style="text-decoration:none;">{{ post.title }}</span>
-              </a>
-              {% endfor %}
-              <a href="/blog" class="text-sm text-blue-dark font-semibold hover:text-blue mt-2 block" style="text-decoration:none;">All writing &rarr;</a>
-            </div>
-
-            <!-- Connect -->
-            <div class="bg-off-white border border-border rounded-2xl p-6">
-              <span class="text-[11px] font-bold tracking-[2px] uppercase text-muted block mb-4">Connect</span>
-              <ul class="space-y-2">
-                <li><a href="https://twitter.com/nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">Twitter / X &rarr;</a></li>
-                <li><a href="https://github.com/nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">GitHub &rarr;</a></li>
-                <li><a href="https://www.linkedin.com/in/nicolasalpi/" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">LinkedIn &rarr;</a></li>
-                <li><a href="https://www.youtube.com/@nicalpi" class="text-sm text-blue-dark hover:text-blue" style="text-decoration:none;">YouTube &rarr;</a></li>
-              </ul>
-            </div>
-
-            <!-- Work with me -->
-            <div class="bg-blue-light border border-blue-mid rounded-2xl p-6">
-              <span class="text-[11px] font-bold tracking-[2px] uppercase text-blue-dark block mb-3">Work with me</span>
-              <p class="text-sm text-text-body mb-4 leading-relaxed">
-                Advisory and fractional CTO work. If you need a second brain on engineering leadership or AI adoption, get in touch.
-              </p>
-              <a href="/contact" class="bg-blue text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-dark transition-colors inline-block" style="text-decoration:none;">
-                Get in touch &rarr;
-              </a>
-            </div>
-
-          </div>
-        </div>
-
       </div>
 
+      <div class="flex flex-col gap-[14px]">
+        {% if site.portrait_image %}
+        <img src="{{ site.portrait_image }}" alt="Photo of Nic Alpi" class="w-full md:w-[280px] h-[220px] md:h-[320px] object-cover rounded-brand border border-line" width="280" height="320">
+        {% else %}
+        <div class="w-full md:w-[280px] h-[220px] md:h-[320px] rounded-brand border border-dashed border-line bg-side flex items-center justify-center text-[11.5px] text-muted" aria-hidden="true">photo of nic</div>
+        {% endif %}
+
+        <div class="flex flex-col gap-[6px] border-t border-line pt-3 text-[12.5px] text-muted leading-[1.7]">
+          <span>currently</span>
+          <span class="text-body">CTO at Amba · 8-person team</span>
+          <span class="text-body">Bristol, UK</span>
+          <span class="text-body">Rails, mostly. Boring on purpose.</span>
+        </div>
+
+        {% assign flagship = site.field_notes | where: "kind", "experiment" | where: "status", "running" | first %}
+        {% if flagship %}
+        <a href="/field-notes/" class="xcard is-accent">
+          <span class="xcard-kicker">the lab</span>
+          <span class="xcard-title" style="font-size:13.5px;">See what I'm running right now →</span>
+        </a>
+        {% endif %}
+
+        <a href="/contact/" class="xcard">
+          <span class="xcard-kicker">work with me</span>
+          <span class="xcard-title" style="font-size:13.5px;">Advisory &amp; fractional CTO →</span>
+        </a>
+      </div>
     </div>
-  </section>
-</main>
+
+    <div class="mt-auto">{% include footer.html %}</div>
+  </div>
+</div>
