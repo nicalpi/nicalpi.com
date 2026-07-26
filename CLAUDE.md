@@ -34,6 +34,7 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 - `assets/social-templates/` — social image templates: OG generator templates (filled by `scripts/generate-og.py` → `assets/images/og/*.jpg`) + hand-edited promo cards (exported with `scripts/export-social.mjs`). See its README.
 - `styleguide.html` → `/styleguide/` — living component reference (noindex)
 - `docs/guide.md` — **maintainer guide**: social images, template gallery, components how-to, field-note/progress-note authoring (excluded from the build)
+- `.claude/skills/` — authoring skills: think/write pairs for field notes (`field-note-think`/`field-note-write`), progress notes (`progress-think`/`progress-write`) and posts (`post-think`/`post-write`), plus `social-image`. Re-package for Claude Web with `scripts/package-skills.sh` → `dist/claude-web-skills/`.
 
 ## Field notes collection
 
