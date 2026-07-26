@@ -2,15 +2,33 @@
 
 The canonical templates live in `assets/social-templates/` — self-contained
 HTML files sharing the site tokens via `social.css`. Don't rebuild cards from
-scratch; copy a template and edit the text.
+scratch. Full usage doc: `assets/social-templates/README.md`.
 
-| Template | Size | Use |
-|---|---|---|
-| `og-field-note.html` | 1200×630 | Field-note link card (OG/LinkedIn/X): accent header strip, `#` headline, metrics column |
-| `quote-square.html` | 1080×1080 | Quote card: accent-ruled blockquote, exp footer |
-| `verdict-square.html` | 1080×1080 | Experiment-close card: solid accent, one-word verdict, 2-stat grid |
-| `post-promo-portrait.html` | 1080×1350 | Post promo: cover, category tag, `#` title, pull quote |
-| `newsletter-og.html` | 1200×630 | Subscribe card on `--raise` |
+## OG images (generated — don't hand-edit the jpgs)
+
+`scripts/generate-og.py` fills the placeholder templates from front matter
+and screenshots them to `assets/images/og/<slug>.jpg` (1200×630 @2×, light
+theme). Requires Python playwright (`pip3 install playwright`; drives the
+installed Chrome).
+
+| Template | Fed by |
+|---|---|
+| `og-post.html` | posts: title, subtitle/description, category, reading_time; slug from `og_image` |
+| `og-field-note.html` | briefs: `home`-flagged metrics (or `facts`), status_label, verdict · progress notes: metrics, next_label |
+| `og-page.html` | `PAGES` list in the script (home, writing, about, contact, field-notes index) |
+
+Workflow for a new post or field note:
+1. Set `og_image: /assets/images/og/<slug>.jpg` in front matter.
+2. `python3 scripts/generate-og.py <slug>`
+3. Commit the jpg. Twitter reuses the same image — no `-twitter` variants
+   (head.html no longer rewrites the filename).
+
+## Promo cards (hand-edited)
+
+`quote-square` (1080×1080), `verdict-square` (1080×1080, solid accent),
+`post-promo-portrait` (1080×1350), `newsletter-og` (1200×630). Edit text in
+place, preview in a browser (`?theme=dark` for dark), export with
+`scripts/export-social.mjs` (Node playwright) at 2×.
 
 ## Rules
 
@@ -19,21 +37,3 @@ scratch; copy a template and edit the text.
 - Metrics read `before → now`: before in ink, arrow in `--faint`, now in accent.
 - The verdict card is the only solid-accent surface. Verdicts are one word.
 - Every card carries `nicalpi.com` (or `nicalpi.com / field notes`).
-- Dark variants: append `?theme=dark` when previewing/exporting.
-
-## Export
-
-```bash
-npm i -D playwright && npx playwright install chromium   # once
-node scripts/export-social.mjs                           # all cards, both themes, 2×
-node scripts/export-social.mjs quote-square              # one card
-```
-
-Output: `assets/images/social/<name>[-dark].png`.
-
-## Legacy
-
-The old OG sources in `assets/images/og/*.html` and per-post folders
-(`assets/images/ai-code-explain/` …) predate v3 (sage/DM Sans era and the v2
-blue). Regenerate from the v3 templates when a post's card is next needed;
-don't copy their styles.

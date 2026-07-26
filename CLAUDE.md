@@ -31,7 +31,7 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 - `_posts/` — blog posts (`YYYY-MM-DD-title.md`, permalink `/blog/:slug`)
 - `_field_notes/` — the experiments collection (see below)
 - `_data/field_notes.yml` — queued experiments
-- `assets/social-templates/` — social image templates + `scripts/export-social.mjs`
+- `assets/social-templates/` — social image templates: OG generator templates (filled by `scripts/generate-og.py` → `assets/images/og/*.jpg`) + hand-edited promo cards (exported with `scripts/export-social.mjs`). See its README.
 - `styleguide.html` → `/styleguide/` — living component reference (noindex)
 
 ## Field notes collection
@@ -67,6 +67,10 @@ og_image: /assets/images/og/slug.jpg
 
 Optional: `cover_image`, `cover_caption`, `short_title` (sidebar label).
 Don't use `title_html` (retired with the v2 brand).
+
+After creating a post (or field note), generate its OG image:
+`python3 scripts/generate-og.py <slug>` (slug = the `og_image` filename).
+Twitter reuses the OG image — no `-twitter` variants.
 
 ## Notes
 

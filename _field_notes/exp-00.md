@@ -15,6 +15,7 @@ window: "Feb → May"
 measure: "evenings reclaimed, incidents caused"
 progress_pct: 100
 permalink: /field-notes/exp-00/
+og_image: /assets/images/og/exp-00.jpg
 summary: "Phone down at 4pm, non-negotiable. Ninety days of data on whether anything actually broke."
 facts:
   - label: window

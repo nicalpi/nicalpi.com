@@ -14,6 +14,7 @@ measure: "strategic hours per week"
 next_label: "Sept checkpoint"
 progress_pct: 23
 permalink: /field-notes/exp-01/
+og_image: /assets/images/og/exp-01.jpg
 roadmap:
   - "Sept — planned"
   - "Oct — verdict"

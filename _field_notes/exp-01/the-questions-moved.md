@@ -13,6 +13,7 @@ status_label: "still running"
 reading_time: 4
 next_label: "Sept checkpoint"
 permalink: /field-notes/exp-01/the-questions-moved/
+og_image: /assets/images/og/the-questions-moved.jpg
 metrics:
   - label: "unplanned interruptions / wk"
     before: "31"

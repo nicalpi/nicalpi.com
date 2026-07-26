@@ -1,39 +1,46 @@
 # Social image templates — NicAlpi v3
 
-Five HTML templates matching the site brand (JetBrains Mono, paper palette,
-blue accent). Same tokens as `assets/main.css`, defined in `social.css`.
+HTML templates matching the site brand (JetBrains Mono, paper palette, blue
+accent). Same tokens as `assets/main.css`, defined in `social.css`. Two
+groups:
+
+## 1. Generator templates (`{{…}}` placeholders)
+
+Filled automatically by `scripts/generate-og.py` from front matter — these
+produce every `og_image` under `assets/images/og/`.
+
+| Template | Size | Fed by |
+|---|---|---|
+| `og-post.html` | 1200×630 | `_posts/*` front matter (title, subtitle/description, category, reading_time) |
+| `og-field-note.html` | 1200×630 | experiment briefs (`home`-flagged metrics or `facts`) and progress notes (metrics) |
+| `og-page.html` | 1200×630 | the `PAGES` list inside the script (home, writing, about, contact, field-notes index) |
+
+```bash
+pip3 install playwright                      # once; uses your installed Chrome
+python3 scripts/generate-og.py               # regenerate every OG jpg
+python3 scripts/generate-og.py intention exp-01   # only these slugs
+```
+
+Slugs come from each post's `og_image` filename. New post → set
+`og_image: /assets/images/og/<slug>.jpg` in front matter, run the script,
+commit the jpg. Twitter uses the same image (no `-twitter` variants).
+
+## 2. Hand-edited promo cards
+
+Open in a browser, edit the text in place, export with
+`scripts/export-social.mjs` (Node + Playwright) or a screenshot at exact size.
+Add `?theme=dark` to the URL for the dark variant.
 
 | Template | Size | Use |
 |---|---|---|
-| `og-field-note.html` | 1200×630 | Link card for a field note (OG, LinkedIn, X) — headline + live metrics column |
 | `quote-square.html` | 1080×1080 | Quote card (Instagram, LinkedIn square) |
 | `verdict-square.html` | 1080×1080 | Solid-accent card for when an experiment closes |
-| `post-promo-portrait.html` | 1080×1350 | Blog post promo for portrait feeds (cover + title + pull quote) |
+| `post-promo-portrait.html` | 1080×1350 | Blog post promo for portrait feeds |
 | `newsletter-og.html` | 1200×630 | Newsletter / subscribe card |
-
-## Editing
-
-Open the HTML file and edit the text in place — every block is plain markup.
-Preview in a browser. Add `?theme=dark` to the URL for the dark variant.
-
-## Exporting
-
-```bash
-npm i -D playwright && npx playwright install chromium   # once
-node scripts/export-social.mjs                           # all templates, both themes, 2×
-node scripts/export-social.mjs og-field-note             # a single template
-```
-
-PNGs land in `assets/images/social/`. Alternatively, one-off at 1×:
-
-```bash
-npx -y playwright screenshot --viewport-size="1200,630" \
-  "assets/social-templates/og-field-note.html" og.png
-```
 
 ## Conventions
 
 - Keep the header strip / footer rule structure — that's the brand's frame.
 - Metrics always read `before → now` with the "now" in accent.
 - The verdict card is the only solid-accent surface; use it sparingly.
-- Export at 2× (the script default) for retina-crisp uploads.
+- OG images ship at 2× (2400×1260) for retina-crisp unfurls.
