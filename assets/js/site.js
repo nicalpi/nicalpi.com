@@ -97,4 +97,47 @@
   window.matchMedia('(min-width: 901px)').addEventListener('change', function (ev) {
     if (ev.matches && drawerIsOpen()) closeDrawer();
   });
+
+  /* ---------- newsletter (Kit) ----------
+     Intercepts the plain POST so the reader stays on the page and sees an
+     inline confirmation. If fetch fails for any reason, falls back to the
+     native submit, which lands on Kit's hosted confirmation page. */
+
+  document.querySelectorAll('[data-newsletter-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var note = form.querySelector('[data-newsletter-note]');
+      var button = form.querySelector('button[type="submit"]');
+      var input = form.querySelector('input[type="email"]');
+      button.disabled = true;
+      button.textContent = 'subscribing…';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.status === 'success') {
+            input.disabled = true;
+            button.textContent = 'subscribed ✓';
+            if (note) note.textContent = 'Success — now check your email to confirm your subscription.';
+          } else {
+            var msg = data && data.errors && data.errors.messages && data.errors.messages.length
+              ? data.errors.messages[data.errors.messages.length - 1]
+              : 'That didn’t go through — please try again.';
+            button.disabled = false;
+            button.textContent = 'subscribe';
+            if (note) note.textContent = msg;
+          }
+        })
+        .catch(function () {
+          // Network hiccup: fall back to the plain POST (Kit's hosted page).
+          // form.submit() bypasses submit listeners, so this cannot loop.
+          form.submit();
+        });
+    });
+  });
 })();

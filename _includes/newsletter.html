@@ -11,12 +11,15 @@
     <h2 id="newsletter-heading" class="m-0 text-[18px] md:text-[21px] font-bold tracking-[-0.015em] text-ink">{{ include.title | default: "One field-tested CTO practice, every fortnight" }}</h2>
     <p class="m-0 max-w-[66ch] text-[13.5px] leading-[1.8] text-muted">{{ include.text | default: "Real experiments, honest results, and no pretend certainty." }}</p>
   </div>
-  <form class="flex flex-col gap-2" action="#" method="post">
+  {% comment %} Kit (ConvertKit) form 5638226 — nicalpi-com.kit.com, uid 932adc3060.
+     Plain POST works without JS (lands on Kit's hosted confirmation page);
+     site.js intercepts submit for the inline success message. {% endcomment %}
+  <form class="flex flex-col gap-2" action="https://app.kit.com/forms/5638226/subscriptions" method="post" data-newsletter-form>
     <div class="flex flex-col sm:flex-row gap-2">
       <label for="newsletter-email" class="sr-only">Email address</label>
-      <input id="newsletter-email" type="email" name="email" required placeholder="you@company.com" class="news-input flex-1 sm:h-[42px] h-[46px]">
+      <input id="newsletter-email" type="email" name="email_address" required placeholder="you@company.com" class="news-input flex-1 sm:h-[42px] h-[46px]">
       <button type="submit" class="btn btn-sm sm:h-[42px] h-[46px] whitespace-nowrap">subscribe</button>
     </div>
-    <span class="text-[11.5px] text-muted">No spam. Unsubscribe anytime.</span>
+    <span class="text-[11.5px] text-muted" data-newsletter-note aria-live="polite">No spam. Unsubscribe anytime.</span>
   </form>
 </section>
