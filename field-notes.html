@@ -38,6 +38,7 @@ og_image: /assets/images/og/field-notes.jpg
         {% include fn/exp-card.html e=e %}
       {% endfor %}
 
+      {% if site.data.field_notes.queued.size > 0 %}
       <div class="queued-box">
         <span class="kicker">queued</span>
         <div class="checklist" style="font-size:13.5px;">
@@ -46,6 +47,7 @@ og_image: /assets/images/og/field-notes.jpg
           {% endfor %}
         </div>
       </div>
+      {% endif %}
     </div>
 
     <div class="mt-auto">{% include footer.html %}</div>

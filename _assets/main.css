@@ -72,7 +72,22 @@ p, li { text-wrap: pretty; }
 h1, h2, h3 { text-wrap: balance; }
 
 a { color: var(--accent); }
-a:hover { opacity: 0.78; }
+a:hover {
+  opacity: 0.78;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Buttons, chips and block cards signal hover with border/colour instead —
+   underlining their whole text block reads as noise. The a:hover rule above
+   outranks .no-underline (0,1,1 vs 0,1,0), so plain "no-underline" links
+   (home flagship title, list rows) DO gain an underline on hover. */
+a.btn:hover,
+a.chip:hover,
+a.icon-btn:hover,
+a.xcard:hover,
+a.fn-card:hover,
+a.skip-link:hover { text-decoration: none; }
 
 input::placeholder { color: var(--muted); }
 

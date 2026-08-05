@@ -6,7 +6,7 @@ og_type: article
 {% assign flagship = site.field_notes | where: "kind", "experiment" | where: "status", "running" | first %}
 
 <div class="with-sidebar" id="main-content">
-  {% include sidebar.html context="post" %}
+  {% include sidebar.html context="post" body=content %}
 
   <div class="flex flex-col min-w-0">
     {% include mobile-bar.html back_url="/blog/" back_label="writing" label=cat %}

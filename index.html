@@ -96,6 +96,8 @@ og_image: /assets/images/og/homepage.jpg
           {% endfor %}
         </div>
       </div>
+      {% assign closed_exp = experiments | where: "status", "closed" | first %}
+      {% if flagship_notes.size > 0 or closed_exp %}
       <div class="flex flex-col border-t border-line-2">
         {% for n in flagship_notes limit: 1 %}
         <a href="{{ n.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 border-b border-line-2 text-ink text-[12.5px] md:text-[13.5px]">
@@ -104,7 +106,6 @@ og_image: /assets/images/og/homepage.jpg
           <span class="text-[12px] text-muted">progress · {{ n.date | date: "%b" }}</span>
         </a>
         {% endfor %}
-        {% assign closed_exp = experiments | where: "status", "closed" | first %}
         {% if closed_exp %}
         <a href="{{ closed_exp.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 text-ink text-[12.5px] md:text-[13.5px]">
           <span class="text-[12px] text-muted">{{ closed_exp.exp_id }}</span>
@@ -113,6 +114,7 @@ og_image: /assets/images/og/homepage.jpg
         </a>
         {% endif %}
       </div>
+      {% endif %}
     </div>
     {% endif %}
   </section>

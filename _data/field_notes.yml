@@ -1,7 +1,6 @@
 # Queued experiments — shown in the "queued" box on /field-notes/
 # and in the home lab band. Promote one by creating _field_notes/exp-NN.md.
-queued:
-  - id: exp-02
-    text: "can AI review replace my first pass on pull requests?"
-  - id: exp-03
-    text: "what happens if the team runs a week without me in standup?"
+# Example entry:
+#   - id: exp-02
+#     text: "one-line question the experiment will answer"
+queued: []

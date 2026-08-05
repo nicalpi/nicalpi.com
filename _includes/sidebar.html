@@ -4,7 +4,7 @@
   Usage:
     {% include sidebar.html context="notes" %}    field-notes index
     {% include sidebar.html context="note" body=content %}  experiment brief / progress note
-    {% include sidebar.html context="post" %}     blog post
+    {% include sidebar.html context="post" body=content %}  blog post
     {% include sidebar.html context="writing" %}  blog index
     {% include sidebar.html context="about" %}    about page
     {% include sidebar.html context="drawer" %}   full-width pages (drawer only)
@@ -59,8 +59,9 @@
     <span class="sidebar-link is-sub is-dim">{{ step }}</span>
     {% endfor %}
   </nav>
+  {% endif %}
 
-  <!-- on this page -->
+  <!-- on this page (any context given body=content) -->
   {% assign heads = include.body | split: '<h2' %}
   {% if heads.size > 1 %}
   <nav class="flex flex-col gap-[2px]" aria-label="On this page">
@@ -71,7 +72,6 @@
       <a href="#{{ hid }}" class="sidebar-link" style="padding-top:4px;padding-bottom:4px;">{{ htitle | downcase }}</a>
     {% endfor %}
   </nav>
-  {% endif %}
   {% endif %}
 
   {% if ctx == "notes" %}
@@ -96,6 +96,30 @@
   </nav>
   {% endif %}
 
+  {% if ctx == "post" or ctx == "about" or ctx == "drawer" or ctx == "writing" %}
+  <!-- experiments overview -->
+  <nav class="flex flex-col gap-[2px]" aria-label="Field notes">
+    <span class="sidebar-label">field notes</span>
+    {% for e in experiments %}
+    <a href="{{ e.url }}" class="sidebar-link">
+      {% if e.status == "running" %}<span class="dot-running" aria-hidden="true">●</span><span>{{ e.exp_id }} · running</span>
+      {% else %}<span class="dot-closed" aria-hidden="true">○</span><span>{{ e.exp_id }} · {{ e.status }}</span>{% endif %}
+    </a>
+    {% endfor %}
+    <a href="/field-notes/" class="sidebar-link is-dim">all experiments</a>
+  </nav>
+  {% endif %}
+
+  {% if ctx == "about" %}
+  <nav class="flex flex-col gap-[2px]" aria-label="Elsewhere">
+    <span class="sidebar-label">elsewhere</span>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="sidebar-link">linkedin</a>
+    <a href="https://twitter.com/{{ site.twitter_username }}" class="sidebar-link">twitter/x</a>
+    <a href="https://github.com/{{ site.github_username }}" class="sidebar-link">github</a>
+  </nav>
+  {% endif %}
+
+  {% comment %} — writing: always the last section, just above the meta links — {% endcomment %}
   {% if ctx == "post" %}
   <!-- recent writing, current post highlighted -->
   <nav class="flex flex-col gap-[2px]" aria-label="Writing">
@@ -117,23 +141,7 @@
     <a href="/blog/" class="sidebar-link is-dim">+ {{ more }} more</a>
     {% endif %}
   </nav>
-  {% endif %}
-
-  {% if ctx == "post" or ctx == "about" or ctx == "drawer" or ctx == "writing" %}
-  <!-- experiments overview -->
-  <nav class="flex flex-col gap-[2px]" aria-label="Field notes">
-    <span class="sidebar-label">field notes</span>
-    {% for e in experiments %}
-    <a href="{{ e.url }}" class="sidebar-link">
-      {% if e.status == "running" %}<span class="dot-running" aria-hidden="true">●</span><span>{{ e.exp_id }} · running</span>
-      {% else %}<span class="dot-closed" aria-hidden="true">○</span><span>{{ e.exp_id }} · {{ e.status }}</span>{% endif %}
-    </a>
-    {% endfor %}
-    <a href="/field-notes/" class="sidebar-link is-dim">all experiments</a>
-  </nav>
-  {% endif %}
-
-  {% unless ctx == "post" %}
+  {% else %}
   <!-- writing categories -->
   <nav class="flex flex-col gap-[2px]" aria-label="Writing">
     <span class="sidebar-label">writing</span>
@@ -142,15 +150,6 @@
     {% for cat in cats %}
     <a href="/blog/#{{ cat | downcase | replace: ' ', '-' }}" class="sidebar-link">{{ cat | downcase }}</a>
     {% endfor %}
-  </nav>
-  {% endunless %}
-
-  {% if ctx == "about" %}
-  <nav class="flex flex-col gap-[2px]" aria-label="Elsewhere">
-    <span class="sidebar-label">elsewhere</span>
-    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="sidebar-link">linkedin</a>
-    <a href="https://twitter.com/{{ site.twitter_username }}" class="sidebar-link">twitter/x</a>
-    <a href="https://github.com/{{ site.github_username }}" class="sidebar-link">github</a>
   </nav>
   {% endif %}
 
