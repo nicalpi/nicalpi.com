@@ -119,10 +119,10 @@
   </nav>
   {% endif %}
 
-  {% comment %} — writing: always the last section, just above the meta links — {% endcomment %}
+  {% comment %} — writing: always the last section, pinned just above the meta links — {% endcomment %}
   {% if ctx == "post" %}
   <!-- recent writing, current post highlighted -->
-  <nav class="flex flex-col gap-[2px]" aria-label="Writing">
+  <nav class="mt-auto flex flex-col gap-[2px]" aria-label="Writing">
     <span class="sidebar-label">writing{% if page.category %} · {{ page.category | downcase }}{% endif %}</span>
     {% assign shown = 0 %}
     {% for p in site.posts %}
@@ -143,7 +143,7 @@
   </nav>
   {% else %}
   <!-- writing categories -->
-  <nav class="flex flex-col gap-[2px]" aria-label="Writing">
+  <nav class="mt-auto flex flex-col gap-[2px]" aria-label="Writing">
     <span class="sidebar-label">writing</span>
     <a href="/blog/" class="sidebar-link{% if ctx == 'writing' and page.topic == nil %} is-active{% endif %}">all posts</a>
     {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
@@ -153,8 +153,8 @@
   </nav>
   {% endif %}
 
-  <!-- meta + theme, pinned to the bottom -->
-  <div class="mt-auto flex flex-col gap-3 px-[18px]">
+  <!-- meta + theme, at the bottom below the pinned writing nav -->
+  <div class="flex flex-col gap-3 px-[18px]">
     <div class="flex flex-col gap-[2px] border-t border-line pt-3">
       <span class="sidebar-label" style="padding-left:0;">meta</span>
       <a href="/about/" class="no-underline block py-[3px] text-[12.5px] {% if ctx == 'about' %}text-accent{% else %}text-body hover:text-ink{% endif %}">about</a>
