@@ -106,14 +106,23 @@ a.skip-link:hover { text-decoration: none; }
 
 /* ---- Block links (rows and cards) ---------------------------
    .link-block on the <a>, .link-title on the title span: only the
-   title responds to hover, and a faint "→" after the title marks the
-   row as a link before any hover happens. */
+   title responds to hover. An accent "→" after the title fades and
+   bounces in on hover (space is reserved, so nothing reflows).
+   The global prefers-reduced-motion rule disables the animation. */
 .link-title::after {
   content: "→";
   display: inline-block; /* keeps the hover underline off the arrow */
   margin-left: 0.5em;
-  color: var(--faint);
+  color: var(--accent);
   font-weight: 400;
+  opacity: 0;
+}
+
+@keyframes link-arrow-in {
+  0%   { opacity: 0; transform: translateX(-6px); }
+  55%  { opacity: 1; transform: translateX(2px); }
+  75%  { transform: translateX(-1px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 a.link-block:hover .link-title,
@@ -126,7 +135,10 @@ a.xcard:hover .xcard-title {
 }
 
 a.link-block:hover .link-title::after,
-a.fn-card:hover .link-title::after { color: var(--accent); }
+a.fn-card:hover .link-title::after {
+  opacity: 1;
+  animation: link-arrow-in 0.3s ease-out;
+}
 
 input::placeholder { color: var(--muted); }
 

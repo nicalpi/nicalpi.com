@@ -68,9 +68,9 @@ Inline text links are accent-coloured with a **hairline underline in
 to `--accent` on hover. `.no-underline` opts out at rest; buttons, chips,
 sidebar links and cards are excluded from the hover underline in CSS.
 
-Row/card links use the **block-link pattern** — only the title responds, and
-a faint `→` (`--faint`, accent on hover) after the title marks it as a link
-before hover:
+Row/card links use the **block-link pattern** — only the title responds; an
+accent `→` after the title fades and bounces in on hover (space reserved, no
+reflow; disabled under reduced motion):
 ```html
 <a href="…" class="link-block no-underline text-ink …">
   <span class="link-title …">Post or experiment title</span>
