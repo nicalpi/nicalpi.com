@@ -74,7 +74,7 @@ og_image: /assets/images/og/homepage.jpg
       </div>
       <div class="grid md:grid-cols-[minmax(0,1fr)_320px] gap-5 md:gap-10 py-4 px-[14px] md:py-6 md:px-5">
         <div class="flex flex-col gap-3">
-          <a href="{{ flagship.url }}" class="no-underline text-ink text-[17px] md:text-[21px] leading-[1.4] font-bold tracking-[-0.015em]">{{ flagship.title }}</a>
+          <a href="{{ flagship.url }}" class="link-block no-underline text-ink text-[17px] md:text-[21px] leading-[1.4] font-bold tracking-[-0.015em]"><span class="link-title">{{ flagship.title }}</span></a>
           <p class="m-0 text-[13px] md:text-[13.5px] leading-[1.8] text-body">{{ flagship.summary }}</p>
           {% if flagship.progress_pct %}
           <div class="progress-track" role="progressbar" aria-valuenow="{{ flagship.progress_pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="Experiment progress">
@@ -86,6 +86,7 @@ og_image: /assets/images/og/homepage.jpg
             {% for t in flagship.tags %}<span class="chip text-muted">{{ t }}</span>{% endfor %}
           </div>
           {% endif %}
+          <a href="{{ flagship.url }}" class="no-underline text-[12.5px] text-accent mt-auto pt-1">read the full brief — question, protocol, guardrails →</a>
         </div>
         {% assign hm = flagship.metrics | where: "home", true %}
         <div class="flex flex-col border border-line rounded-brand overflow-hidden text-[12.5px]">
@@ -100,16 +101,16 @@ og_image: /assets/images/og/homepage.jpg
       {% if flagship_notes.size > 0 or closed_exp %}
       <div class="flex flex-col border-t border-line-2">
         {% for n in flagship_notes limit: 1 %}
-        <a href="{{ n.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 border-b border-line-2 text-ink text-[12.5px] md:text-[13.5px]">
+        <a href="{{ n.url }}" class="link-block no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 border-b border-line-2 text-ink text-[12.5px] md:text-[13.5px]">
           <span class="text-[12px] text-muted">{{ n.note_id }}</span>
-          <span class="max-md:hidden">{{ n.title | downcase }}</span>
+          <span class="link-title max-md:hidden">{{ n.title | downcase }}</span>
           <span class="text-[12px] text-muted">progress · {{ n.date | date: "%b" }}</span>
         </a>
         {% endfor %}
         {% if closed_exp %}
-        <a href="{{ closed_exp.url }}" class="no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 text-ink text-[12.5px] md:text-[13.5px]">
+        <a href="{{ closed_exp.url }}" class="link-block no-underline grid grid-cols-[88px_minmax(0,1fr)_max-content] max-md:flex max-md:justify-between gap-2 md:gap-[18px] items-baseline py-[11px] px-[14px] md:px-5 text-ink text-[12.5px] md:text-[13.5px]">
           <span class="text-[12px] text-muted">{{ closed_exp.exp_id }}</span>
-          <span class="max-md:hidden">{{ closed_exp.title | downcase }}</span>
+          <span class="link-title max-md:hidden">{{ closed_exp.title | downcase }}</span>
           <span class="text-[12px] text-accent">{{ closed_exp.status_label }}</span>
         </a>
         {% endif %}
@@ -131,11 +132,11 @@ og_image: /assets/images/og/homepage.jpg
     </div>
     <div class="flex flex-col">
       {% for post in site.posts %}
-      <a href="{{ post.url }}" class="no-underline text-ink grid max-md:flex max-md:flex-col grid-cols-[34px_minmax(0,1fr)_max-content] gap-1 md:gap-[22px] items-baseline py-[14px] md:py-[15px] border-b border-line-2 group">
+      <a href="{{ post.url }}" class="link-block no-underline text-ink grid max-md:flex max-md:flex-col grid-cols-[34px_minmax(0,1fr)_max-content] gap-1 md:gap-[22px] items-baseline py-[14px] md:py-[15px] border-b border-line-2 group">
         <span class="hidden md:block text-[12px] text-faint">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
         <span class="md:hidden text-[11.5px] text-muted">{{ post.category | downcase }} · {{ post.date | date: "%-d %b" }} · {{ post.reading_time | default: "5" }} min</span>
         <span class="flex flex-col gap-1">
-          <span class="text-[14.5px] md:text-[15.5px] font-bold tracking-[-0.01em] leading-[1.45] group-hover:text-accent">{{ post.title }}</span>
+          <span class="link-title text-[14.5px] md:text-[15.5px] font-bold tracking-[-0.01em] leading-[1.45] group-hover:text-accent">{{ post.title }}</span>
           {% if post.description %}<span class="hidden md:block text-[13px] text-muted leading-[1.7]">{{ post.description | truncate: 120 }}</span>{% endif %}
         </span>
         <span class="hidden md:block text-[12px] text-muted text-right whitespace-nowrap">{{ post.category | downcase }} · {{ post.date | date: "%-d %b" }} · {{ post.reading_time | default: "5" }} min</span>

@@ -62,6 +62,24 @@ Sticky header on inner pages. `{% include mobile-bar.html back_url="/" back_labe
 
 ## Primitives
 
+### Links (Aug 2026)
+Inline text links are accent-coloured with a **hairline underline in
+`--accent-line` at rest** (the pre-hover "this is a link" cue), strengthening
+to `--accent` on hover. `.no-underline` opts out at rest; buttons, chips,
+sidebar links and cards are excluded from the hover underline in CSS.
+
+Row/card links use the **block-link pattern** — only the title responds, and
+a faint `→` (`--faint`, accent on hover) after the title marks it as a link
+before hover:
+```html
+<a href="…" class="link-block no-underline text-ink …">
+  <span class="link-title …">Post or experiment title</span>
+  <span class="…">description, meta — never underlined</span>
+</a>
+```
+`.link-title` also works inside `.fn-card`; `.xcard` titles underline on
+hover without the arrow (their kickers already carry arrows).
+
 ### Buttons
 ```html
 <a class="btn" href="…">Get the next field note →</a>

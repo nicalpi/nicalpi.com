@@ -12,7 +12,7 @@
   </div>
   <div class="grid md:grid-cols-[minmax(0,1fr)_260px] gap-5 md:gap-8 p-4 md:py-5">
     <div class="flex flex-col gap-[9px]">
-      <span class="text-[17px] md:text-[19px] leading-[1.4] font-bold tracking-[-0.015em]">{{ e.title }}</span>
+      <span class="link-title text-[17px] md:text-[19px] leading-[1.4] font-bold tracking-[-0.015em]">{{ e.title }}</span>
       {% if e.summary %}<span class="text-[13px] md:text-[13.5px] leading-[1.8] text-body">{{ e.summary }}</span>{% endif %}
       {% if e.status == 'running' and e.progress_pct %}
       <div class="progress-track" role="progressbar" aria-valuenow="{{ e.progress_pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="Experiment progress">
