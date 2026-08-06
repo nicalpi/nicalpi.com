@@ -24,7 +24,7 @@ two things only.
 - 800–1800 words. When in doubt, shorter.
 - Anti-AI-tell pass at the end: no "delve", no rule-of-three padding, no
   "it's not X, it's Y" tics, no summary paragraph that restates the post.
-  (In the repo, the `humaziner` skill is the checklist for this.)
+  (In Claude Code, the `humanizer` plugin skill is the checklist for this.)
 
 ## The file
 

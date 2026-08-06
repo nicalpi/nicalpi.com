@@ -65,7 +65,7 @@ one month" · "calm isn't the opposite of ambition".
   next step instead.
 - Em-dash overuse; more than ~2 per paragraph means rewrite.
 - Inflated symbolism ("a testament to", "underscores the importance of").
-- In the repo, the `humaziner` skill is the full checklist — run it.
+- In Claude Code, the `humanizer` plugin skill is the full checklist — run it.
 
 ## Format cheat-sheet
 
