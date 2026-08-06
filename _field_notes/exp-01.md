@@ -3,7 +3,7 @@ kind: experiment
 exp: 01
 exp_id: exp-01
 title: "Can I stop being the fastest path to an answer?"
-lead: "I am the fastest path to an answer for twenty-two people, and that is the whole problem. For seven weeks I redirect every request that isn't mine — one line, no answer — and count whether the work finds its owner or just finds someone else."
+lead: "In ninety days, twenty-two people routed work to me — and fourteen of them don't work in engineering. For the next seven weeks I redirect every request that isn't mine, one line pointing to its owner, and count whether the work reaches the right person or just the next one who replies."
 description: "A seven-week experiment: I redirect every request that isn't mine and measure whether the work reaches its owner, or simply lands on the next available person."
 theme_tag: boundaries
 status: running
@@ -78,9 +78,9 @@ field_log:
 
 ## The question
 
-At 23:09 on a Thursday in July I ran a data reconciliation script by hand. It was the fifth run that day. I did it because nobody else on an eight-person engineering team could — not for want of skill, but because the script lives in my head and has never been written down.
+Most of the questions that reach me already have a better owner than me. There's a data reconciliation script that only I run — not for want of skill on an eight-person engineering team, but because the script lives in my head and has never been written down. And our support lead once posted a question and tagged both me and the engineering lead, twice, sixty seconds apart. That isn't escalation. That's someone guessing which of us answers first.
 
-Six weeks earlier our support lead posted a question and tagged two of us in it, me and the engineering lead, twice, sixty seconds apart. That isn't escalation. That's someone guessing which of us answers first. When I counted properly, twenty-two people had routed work to me over ninety days, and fourteen of them don't work in engineering.
+So I counted properly. Over ninety days, twenty-two people had routed work to me, and fourteen of them don't work in engineering.
 
 For the baseline I counted ten working days, 29 June to 10 July, retrospectively from Slack rather than tallied forward. Two numbers: requests that reached me when a named owner already existed elsewhere, and requests that owner resolved without me. Counting from logs after the fact means there is no observer effect, and no chance of me quietly forgetting to count on a bad day.
 
