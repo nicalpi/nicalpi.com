@@ -36,10 +36,15 @@ becomes the contents drawer automatically.
 </div>
 ```
 
-`sidebar.html` contexts: `notes` (field-notes index), `note` (brief/progress —
-pass `body=content` for the "on this page" list), `post`, `writing`, `about`,
-`drawer` (full-width pages: drawer only). The include resolves experiments and
-progress notes from the `field_notes` collection by itself.
+`sidebar.html` contexts: `notes` (field-notes index), `note` (brief/progress),
+`post`, `writing`, `about`, `drawer` (full-width pages: drawer only). Pass
+`body=content` from `note` and `post` layouts — that powers the "on this
+page" heading list (split on rendered `<h2>`s). The include resolves
+experiments and progress notes from the `field_notes` collection by itself.
+
+Section order inside the sidebar is fixed: context nav ("on this page",
+experiment tree) → field notes → **writing, pinned to the bottom with
+`mt-auto`** → meta links (about / work with me / rss) → theme toggle.
 
 ### Top nav (full-width pages)
 ```liquid
@@ -175,11 +180,17 @@ Prev/next and field-note cross-promotion.
 ```
 
 ### Queued box
-```html
+Renders queued experiments from `_data/field_notes.yml`; guard it so it
+disappears when the queue is empty.
+```liquid
+{% if site.data.field_notes.queued.size > 0 %}
 <div class="queued-box">
   <span class="kicker">queued</span>
-  <div class="checklist"><span class="check">exp-02 — …</span></div>
+  <div class="checklist">
+    {% for q in site.data.field_notes.queued %}<span class="check">{{ q.id }} — {{ q.text }}</span>{% endfor %}
+  </div>
 </div>
+{% endif %}
 ```
 
 ---
@@ -191,6 +202,11 @@ Prev/next and field-note cross-promotion.
 {% include newsletter.html %}
 {% include newsletter.html title="…" text="…" kicker="…" id="newsletter" %}
 ```
+Wired to Kit form 5638226 (plain POST of `email_address`, works without
+JS). `site.js` intercepts `[data-newsletter-form]` for an inline success
+message ("subscribed ✓" + check-your-email note in `[data-newsletter-note]`,
+`aria-live`); on network failure it falls back to the plain POST and Kit's
+hosted confirmation page.
 
 ### Footer — `footer.html`
 Slim © + links row; used at the bottom of every main column.

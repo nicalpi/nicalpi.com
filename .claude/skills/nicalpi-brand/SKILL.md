@@ -1,56 +1,66 @@
 ---
 name: nicalpi-brand
-description: Apply the NicAlpi personal brand system for Nic Alpi (nicalpi.com). Use this skill whenever generating visual assets (social cards, blog headers, quote images, diagrams), writing or reviewing web code (HTML, CSS, Jekyll, Tailwind), creating any on-brand content, or when asked about NicAlpi's design system, colour palette, typography, or voice. Trigger on any mention of: NicAlpi, nicalpi.com, the brand, brand guidelines, blog styling, social card, quote card, header image, field notes, or "on-brand". Also trigger when writing CSS variables or design tokens for Nic's projects.
+description: Apply the NicAlpi personal brand system for Nic Alpi (nicalpi.com). Use this skill whenever generating visual assets (social cards, blog headers, quote images, diagrams), writing or reviewing web code (HTML, CSS, Jekyll, Tailwind), writing or editing any content in Nic's voice (posts, field notes, newsletters, social copy, bios), or when asked about NicAlpi's design system, colour palette, typography, or voice. Trigger on any mention of: NicAlpi, nicalpi.com, the brand, brand guidelines, blog styling, social card, quote card, header image, field notes, "on-brand", or "in Nic's voice". Also trigger when writing CSS variables or design tokens for Nic's projects.
 ---
 
 # NicAlpi Brand System — v3 "Field Notes"
 
-Personal brand for Nic Alpi — CTO, agency founder, HYROX athlete, writer.
-Based in Bristol, UK.
+Personal brand for Nic Alpi — CTO at an age-tech company in Bristol, UK.
+Sold his 20-person Rails consultancy (CookiesHQ) in 2021. HYROX athlete,
+three kids, hard 4pm stop. Writes in public.
 
 **Core positioning:** the public CTO lab. "Change one thing. Measure it.
 Publish the result." Honest, measured, anti-performative. Field notes are
 experiments (baseline → protocol → guardrails → verdict), not essays.
+Verdicts get published even when the answer is "this did nothing".
 
 **Art direction:** rendered markdown. Faint `#`/`##` marks before headings,
 `- [ ]` / `- [x]` checklists kept as text, monospace everything, thin rules,
-one blue accent. Light and dark themes are first-class.
+one blue accent, warm paper surfaces. Light and dark themes are first-class.
+
+**Companion docs in this skill:**
+- `voice.md` — how Nic writes: register, sentence rules, vocabulary, AI-tells to avoid. Read it before writing any prose as Nic.
+- `components.md` — every site component with markup (repo work).
+- `social-cards.md` — OG images and promo card templates.
 
 ---
 
-## Quick Reference
+## Design tokens
 
-| Token | Light | Dark |
-|-------|-------|------|
-| `--canvas` (page surround) | `#E4E2DC` | `#0C0E11` |
-| `--panel` (page surface) | `#FCFCFA` | `#171A1F` |
-| `--side` (sidebar) | `#F5F3ED` | `#13161A` |
-| `--raise` (bands, table heads) | `#F9F8F4` | `#1D2127` |
-| `--ink` (headings) | `#191917` | `#F1F1ED` |
-| `--body` (body text) | `#4A4A45` | `#BFC2BE` |
-| `--muted` (meta) | `#77776E` | `#8B8F96` |
-| `--faint` (md marks, big numbers) | `#C4C2B8` | `#4B505A` |
-| `--line` (borders) | `#E4E2DA` | `#272B32` |
-| `--line2` (row dividers) | `#EDEBE4` | `#1F232A` |
-| `--accent` | `#1E4FD8` | `#82A9FF` |
-| `--accent-soft` (tints) | `#EAF0FE` | `#182339` |
-| `--accent-line` (tint borders) | `#BDCDF5` | `#2E4368` |
-| `--on-accent` | `#FFFFFF` | `#0C0E11` |
+| Token | Light | Dark | Use |
+|-------|-------|------|-----|
+| `--canvas` | `#E4E2DC` | `#0C0E11` | page surround, outside the frame |
+| `--panel` | `#FCFCFA` | `#171A1F` | main page surface |
+| `--side` | `#F5F3ED` | `#13161A` | sidebar surface |
+| `--raise` | `#F9F8F4` | `#1D2127` | raised bands, table heads |
+| `--ink` | `#191917` | `#F1F1ED` | headings, strong text |
+| `--body` | `#4A4A45` | `#BFC2BE` | body text |
+| `--muted` | `#77776E` | `#8B8F96` | meta, secondary |
+| `--faint` | `#C4C2B8` | `#4B505A` | md marks, big numbers — decorative only |
+| `--line` | `#E4E2DA` | `#272B32` | primary borders |
+| `--line2` | `#EDEBE4` | `#1F232A` | subtle row dividers |
+| `--accent` | `#1E4FD8` | `#82A9FF` | links, running state, CTAs |
+| `--accent-soft` | `#EAF0FE` | `#182339` | accent tint surfaces |
+| `--accent-line` | `#BDCDF5` | `#2E4368` | borders on accent surfaces, at-rest link underlines |
+| `--on-accent` | `#FFFFFF` | `#0C0E11` | text on accent |
 
-**Font:** JetBrains Mono only — 400 body, 500 medium, 700 bold. Loaded from
-Google Fonts. No DM Sans, no Caveat (v2 is retired).
+**Font:** JetBrains Mono only — 400 body, 500 medium, 700 bold (Google
+Fonts). No other typeface anywhere, including images. v2's DM Sans and
+Caveat are retired.
 
-Tokens live in `_assets/main.css` (`:root` = light, `[data-theme="dark"]` =
-dark). Tailwind maps them in `tailwind.config.js` (`text-ink`, `bg-panel`,
-`border-line`, `text-accent`, `bg-accent-soft`, `border-accent-line`,
-`rounded-brand` = 4px …). Never hard-code hex values in templates.
+In the repo, tokens live in `_assets/main.css` (`:root` = light,
+`[data-theme="dark"]` = dark); Tailwind maps them in `tailwind.config.js`
+(`text-ink`, `bg-panel`, `border-line`, `text-accent`, `bg-accent-soft`,
+`border-accent-line`, `rounded-brand` = 4px …). Never hard-code hex values
+in templates — outside the repo (mockups, artifacts), copy the token block
+verbatim.
 
 ## Theming
 
-- `data-theme` attribute on `<html>`; set pre-paint by an inline script in
+- `data-theme` on `<html>`; set pre-paint by an inline script in
   `_includes/head.html` (localStorage → `prefers-color-scheme` fallback).
-- `assets/js/site.js` handles toggles (`[data-theme-toggle]`), the ⌥T
-  shortcut, and the mobile contents drawer.
+- `assets/js/site.js` handles the toggles (`[data-theme-toggle]`), the ⌥T
+  shortcut, the mobile contents drawer, and the newsletter form.
 - Because every colour is a token, components need zero dark-mode variants.
 
 ## Typography scale
@@ -73,36 +83,63 @@ dark). Tailwind maps them in `tailwind.config.js` (`text-ink`, `bg-panel`,
   full-bleed below 1280px.
 - **Home** is full-width with a top nav (`nav-top.html`).
 - **Inner pages** use a 248px sidebar (`sidebar.html`, `.with-sidebar` grid)
-  with a breadcrumb bar (`.crumbs`) on top of the main column.
+  with a breadcrumb bar (`.crumbs`) on the main column.
+- Sidebar section order is fixed: context nav first ("on this page",
+  experiment tree), then field notes, then **writing pinned to the bottom**
+  (`mt-auto`) directly above the meta links (about / work with me / rss).
 - Below 900px the sidebar becomes an off-canvas **contents drawer** (same
-  markup) behind a burger button; inner pages get a sticky
-  `mobile-bar.html` header.
+  markup) behind a burger button; inner pages get a sticky `mobile-bar.html`.
 - Radius: 4px (`rounded-brand`) everywhere; 6px only on preview panels.
-- Rules and borders do the structure; shadows are not used.
+- Rules and borders do the structure; **no shadows**.
 
-## Voice
+## Links (the affordance system)
+
+- **Inline text links**: accent colour with a hairline underline in
+  `--accent-line` at rest — that faint underline is the "this is a link"
+  cue — strengthening to `--accent` on hover (1px, `text-underline-offset:
+  4px`).
+- **Block links** (list rows, cards): `.link-block` on the `<a>`,
+  `.link-title` on the title. Only the title underlines on hover; an accent
+  `→` after the title fades in with a slight bounce (`link-arrow-in`
+  keyframes; space reserved so nothing reflows; disabled under reduced
+  motion).
+- Buttons, chips, sidebar links and cards never underline — they signal
+  hover with border or colour shifts.
+- Big cards that need to be obviously readable also carry an explicit
+  accent text link, e.g. "read the full brief — question, protocol,
+  guardrails →".
+
+## Voice (summary — full guide in `voice.md`)
 
 - Lowercase for nav, labels, meta ("field notes", "work with me").
-- Sentence case for headings and body. No exclamation marks.
+  Sentence case for headings and body. No exclamation marks.
+- First person, plain words, short paragraphs. British English.
 - Numbers carry the story: `before → now` with "now" in accent.
 - Verdicts are one word: kept / dropped / inconclusive.
-- Honest hedges stay in ("small sample, read the direction, not the decimals").
+- Honest hedges stay in ("small sample, read the direction, not the
+  decimals"). No pretend certainty, no guru register.
 
 ## Accessibility
 
-- WCAG AA: ink on panel 15.9:1, body 9.4:1, muted 4.6:1, accent on panel 6.8:1
-  (light); equivalents hold in dark.
-- `--faint` is decorative only (md marks, big index numbers) — never for copy.
-- Focus: 2px accent outline (`:focus-visible`). Reduced motion respected.
-- Drawer: `aria-expanded`, Escape closes, focus moves to close button.
+- WCAG AA: ink on panel 15.9:1, body 9.4:1, muted 4.6:1, accent on panel
+  6.8:1 (light); equivalents hold in dark.
+- `--faint` is decorative only (md marks, index numbers) — never for copy.
+- Focus: 2px accent outline (`:focus-visible`). Reduced motion respected
+  globally (kills the link-arrow bounce too).
+- Drawer: `aria-expanded`, Escape closes, focus moves to the close button.
 
-## Where things live
+## Where things live (repo work)
 
 | Thing | Path |
 |---|---|
-| Design tokens + component CSS (source) | `_assets/main.css` → compiled by `yarn css` to `assets/main.css` |
+| Design tokens + component CSS (source) | `_assets/main.css` → compile with `yarn css` to `assets/main.css` (committed) |
 | Tailwind token mapping | `tailwind.config.js` |
 | Components (live examples) | `/styleguide/` (`styleguide.html`) |
 | Component reference | `components.md` in this skill |
 | Social image templates | `assets/social-templates/` + `social-cards.md` |
 | Field notes authoring guide | `_field_notes/README.md` |
+| Newsletter | Kit form 5638226; `_includes/newsletter.html` + `[data-newsletter-form]` handler in `site.js` (inline success, plain-POST fallback) |
+
+**On Claude Web** (no repo): apply the tokens, type scale and voice directly;
+output complete files or snippets and say what still needs doing in the repo
+(compile CSS, generate OG image). Never claim files were created.

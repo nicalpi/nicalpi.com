@@ -9,7 +9,11 @@ scratch. Full usage doc: `docs/guide.md` (gallery + workflows) and `assets/socia
 `scripts/generate-og.py` fills the placeholder templates from front matter
 and screenshots them to `assets/images/og/<slug>.jpg` (1200×630 @2×, light
 theme). Requires Python playwright (`pip3 install playwright`; drives the
-installed Chrome).
+installed Chrome — on Nic's machine use `/opt/homebrew/bin/python3.13`).
+
+The script's front-matter parser only reads **block-style YAML lists**
+(`- label: x` with indented keys) — inline `{ label: x, value: y }` entries
+make it crash. Write field-note front matter block-style.
 
 | Template | Fed by |
 |---|---|
