@@ -5,7 +5,7 @@ subtitle: "The productivity gain no one talks about"
 short_title: "Measuring AI by speed"
 description: "A seven-month AI experiment with an eight-person development team, and why I told my CEO I wasn't chasing 10x. The gain showed up in ticket quality and delivery planning, not in how fast we wrote code."
 category: AI
-reading_time: 7
+reading_time: 8
 date: 2026-09-12
 og_image: /assets/images/og/ai-measuring-wrong-thing.jpg
 ---
