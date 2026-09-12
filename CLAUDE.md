@@ -51,7 +51,52 @@ order is free and every `##` heading lands in the sidebar "on this page" list.
 
 `future: true` is set in `_config.yml` because launch content is dated ahead.
 
+## Writing blog posts — the workflow
+
+Blog posts go through a four-stage pipeline, modelled on the shape of Amba's
+ai-workflow: thin skills own the protocol and the approval gates, fresh-context
+agents own the judgment, and files are the only state. Target: two posts a week.
+
+```
+/quick-log <idea>          → .writings-memory/ideas.md            (no questions)
+/writing-outline [#N|text] → .writings-memory/<slug>/outline.md   (interview + cold read → approve)
+/writing-plan [slug]       → .writings-memory/<slug>/plan.md      (Nic's words verbatim + cold read → approve)
+/writing-post [slug]       → drafts/vN.md … → approve → _posts/   (ship, tick, remember, clean up)
+```
+
+Rules that hold across the pipeline:
+
+- **Capture is dumb.** When Nic drops an idea, `/quick-log` it. Never shape it
+  inline; shaping is `/writing-outline`.
+- **One approval gate per stage**, on a file Nic has seen in full. After
+  approval the skill finishes its stage without asking "continue?" again.
+- **Nothing reaches `_posts/` before draft approval.** Drafts live in
+  `.writings-memory/<slug>/drafts/`, one file per version, never overwritten.
+- **Never invent lived detail.** A visible `[…]` marker with the question
+  inside is the correct output when a story, number or name is missing.
+- **Read `.writings-memory/memory.md` before writing any post prose**, in any
+  skill or ad hoc. It holds the stable voice plus observed edits: what Nic cut,
+  replaced and added between agent drafts and the versions he approved.
+  `/writing-post` appends there after every ship; a pattern seen three times is
+  promoted into Voice.
+- **Agents have one write surface each.** `writing-researcher` (Sonnet, web +
+  repo, writes `<slug>/research/`), `writing-reader` (Fable, read-only cold read:
+  three findings max, one verdict line, Nic adjudicates), `writing-drafter`
+  (Fable, writes `<slug>/drafts/` only). Skills do every other write.
+- **`.writings-memory/` is committed.** The `<slug>/` folder is deleted on ship;
+  the post, the ticked idea line and the memory entry are the durable record.
+- The SessionStart hook `.claude/hooks/writing-context.sh` prints open ideas and
+  in-flight slugs with their next command (registered in `.claude/settings.json`).
+- An idea that is really an experiment (change one thing, measure it) is
+  redirected to `field-note-think`, not written as an essay.
+
+`post-think` and `post-write` are retired; the pipeline replaces them.
+
 ## Creating Posts
+
+`/writing-post` writes the file; the shape below is what it must produce, and
+what to use when a post is written by hand.
+
 
 `_posts/YYYY-MM-DD-title.md` with front matter:
 
