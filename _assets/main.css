@@ -208,19 +208,16 @@ input::placeholder { color: var(--muted); }
   text-underline-offset: 6px;
 }
 
-/* The page is one surface (no canvas). The sheet is a 1024px column with
-   air for code/images to spread into; running text sits in a 700px
-   .reading column centred inside it. */
+/* The page is one surface (no canvas). The sheet is a 1024px column
+   (880px inner). Blocks span it — titles, cards, code, images, tables,
+   list rows, the newsletter band — while running text (paragraphs, lists,
+   quotes) caps at --measure so a line stays around 78 characters. */
+:root { --measure: 640px; }
+
 .sheet {
   max-width: 1024px;
   margin: 0 auto;
   padding: 48px 72px 64px;
-}
-
-.reading {
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .site-footer {
@@ -318,7 +315,51 @@ input::placeholder { color: var(--muted); }
 
 /* ---- Hero (home) ---- */
 
-.hero { display: flex; flex-direction: column; gap: 18px; }
+.hero { display: flex; flex-direction: column; gap: 24px; }
+.hero-text { display: flex; flex-direction: column; gap: 18px; }
+
+.hero-side { display: flex; flex-direction: column; gap: 10px; }
+
+.hero-portrait {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.hero-portrait-empty {
+  border-style: dashed;
+  background: var(--side);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.hero-side-note {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (min-width: 800px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 799px) {
+  .hero-portrait { height: 220px; }
+  /* no photo yet: don't show a dashed box on phones */
+  .hero-portrait-empty, .hero-portrait-empty + .hero-side-note { display: none; }
+}
 
 .hero-kicker {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -328,8 +369,8 @@ input::placeholder { color: var(--muted); }
 
 .hero-title {
   margin: 0;
-  max-width: 40ch;
   font-size: 34px;
+  text-wrap: initial;
   line-height: 1.28;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -411,6 +452,23 @@ input::placeholder { color: var(--muted); }
   color: var(--muted);
 }
 
+/* Wide rows: title and description left, meta right. */
+@media (min-width: 800px) {
+  .post-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    grid-template-areas:
+      "title meta"
+      "desc  meta";
+    column-gap: 32px;
+    row-gap: 6px;
+    align-items: start;
+  }
+  .post-row-title { grid-area: title; }
+  .post-row-desc  { grid-area: desc; }
+  .post-row-meta  { grid-area: meta; text-align: right; padding-top: 4px; white-space: nowrap; }
+}
+
 /* ---- Beliefs (home) ---- */
 
 .beliefs {
@@ -433,6 +491,22 @@ input::placeholder { color: var(--muted); }
 }
 
 .beliefs strong { color: var(--ink); font-weight: 600; }
+
+.beliefs-intro { display: flex; flex-direction: column; gap: 10px; }
+.beliefs-intro .section-title { margin-top: 2px; text-wrap: initial; }
+.beliefs-intro .section-lead { margin-bottom: 16px; }
+
+/* Wide: intro left, the six beliefs right. */
+@media (min-width: 800px) {
+  .beliefs-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 48px;
+    align-items: start;
+  }
+  .beliefs-intro .section-lead { margin-bottom: 0; }
+  .beliefs { max-width: none; }
+}
 
 /* ---- Worked with (home) ---- */
 
@@ -474,6 +548,26 @@ input::placeholder { color: var(--muted); }
 .newsletter .section-title { margin-top: 2px; }
 .newsletter .section-lead { margin-bottom: 10px; max-width: 60ch; color: var(--body); }
 .newsletter .news-input { background: var(--panel); }
+
+/* Wide: copy left, form right, bottoms aligned. */
+@media (min-width: 800px) {
+  .newsletter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    grid-template-areas:
+      "kicker form"
+      "title  form"
+      "lead   form";
+    column-gap: 40px;
+    row-gap: 8px;
+    align-items: end;
+    padding: 30px 32px 32px;
+  }
+  .newsletter .kicker         { grid-area: kicker; align-self: start; }
+  .newsletter .section-title  { grid-area: title;  align-self: start; }
+  .newsletter .section-lead   { grid-area: lead;   margin-bottom: 0; }
+  .newsletter .newsletter-form { grid-area: form; }
+}
 .sheet-section + .newsletter { border-top: 1px solid var(--accent-line); }
 .newsletter + .sheet-section { border-top: 0; padding-top: 0; }
 .article + .newsletter { margin-top: 40px; margin-bottom: 0; }
@@ -563,6 +657,7 @@ input::placeholder { color: var(--muted); }
 
 .article-dek {
   margin: 0 0 26px;
+  max-width: 70ch;
   font-size: 18px;
   line-height: 1.6;
   color: var(--body);
@@ -606,21 +701,6 @@ input::placeholder { color: var(--muted); }
   .article-dek { font-size: 16px; }
 }
 
-/* Inside the wide sheet, code, images and tables may spread past the
-   700px reading column into the sheet's 880px inner width. */
-@media (min-width: 1081px) {
-  .reading .prose pre,
-  .reading .prose figure,
-  .reading .prose > img,
-  .reading .prose > p > img,
-  .reading .prose table {
-    margin-left: -120px;
-    margin-right: -120px;
-    width: calc(100% + 240px);
-    max-width: calc(100% + 240px);
-  }
-  .reading .prose figure img { width: 100%; }
-}
 
 /* ---- About ---- */
 
@@ -1151,6 +1231,20 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 }
 
 .prose > *:first-child { margin-top: 0; }
+
+/* Running text holds the measure; pre, figures, images and tables may
+   use the full width of whatever column .prose sits in. */
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > blockquote,
+.prose > h2,
+.prose > h3,
+.prose > h4,
+.prose > hr,
+.prose > .lead {
+  max-width: var(--measure);
+}
 
 .prose h2, .prose h3, .prose h4 {
   color: var(--ink);

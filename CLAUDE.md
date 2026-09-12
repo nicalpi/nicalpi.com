@@ -26,11 +26,13 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 **Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
 page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 `<main class="sheet">` → one-line `footer`, all on a single panel surface
-(no canvas). Running text sits in a 640px `.reading` column centred in the
-sheet (prose 18px/1.7 IBM Plex Sans ≈ 78 characters a line); code blocks,
-images and tables inside `.reading .prose` break out to the sheet's full
-inner width above 1080px. Pages and layouts only provide what goes inside
-the sheet. There is no sidebar, drawer or breadcrumb bar any more; the old
+(no canvas). Blocks span the sheet's 880px inner width — titles, cards,
+code, images, tables, list rows, the newsletter band — while running text
+(`.prose > p/ul/ol/blockquote/h2…`) caps at `--measure` (640px; prose is
+18px/1.7 IBM Plex Sans ≈ 78 characters a line). Above 800px, post rows put
+meta on the right, the beliefs list goes two-column and the newsletter is
+copy-left/form-right. Pages and layouts only provide what goes inside the
+sheet. There is no sidebar, drawer or breadcrumb bar any more; the old
 includes live in `_retired/` for reference.
 
 - `_assets/main.css` — token + component CSS **source** (edit this, then `yarn css`)
@@ -181,7 +183,7 @@ Twitter reuses the OG image — no `-twitter` variants.
 ## Notes
 
 - Every page is a 1024px column under a sticky top bar, on one panel
-  surface; prose lives in a 640px `.reading` column inside it. Four nav
+  surface; blocks span it, paragraphs cap at `--measure` (640px). Four nav
   links fit a phone width, so there is no drawer.
 - Portrait/photo slots on home + about read `site.portrait_image` from
   `_config.yml`; until it's set they show an on-brand placeholder.

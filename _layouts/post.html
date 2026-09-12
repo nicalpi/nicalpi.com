@@ -4,7 +4,7 @@ og_type: article
 ---
 {% assign cat = page.category | downcase %}
 
-<article class="article reading">
+<article class="article">
   <div class="article-meta">
     <a href="/blog/#{{ cat }}" class="no-underline text-accent">{{ cat }}</a>
     <span>{{ page.date | date: "%-d %b %Y" }}</span>
@@ -52,8 +52,6 @@ og_type: article
   {% endif %}
 </article>
 
-<div class="reading">
-  {% include newsletter.html %}
-</div>
+{% include newsletter.html %}
 
 {% include lightbox.html %}

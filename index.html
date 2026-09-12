@@ -7,13 +7,23 @@ og_image: /assets/images/og/homepage.jpg
 
 <!-- ============ HERO ============ -->
 <section class="sheet-section hero" aria-labelledby="hero-heading">
-  <span class="hero-kicker">hi, i'm nic — cto, bristol</span>
-  <h1 id="hero-heading" class="hero-title"><span class="md-mark"># </span>AI made output cheap. Good judgement is now the advantage.</h1>
-  <p class="hero-lead">Writing from a working CTO on leading teams, using AI without losing ownership, and getting useful work done without adding another system.</p>
-  <p class="hero-bio">I've been building software for <strong>20+ years</strong>. Co-founded a Rails consultancy, grew it to 20 people and over £1 million in revenue, sold it in 2021. Now I lead engineering at an age-tech company in Bristol. I run practical experiments on AI, attention, management and delivery — then publish <strong>what worked, what failed, and what I'm changing next</strong>.</p>
-  <div class="hero-actions">
-    <a href="#newsletter" class="btn">Get new posts by email →</a>
-    <a href="/blog/" class="btn btn-ghost">Start reading</a>
+  <div class="hero-text">
+    <span class="hero-kicker">hi, i'm nic — cto, bristol</span>
+    <h1 id="hero-heading" class="hero-title"><span class="md-mark"># </span>AI made output cheap.<br>Good judgement is now the advantage.</h1>
+    <p class="hero-lead">Writing from a working CTO on leading teams, using AI without losing ownership, and getting useful work done without adding another system.</p>
+    <p class="hero-bio">I've been building software for <strong>20+ years</strong>. Co-founded a Rails consultancy, grew it to 20 people and over £1 million in revenue, sold it in 2021. Now I lead engineering at an age-tech company in Bristol. I run practical experiments on AI, attention, management and delivery — then publish <strong>what worked, what failed, and what I'm changing next</strong>.</p>
+    <div class="hero-actions">
+      <a href="#newsletter" class="btn">Get new posts by email →</a>
+      <a href="/blog/" class="btn btn-ghost">Start reading</a>
+    </div>
+  </div>
+  <div class="hero-side">
+    {% if site.portrait_image %}
+    <img src="{{ site.portrait_image }}" alt="Portrait of Nic Alpi" class="hero-portrait" width="300" height="340">
+    {% else %}
+    <div class="hero-portrait hero-portrait-empty" aria-hidden="true">portrait of nic</div>
+    {% endif %}
+    <span class="hero-side-note">Bristol · HYROX at 5:30am · hard 4pm stop, non-negotiable</span>
   </div>
 </section>
 
@@ -38,11 +48,12 @@ og_image: /assets/images/og/homepage.jpg
 </section>
 
 <!-- ============ BELIEFS ============ -->
-<section class="sheet-section" aria-labelledby="beliefs-heading">
-  <div class="section-head">
-    <h2 id="beliefs-heading" class="section-title"><span class="md-mark">## </span>Six things I believe after 20 years</h2>
+<section class="sheet-section beliefs-section" aria-labelledby="beliefs-heading">
+  <div class="beliefs-intro">
+    <span class="kicker">what I've learned</span>
+    <h2 id="beliefs-heading" class="section-title"><span class="md-mark">## </span>Six things I believe<br>after 20 years</h2>
+    <p class="section-lead">Most technical leaders don't need another tool. The bottleneck is usually attention, and what happens after the decision.</p>
   </div>
-  <p class="section-lead">Most technical leaders don't need another tool. The bottleneck is usually attention, and what happens after the decision.</p>
   <ul class="beliefs">
     <li><strong>The best CTOs aren't the busiest.</strong> They've designed systems, teams and lives that don't require heroics.</li>
     <li><strong>Boring technology wins.</strong> Rails has been declared dead for 15 years. Still ships faster.</li>

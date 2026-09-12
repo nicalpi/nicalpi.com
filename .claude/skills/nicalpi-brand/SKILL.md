@@ -58,13 +58,14 @@ and Caveat stay retired.
 **Layout (since Sep 2026):** one sticky top bar (wordmark · writing ·
 about · work with me · theme), then a centred 1024px `.sheet`, then a
 one-line footer — all on the panel surface; the canvas token is no longer
-shown behind the page (Nic found the grey surround flat). Running text sits
-in a 640px `.reading` column centred in the sheet: prose 18px/1.7 Plex,
-about 78 characters a line; `strong` 600; the quotable blockquote 18.5px
-600 with a 3px accent bar. Code, images and tables in `.reading .prose`
-break out to the sheet's inner width above 1080px. The newsletter is an
-`accent-soft` band with an `accent-line` edge — the one tinted surface on
-the page. No sidebar, no drawer, no breadcrumbs. Field notes are paused
+shown behind the page (Nic found the grey surround flat). Blocks use the
+sheet's 880px inner width; running text caps at `--measure` (640px): prose
+18px/1.7 Plex, about 78 characters a line; `strong` 600; the quotable
+blockquote 18.5px 600 with a 3px accent bar. Code, images and tables run
+the full column. Above 800px, post rows carry meta on the right, the
+beliefs list is two columns, and the newsletter — an `accent-soft` band
+with an `accent-line` edge, the one tinted surface on the page — is
+copy-left/form-right. No sidebar, no drawer, no breadcrumbs. Field notes are paused
 (`output: false`); their layouts and `fn/` components stay in the repo for
 when the lab returns.
 
