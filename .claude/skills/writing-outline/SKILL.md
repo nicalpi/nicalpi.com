@@ -2,6 +2,7 @@
 name: writing-outline
 description: Shape a blog-post idea (new, or a line from .writings-memory/ideas.md) into an approved outline at .writings-memory/<slug>/outline.md — claim, reader, receipts, counterargument, structure. Interviews Nic, checks neighbouring ideas and existing posts, researches the web when a fact is needed, then runs a cold read before approval. Use when Nic says "outline", "let's shape this idea", "I want to write about…", or names an idea number.
 argument-hint: "[idea text | #N from ideas.md | slug to resume]"
+model: fable  # same reasoning as Amba /dev-plan: this layer sharpens the claim and adjudicates the Fable reader; a weaker adjudicator behind a Fable challenger is the mismatch
 effort: high  # the /dev-plan analogue: an outline miss multiplies through plan and draft
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, WebSearch, WebFetch
 ---

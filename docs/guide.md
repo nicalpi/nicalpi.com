@@ -244,10 +244,12 @@ finds the open slug on its own. Never run two stages in one sitting for the
 same post if you can help it; the cold read works best when you come back to
 the outline or draft with fresh eyes.
 
-Skills carry no model pin, so `/model` picks the coordinator (Opus is the
-recommended default; Fable for `/writing-outline` when the claim is hard to
-find). The `writing-drafter` and `writing-reader` agents are pinned to Fable,
-`writing-researcher` to Sonnet.
+Models follow the Amba rule: pin where the stage's own judgment compounds or
+where cheap is clearly enough. `writing-outline` is pinned to Fable,
+`writing-publish` to Sonnet, `quick-log` to Haiku; `writing-brainstorm`,
+`writing-plan` and `writing-post` take the session model (`/model`, Opus by
+default) because their heavy lifting is in the agents. Agents:
+`writing-drafter` and `writing-reader` on Fable, `writing-researcher` on Sonnet.
 
 **Using them on Claude Web (personal, not org-shared)**
 
