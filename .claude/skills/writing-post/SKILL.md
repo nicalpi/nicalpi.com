@@ -62,7 +62,12 @@ He replies with edits, answers to markers, a named pass, or approval. For edits:
   `opening` (more provocative, reader slightly challenged) · `hedges` (strip
   scope hedges, keep honest ones) · `active` (passive voice → active) ·
   `cut` (remove 15% by weakest paragraph first) · `titles` (five alternatives)
-  · `end` (replace any summary with the last fact).
+  · `end` (replace any summary with the last fact) · `concrete` (every vague
+  or generic phrase → the specific thing, or a `[…]` if the specific thing is
+  unknown) · `jumps` (flag each place the logic moves without the reader
+  seeing why; fix only where the plan has the bridging material).
+  Every new version comes with a short change list: what moved, and why, so
+  he can see the edit and not just the result.
 - **Structural** (cut a section, change the opening, re-order) → re-dispatch
   the drafter for **that section only**, with the previous version, the plan's
   material for the section and his feedback as brief. Splice the result.

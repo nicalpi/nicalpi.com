@@ -56,6 +56,9 @@ time, five to eight total, each with a recommended answer where you have one:
 3. **The receipts.** Two or three concrete moments or numbers from his own work.
    Push past "sometimes teams…" to a named situation.
 4. **The counterargument.** Steelman it. Decide: absorb it, or narrow the claim.
+   Also ask: what do people commonly get wrong about this, and which of those
+   misconceptions does the post correct? A named misconception is often the
+   sharpest way in.
 5. **The shape.** Propose **two structures**, each three to five sections with
    a one-line note on why that structure serves the claim (for example: scene →
    pattern → claim → objection → what I do now; or three moments that each earn

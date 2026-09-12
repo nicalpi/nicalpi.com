@@ -65,6 +65,7 @@ N. <one line in Nic's words — a claim, not a topic>
    receipt: <the moment, number or story from the mining or his answers>
    angle: <contrarian | what I got wrong | the number | the conversation | field-note spin-off | reply to something read>
    why now: <one line>
+   vs the generic take: <what everyone else writes on this, and how this differs>
    register: <ai|leadership|business|career|personal>
 ```
 

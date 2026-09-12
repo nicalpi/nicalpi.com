@@ -48,8 +48,10 @@ generic one.
    claim the plan did not support, or a scope hedge ("some teams, sometimes")
    where he believes the unhedged version. Honest hedges about sample size are
    his voice; do not flag them.
-3. **What is the weakest section?** Name it and say whether cutting it would make
-   the post better. Nic's rule is "when in doubt, shorter".
+3. **Where does the logic jump, and what is the weakest section?** Name the
+   place the post moves from A to C without showing B, if there is one. Then
+   name the weakest section and say whether cutting it would make the post
+   better. Nic's rule is "when in doubt, shorter".
 
 ## How you return
 
