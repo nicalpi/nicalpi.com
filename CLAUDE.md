@@ -74,14 +74,14 @@ Rules that hold across the pipeline:
   detail), old posts and the inbox, asks up to five moment-prompts, and lands
   picked candidates in `ideas.md`. It never shapes a post. The session hook
   nudges towards it when fewer than four ideas are open.
-- **Model choice follows Amba's rule: pin where the stage's own judgment
-  compounds or where cheap is clearly enough, otherwise let the session model
-  coordinate.** Pinned: `writing-outline` → Fable (it sharpens the claim and
-  adjudicates the Fable reader), `writing-publish` → Sonnet (frozen words,
-  mechanical steps), `quick-log` → Haiku. Unpinned, so `/model` (Opus by
-  default) coordinates: `writing-brainstorm`, `writing-plan`, `writing-post`,
-  whose heavy lifting is in agents. Agents: `writing-drafter` and
-  `writing-reader` → Fable, `writing-researcher` → Sonnet.
+- **Every skill and agent pins its model.** Sessions default to Opus, but
+  nothing inherits: each front matter names the best model for its role.
+  Fable where the stage's judgment compounds into later stages
+  (`writing-outline`, `writing-post`, `writing-drafter`, `writing-reader`);
+  Opus for conversational lanes where Nic filters the output
+  (`writing-brainstorm`, `writing-plan`); Sonnet for retrieval and mechanical
+  work (`writing-researcher`, `writing-publish`); Haiku for `quick-log`. Effort
+  is pinned alongside, with the reason as a comment.
 - **Preview without shipping.** In `/writing-post`, the `preview` pass copies
   the current draft to `_drafts/<slug>.md` (gitignored); `bundle exec jekyll
   serve --drafts` renders it at `/blog/<slug>/` in the real layout.

@@ -244,12 +244,20 @@ finds the open slug on its own. Never run two stages in one sitting for the
 same post if you can help it; the cold read works best when you come back to
 the outline or draft with fresh eyes.
 
-Models follow the Amba rule: pin where the stage's own judgment compounds or
-where cheap is clearly enough. `writing-outline` is pinned to Fable,
-`writing-publish` to Sonnet, `quick-log` to Haiku; `writing-brainstorm`,
-`writing-plan` and `writing-post` take the session model (`/model`, Opus by
-default) because their heavy lifting is in the agents. Agents:
-`writing-drafter` and `writing-reader` on Fable, `writing-researcher` on Sonnet.
+Every skill and agent pins its own model and effort; the session default
+(Opus) is never inherited.
+
+| | Model | Effort | Why |
+|---|---|---|---|
+| `quick-log` | Haiku | low | an append with a duplicate check |
+| `writing-brainstorm` | Opus | medium | divergent and conversational; you filter |
+| `writing-outline` | Fable | high | sharpens the claim and adjudicates the Fable reader; a miss multiplies downstream |
+| `writing-plan` | Opus | medium | interview and verbatim capture; judgment is in the reader |
+| `writing-post` | Fable | high | edits prose in your voice and writes the memory entry every future draft inherits |
+| `writing-publish` | Sonnet | medium | frozen words, mechanical steps, templated art direction |
+| `writing-researcher` | Sonnet | medium | retrieval with verified/inferred marking |
+| `writing-reader` | Fable | medium | fresh-context challenger, bounded to three findings |
+| `writing-drafter` | Fable | high | the one artefact where quality compounds |
 
 **Using them on Claude Web (personal, not org-shared)**
 
