@@ -57,10 +57,21 @@ body {
   -webkit-font-smoothing: antialiased;
   background: var(--canvas);
   color: var(--ink);
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 14px;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
   line-height: 1.7;
   min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6,
+nav, .crumbs, .mobile-bar,
+.sidebar, .font-mono,
+code, pre, kbd, samp,
+.chip, .fn-meta, .meta-block,
+.kicker, .btn, .btn-ghost,
+footer, .footer,
+[class*="text-mono"] {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 ::selection {
@@ -734,8 +745,8 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
    ============================================================ */
 
 .prose {
-  font-size: 14.5px;
-  line-height: 1.9;
+  font-size: 15.5px;
+  line-height: 1.82;
   color: var(--body);
 }
 

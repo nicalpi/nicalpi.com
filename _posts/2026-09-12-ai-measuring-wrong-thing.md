@@ -22,7 +22,9 @@ I assumed, and I was wrong, that the finding was going to be about which tool wo
 
 The output depended a lot on the developer using the tool. Some were extremely sharp with them and doing an OK job. Some trusted the tools too much and sent back mountains of code we had to reject.
 
-Reviewing all that output is when we realised the naked approach was going to be the problem for us. These tools are good at writing code, but they had no idea how we wanted them to work. So I approached the workflow almost as if I was documenting for a team of new project managers, business analysts, developers and QA who were about to join us, explaining to each of them how we wanted them to work with us.
+Reviewing all that output is when we realised the naked approach was going to be the problem for us. These tools are good at writing code, but **they had no idea how we wanted them to work**.
+
+So I approached the workflow almost as if I was documenting for a team of new project managers, business analysts, developers and QA who were about to join us, explaining to each of them how we wanted them to work with us.
 
 ## Where the gain actually sits
 
@@ -32,9 +34,11 @@ The assumption was that a couple of conversations with the developer, plus the f
 
 The reality, and we knew it, was that developers were often confused midway through because there were unexpected decisions to make. QA had no clear acceptance criteria and no context on what the sensor was doing. And more importantly, we were probably skipping the part that would have pushed us to think about what this integration meant for the product as a whole.
 
-Today, if we tell the workflow we need to integrate with this sensor, here's the documentation and here's the blurb about what we know, the flow reads the full documentation with our code as context. It builds a multi-card epic: connecting the sensor to the platform, then data ingestion, then data rendering. It writes user stories for every sub-ticket and QA acceptance criteria to go with them. Then it helps the developer turn that scope into a locked-in delivery plan, ticket by ticket.
+Today, if we tell the workflow we need to integrate with this sensor, here's the documentation and here's the blurb about what we know, the flow reads the full documentation with our code as context. It builds a multi-card epic: connecting the sensor to the platform, then data ingestion, then data rendering. It writes user stories for every sub-ticket and QA acceptance criteria to go with them.
 
-Not one line of that is code. All of it is the work that used to get done badly, or not at all, before anyone opened an editor. The workflow does what good ticket-writing would always have done, except now it's the default rather than something you get when someone has the time.
+Then it helps the developer turn that scope into a locked-in delivery plan, ticket by ticket.
+
+**Not one line of that is code.** All of it is the work that used to get done badly, or not at all, before anyone opened an editor. The workflow does what good ticket-writing would always have done, except now it's the default rather than something you get when someone has the time.
 
 ## What better looks like
 
@@ -44,7 +48,9 @@ Within the same couple of days, two things happened. We had the hunch, and then 
 
 The hunch was confirmed when we started looking at exposing a "regenerate token" option. There was a race condition between token generation and consumption, and it could leave tokens dead. It was silent because the sensor kept sending data and we kept ingesting it. What we lost was access to the deeper data through the API, which is the kind of thing nobody notices until someone goes looking.
 
-I used our workflow to expose the issue. I gave it the API endpoints we needed to integrate, and together we traced the problem and decided on a plan of attack: fix the race condition as far as we could, and give support an option in the app to regenerate the token if it ever happened again. The agent wrote all of the code. I shaped the solution and traced the issue with it.
+I used our workflow to expose the issue. I gave it the API endpoints we needed to integrate, and together we traced the problem and decided on a plan of attack: fix the race condition as far as we could, and give support an option in the app to regenerate the token if it ever happened again.
+
+The agent wrote all of the code. I shaped the solution and traced the issue with it.
 
 The irony is that the fix is solid, and the regenerate option has, so far, never been used.
 
@@ -62,7 +68,9 @@ I told him I wasn't interested in 10x. Maybe 1.25, maybe 1.5, because we now had
 
 > I didn't want us to push more tickets. I wanted us to spend more relative time on a ticket, and when a ticket was pushed, for it to be solving more and better.
 
-The feedback from the team backed this up. It came at different times and in different moments, all from senior developers, and I don't remember it word for word. But every single developer, including the ones who resisted the introduction because they liked to "feel in control", said after a few months that they saw real benefits. The part I hold on to is that they feel they're doing a better job with it, and that they haven't lost ownership of what gets built.
+The feedback from the team backed this up. It came at different times and in different moments, all from senior developers, and I don't remember it word for word. But every single developer, including the ones who resisted the introduction because they liked to "feel in control", said after a few months that they saw real benefits.
+
+The part I hold on to is that they feel they're doing a better job with it, and that **they haven't lost ownership of what gets built**.
 
 That last point matters to me. I wrote in January that [if you can't explain the code, AI isn't helping you](/blog/if-you-cant-explain-the-code-ai-is-not-helping). That was about the individual developer. This is what it looks like when you try to make it true for a whole team.
 
@@ -72,13 +80,21 @@ The fair pushback is that I've been writing software for 30 years, 15 of them as
 
 Yes. That's right. And that's the whole point.
 
-Writing code entirely by hand is becoming less prevalent as a developer, at least while AI is around. Being able to understand a problem and translate it into a clear plan was a very desirable skill in a developer before. It's now mandatory if they want to be productive with AI. Scoping is my job. Delivery planning is the developer's job, and that's exactly where the workflow changed how they behave, because it forces the planning conversation whether or not the developer would have had it on their own.
+Writing code entirely by hand is becoming less prevalent as a developer, at least while AI is around. Being able to understand a problem and translate it into a clear plan was a very desirable skill in a developer before. It's now mandatory if they want to be productive with AI.
 
-The harder pushback is that I've swapped a bad metric for no metric. That one lands. I don't have clear metrics yet, only what's in front of me day to day: the 50-odd tickets we've built with the workflow and the low rejection rate that came with them, and a clear sense from the wider team that we're doing a good job. We're working on embedding those metrics into the workflow now. Until then, what I see is enough to know the direction is right, and the time we've saved on writing code is going back into planning what we write. That was the intent from the start.
+**Scoping is my job. Delivery planning is the developer's job**, and that's exactly where the workflow changed how they behave, because it forces the planning conversation whether or not the developer would have had it on their own.
+
+The harder pushback is that I've swapped a bad metric for no metric. That one lands.
+
+I don't have clear metrics yet, only what's in front of me day to day: the 50-odd tickets we've built with the workflow and the low rejection rate that came with them, and a clear sense from the wider team that we're doing a good job. We're working on embedding those metrics into the workflow now.
+
+Until then, what I see is enough to know the direction is right, and **the time we've saved on writing code is going back into planning what we write**. That was the intent from the start.
 
 ## Where we are now
 
-The workflow is out of beta and used by the whole development team. It's going through small refinements as we find ways to improve it, but we're out of the "improve it all the time" phase and into the stable one. We can pair with it in attended mode, and we can dispatch autonomous tasks to it straight from our GitHub board, so it does everything we want for the moment.
+The workflow is out of beta and used by the whole development team. It's going through small refinements as we find ways to improve it, but we're out of the "improve it all the time" phase and into the stable one.
+
+We can pair with it in attended mode, and we can dispatch autonomous tasks to it straight from our GitHub board, so it does everything we want for the moment.
 
 What's left is a human problem: us getting more proficient with it.
 
