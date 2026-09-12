@@ -38,6 +38,9 @@ writing a word:
 - **One claim.** Ideas the plan lists under "spare" stay out.
 - **Absorb the counterargument** where the plan places it, in Nic's register:
   "to be clear, calm isn't the opposite of ambition", not a debate paragraph.
+- **Connected thought.** Short paragraphs, but each sentence carries on from
+  the last. No staccato run of one-line fragments for effect, and no paragraph
+  that could open a press release.
 - **Shape.** `##` headings, sentence case, 3–5 sections. One blockquote at most,
   for the quotable line. Lists only when a list is the shape. 800–1800 words;
   when in doubt, shorter. End on the last fact or the next step. No closing
@@ -67,9 +70,22 @@ Optional: `short_title` (sidebar label, 28 chars max). Never `title_html`.
 
 Write nothing outside `.writings-memory/<slug>/drafts/`. Never touch `_posts/`.
 
+## Section-only briefs
+
+When the skill asks for one section redrafted, read the current draft version
+and the plan's material for that section, write only that section's text, and
+return it as text (not a file). Match the surrounding paragraphs' rhythm so
+the splice is invisible.
+
 ## What you return
 
 The path you wrote, the word count, and a list of every `[…]` marker with its
-line number. Then at most three lines on choices you made that the plan left
-open, so the skill can surface them to Nic. No commentary on the post's
-quality; the reader agent judges that.
+line number. Then, because the first option is rarely the best:
+
+- **three alternative titles**, plain-spoken, none clickbait;
+- **one alternative opening paragraph**, a different moment or a different
+  entry into the same moment.
+
+Then at most three lines on choices you made that the plan left open, so the
+skill can surface them to Nic. No commentary on the post's quality; the reader
+agent judges that.

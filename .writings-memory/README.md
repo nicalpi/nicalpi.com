@@ -1,7 +1,7 @@
 # .writings-memory
 
-Working state for the writing workflow (`/quick-log` → `/writing-outline` →
-`/writing-plan` → `/writing-post`). Committed on purpose: the history of how a
+Working state for the writing workflow (`/writing-brainstorm` → `/quick-log` →
+`/writing-outline` → `/writing-plan` → `/writing-post` → `/writing-publish`). Committed on purpose: the history of how a
 post was shaped is worth keeping, and it works across machines.
 
 ```
@@ -12,18 +12,20 @@ memory.md           how Nic writes: stable voice + observed edits, read by every
   plan.md           /writing-plan — outline expanded with Nic's own words (status: plan)
   research/         optional web/reading notes from writing-researcher
   drafts/           v1, v2 … from /writing-post until approved
+  approved.md       the frozen approved text (status: approved) — input to /writing-publish
 ```
 
-A `<slug>/` folder is deleted by `/writing-post` once the post is approved and
-written to `_posts/`. Its idea line in `ideas.md` is ticked in the same step and
-`memory.md` gains what the approval edits taught us.
+`/writing-post` ends at approval: it writes `approved.md` and the `memory.md`
+entry (the diff between v1 and approved is the evidence). `/writing-publish`
+then creates `_posts/…`, images and the commit, ticks the idea line in
+`ideas.md`, and deletes the `<slug>/` folder.
 
 Front-matter on `outline.md` and `plan.md`:
 
 ```yaml
 ---
 slug: <slug>
-status: outline | plan | drafting
+status: outline | plan | drafting | approved
 idea: <the exact line from ideas.md, or "ad hoc">
 updated: YYYY-MM-DD
 ---

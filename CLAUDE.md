@@ -58,13 +58,29 @@ ai-workflow: thin skills own the protocol and the approval gates, fresh-context
 agents own the judgment, and files are the only state. Target: two posts a week.
 
 ```
+/writing-brainstorm        → 5–8 candidates from his week → picked ones land in ideas.md
 /quick-log <idea>          → .writings-memory/ideas.md            (no questions)
 /writing-outline [#N|text] → .writings-memory/<slug>/outline.md   (interview + cold read → approve)
 /writing-plan [slug]       → .writings-memory/<slug>/plan.md      (Nic's words verbatim + cold read → approve)
-/writing-post [slug]       → drafts/vN.md … → approve → _posts/   (ship, tick, remember, clean up)
+/writing-post [slug]       → drafts/vN.md … → approve → approved.md (memory.md learns from the edits)
+/writing-publish [slug]    → _posts/ + OG image + optional illustrations/promo cards → build → tick, clean up, commit
 ```
 
 Rules that hold across the pipeline:
+
+- **Brainstorming is its own verb.** Finding what to write about is where Nic
+  stalls most, so `/writing-brainstorm` is divergent only: it mines field
+  notes, recent commits (here and in the Amba checkout, read-only, no customer
+  detail), old posts and the inbox, asks up to five moment-prompts, and lands
+  picked candidates in `ideas.md`. It never shapes a post. The session hook
+  nudges towards it when fewer than four ideas are open.
+- **Model choice.** The skills carry no model pin; the session model (`/model`)
+  is the coordinator. The `writing-drafter` and `writing-reader` agents are
+  pinned to Fable because that is where quality compounds; `writing-researcher`
+  runs on Sonnet.
+- **Preview without shipping.** In `/writing-post`, the `preview` pass copies
+  the current draft to `_drafts/<slug>.md` (gitignored); `bundle exec jekyll
+  serve --drafts` renders it at `/blog/<slug>/` in the real layout.
 
 - **Capture is dumb.** When Nic drops an idea, `/quick-log` it. Never shape it
   inline; shaping is `/writing-outline`.
@@ -72,13 +88,32 @@ Rules that hold across the pipeline:
   approval the skill finishes its stage without asking "continue?" again.
 - **Nothing reaches `_posts/` before draft approval.** Drafts live in
   `.writings-memory/<slug>/drafts/`, one file per version, never overwritten.
+  `/writing-post` freezes the approved text as `approved.md`; only
+  `/writing-publish` writes `_posts/`, and it never changes the words.
+- **Publishing is visual work, not editing.** `/writing-publish` generates the
+  OG card from front matter (fix the front matter, never the jpg), offers at
+  most three inline illustrations as brand-token HTML rendered with
+  `scripts/render-illustration.py` (needs `/opt/homebrew/bin/python3.13`, the
+  one with Playwright), and optional quote/portrait promo cards from the social
+  templates. No stock or AI-generated photography. One question round for the
+  visuals, then it runs to the commit.
 - **Never invent lived detail.** A visible `[…]` marker with the question
   inside is the correct output when a story, number or name is missing.
 - **Read `.writings-memory/memory.md` before writing any post prose**, in any
-  skill or ad hoc. It holds the stable voice plus observed edits: what Nic cut,
-  replaced and added between agent drafts and the versions he approved.
-  `/writing-post` appends there after every ship; a pattern seen three times is
-  promoted into Voice.
+  skill or ad hoc. It holds who is writing, the stable voice, rules Nic added,
+  calibration posts, and observed edits: what Nic cut, replaced and added
+  between agent drafts and the versions he approved. `/writing-post` appends
+  there after every ship; a pattern seen three times is promoted into Voice.
+- **The memory grows two ways.** Every time a draft sounds off and Nic says
+  why, the rule goes into memory the same day. Every time a post ships with
+  light edits, it joins the calibration list. Voice is learned from evidence,
+  not asserted.
+- **Every draft goes through the `humanizer:humanizer` plugin skill** inside
+  `/writing-post`, after the drafter and before the cold read. Ad hoc post prose
+  written outside the pipeline gets the same pass before Nic sees it.
+- **Options before commitment.** The outline offers two structures, the claim
+  gets an "uncomfortable version" Nic can dial back, and the drafter returns
+  alternative titles and openings. The first option is rarely the best.
 - **Agents have one write surface each.** `writing-researcher` (Sonnet, web +
   repo, writes `<slug>/research/`), `writing-reader` (Fable, read-only cold read:
   three findings max, one verdict line, Nic adjudicates), `writing-drafter`

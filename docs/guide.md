@@ -198,7 +198,7 @@ verdict"), and celebrate publishing a failure if it is one.
 
 ## 5. The authoring skills
 
-Nine skills automate the workflows above — in Claude Code here, and in
+Eleven skills automate the workflows above — in Claude Code here, and in
 your personal Claude Web account. The pattern is always **think → write**:
 a THINK skill interviews you and applies judgment until the idea is framed;
 a WRITE skill turns the frame into on-brand files.
@@ -209,10 +209,12 @@ a WRITE skill turns the frame into on-brand files.
 | `field-note-write` | Frame → `_field_notes/exp-NN.md` + queue update + OG image |
 | `progress-think` | Checkpoint debrief → progress frame (numbers vs baseline, what went wrong, guardrail check, adjustments) |
 | `progress-write` | Frame → `_field_notes/exp-NN/<slug>.md` + brief updates (field log, progress %, roadmap) + OG image |
+| `writing-brainstorm` | Divergent session: mines your week, asks moment-prompts, lands 5–8 candidates in `ideas.md` |
 | `quick-log` | One-line idea → `.writings-memory/ideas.md`. No questions. |
 | `writing-outline` | Idea → approved `.writings-memory/<slug>/outline.md` (claim, reader, receipts, counterargument, structure) with a cold read |
 | `writing-plan` | Outline → `.writings-memory/<slug>/plan.md`, your words and numbers captured verbatim per section |
-| `writing-post` | Plan → drafts → approval → `_posts/…` + OG image, ticks the idea, updates `memory.md`, cleans up |
+| `writing-post` | Plan → versioned drafts (humanizer + cold read each) → approval → `approved.md`, `memory.md` learns from your edits |
+| `writing-publish` | `approved.md` → `_posts/…`, OG image, optional inline illustrations (`scripts/render-illustration.py`) and promo cards, build check, tick, clean-up, commit |
 | `social-image` | Any card, from the right template — generated OG or hand-edited promo |
 
 **Typical flows**
@@ -221,7 +223,7 @@ a WRITE skill turns the frame into on-brand files.
   baseline) → live.
 - Checkpoint: `progress-think` → `progress-write` → share with
   `social-image` (quote card from the note's blockquote).
-- Essay: `/quick-log` → `/writing-outline` → `/writing-plan` → `/writing-post` (humanizer and cold read run inside) → `social-image`. State lives in `.writings-memory/` (see its README); three agents back it: `writing-researcher`, `writing-reader`, `writing-drafter` in `.claude/agents/`.
+- Essay: `/writing-brainstorm` (when the queue is low) → `/quick-log` → `/writing-outline` → `/writing-plan` → `/writing-post` (humanizer and cold read run inside) → `/writing-publish` (OG, illustrations, promo cards, commit). State lives in `.writings-memory/` (see its README); three agents back it: `writing-researcher`, `writing-reader`, `writing-drafter` in `.claude/agents/`.
 
 **Using them on Claude Web (personal, not org-shared)**
 

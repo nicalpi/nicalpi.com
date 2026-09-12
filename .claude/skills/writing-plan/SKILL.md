@@ -2,7 +2,6 @@
 name: writing-plan
 description: Expand an approved outline into a plan at .writings-memory/<slug>/plan.md by walking each section with Nic and capturing his own words, stories, numbers and phrasing verbatim. Reads memory.md so the questions target what the drafter will need. Use when Nic says "plan the post", "let's flesh it out", or names a slug with an approved outline.
 argument-hint: "[slug — defaults to the single open slug]"
-model: fable
 effort: high
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, WebSearch, WebFetch
 ---
@@ -65,6 +64,7 @@ idea: <from outline>
 updated: YYYY-MM-DD
 title: "<chosen title>"
 subtitle: "<dek, optional>"
+description: "<one-paragraph abstract: what the post argues and for whom — becomes the SEO/list description>"
 category: <AI|Business|Career|Leadership|Personal>
 ---
 
@@ -103,8 +103,10 @@ Placement: <section N>
 _pending_
 ```
 
-Front-matter `title`, `subtitle`, `category` are what `/writing-post` copies
-into the post. Decide them here.
+Front-matter `title`, `subtitle`, `description`, `category` are what
+`/writing-post` copies into the post. Decide them here. Write the `description`
+as the abstract Nic approves before any prose exists: if he cannot approve a
+one-paragraph version of the post, the plan is not ready.
 
 ## 4. Cold read and approval
 

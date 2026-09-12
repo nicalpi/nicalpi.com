@@ -2,7 +2,6 @@
 name: writing-outline
 description: Shape a blog-post idea (new, or a line from .writings-memory/ideas.md) into an approved outline at .writings-memory/<slug>/outline.md — claim, reader, receipts, counterargument, structure. Interviews Nic, checks neighbouring ideas and existing posts, researches the web when a fact is needed, then runs a cold read before approval. Use when Nic says "outline", "let's shape this idea", "I want to write about…", or names an idea number.
 argument-hint: "[idea text | #N from ideas.md | slug to resume]"
-model: fable
 effort: high
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, WebSearch, WebFetch
 ---
@@ -47,14 +46,20 @@ time, five to eight total, each with a recommended answer where you have one:
 
 1. **The claim.** One sentence a reasonable peer would push back on. Test: "who
    disagrees, and what's their best argument?" Keep sharpening until it bites.
+   Then offer the **uncomfortable version**: the same claim with the hedge
+   removed. He can dial it back; a claim that started bold and was softened on
+   purpose reads better than one that was never sharp.
 2. **The reader.** Which CTO or tech lead, and what changes about their next
    Monday? If nothing changes, it is a diary entry; that is fine, aim it at
    `personal` and say so.
 3. **The receipts.** Two or three concrete moments or numbers from his own work.
    Push past "sometimes teams…" to a named situation.
 4. **The counterargument.** Steelman it. Decide: absorb it, or narrow the claim.
-5. **The shape.** Propose three to five sections, story up front, claim earned.
-   Two title options, plain-spoken, no clickbait.
+5. **The shape.** Propose **two structures**, each three to five sections with
+   a one-line note on why that structure serves the claim (for example: scene →
+   pattern → claim → objection → what I do now; or three moments that each earn
+   part of the claim). Story up front in both. He picks or blends. Then two
+   title options, plain-spoken, no clickbait.
 6. **Category and links.** ai · leadership · business · career · personal. Field
    notes or older posts to reference.
 
@@ -80,6 +85,7 @@ updated: YYYY-MM-DD
 
 ## Claim
 <one disagreeable sentence>
+uncomfortable version: <the unhedged form, kept for reference>
 
 ## Reader and shift
 <who, and what changes Monday>
@@ -92,8 +98,11 @@ updated: YYYY-MM-DD
 <steelman> → absorb | narrow: <how>
 
 ## Structure
+chosen: <A|B|blend> because <one line>
 1. <section — one line on what it does; mark the opening moment>
 2. …
+
+rejected structure: <the other option in two lines, so the plan can revisit it>
 
 ## Category and links
 category: <ai|leadership|business|career|personal>

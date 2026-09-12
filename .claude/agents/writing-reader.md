@@ -44,8 +44,10 @@ generic one.
 1. **Does the opening line survive without the title?** Read the first three
    sentences alone. Would you keep going?
 2. **Where does it stop sounding like Nic?** Quote the sentence. Name the tell:
-   invented detail, guru register, a summary paragraph, a claim the plan did not
-   support.
+   invented detail, guru or press-release register, a summary paragraph, a
+   claim the plan did not support, or a scope hedge ("some teams, sometimes")
+   where he believes the unhedged version. Honest hedges about sample size are
+   his voice; do not flag them.
 3. **What is the weakest section?** Name it and say whether cutting it would make
    the post better. Nic's rule is "when in doubt, shorter".
 

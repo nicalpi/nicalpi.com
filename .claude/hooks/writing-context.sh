@@ -8,7 +8,9 @@ mem=.writings-memory
 
 open=$(grep -c '^- \[ \]' "$mem/ideas.md" 2>/dev/null); open=${open:-0}
 shipped=$(grep -c '^- \[x\]' "$mem/ideas.md" 2>/dev/null); shipped=${shipped:-0}
-echo "[writing] ideas: $open open · $shipped shipped · /quick-log to add"
+nudge="/quick-log to add"
+[ "$open" -lt 4 ] && nudge="queue low → /writing-brainstorm"
+echo "[writing] ideas: $open open · $shipped shipped · $nudge"
 
 for dir in "$mem"/*/; do
   [ -d "$dir" ] || continue
@@ -19,6 +21,9 @@ for dir in "$mem"/*/; do
   if [ -f "$dir/plan.md" ]; then
     stage="plan"; next="/writing-post $slug"
     grep -q '^status: drafting' "$dir/plan.md" 2>/dev/null && stage="drafting"
+    if [ -f "$dir/approved.md" ] || grep -q '^status: approved' "$dir/plan.md" 2>/dev/null; then
+      stage="approved"; next="/writing-publish $slug"
+    fi
   fi
   if [ -f "$dir/outline.md" ] && grep -A1 '^## Reader' "$dir/outline.md" 2>/dev/null | grep -q '_pending_'; then
     stage="outline (unapproved)"; next="/writing-outline $slug"
@@ -26,5 +31,5 @@ for dir in "$mem"/*/; do
   echo "[writing] in flight: $slug · $stage · next: $next"
 done
 
-echo "[writing] flow: /quick-log → /writing-outline → /writing-plan → /writing-post · target 2 posts/week"
+echo "[writing] flow: /writing-brainstorm → /quick-log → /writing-outline → /writing-plan → /writing-post → /writing-publish · target 2 posts/week"
 exit 0

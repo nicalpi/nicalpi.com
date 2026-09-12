@@ -8,7 +8,7 @@ cd "$(dirname "$0")/.."
 SKILLS=(
   field-note-think field-note-write
   progress-think progress-write
-  quick-log writing-outline writing-plan writing-post
+  writing-brainstorm quick-log writing-outline writing-plan writing-post writing-publish
   social-image
   nicalpi-brand
 )
