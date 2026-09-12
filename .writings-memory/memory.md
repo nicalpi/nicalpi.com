@@ -51,7 +51,16 @@ students. Canonical version: `.claude/skills/nicalpi-brand/voice.md`.
 _When Nic says a draft sounds off and names why, the rule goes here the same
 day, dated. No three-times threshold for a rule he states himself._
 
-_None yet._
+- 2026-09-12 · **Timeline should flow, not bounce.** When a post covers months
+  of work, the reader needs to follow one line forward. Jumping to a later
+  moment for dramatic effect and then back for context cost three draft
+  versions on ai-measuring-wrong-thing. Default to chronological when the
+  post is a journey.
+- 2026-09-12 · **Real numbers over poetic abstractions.** "The 50-odd tickets
+  we've built with the workflow and the low rejection rate" beats "the quality
+  of the tickets, the confidence of the team." The first is evidence; the
+  second sounds like a speech. Extends the existing "specific numbers over
+  adjectives" rule to lists of proof, not just individual claims.
 
 ## Post shape
 
@@ -81,4 +90,10 @@ _Appended by `/writing-post` after each approval. Format:_
 - reader: <findings he accepted / overrode, one line>
 ```
 
-_None yet._
+### 2026-09-12 · ai-measuring-wrong-thing · edit load: heavy (v4 approved)
+- cut: entire defensive Stuart paragraph ("I don't want to paint him as the man who only saw the cost-saving angle") — the fair portrayal was already in the writing. Also cut guru paragraph ("I'm not saying the workflow will do that thinking for them… prepare them for the world we're now in") — keynote register, weakened the absorb line before it.
+- replaced: "the quality of the tickets, the confidence of the team, the sensor fix that never needed its escape hatch" → "the 50-odd tickets we've built with the workflow and the low rejection rate that came with them, and a clear sense from the wider team that we're doing a good job" (real numbers over poetic abstractions). "They're right" → "That's right" (dangling pronoun). "empowered" removed (AI-tell, even though it was his word from the plan interview).
+- added: "A few months in, just as the workflow was becoming stable, we had our first real test" — he wanted the sensor section to mark a turning point. Also repositioned "the oddest thing for a CTO to say" as a hook *before* the answer rather than a comment after it. Stuart framed as "sharp, an ex-engineer, and he obviously knew the 10x thing is an internet joke. But the productivity question is his job as CEO" — sharper, fairer, no defensiveness.
+- restructured: entire post reordered from misconception-led (structure B) to chronological. v1 bounced Jan → July → June/July → Jan-April → May-June. v4 flows Jan → Jan-April → May-June → June/July → post-experiment → today. Stuart's question moved from opening to after the evidence. This was the main edit: the timeline is the story when the post covers months of work.
+- kept: the "new team joining" analogy survived all versions. "I assumed, and I was wrong" survived. The honest "no metric" concession survived and got stronger with real numbers. The blockquote placement survived.
+- reader: findings 2 (speed contradiction) and 3 (guru paragraph) accepted and applied. Finding 1 (hypothetical ticket section) partially addressed — reframed from "Say the team…" to pattern in past tense, but no specific named integration available. Reader verdict was NOT YET; Nic approved anyway after the chronological restructure improved the thesis section's positioning.

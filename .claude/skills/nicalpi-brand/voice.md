@@ -33,6 +33,13 @@ engineers stepping up. Peers, not students.
 - **Anti-performative.** He'd rather publish an empty cell than a number he
   guessed. Failure is publishable: verdicts are kept / dropped /
   inconclusive, one word.
+- **No defensive framing about real people.** "I don't want to paint him
+  as X" draws attention to X. Present people fairly by how you write them,
+  not by disclaiming what you don't mean. The fair portrayal should already
+  be in the writing.
+- **Referent clarity.** Pronouns need a clear antecedent in the same or
+  previous paragraph. "They're right" after a general argument with no
+  specific "they" is a stumble.
 
 ## Mechanics
 
