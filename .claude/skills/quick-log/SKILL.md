@@ -2,6 +2,7 @@
 name: quick-log
 description: Log a blog-post idea in one line to .writings-memory/ideas.md so it is never lost. No interview, no shaping, no questions — fire and forget. Use when Nic says "log this", "idea:", "I should write about…", or drops a thought mid-conversation. Shaping an idea into a post is /writing-outline.
 argument-hint: "<idea in Nic's words>"
+effort: low  # one append, no judgment
 allowed-tools: Read, Edit
 ---
 

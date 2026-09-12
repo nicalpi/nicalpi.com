@@ -225,6 +225,30 @@ a WRITE skill turns the frame into on-brand files.
   `social-image` (quote card from the note's blockquote).
 - Essay: `/writing-brainstorm` (when the queue is low) → `/quick-log` → `/writing-outline` → `/writing-plan` → `/writing-post` (humanizer and cold read run inside) → `/writing-publish` (OG, illustrations, promo cards, commit). State lives in `.writings-memory/` (see its README); three agents back it: `writing-researcher`, `writing-reader`, `writing-drafter` in `.claude/agents/`.
 
+**The writing week (two posts a week)**
+
+Every session opens with the hook's summary: open ideas, in-flight slugs, and
+the next command for each. Follow it. When nothing is in flight:
+
+| When | Command | Time | Leaves behind |
+|---|---|---|---|
+| Any moment an idea lands | `/quick-log <idea>` | 10 s | a line in `ideas.md` |
+| Monday, or fewer than 4 open ideas | `/writing-brainstorm` | 15 min | 2+ new lines in `ideas.md` with receipts |
+| Monday / Thursday | `/writing-outline #N` | 20 min | approved `outline.md` |
+| Same or next session | `/writing-plan` | 20–30 min | approved `plan.md` with your words |
+| Tuesday / Friday | `/writing-post` | 30 min | `approved.md`, memory entry |
+| Straight after approval | `/writing-publish` | 10 min | `_posts/…`, images, commit; then you push |
+
+Sessions are resumable at every stage: the state is the file, and each skill
+finds the open slug on its own. Never run two stages in one sitting for the
+same post if you can help it; the cold read works best when you come back to
+the outline or draft with fresh eyes.
+
+Skills carry no model pin, so `/model` picks the coordinator (Opus is the
+recommended default; Fable for `/writing-outline` when the claim is hard to
+find). The `writing-drafter` and `writing-reader` agents are pinned to Fable,
+`writing-researcher` to Sonnet.
+
 **Using them on Claude Web (personal, not org-shared)**
 
 1. `./scripts/package-skills.sh` → zips in `dist/claude-web-skills/`.

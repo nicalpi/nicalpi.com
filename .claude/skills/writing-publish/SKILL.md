@@ -2,7 +2,7 @@
 name: writing-publish
 description: Take an approved draft from .writings-memory/<slug>/approved.md and make it a published nicalpi.com page — the _posts/ file, the generated OG image, optional on-brand inline illustrations and promo cards, a build and preview check, the ideas.md tick, workspace clean-up and a commit. Use when Nic says "publish", "ship it", "put it on the site", or a draft has status: approved.
 argument-hint: "[slug — defaults to the single approved slug] [--date YYYY-MM-DD] [--no-illustrations] [--no-promo]"
-effort: high
+effort: medium  # mechanical steps plus art direction; the words are frozen
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, Skill
 ---
 

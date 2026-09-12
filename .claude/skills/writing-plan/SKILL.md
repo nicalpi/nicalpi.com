@@ -2,7 +2,7 @@
 name: writing-plan
 description: Expand an approved outline into a plan at .writings-memory/<slug>/plan.md by walking each section with Nic and capturing his own words, stories, numbers and phrasing verbatim. Reads memory.md so the questions target what the drafter will need. Use when Nic says "plan the post", "let's flesh it out", or names a slug with an approved outline.
 argument-hint: "[slug — defaults to the single open slug]"
-effort: high
+effort: medium  # interview + verbatim capture; the judgment sits in the reader agent
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, WebSearch, WebFetch
 ---
 

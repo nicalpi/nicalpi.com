@@ -2,7 +2,7 @@
 name: writing-post
 description: Draft the full blog post from an approved plan via the writing-drafter agent, run humanizer:humanizer and a cold read, iterate with Nic through versioned drafts, and on approval freeze the text as .writings-memory/<slug>/approved.md and record what his edits taught us in memory.md. Publishing (the _posts/ file, images, commit) is /writing-publish. Use when Nic says "write the post", "draft it", or names a slug with an approved plan.
 argument-hint: "[slug — defaults to the single open slug] [--date YYYY-MM-DD]"
-effort: high
+effort: high  # applies Nic's edits in his voice and writes the memory diff
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, AskUserQuestion, Agent, Skill
 ---
 

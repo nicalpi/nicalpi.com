@@ -2,6 +2,7 @@
 name: writing-brainstorm
 description: Divergent session to find what Nic should write about next — mines his recent work, field notes, existing posts and the ideas inbox, asks a handful of prompts that surface lived material, and produces 5–8 candidate post one-liners with the receipt each would need. Picked candidates land in .writings-memory/ideas.md. Use when Nic says "what should I write about", "brainstorm", "I have nothing to write", "queue is low", or at the start of a writing week.
 argument-hint: "[theme or constraint, optional — e.g. 'something on AI and juniors', 'personal register']"
+effort: medium  # divergent pass; Nic filters, breadth beats depth
 allowed-tools: Read, Grep, Glob, Bash, AskUserQuestion, Agent, WebSearch, WebFetch, Edit
 ---
 
