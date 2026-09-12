@@ -8,6 +8,7 @@ og_image: /assets/images/og/blog.jpg
 
 {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
 
+<div class="reading">
 <div class="page-head">
   <h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
   <p class="page-lead">Team management, agency life, AI honestly, and the reality of doing this without performing about it.</p>
@@ -24,6 +25,7 @@ og_image: /assets/images/og/blog.jpg
     {% include post-row.html post=post %}
   {% endfor %}
   <p class="hidden post-list-empty" id="no-posts">Nothing in this topic yet.</p>
+</div>
 </div>
 
 <script>

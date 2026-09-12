@@ -56,10 +56,17 @@ as friction in 1,500-word posts, so body copy moved to Plex. v2's DM Sans
 and Caveat stay retired.
 
 **Layout (since Sep 2026):** one sticky top bar (wordmark · writing ·
-about · work with me · theme), then a single centred 760px `.sheet` on the
-canvas, then a one-line footer. No sidebar, no drawer, no breadcrumbs.
-Field notes are paused (`output: false`); their layouts and `fn/`
-components stay in the repo for when the lab returns.
+about · work with me · theme), then a centred 1024px `.sheet`, then a
+one-line footer — all on the panel surface; the canvas token is no longer
+shown behind the page (Nic found the grey surround flat). Running text sits
+in a 640px `.reading` column centred in the sheet: prose 18px/1.7 Plex,
+about 78 characters a line; `strong` 600; the quotable blockquote 18.5px
+600 with a 3px accent bar. Code, images and tables in `.reading .prose`
+break out to the sheet's inner width above 1080px. The newsletter is an
+`accent-soft` band with an `accent-line` edge — the one tinted surface on
+the page. No sidebar, no drawer, no breadcrumbs. Field notes are paused
+(`output: false`); their layouts and `fn/` components stay in the repo for
+when the lab returns.
 
 In the repo, tokens live in `_assets/main.css` (`:root` = light,
 `[data-theme="dark"]` = dark); Tailwind maps them in `tailwind.config.js`
