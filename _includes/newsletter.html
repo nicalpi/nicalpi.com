@@ -1,25 +1,23 @@
 {% comment %}
-  Newsletter signup band. Params:
+  Newsletter signup. Sits inside the sheet as a section. Params:
     id      — anchor id (default "newsletter")
-    kicker  — small accent label (default "cto field notes")
+    kicker  — small accent label
     title   — heading
     text    — supporting line
 {% endcomment %}
-<section id="{{ include.id | default: 'newsletter' }}" class="grid md:grid-cols-[minmax(0,1fr)_360px] gap-6 md:gap-12 md:items-end px-6 md:px-14 py-9 md:py-11 border-t border-line" aria-labelledby="newsletter-heading">
-  <div class="flex flex-col gap-2">
-    <span class="kicker kicker-accent">{{ include.kicker | default: "cto field notes" }}</span>
-    <h2 id="newsletter-heading" class="m-0 text-[18px] md:text-[21px] font-bold tracking-[-0.015em] text-ink">{{ include.title | default: "One field-tested CTO practice, every fortnight" }}</h2>
-    <p class="m-0 max-w-[66ch] text-[13.5px] leading-[1.8] text-muted">{{ include.text | default: "What I changed and what the numbers actually did. Written after the experiment, not before." }}</p>
-  </div>
+<section id="{{ include.id | default: 'newsletter' }}" class="sheet-section newsletter" aria-labelledby="newsletter-heading">
+  <span class="kicker kicker-accent">{{ include.kicker | default: "newsletter" }}</span>
+  <h2 id="newsletter-heading" class="section-title">{{ include.title | default: "New writing, straight to your inbox" }}</h2>
+  <p class="section-lead">{{ include.text | default: "What worked, what failed, and what I'm changing next. Written after the fact, not before." }}</p>
   {% comment %} Kit (ConvertKit) form 5638226 — nicalpi-com.kit.com, uid 932adc3060.
      Plain POST works without JS (lands on Kit's hosted confirmation page);
      site.js intercepts submit for the inline success message. {% endcomment %}
-  <form class="flex flex-col gap-2" action="https://app.kit.com/forms/5638226/subscriptions" method="post" data-newsletter-form>
-    <div class="flex flex-col sm:flex-row gap-2">
+  <form class="newsletter-form" action="https://app.kit.com/forms/5638226/subscriptions" method="post" data-newsletter-form>
+    <div class="newsletter-row">
       <label for="newsletter-email" class="sr-only">Email address</label>
-      <input id="newsletter-email" type="email" name="email_address" required placeholder="you@company.com" class="news-input flex-1 sm:h-[42px] h-[46px]">
-      <button type="submit" class="btn btn-sm sm:h-[42px] h-[46px] whitespace-nowrap">subscribe</button>
+      <input id="newsletter-email" type="email" name="email_address" required placeholder="you@company.com" class="news-input">
+      <button type="submit" class="btn">subscribe</button>
     </div>
-    <span class="text-[11.5px] text-muted" data-newsletter-note aria-live="polite">No spam. Unsubscribe anytime.</span>
+    <span class="newsletter-note" data-newsletter-note aria-live="polite">No spam. Unsubscribe anytime.</span>
   </form>
 </section>

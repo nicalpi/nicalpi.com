@@ -17,19 +17,27 @@ with parallel checkouts and caused stale-CSS bugs.)
 
 ## Architecture
 
-Jekyll 4.4. Brand: **NicAlpi v3 "Field Notes"** — JetBrains Mono, warm paper
+Jekyll 4.4. Brand: **NicAlpi v3 "Field Notes"** — JetBrains Mono for
+headings and chrome, IBM Plex Sans for body copy (since Sep 2026), warm paper
 palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 `<html>`. See `.claude/skills/nicalpi-brand/` for the full system and
 `/styleguide/` for live components.
 
+**Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
+page in one frame — sticky top bar (`nav-top`) → a centred 760px
+`<main class="sheet">` → one-line `footer`. Pages and layouts only provide
+what goes inside the sheet. There is no sidebar, drawer or breadcrumb bar
+any more; the old includes live in `_retired/` for reference.
+
 - `_assets/main.css` — token + component CSS **source** (edit this, then `yarn css`)
 - `assets/main.css` — compiled output (committed, don't hand-edit)
-- `tailwind.config.js` — maps Tailwind colours to the CSS variables
-- `assets/js/site.js` — theme toggle (⌥T), mobile contents drawer
-- `_layouts/` — `default` (shell), `post`, `field_note` (experiment brief), `progress_note`
-- `_includes/` — `nav-top`, `sidebar` (desktop column / mobile drawer, parameterised by `context`), `mobile-bar`, `newsletter`, `footer`, `lightbox`, and `fn/*` field-note components (metrics, checklist, field-log, exp-card, xcard, follow-cta, meta-block)
+- `tailwind.config.js` — maps Tailwind colours to the CSS variables; `font-mono` / `font-sans`
+- `assets/js/site.js` — theme toggle (⌥T), newsletter form
+- `_layouts/` — `default` (frame), `post`, `field_note`, `progress_note` (the last two are sheet-based but unused while field notes are paused)
+- `_includes/` — `nav-top`, `footer`, `post-row` (one post in a list; home + `/blog/`), `newsletter`, `lightbox`, `head`, and `fn/*` field-note components (metrics, checklist, field-log, exp-card, xcard, follow-cta, meta-block — `xcard` is also the post prev/next card)
+- `_retired/` — `field-notes.html`, `sidebar.html`, `mobile-bar.html`: not processed by Jekyll, kept for the day the lab returns
 - `_posts/` — blog posts (`YYYY-MM-DD-title.md`, permalink `/blog/:slug`)
-- `_field_notes/` — the experiments collection (see below)
+- `_field_notes/` — the experiments collection, **paused**: `output: false` in `_config.yml` (see below)
 - `_data/field_notes.yml` — queued experiments
 - `assets/social-templates/` — social image templates: OG generator templates (filled by `scripts/generate-og.py` → `assets/images/og/*.jpg`) + hand-edited promo cards (exported with `scripts/export-social.mjs`). See its README.
 - `styleguide.html` → `/styleguide/` — living component reference (noindex)
@@ -38,6 +46,13 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 - `.writings-memory/` — committed working state for the post pipeline: `ideas.md` inbox, `memory.md` (Nic's voice + observed edits, read by every drafter), one `<slug>/` per post in flight. See its README.
 
 ## Field notes collection
+
+**Paused since Sep 2026.** The site is posts-only for now: the collection has
+`output: false`, the `/field-notes/` index and the nav/footer links are gone,
+and the homepage no longer has the lab band. Nothing was deleted — flip
+`output` to `true`, restore `_retired/field-notes.html`, and add the links
+back to bring it online. The `field_note` / `progress_note` layouts already
+render inside the new sheet.
 
 Two document kinds, both in `_field_notes/`:
 
@@ -161,8 +176,9 @@ Twitter reuses the OG image — no `-twitter` variants.
 
 ## Notes
 
-- The site renders inside a 1280px panel; inner pages have a sidebar that
-  becomes a contents drawer under 900px.
+- Every page is a 760px sheet on the canvas under a sticky top bar; the
+  sheet goes edge-to-edge under 800px. Four nav links fit a phone width,
+  so there is no drawer.
 - Portrait/photo slots on home + about read `site.portrait_image` from
   `_config.yml`; until it's set they show an on-brand placeholder.
 - `node_modules/` is committed (pre-existing choice); don't prune it in

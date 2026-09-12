@@ -8,46 +8,22 @@ og_image: /assets/images/og/blog.jpg
 
 {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
 
-<div class="with-sidebar" id="main-content">
-  {% include sidebar.html context="writing" %}
-
-  <div class="flex flex-col min-w-0">
-    {% include mobile-bar.html back_url="/" back_label="home" label="writing" %}
-
-    <div class="crumbs hidden md:flex">
-      <span><a href="/">home</a> / writing</span>
-      <span>{{ site.posts.size }} posts</span>
-    </div>
-
-    <div class="flex flex-col gap-[14px] px-5 pt-7 pb-4 md:px-10 md:pt-11 md:pb-6 max-w-[900px]">
-      <h1 class="m-0 text-[24px] md:text-[28px] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Writing</h1>
-      <p class="m-0 text-[13.5px] md:text-[14.5px] leading-[1.85] text-body">Team management, agency life, AI honestly, and the reality of doing this without performing about it.</p>
-      <div class="flex gap-2 flex-wrap pt-1" id="topic-filter" role="group" aria-label="Filter by topic">
-        <button type="button" class="chip chip-solid" data-topic="all" aria-pressed="true">all</button>
-        {% for cat in cats %}
-        <button type="button" class="chip" data-topic="{{ cat | downcase }}" aria-pressed="false">{{ cat | downcase }}</button>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="flex flex-col px-5 pb-10 md:px-10 md:pb-12 max-w-[900px]" id="post-list">
-      {% for post in site.posts %}
-      <a href="{{ post.url }}" data-category="{{ post.category | downcase }}"
-         class="link-block no-underline text-ink grid max-md:flex max-md:flex-col grid-cols-[34px_minmax(0,1fr)_max-content] gap-1 md:gap-[22px] items-baseline py-[14px] md:py-[15px] border-b border-line-2 group">
-        <span class="post-index hidden md:block text-[12px] text-faint">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-        <span class="md:hidden text-[11.5px] text-muted">{{ post.category | downcase }} · {{ post.date | date: "%-d %b %Y" }} · {{ post.reading_time | default: "5" }} min</span>
-        <span class="flex flex-col gap-1">
-          <span class="link-title text-[14.5px] md:text-[15.5px] font-bold tracking-[-0.01em] leading-[1.45] group-hover:text-accent">{{ post.title }}</span>
-          {% if post.description %}<span class="hidden md:block text-[13px] text-muted leading-[1.7]">{{ post.description | truncate: 130 }}</span>{% endif %}
-        </span>
-        <span class="hidden md:block text-[12px] text-muted text-right whitespace-nowrap">{{ post.category | downcase }} · {{ post.date | date: "%-d %b %Y" }} · {{ post.reading_time | default: "5" }} min</span>
-      </a>
-      {% endfor %}
-      <p class="hidden py-8 text-[13.5px] text-muted" id="no-posts">Nothing in this topic yet.</p>
-    </div>
-
-    <div class="mt-auto">{% include footer.html %}</div>
+<div class="page-head">
+  <h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
+  <p class="page-lead">Team management, agency life, AI honestly, and the reality of doing this without performing about it.</p>
+  <div class="chip-row" id="topic-filter" role="group" aria-label="Filter by topic">
+    <button type="button" class="chip chip-solid" data-topic="all" aria-pressed="true">all</button>
+    {% for cat in cats %}
+    <button type="button" class="chip" data-topic="{{ cat | downcase }}" aria-pressed="false">{{ cat | downcase }}</button>
+    {% endfor %}
   </div>
+</div>
+
+<div class="post-list" id="post-list">
+  {% for post in site.posts %}
+    {% include post-row.html post=post %}
+  {% endfor %}
+  <p class="hidden post-list-empty" id="no-posts">Nothing in this topic yet.</p>
 </div>
 
 <script>
@@ -62,11 +38,7 @@ og_image: /assets/images/og/blog.jpg
       rows.forEach(function (row) {
         var match = topic === 'all' || row.getAttribute('data-category') === topic;
         row.style.display = match ? '' : 'none';
-        if (match) {
-          shown += 1;
-          var idx = row.querySelector('.post-index');
-          if (idx) idx.textContent = (shown < 10 ? '0' : '') + shown;
-        }
+        if (match) shown += 1;
       });
       empty.classList.toggle('hidden', shown > 0);
       chips.forEach(function (chip) {

@@ -1,0 +1,9 @@
+{% comment %}
+  One post in a list (home, /blog/). Param: post.
+  Meta line, title, description — stacked, so it reads at any width.
+{% endcomment %}
+<a href="{{ include.post.url }}" data-category="{{ include.post.category | downcase }}" class="post-row link-block no-underline">
+  <span class="post-row-meta">{{ include.post.category | downcase }} · {{ include.post.date | date: "%-d %b %Y" }} · {{ include.post.reading_time | default: "5" }} min read</span>
+  <span class="post-row-title link-title">{{ include.post.title }}</span>
+  {% if include.post.description %}<span class="post-row-desc">{{ include.post.description | truncate: 150 }}</span>{% endif %}
+</a>

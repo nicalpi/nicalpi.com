@@ -8,58 +8,56 @@ og_type: article
   note_id (fn-NN.N), nav_label, title, lead, date, published_label,
   status_label, reading_time, next_label, metrics[], guardrail_check[],
   adjustments[]. Body: markdown + fn/* includes.
+
+  The field_notes collection is paused (output: false in _config.yml); see
+  the note in field_note.html.
 {% endcomment %}
 
 {% assign exp = site.field_notes | where: "exp_id", page.experiment | first %}
 
-<div class="with-sidebar" id="main-content">
-  {% include sidebar.html context="note" body=content %}
-
-  <div class="flex flex-col min-w-0">
-    {% include mobile-bar.html back_url=exp.url back_label=page.experiment %}
-
-    <!-- breadcrumbs (desktop) -->
-    <div class="crumbs hidden md:flex">
-      <span><a href="/">home</a> / <a href="/field-notes/">field notes</a> / <a href="{{ exp.url }}">{{ exp.exp_id }}</a> / progress</span>
-      <span class="{% if exp.status == 'running' %}text-accent{% endif %}">{% if exp.status == 'running' %}● {% endif %}{{ exp.status }} · {{ page.nav_label | split: " " | first }}</span>
-    </div>
-
-    <article class="flex flex-col px-5 pt-6 pb-10 md:px-10 md:pt-10 md:pb-14 max-w-article">
-      <!-- parent experiment card -->
-      <a href="{{ exp.url }}" class="no-underline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-5 border border-accent-line bg-accent-soft rounded-brand py-[14px] px-4 mb-[26px]">
-        <span class="flex flex-col gap-[3px]">
-          <span class="kicker kicker-accent">progress note · part of {{ exp.exp_id }}</span>
-          <span class="text-[13.5px] sm:text-[14px] text-ink font-bold leading-[1.45]">{{ exp.title }}</span>
-        </span>
-        <span class="text-[12px] text-accent whitespace-nowrap">read the brief →</span>
-      </a>
-
-      <div class="meta-block mb-[30px]">
-        <span>note: <b>{{ page.note_id }} · progress</b></span>
-        {% if page.published_label %}<span>published: <b>{{ page.published_label }}</b></span>{% endif %}
-        <span>experiment: <b>{{ exp.exp_id }} · {{ exp.theme_tag }}</b></span>
-        <span>status: <b class="is-status">{{ page.status_label | default: exp.status }}</b></span>
-        {% if page.reading_time %}<span>reading: <b>{{ page.reading_time }} min</b></span>{% endif %}
-        {% if page.next_label %}<span>next: <b>{{ page.next_label }}</b></span>{% endif %}
-      </div>
-
-      <h1 class="m-0 mb-4 text-[23px] md:text-[28px] leading-[1.34] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>{{ page.title }}</h1>
-      {% if page.lead %}
-      <p class="m-0 mb-[26px] text-[14px] md:text-[15px] leading-[1.85] text-body">{{ page.lead }}</p>
-      {% endif %}
-
-      <div class="prose">
-        {{ content }}
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-3 mt-[30px]">
-        {% capture brief_kicker %}← the brief · {{ exp.exp_id }}{% endcapture %}
-        {% include fn/xcard.html url=exp.url kicker=brief_kicker title="Question, baseline and protocol" %}
-        {% capture next_kicker %}next · {{ page.next_label | default: "follow along" }}{% endcapture %}
-        {% include fn/xcard.html url="/#newsletter" kicker=next_kicker title="Get it before it's on the site →" accent=true %}
-      </div>
-    </article>
-
-    <div class="mt-auto">{% include footer.html %}</div>
+<article class="article">
+  <div class="article-meta">
+    <span class="text-accent">field note</span>
+    <a href="{{ exp.url }}" class="no-underline">{{ exp.exp_id }}</a>
+    <span>·</span>
+    <span>progress</span>
+    <span>·</span>
+    <span{% if exp.status == 'running' %} class="text-accent"{% endif %}>{% if exp.status == 'running' %}● {% endif %}{{ exp.status }} · {{ page.nav_label | split: " " | first }}</span>
   </div>
-</div>
+
+  <!-- parent experiment card -->
+  <a href="{{ exp.url }}" class="xcard is-accent" style="margin-bottom:26px; flex-direction:row; align-items:center; justify-content:space-between; gap:20px;">
+    <span class="flex flex-col gap-[3px]">
+      <span class="xcard-kicker">progress note · part of {{ exp.exp_id }}</span>
+      <span class="xcard-title" style="font-size:14px;">{{ exp.title }}</span>
+    </span>
+    <span class="text-[12px] text-accent whitespace-nowrap">read the brief →</span>
+  </a>
+
+  <div class="meta-block" style="margin-bottom:28px;">
+    <span>note: <b>{{ page.note_id }} · progress</b></span>
+    {% if page.published_label %}<span>published: <b>{{ page.published_label }}</b></span>{% endif %}
+    <span>experiment: <b>{{ exp.exp_id }} · {{ exp.theme_tag }}</b></span>
+    <span>status: <b class="is-status">{{ page.status_label | default: exp.status }}</b></span>
+    {% if page.reading_time %}<span>reading: <b>{{ page.reading_time }} min</b></span>{% endif %}
+    {% if page.next_label %}<span>next: <b>{{ page.next_label }}</b></span>{% endif %}
+  </div>
+
+  <h1 class="article-title"><span class="md-mark"># </span>{{ page.title }}</h1>
+  {% if page.lead %}
+  <p class="article-dek">{{ page.lead }}</p>
+  {% endif %}
+
+  <hr class="article-rule">
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <nav class="article-next" aria-label="Related">
+    {% capture brief_kicker %}← the brief · {{ exp.exp_id }}{% endcapture %}
+    {% include fn/xcard.html url=exp.url kicker=brief_kicker title="Question, baseline and protocol" %}
+    {% capture next_kicker %}next · {{ page.next_label | default: "follow along" }}{% endcapture %}
+    {% include fn/xcard.html url="/#newsletter" kicker=next_kicker title="Get it before it's on the site →" accent=true %}
+  </nav>
+</article>

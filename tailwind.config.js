@@ -36,9 +36,10 @@ module.exports = {
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        sans: ['IBM Plex Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       maxWidth: {
-        frame: '1280px',
+        sheet: '760px',
         article: '820px',
       },
       borderRadius: {

@@ -19,6 +19,9 @@ engineers stepping up. Peers, not students.
 
 - **First person, plain words, short paragraphs** (1–3 sentences). Reads
   spoken. British English throughout (organise, colour, £).
+- **Timeline flows forward.** When a piece covers months of work, the
+  reader follows one line from start to now. Jumping ahead for effect and
+  then back for context reads as bouncing; default to chronological.
 - **Concrete before abstract.** Open with the moment — "At 23:09 on a
   Thursday in July I ran a data reconciliation script by hand" — and let
   the claim land after the reader has seen the evidence.

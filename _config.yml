@@ -53,8 +53,12 @@ collections:
   # collection: `kind: experiment` (the brief, /field-notes/exp-NN/) and
   # `kind: progress` (dated updates, /field-notes/exp-NN/<slug>/).
   # See _field_notes/README.md for the authoring guide.
+  # Paused Sep 2026 (output: false): the site is posts-only for now. The
+  # documents, layouts and fn/ components stay in place; the index page and
+  # the sidebar includes they used are in _retired/. Flip output back to
+  # true and restore those files to bring the lab back.
   field_notes:
-    output: true
+    output: false
     permalink: /field-notes/:path/
 
 # Defaults

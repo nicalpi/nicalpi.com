@@ -44,9 +44,22 @@ one blue accent, warm paper surfaces. Light and dark themes are first-class.
 | `--accent-line` | `#BDCDF5` | `#2E4368` | borders on accent surfaces, at-rest link underlines |
 | `--on-accent` | `#FFFFFF` | `#0C0E11` | text on accent |
 
-**Font:** JetBrains Mono only — 400 body, 500 medium, 700 bold (Google
-Fonts). No other typeface anywhere, including images. v2's DM Sans and
-Caveat are retired.
+**Fonts (since Sep 2026):** two faces, clearly split by role.
+- **JetBrains Mono** — 400/500/700 — every heading, the wordmark, nav, meta
+  lines, kickers, chips, buttons, footer, code, and the faint `#`/`##`
+  marks. All images and social cards stay mono-only.
+- **IBM Plex Sans** — 400/600/700 — running text only: post prose,
+  descriptions, list descriptions, form help. `strong` in Plex is 600, not
+  700. Never in headings, never in images.
+Mono everywhere was the v3 launch rule; it read as brand in headings and
+as friction in 1,500-word posts, so body copy moved to Plex. v2's DM Sans
+and Caveat stay retired.
+
+**Layout (since Sep 2026):** one sticky top bar (wordmark · writing ·
+about · work with me · theme), then a single centred 760px `.sheet` on the
+canvas, then a one-line footer. No sidebar, no drawer, no breadcrumbs.
+Field notes are paused (`output: false`); their layouts and `fn/`
+components stay in the repo for when the lab returns.
 
 In the repo, tokens live in `_assets/main.css` (`:root` = light,
 `[data-theme="dark"]` = dark); Tailwind maps them in `tailwind.config.js`

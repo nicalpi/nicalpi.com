@@ -3,66 +3,55 @@ layout: default
 og_type: article
 ---
 {% assign cat = page.category | downcase %}
-{% assign flagship = site.field_notes | where: "kind", "experiment" | where: "status", "running" | first %}
 
-<div class="with-sidebar" id="main-content">
-  {% include sidebar.html context="post" body=content %}
-
-  <div class="flex flex-col min-w-0">
-    {% include mobile-bar.html back_url="/blog/" back_label="writing" label=cat %}
-
-    <div class="crumbs hidden md:flex">
-      <span><a href="/">home</a> / <a href="/blog/">writing</a> / {{ cat }}</span>
-      <span>{{ page.date | date: "%-d %b %Y" }}{% if page.reading_time %} · {{ page.reading_time }} min read{% endif %}</span>
-    </div>
-
-    <article class="flex flex-col px-5 pt-6 pb-10 md:px-10 md:pt-10 md:pb-14 max-w-article">
-      <span class="text-[12px] text-accent mb-3">{{ cat }}</span>
-      <h1 class="m-0 mb-4 text-[24px] md:text-[30px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>{{ page.title }}</h1>
-      {% if page.subtitle or page.description %}
-      <p class="m-0 mb-6 text-[14px] md:text-[15px] leading-[1.85] text-body">{{ page.subtitle | default: page.description }}</p>
-      {% endif %}
-
-      <!-- mobile meta line -->
-      <div class="md:hidden text-[11.5px] text-muted mb-5">{{ page.date | date: "%-d %b %Y" }}{% if page.reading_time %} · {{ page.reading_time }} min read{% endif %} · Nic Alpi</div>
-
-      {% if page.cover_image %}
-      <figure class="m-0 mb-7">
-        <img src="{{ page.cover_image }}" alt="{{ page.cover_alt | default: '' }}" class="w-full rounded-brand border border-line">
-        {% if page.cover_caption %}<figcaption class="img-caption">{{ page.cover_caption }}</figcaption>{% endif %}
-      </figure>
-      {% endif %}
-
-      <div class="prose">
-        {{ content }}
-      </div>
-
-      <div class="mt-6 border-t border-line pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12.5px] text-muted">
-        <span>Filed under <a href="/blog/#{{ cat }}" class="no-underline">{{ cat }}</a></span>
-        <span class="flex gap-4">
-          {% capture share_url %}{{ page.url | absolute_url }}{% endcapture %}
-          <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ share_url | url_encode }}" class="no-underline">share</a>
-          <a href="mailto:{{ site.email }}?subject={{ page.title | url_encode }}" class="no-underline">reply by email</a>
-        </span>
-      </div>
-
-      <div class="mt-6 grid sm:grid-cols-2 gap-3">
-        {% if page.previous %}
-          {% capture prev_kicker %}← previous · {{ page.previous.category | downcase }}{% endcapture %}
-          {% include fn/xcard.html url=page.previous.url kicker=prev_kicker title=page.previous.title %}
-        {% elsif page.next %}
-          {% capture next_kicker %}next · {{ page.next.category | downcase }}{% endcapture %}
-          {% include fn/xcard.html url=page.next.url kicker=next_kicker title=page.next.title %}
-        {% endif %}
-        {% if flagship %}
-          {% capture fn_kicker %}field note · {{ flagship.exp_id }} running{% endcapture %}
-          {% include fn/xcard.html url=flagship.url kicker=fn_kicker title=flagship.title accent=true %}
-        {% endif %}
-      </div>
-    </article>
-
-    <div class="mt-auto">{% include footer.html %}</div>
+<article class="article">
+  <div class="article-meta">
+    <a href="/blog/#{{ cat }}" class="no-underline text-accent">{{ cat }}</a>
+    <span>{{ page.date | date: "%-d %b %Y" }}</span>
+    {% if page.reading_time %}<span>·</span><span>{{ page.reading_time }} min read</span>{% endif %}
   </div>
-</div>
+
+  <h1 class="article-title"><span class="md-mark"># </span>{{ page.title }}</h1>
+  {% if page.subtitle or page.description %}
+  <p class="article-dek">{{ page.subtitle | default: page.description }}</p>
+  {% endif %}
+
+  <hr class="article-rule">
+
+  {% if page.cover_image %}
+  <figure class="m-0 mb-7">
+    <img src="{{ page.cover_image }}" alt="{{ page.cover_alt | default: '' }}" class="w-full rounded-brand border border-line">
+    {% if page.cover_caption %}<figcaption class="img-caption">{{ page.cover_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <div class="article-foot">
+    <span>Filed under <a href="/blog/#{{ cat }}" class="no-underline">{{ cat }}</a></span>
+    <span class="article-foot-links">
+      {% capture share_url %}{{ page.url | absolute_url }}{% endcapture %}
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ share_url | url_encode }}" class="no-underline">share</a>
+      <a href="mailto:{{ site.email }}?subject={{ page.title | url_encode }}" class="no-underline">reply by email</a>
+    </span>
+  </div>
+
+  {% if page.previous or page.next %}
+  <nav class="article-next" aria-label="More writing">
+    {% if page.previous %}
+      {% capture prev_kicker %}← previous · {{ page.previous.category | downcase }}{% endcapture %}
+      {% include fn/xcard.html url=page.previous.url kicker=prev_kicker title=page.previous.title %}
+    {% endif %}
+    {% if page.next %}
+      {% capture next_kicker %}next · {{ page.next.category | downcase }}{% endcapture %}
+      {% include fn/xcard.html url=page.next.url kicker=next_kicker title=page.next.title %}
+    {% endif %}
+  </nav>
+  {% endif %}
+</article>
+
+{% include newsletter.html %}
 
 {% include lightbox.html %}

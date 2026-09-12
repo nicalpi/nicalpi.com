@@ -5,20 +5,15 @@ permalink: /404.html
 og_image: /assets/images/og/404.jpg
 ---
 
-{% include nav-top.html %}
-{% include sidebar.html context="drawer" %}
-
-<main id="main-content" class="flex flex-col items-start gap-4 px-6 md:px-14 py-16 md:py-24 max-w-article">
-  <div class="meta-block w-full" style="grid-template-columns:1fr;">
+<div class="page-head">
+  <div class="meta-block" style="grid-template-columns:1fr;">
     <span>status: <b class="is-status">404 · not found</b></span>
     <span>verdict: <b>this page does not exist, or it moved</b></span>
   </div>
-  <h1 class="m-0 text-[25px] md:text-[36px] leading-[1.32] font-bold tracking-[-0.02em] text-ink"><span class="md-mark"># </span>Nothing here. That's a finding too.</h1>
-  <p class="m-0 text-[14px] md:text-[15px] leading-[1.85] text-body">Every experiment gets published, even the failures — but this URL isn't one of them.</p>
-  <div class="flex flex-col sm:flex-row gap-[10px] pt-2 w-full sm:w-auto">
+  <h1 class="page-title" style="margin-top:20px;"><span class="md-mark"># </span>Nothing here. That's a finding too.</h1>
+  <p class="page-lead">The page you asked for isn't published, or it moved. The writing index has everything that is.</p>
+  <div class="hero-actions">
     <a href="/" class="btn">Go home →</a>
-    <a href="/field-notes/" class="btn btn-ghost">See the lab</a>
+    <a href="/blog/" class="btn btn-ghost">Start reading</a>
   </div>
-</main>
-
-<div class="mt-auto">{% include footer.html %}</div>
+</div>
