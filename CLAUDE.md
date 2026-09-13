@@ -17,19 +17,32 @@ with parallel checkouts and caused stale-CSS bugs.)
 
 ## Architecture
 
-Jekyll 4.4. Brand: **NicAlpi v3 "Field Notes"** — JetBrains Mono for
-headings and chrome, Source Serif 4 for body copy (since 13 Sep 2026; it
-replaced IBM Plex Sans after a side-by-side lab), warm paper palette, blue
-accent, light/dark themes via CSS variables and `data-theme` on `<html>`. See `.claude/skills/nicalpi-brand/` for the full system and
-`/styleguide/` for live components.
+Jekyll 4.4. Brand: **NicAlpi v4 "Graphite notebook"** (13 Sep 2026, the
+Field Notes devices blended with Expo's design system after a canvas
+side-by-side): JetBrains Mono for headings and chrome (with -0.012em
+tracking), Source Serif 4 for body copy at 18px/1.75, a **cool graphite
+neutral scale** (canvas white `#FFFFFF`, fog `--side #F0F0F3`, one mist
+hairline `--line #D9D9E0`, ink `#1C2024`, graphite `--muted`, steel
+`--faint`), **pill-shaped controls** (buttons and inputs 36px radius, nav
+chips 24px, filter chips 9999px; the directory-row category stays a plain
+accent word, not a pill; content cards, fm block, code and images 12px;
+newsletter 20px), an **ink-filled primary button** (blue is never a button
+fill), and two blues: `--accent #0072DE` for text links and running state,
+`--mark #0090FF` rationed to `#`/`##` marks, `---` fences, `- [x]` and `>`
+kickers. Separation is tonal (no borders on tinted surfaces, no shadows).
+Weight (600 mono against 400 serif) carries hierarchy; sizes are compact
+(hero 30px, post h1 28px, page h1 26px, section h2 16px, prose h2 1.1em
+with a hairline below). Light/dark via CSS variables and `data-theme` on
+`<html>`. Warm paper (v3) is retired. See `.claude/skills/nicalpi-brand/`
+for the full system and `/styleguide/` for live components.
 
 **Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
 page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 `<main class="sheet">` → one-line `footer`, all on a single panel surface
 (no canvas). Everything spans the sheet's 880px inner width, posts
-included — Nic's call (2026-09-13); prose is 19.5px/1.7 Source Serif 4,
-prose headings are em-based (h2 1.32em + hairline below) with accent
-`##` marks. The `--measure` token (`none` today) still caps
+included — Nic's call (2026-09-13); prose is 18px/1.75 Source Serif 4,
+prose headings are em-based (h2 1.1em/600 + hairline below) with `--mark`
+`##` marks. The top bar is borderless; its links are chips. The `--measure` token (`none` today) still caps
 `.prose > p/ul/ol/blockquote/h2…` if a narrower reading column is ever
 wanted again. Pages and layouts only
 provide what goes inside the sheet.

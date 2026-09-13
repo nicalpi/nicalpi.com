@@ -4,44 +4,56 @@
 @tailwind utilities;
 
 /* ============================================================
-   NICALPI v3 — "FIELD NOTES"
+   NICALPI v4 — "GRAPHITE NOTEBOOK" (13 Sep 2026)
    Design tokens. Single source of truth for both themes.
    Tailwind utilities reference these via tailwind.config.js.
+
+   The Field Notes devices (mono chrome, serif body, front matter,
+   directory rows) on a cool graphite scale with pill-shaped controls,
+   after a side-by-side with Expo's design system. Warm paper retired.
+   Separation is tonal (panel → side → line): one hairline colour, no
+   shadows, no borders on tinted surfaces. Signal blue (--mark) is
+   rationed to markdown marks, fences and checkboxes; text links and
+   the running state use the deeper --accent so they pass AA on white.
    ============================================================ */
 
 :root {
-  --canvas: #F3F1EA;       /* page surround — warm paper, a shade under --side so the sheet lifts */
-  --panel: #FCFCFA;        /* main page surface */
-  --side: #F5F3ED;         /* sidebar surface */
-  --raise: #F9F8F4;        /* raised bands, table heads */
-  --ink: #191917;          /* headings, strong text */
-  --body: #33332E;         /* body text — darkened Sep 2026 for the serif */
-  --muted: #77776E;        /* meta, secondary */
-  --faint: #C4C2B8;        /* markdown marks, big numbers */
-  --line: #E4E2DA;         /* primary borders */
-  --line2: #EDEBE4;        /* subtle row dividers */
-  --accent: #1E4FD8;       /* links, running state, CTAs */
-  --accent-soft: #EAF0FE;  /* accent tint surfaces */
-  --accent-line: #BDCDF5;  /* borders on accent surfaces */
+  --canvas: #FFFFFF;       /* page surround (unused behind the sheet, kept for tooling) */
+  --panel: #FFFFFF;        /* main page surface — canvas white */
+  --side: #F0F0F3;         /* fog — fm block, newsletter, code, chip hover */
+  --raise: #F7F7F9;        /* half-step — row/card hover */
+  --ink: #1C2024;          /* headings, strong text */
+  --body: #2A2E34;         /* body text */
+  --muted: #60646C;        /* graphite — meta, secondary, nav at rest */
+  --faint: #80838D;        /* steel — column labels, EOF, .md, disabled */
+  --line: #D9D9E0;         /* mist — the one hairline */
+  --line2: #D9D9E0;        /* row dividers (same hairline; kept as a token) */
+  --accent: #0072DE;       /* deep signal — text links, running state */
+  --mark: #0090FF;         /* signal blue — #/## marks, --- fences, - [x], > kickers */
+  --accent-soft: #EAF4FF;  /* accent tint surfaces */
+  --accent-line: #B9DBFF;  /* borders on accent surfaces, at-rest link underlines */
   --on-accent: #FFFFFF;    /* text on accent */
+  --on-ink: #FFFFFF;       /* text on ink-filled buttons */
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --canvas: #0C0E11;
-  --panel: #171A1F;
-  --side: #13161A;
-  --raise: #1D2127;
-  --ink: #F1F1ED;
-  --body: #CFD2CE;
-  --muted: #8B8F96;
-  --faint: #4B505A;
-  --line: #272B32;
-  --line2: #1F232A;
-  --accent: #82A9FF;
-  --accent-soft: #182339;
-  --accent-line: #2E4368;
-  --on-accent: #0C0E11;
+  --canvas: #0F1114;
+  --panel: #0F1114;
+  --side: #1A1D22;
+  --raise: #15181C;
+  --ink: #F2F3F5;
+  --body: #C9CCD2;
+  --muted: #8B8F98;
+  --faint: #6B6F78;
+  --line: #2A2E35;
+  --line2: #2A2E35;
+  --accent: #6DB8FF;
+  --mark: #3DA5FF;
+  --accent-soft: #14233A;
+  --accent-line: #2B4A73;
+  --on-accent: #0F1114;
+  --on-ink: #0F1114;
   color-scheme: dark;
 }
 
@@ -61,11 +73,13 @@ body {
   background: var(--panel);
   color: var(--ink);
   font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.75;
   min-height: 100%;
 }
 
+/* Everything in mono carries Expo's -0.012em tracking so dense chrome
+   reads composed; the serif body keeps its natural spacing. */
 h1, h2, h3, h4, h5, h6,
 nav, .topbar, .font-mono,
 code, pre, kbd, samp,
@@ -74,6 +88,7 @@ code, pre, kbd, samp,
 .metrics, .checklist, .field-log, .fn-card, .xcard,
 footer, .site-footer {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: -0.012em;
 }
 
 ::selection {
@@ -162,59 +177,60 @@ input::placeholder { color: var(--muted); }
    chrome. Content is left-aligned inside a centred 760px column.
    ============================================================ */
 
+/* Borderless: the bar sits on the canvas (Expo). Links are chips. */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 40;
   background: var(--panel);
-  border-bottom: 1px solid var(--line);
 }
 
 .topbar-inner {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 24px;
-  height: 52px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  font-size: 12.5px;
+  font-size: 13px;
 }
 
 .topbar-brand {
   color: var(--ink);
   font-weight: 700;
   font-size: 15px;
-  letter-spacing: 0.02em;
 }
 
 .topbar-ext { color: var(--faint); font-weight: 400; }
 
 /* ---- Front-matter block (home hero, post header) ----
    The site's one signature device: a --- fenced key/value block in mono,
-   fences in the accent. */
+   fences in signal blue. A fog card, 12px, no border — the tonal step
+   does the separating. */
 .fm {
   display: flex;
   flex-direction: column;
-  padding: 16px 22px;
+  padding: 16px 20px;
   background: var(--side);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  border: 0;
+  border-radius: 12px;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.85;
   color: var(--body);
 }
 
-.fm-fence { color: var(--accent); }
+.fm-fence { color: var(--mark); }
 .fm-k { color: var(--muted); }
 .fm-v { color: var(--ink); }
 .fm-v.fm-accent, .fm a.fm-accent { color: var(--accent); }
 .fm-v.fm-accent:hover, .fm a.fm-accent:hover { color: var(--ink); opacity: 1; }
 .fm > span { min-width: 0; overflow-wrap: anywhere; }
 
-.fm-post { margin-bottom: 26px; font-size: 13.5px; }
+/* Room between the front-matter head and the title (Nic, 13 Sep 2026). */
+.fm-post { margin-bottom: 44px; font-size: 13.5px; }
 
 .post-path {
   display: block;
@@ -238,10 +254,10 @@ input::placeholder { color: var(--muted); }
 
 .dir-row {
   display: grid;
-  grid-template-columns: 110px 96px minmax(0, 1fr) 64px;
+  grid-template-columns: 104px 96px minmax(0, 1fr) 64px;
   gap: 20px;
   align-items: baseline;
-  padding: 12px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--line2);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 13px;
@@ -249,14 +265,21 @@ input::placeholder { color: var(--muted); }
 }
 
 .dir-date { color: var(--muted); }
-.dir-cat  { color: var(--accent); }
-.dir-title { font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.45; }
-.dir-read { color: var(--muted); text-align: right; white-space: nowrap; }
+.dir-title { font-size: 15px; font-weight: 600; letter-spacing: -0.012em; line-height: 1.45; }
+.dir-read { color: var(--faint); text-align: right; white-space: nowrap; }
+
+/* Category: a plain accent word (Nic tried the pill, 13 Sep 2026, and
+   reverted it — the row reads cleaner as text). */
+.dir-cat { color: var(--accent); }
+
+/* Hover: the title lifts to the link blue. No underline, no arrow. */
+a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
+.dir-row .link-title::after { display: none; }
 
 .dir-head {
-  padding: 8px 0;
+  padding: 6px 0 8px;
   border-bottom: 1px solid var(--line);
-  color: var(--muted);
+  color: var(--faint);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -265,7 +288,7 @@ input::placeholder { color: var(--muted); }
 .section-cmd {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--faint);
 }
 
 @media (max-width: 640px) {
@@ -290,24 +313,27 @@ input::placeholder { color: var(--muted); }
 .topbar-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 4px;
 }
 
+/* Nav link chips: 24px radius, fog on hover, fog + ink when current. */
 .topbar-nav a {
-  color: var(--body);
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 24px;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .topbar-nav a:hover,
 .topbar-nav a[aria-current="page"] {
+  background: var(--side);
   color: var(--ink);
   opacity: 1;
 }
 
-.topbar-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 6px;
-}
+.topbar-nav .theme-pill { margin-left: 8px; }
 
 /* The page is one surface (no canvas). The sheet is a 1024px column
    (880px inner). Blocks span it — titles, cards, code, images, tables,
@@ -353,9 +379,10 @@ input::placeholder { color: var(--muted); }
 }
 
 @media (max-width: 640px) {
-  .topbar-inner { padding: 0 16px; gap: 12px; font-size: 12px; }
-  .topbar-nav { gap: 12px; }
-  .topbar-nav a { white-space: nowrap; }
+  .topbar-inner { padding: 0 12px 0 16px; gap: 8px; font-size: 12.5px; height: 56px; }
+  .topbar-nav { gap: 0; }
+  .topbar-nav a { white-space: nowrap; padding: 6px 9px; }
+  .topbar-nav .theme-pill { margin-left: 4px; padding: 0 9px; }
   .topbar-brand { font-size: 14px; }
   .topbar-ext { display: none; }
   .sheet { padding: 32px 20px 40px; }
@@ -365,13 +392,12 @@ input::placeholder { color: var(--muted); }
 
 @media (max-width: 440px) {
   .theme-pill-label { display: none; }
-  .theme-pill { padding: 6px 8px; }
 }
 
 /* ---- Sections inside the sheet (home, newsletter) ---- */
 
 .sheet-section {
-  padding: 36px 0;
+  padding: 40px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -387,10 +413,12 @@ input::placeholder { color: var(--muted); }
   margin-bottom: 6px;
 }
 
+/* Weight carries the hierarchy (600), size stays compact. */
 .section-title {
   margin: 0;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
   color: var(--ink);
 }
 
@@ -435,9 +463,9 @@ input::placeholder { color: var(--muted); }
 
 .hero-title {
   margin: 0;
-  font-size: 34px;
+  font-size: 30px;
   text-wrap: initial;
-  line-height: 1.28;
+  line-height: 1.25;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -445,10 +473,10 @@ input::placeholder { color: var(--muted); }
 
 .hero-lead {
   margin: 0;
-  max-width: 70ch;
-  font-size: 20px;
+  max-width: 66ch;
+  font-size: 19px;
   line-height: 1.65;
-  color: var(--ink);
+  color: var(--body);
 }
 
 .hero-bio {
@@ -471,7 +499,8 @@ input::placeholder { color: var(--muted); }
 }
 
 @media (max-width: 640px) {
-  .hero-title { font-size: 27px; }
+  .hero-title { font-size: 25px; }
+  .hero-title br { display: none; } /* let the title wrap naturally on phones */
   .hero-lead { font-size: 16.5px; }
   .hero-actions .btn { flex: 1 1 auto; }
 }
@@ -561,8 +590,8 @@ input::placeholder { color: var(--muted); }
   left: 0;
   top: 0.1em;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 14px;
-  color: var(--accent);
+  font-size: 13px;
+  color: var(--mark);
   white-space: pre;
 }
 
@@ -610,17 +639,17 @@ input::placeholder { color: var(--muted); }
 
 /* ---- Newsletter (inside the sheet) ---- */
 
-/* A "> quote" band: accent bar on the left, soft tint, square left edge. */
+/* A "> newsletter" band: fog card, 20px radius, no border, the kicker
+   in signal blue. (The v3 accent bar went with the warm palette.) */
 .newsletter {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin: 36px 0;
-  padding: 26px 28px 28px 30px;
+  padding: 28px 32px;
   border: 0;
-  border-left: 3px solid var(--accent);
-  border-radius: 0 4px 4px 0;
-  background: var(--accent-soft);
+  border-radius: 20px;
+  background: var(--side);
 }
 .newsletter .section-title { margin-top: 2px; }
 .newsletter .section-lead { margin-bottom: 10px; max-width: 60ch; color: var(--body); }
@@ -629,7 +658,7 @@ input::placeholder { color: var(--muted); }
 .newsletter-kicker {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 12.5px;
-  color: var(--accent);
+  color: var(--mark);
 }
 
 /* Wide: copy left, form right, bottoms aligned. */
@@ -644,7 +673,7 @@ input::placeholder { color: var(--muted); }
     column-gap: 40px;
     row-gap: 8px;
     align-items: end;
-    padding: 30px 32px 32px;
+    padding: 28px 32px;
   }
   .newsletter .newsletter-kicker { grid-area: kicker; align-self: start; }
   .newsletter .section-title  { grid-area: title;  align-self: start; }
@@ -668,7 +697,7 @@ input::placeholder { color: var(--muted); }
 }
 
 .newsletter-row .news-input { flex: 1 1 240px; }
-.newsletter-row .btn { padding-top: 0; padding-bottom: 0; height: 42px; white-space: nowrap; }
+.newsletter-row .btn { white-space: nowrap; }
 
 .newsletter-note {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -687,7 +716,7 @@ input::placeholder { color: var(--muted); }
 
 .page-title {
   margin: 0;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -697,7 +726,7 @@ input::placeholder { color: var(--muted); }
 .page-lead {
   margin: 0;
   max-width: 70ch;
-  font-size: 18.5px;
+  font-size: 18px;
   line-height: 1.65;
   color: var(--body);
 }
@@ -705,12 +734,12 @@ input::placeholder { color: var(--muted); }
 .chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   padding-top: 4px;
 }
 
 .chip-row .chip { cursor: pointer; background: transparent; }
-.chip-row .chip.chip-solid { background: var(--accent); }
+.chip-row .chip.chip-solid { background: var(--ink); }
 
 @media (max-width: 640px) {
   .page-title { font-size: 25px; }
@@ -731,7 +760,7 @@ input::placeholder { color: var(--muted); }
 
 .article-title {
   margin: 0 0 24px;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.28;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -766,8 +795,10 @@ input::placeholder { color: var(--muted); }
 }
 
 .article-foot a { color: var(--muted); }
-.article-foot a:hover { color: var(--accent); opacity: 1; text-decoration: none; }
-.article-foot-links { display: flex; gap: 16px; }
+.article-foot a:hover { color: var(--ink); opacity: 1; text-decoration: none; }
+.article-foot-links { display: flex; gap: 4px; }
+.article-foot-links a { padding: 6px 12px; border-radius: 24px; }
+.article-foot-links a:hover { background: var(--side); }
 
 .article-next {
   margin-top: 20px;
@@ -798,7 +829,7 @@ input::placeholder { color: var(--muted); }
   height: 280px;
   object-fit: cover;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .about-title { margin-bottom: 20px; }
@@ -826,9 +857,9 @@ input::placeholder { color: var(--muted); }
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 18px;
+  padding: 20px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .offer-title {
@@ -852,10 +883,10 @@ input::placeholder { color: var(--muted); }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  padding: 20px;
-  border: 1px solid var(--accent-line);
+  padding: 20px 24px;
+  border: 0;
   background: var(--accent-soft);
-  border-radius: 4px;
+  border-radius: 16px;
 }
 
 .email-band-text {
@@ -873,10 +904,10 @@ input::placeholder { color: var(--muted); }
   color: var(--ink);
 }
 
-/* Markdown mark — the "#" prefixes on headings. Accent since Sep 2026
-   (was faint): with a serif body the mono headings needed their rank back. */
+/* Markdown mark — the "#" prefixes on headings, in signal blue: the one
+   place the brighter blue is allowed to punctuate. */
 .md-mark {
-  color: var(--accent);
+  color: var(--mark);
   font-weight: 400;
 }
 
@@ -894,10 +925,10 @@ input::placeholder { color: var(--muted); }
   transform: translateX(-50%);
   transition: top 0.15s ease;
   background: var(--ink);
-  color: var(--panel);
+  color: var(--on-ink);
   padding: 10px 18px;
-  border-radius: 4px;
-  font-weight: 700;
+  border-radius: 36px;
+  font-weight: 600;
   font-size: 13px;
   text-decoration: none;
 }
@@ -926,55 +957,73 @@ input::placeholder { color: var(--muted); }
 
 /* ---- Buttons ------------------------------------------------ */
 
+/* 36px pills. The primary is the only surface ink fills entirely;
+   blue is never a button fill (Expo's rule, kept). */
 .btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--on-accent);
-  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  background: var(--ink);
+  color: var(--on-ink);
   border: 0;
-  border-radius: 4px;
+  border-radius: 36px;
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   text-align: center;
+  white-space: nowrap;
 }
 
-.btn:hover { opacity: 0.88; color: var(--on-accent); }
+.btn:hover { opacity: 0.9; color: var(--on-ink); }
 
 .btn-ghost {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+}
+
+.btn-ghost:hover { opacity: 1; background: var(--side); color: var(--ink); }
+
+.btn-outline {
   background: transparent;
   border: 1px solid var(--line);
   color: var(--ink);
 }
 
-.btn-ghost:hover { opacity: 1; border-color: var(--muted); color: var(--ink); }
+.btn-outline:hover { opacity: 1; background: var(--side); color: var(--ink); }
 
-.btn-sm { padding: 9px 15px; font-size: 12.5px; }
+.btn-sm { height: 34px; padding: 0 14px; font-size: 12.5px; }
 
 /* ---- Chips / status pills ----------------------------------- */
 
 .chip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
   border: 1px solid var(--line);
-  color: var(--body);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 11.5px;
+  color: var(--muted);
+  border-radius: 9999px;
+  padding: 0 13px;
+  font-size: 12.5px;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
 }
 
-a.chip:hover { border-color: var(--accent-line); color: var(--accent); opacity: 1; }
+a.chip:hover, button.chip:hover { background: var(--side); color: var(--ink); opacity: 1; }
 
 .chip-solid {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
 }
 
-a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
+a.chip-solid:hover, button.chip-solid:hover { background: var(--ink); color: var(--on-ink); opacity: 0.9; }
 
 /* ---- Section labels (uppercase kickers) ---------------------- */
 
@@ -995,8 +1044,8 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 /* ---- Experiment meta block (front-matter strip) --------------- */
 
 .meta-block {
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   padding: 14px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1029,7 +1078,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .metrics-head {
   padding: 9px 0;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   color: var(--muted);
   font-size: 12px;
 }
@@ -1082,7 +1131,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .checklist .check.done::before {
   content: "- [x] ";
-  color: var(--accent);
+  color: var(--mark);
 }
 
 .checklist .check small,
@@ -1140,11 +1189,11 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
   text-decoration: none;
   color: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.fn-card:hover { opacity: 1; border-color: var(--muted); }
+.fn-card:hover { opacity: 1; background: var(--raise); }
 
 .fn-card.is-running { border-color: var(--accent-line); }
 .fn-card.is-running:hover { border-color: var(--accent); }
@@ -1184,7 +1233,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .queued-box {
   border: 1px dashed var(--line);
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 18px;
   display: flex;
   flex-direction: column;
@@ -1200,11 +1249,11 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
   text-decoration: none;
   color: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 16px 18px;
 }
 
-.xcard:hover { opacity: 1; border-color: var(--muted); }
+.xcard:hover { opacity: 1; background: var(--raise); }
 
 .xcard.is-accent {
   border-color: var(--accent-line);
@@ -1215,15 +1264,15 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .xcard .xcard-kicker { font-size: 11.5px; color: var(--muted); }
 .xcard.is-accent .xcard-kicker { color: var(--accent); }
-.xcard .xcard-title { font-size: 14.5px; font-weight: 700; line-height: 1.45; }
+.xcard .xcard-title { font-size: 14px; font-weight: 600; line-height: 1.45; }
 
 /* ---- Newsletter row ------------------------------------------------ */
 
 .news-input {
-  height: 42px;
-  padding: 0 13px;
+  height: 40px;
+  padding: 0 16px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 36px;
   background: var(--panel);
   color: var(--ink);
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -1254,17 +1303,19 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
   display: flex;
   align-items: center;
   gap: 6px;
+  height: 32px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 9999px;
   background: transparent;
   color: var(--muted);
   font-family: inherit;
-  font-size: 11.5px;
-  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0 12px 0 10px;
   cursor: pointer;
 }
 
-.theme-pill:hover { border-color: var(--muted); color: var(--ink); }
+.theme-pill:hover { background: var(--side); color: var(--ink); }
 
 /* ============================================================
    PROSE — markdown article bodies
@@ -1273,8 +1324,8 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
    ============================================================ */
 
 .prose {
-  font-size: 19.5px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.75;
   color: var(--body);
 }
 
@@ -1294,27 +1345,28 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
   max-width: var(--measure);
 }
 
-/* Headings scale with the body (em) so the serif never outranks them;
-   h2 carries a hairline below, and every level's markdown mark is in the
-   accent — Nic's pick from the type lab, 13 Sep 2026. */
+/* Headings scale with the body (em) so the serif never outranks them.
+   Weight (600 mono against 400 serif) establishes rank; h2 keeps its
+   hairline below (Nic asked for it back, 13 Sep 2026); the markdown mark
+   sits in signal blue. */
 .prose h2, .prose h3, .prose h4 {
   color: var(--ink);
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 2em 0 0.7em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.8em 0 0.6em;
 }
 
 .prose h2 {
-  font-size: 1.32em;
-  padding-bottom: 0.35em;
+  font-size: 1.1em;
+  padding-bottom: 0.4em;
   border-bottom: 1px solid var(--line);
 }
-.prose h3 { font-size: 1.12em; }
-.prose h4 { font-size: 1em; }
+.prose h3 { font-size: 1em; }
+.prose h4 { font-size: 0.95em; }
 
-.prose h2::before { content: "## "; color: var(--accent); font-weight: 400; }
-.prose h3::before { content: "### "; color: var(--accent); font-weight: 400; }
-.prose h4::before { content: "#### "; color: var(--accent); font-weight: 400; }
+.prose h2::before { content: "## "; color: var(--mark); font-weight: 400; }
+.prose h3::before { content: "### "; color: var(--mark); font-weight: 400; }
+.prose h4::before { content: "#### "; color: var(--mark); font-weight: 400; }
 
 .prose p { margin: 0 0 1em; }
 
@@ -1342,49 +1394,57 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 .prose ol { list-style: decimal; }
 .prose li::marker { color: var(--faint); }
 
+/* The quotable line: italic serif, the mono "> " in signal blue hanging
+   in the left gutter. No bar — the mark is the device. */
 .prose blockquote {
+  position: relative;
   margin: 1.1em 0 1.3em;
-  padding: 0.2em 0 0.2em 22px;
-  border-left: 3px solid var(--accent);
-  font-size: 1.04em;
+  padding: 0 0 0 28px;
+  border-left: 0;
+  font-size: 1.05em;
   line-height: 1.6;
-  font-weight: 600;
+  font-style: italic;
   color: var(--ink);
 }
 
 .prose blockquote p { margin-bottom: 10px; color: inherit; }
 .prose blockquote p:last-child { margin-bottom: 0; }
 .prose blockquote > p:first-child::before {
-  content: "> ";
+  content: ">";
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-style: normal;
   font-weight: 400;
-  color: var(--accent);
+  color: var(--mark);
 }
 
 .prose code {
-  background: var(--raise);
-  border: 1px solid var(--line2);
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 0.92em;
+  background: var(--side);
+  border: 0;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.86em;
+  color: var(--ink);
 }
 
 .prose pre {
-  background: var(--raise);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 16px 18px;
+  background: var(--side);
+  border: 0;
+  border-radius: 12px;
+  padding: 18px 20px;
   overflow-x: auto;
   margin: 0 0 22px;
   font-size: 13.5px;
   line-height: 1.7;
 }
 
-.prose pre code { background: transparent; border: 0; padding: 0; font-size: inherit; }
+.prose pre code { background: transparent; border: 0; padding: 0; font-size: inherit; color: inherit; }
 
 .prose img {
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 12px;
   max-width: 100%;
   height: auto;
 }
@@ -1400,7 +1460,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .prose hr {
   border: 0;
-  border-top: 1px dashed var(--line);
+  border-top: 1px solid var(--line);
   margin: 32px 0;
 }
 
@@ -1417,7 +1477,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
   color: var(--muted);
   font-size: 12px;
   padding: 9px 12px 9px 0;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .prose tbody td {
@@ -1449,7 +1509,7 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
 
 .prose .task-list-item:has(input:checked)::before {
   content: "- [x] ";
-  color: var(--accent);
+  color: var(--mark);
 }
 
 /* Larger intro paragraph */
@@ -1471,8 +1531,8 @@ a.chip-solid:hover { color: var(--on-accent); opacity: 0.88; }
    ============================================================ */
 
 @media (max-width: 640px) {
-  .prose { font-size: 18px; line-height: 1.65; }
-  .prose blockquote { padding-left: 16px; }
+  .prose { font-size: 17px; line-height: 1.7; }
+  .prose blockquote { padding-left: 22px; }
   .checklist { font-size: 13.5px; }
-  .btn { padding: 14px 18px; font-size: 13.5px; }
+  .btn { height: 44px; font-size: 13.5px; }
 }

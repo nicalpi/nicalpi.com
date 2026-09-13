@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // NicAlpi v3 "Field Notes" tokens.
+      // NicAlpi v4 "Graphite notebook" tokens (Sep 2026).
       // Values live as CSS variables in assets/main.css (:root = light,
       // [data-theme="dark"] = dark) so every utility is theme-aware.
       colors: {
@@ -32,7 +32,9 @@ module.exports = {
           soft: 'var(--accent-soft)',
           line: 'var(--accent-line)',
         },
+        mark: 'var(--mark)',
         'on-accent': 'var(--on-accent)',
+        'on-ink': 'var(--on-ink)',
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
@@ -43,8 +45,8 @@ module.exports = {
         article: '820px',
       },
       borderRadius: {
-        brand: '4px',
-        panel: '6px',
+        brand: '12px',   // v4 Graphite notebook: content cards and images
+        panel: '16px',
       },
     },
   },

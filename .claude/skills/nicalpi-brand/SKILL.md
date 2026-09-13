@@ -3,7 +3,41 @@ name: nicalpi-brand
 description: Apply the NicAlpi personal brand system for Nic Alpi (nicalpi.com). Use this skill whenever generating visual assets (social cards, blog headers, quote images, diagrams), writing or reviewing web code (HTML, CSS, Jekyll, Tailwind), writing or editing any content in Nic's voice (posts, field notes, newsletters, social copy, bios), or when asked about NicAlpi's design system, colour palette, typography, or voice. Trigger on any mention of: NicAlpi, nicalpi.com, the brand, brand guidelines, blog styling, social card, quote card, header image, field notes, "on-brand", or "in Nic's voice". Also trigger when writing CSS variables or design tokens for Nic's projects.
 ---
 
-# NicAlpi Brand System — v3 "Field Notes"
+# NicAlpi Brand System — v4 "Graphite notebook"
+
+> **v4 (13 Sep 2026).** The Field Notes devices below are unchanged, but the
+> palette and shapes moved after a side-by-side with Expo's design system:
+> a cool graphite neutral scale replaces warm paper; every control is a
+> pill (buttons/inputs 36px, nav chips 24px, tags 9999px), content cards and
+> the fm block are 12px, the newsletter 20px; the primary button is
+> ink-filled (blue is never a button fill); tinted surfaces have no border
+> and there is one hairline colour; two blues — `--accent #0072DE` for text
+> links and running state, `--mark #0090FF` rationed to `#`/`##` marks,
+> `---` fences, `- [x]` and `>` kickers. Mono carries -0.012em tracking.
+> Weight (600 mono vs 400 serif) does hierarchy; sizes are compact (hero
+> 30px, post h1 28px, page h1 26px, section h2 16px/600, prose 18px/1.75,
+> prose h2 1.1em/600 with a hairline). Current tokens: see the table below
+> (v4 column) and `_assets/main.css`. Where the older prose in this file
+> says 4px radius, warm paper, or `#1E4FD8`, read the v4 values instead.
+
+| Token | v4 light | v4 dark | Use |
+|-------|---------|---------|-----|
+| `--panel` / `--canvas` | `#FFFFFF` | `#0F1114` | page surface |
+| `--side` | `#F0F0F3` | `#1A1D22` | fog: fm block, newsletter, code, chip hover |
+| `--raise` | `#F7F7F9` | `#15181C` | card/row hover |
+| `--ink` | `#1C2024` | `#F2F3F5` | headings, strong, primary button fill |
+| `--body` | `#2A2E34` | `#C9CCD2` | body text |
+| `--muted` | `#60646C` | `#8B8F98` | graphite: meta, nav at rest |
+| `--faint` | `#80838D` | `#6B6F78` | steel: column labels, EOF, `.md` |
+| `--line` / `--line2` | `#D9D9E0` | `#2A2E35` | the one hairline |
+| `--accent` | `#0072DE` | `#6DB8FF` | text links, running state |
+| `--mark` | `#0090FF` | `#3DA5FF` | markdown marks, fences, checkboxes, kickers |
+| `--accent-soft` / `--accent-line` | `#EAF4FF` / `#B9DBFF` | `#14233A` / `#2B4A73` | tint surfaces, at-rest underlines |
+| `--on-ink` / `--on-accent` | `#FFFFFF` | `#0F1114` | text on ink / accent |
+
+---
+
+## v3 "Field Notes" reference (devices still current; palette and radii superseded above)
 
 Personal brand for Nic Alpi — CTO at an age-tech company in Bristol, UK.
 Sold his 20-person Rails consultancy (CookiesHQ) in 2021. HYROX athlete,
