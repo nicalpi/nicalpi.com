@@ -6,41 +6,37 @@ permalink: /about/
 og_image: /assets/images/og/about.jpg
 ---
 
-<div class="page-head">
-  <h1 class="page-title"><span class="md-mark"># </span>A bit more about me…</h1>
-</div>
-
-<div class="about-grid">
-  <div class="prose">
-    <p>I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, Catherine and I started a Rails consultancy called CookiesHQ. We grew it to <strong>20 people and over a million in revenue</strong> before selling to Amba in 2021.</p>
-    <p>Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. It's meaningful work. I train HYROX at 5:30am. I have 3 kids. I have a <strong>hard 4pm rule</strong> — phone down, family time, non-negotiable.</p>
-    <p>I write because too much leadership advice performs a certainty the author doesn't have. I stopped publishing for a few years while I rebuilt parts of my life and career after the sale. Now I'm starting again, differently.</p>
-    <blockquote>This site is CTO Field Notes: I'm treating my work as a public CTO lab — change one thing, measure what happens, publish the result. Including the experiments that fail. No productivity theatre, no new system to adopt.</blockquote>
-    <p>AI made output cheap. Judgement didn't get any cheaper, and that's what I'm interested in now — how questions reach me, how we review AI-written code, how the team ships without me in every room.</p>
-    <p>People sometimes call this the "calm CTO" thing. Calm isn't the opposite of ambition. It's what leadership looks like when the system actually works, and building that system is the hard, ambitious part.</p>
-    <p>I live in Bristol with my family. I'm usually reading, walking, or trying to remember that not everything needs to be optimised.</p>
-    <p class="text-muted">— Nic</p>
+<div class="about-head{% if site.portrait_image %} has-portrait{% endif %}">
+  <div class="fm" aria-label="About Nic, as front matter">
+    <span class="fm-fence">---</span>
+    <span><span class="fm-k">name:</span> <span class="fm-v">Nic Alpi</span></span>
+    <span><span class="fm-k">role:</span> <span class="fm-v">CTO at Amba · 8-person team · software for elderly care</span></span>
+    <span><span class="fm-k">based:</span> <span class="fm-v">Bristol, UK</span> &nbsp; <span class="fm-k">since:</span> <span class="fm-v">French, in the UK since 2008</span></span>
+    <span><span class="fm-k">before:</span> <span class="fm-v">co-founded CookiesHQ in 2011 → 20 people · £1m+ · sold to Amba in 2021</span></span>
+    <span><span class="fm-k">stack:</span> <span class="fm-v">Rails, mostly. Boring on purpose.</span></span>
+    <span><span class="fm-k">rhythm:</span> <span class="fm-v">HYROX at 5:30am · 3 kids · hard 4pm stop</span></span>
+    <span><span class="fm-k">elsewhere:</span> <span class="fm-v">[<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="fm-accent no-underline">linkedin</a>, <a href="https://twitter.com/{{ site.twitter_username }}" class="fm-accent no-underline">twitter/x</a>, <a href="https://github.com/{{ site.github_username }}" class="fm-accent no-underline">github</a>]</span></span>
+    <span class="fm-fence">---</span>
   </div>
-
-  <aside class="about-side">
-    {% if site.portrait_image %}
-    <img src="{{ site.portrait_image }}" alt="Photo of Nic Alpi" class="about-portrait" width="220" height="260">
-    {% endif %}
-
-    <dl class="about-facts{% unless site.portrait_image %} about-facts-first{% endunless %}">
-      <dt>currently</dt>
-      <dd>CTO at Amba · 8-person team</dd>
-      <dd>Bristol, UK</dd>
-      <dd>Rails, mostly. Boring on purpose.</dd>
-      <dt>elsewhere</dt>
-      <dd><a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" class="no-underline">linkedin</a></dd>
-      <dd><a href="https://twitter.com/{{ site.twitter_username }}" class="no-underline">twitter/x</a></dd>
-      <dd><a href="https://github.com/{{ site.github_username }}" class="no-underline">github</a></dd>
-    </dl>
-
-    <a href="/contact/" class="xcard">
-      <span class="xcard-kicker">work with me</span>
-      <span class="xcard-title">Advisory &amp; fractional CTO →</span>
-    </a>
-  </aside>
+  {% if site.portrait_image %}
+  <img src="{{ site.portrait_image }}" alt="Photo of Nic Alpi" class="about-portrait" width="240" height="280">
+  {% endif %}
 </div>
+
+<h1 class="page-title about-title"><span class="md-mark"># </span>A bit more about me…</h1>
+
+<div class="prose">
+  <p>I'm not going to write a third-person bio. That would be weird. I'm a French developer who moved to the UK in 2008. In 2011, Catherine and I started a Rails consultancy called CookiesHQ. We grew it to <strong>20 people and over a million in revenue</strong> before selling to Amba in 2021.</p>
+  <p>Now I'm CTO at Amba, running an 8-person dev team building software for elderly care. It's meaningful work. I train HYROX at 5:30am. I have 3 kids. I have a <strong>hard 4pm rule</strong> — phone down, family time, non-negotiable.</p>
+  <p>I write because too much leadership advice performs a certainty the author doesn't have. I stopped publishing for a few years while I rebuilt parts of my life and career after the sale. Now I'm starting again, differently.</p>
+  <blockquote><p>This site is CTO Field Notes: I'm treating my work as a public CTO lab — change one thing, measure what happens, publish the result. Including the experiments that fail. No productivity theatre, no new system to adopt.</p></blockquote>
+  <p>AI made output cheap. Judgement didn't get any cheaper, and that's what I'm interested in now — how questions reach me, how we review AI-written code, how the team ships without me in every room.</p>
+  <p>People sometimes call this the "calm CTO" thing. Calm isn't the opposite of ambition. It's what leadership looks like when the system actually works, and building that system is the hard, ambitious part.</p>
+  <p>I live in Bristol with my family. I'm usually reading, walking, or trying to remember that not everything needs to be optimised.</p>
+  <p class="text-muted">— Nic</p>
+</div>
+
+<a href="/contact/" class="xcard about-cta">
+  <span class="xcard-kicker">work with me</span>
+  <span class="xcard-title">Advisory &amp; fractional CTO →</span>
+</a>

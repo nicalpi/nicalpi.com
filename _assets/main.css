@@ -207,8 +207,8 @@ input::placeholder { color: var(--muted); }
 .fm-fence { color: var(--accent); }
 .fm-k { color: var(--muted); }
 .fm-v { color: var(--ink); }
-.fm-v.fm-accent { color: var(--accent); }
-.fm-v.fm-accent:hover { color: var(--ink); opacity: 1; }
+.fm-v.fm-accent, .fm a.fm-accent { color: var(--accent); }
+.fm-v.fm-accent:hover, .fm a.fm-accent:hover { color: var(--ink); opacity: 1; }
 .fm > span { min-width: 0; overflow-wrap: anywhere; }
 
 .fm-post { margin-bottom: 26px; font-size: 13.5px; }
@@ -781,64 +781,30 @@ input::placeholder { color: var(--muted); }
 
 /* ---- About ---- */
 
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 40px;
-  align-items: start;
-}
+.about-head { display: flex; flex-direction: column; margin-bottom: 28px; }
 
-.about-side {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.about-head.has-portrait {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 32px;
+  align-items: start;
 }
 
 .about-portrait {
   width: 100%;
-  height: 260px;
+  height: 280px;
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 4px;
 }
 
-.about-portrait-empty {
-  border-style: dashed;
-  background: var(--side);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11.5px;
-  color: var(--muted);
-}
+.about-title { margin-bottom: 20px; }
 
-.about-facts {
-  margin: 0;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  font-size: 12.5px;
-  line-height: 1.7;
-}
-
-.about-facts dt {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  color: var(--muted);
-  margin-top: 10px;
-}
-
-.about-facts dt:first-child { margin-top: 0; }
-.about-facts-first { border-top: 0; padding-top: 4px; }
-.about-facts dd { margin: 0; color: var(--body); }
-.about-facts a { color: var(--body); }
-.about-facts a:hover { color: var(--accent); opacity: 1; }
+.about-cta { margin-top: 32px; max-width: 420px; }
 
 @media (max-width: 640px) {
-  .about-grid { grid-template-columns: 1fr; gap: 28px; }
-  .about-side { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
-  .about-portrait { width: 140px; height: 160px; }
-  .about-facts { flex: 1 1 200px; border-top: 0; padding-top: 0; }
-  .about-side .xcard { flex-basis: 100%; }
+  .about-head.has-portrait { grid-template-columns: 1fr; gap: 20px; }
+  .about-portrait { width: 160px; height: 180px; }
 }
 
 /* ---- Contact ---- */
