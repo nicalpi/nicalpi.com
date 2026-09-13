@@ -1,89 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>New junior onboarding timeline (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.phase{flex:1;background:var(--side);border-radius:12px;padding:24px 24px;display:flex;flex-direction:column;gap:12px;min-height:262px;}
+.pt{font-size:18px;font-weight:700;letter-spacing:-0.02em;}
+ul{display:flex;flex-direction:column;gap:9px;}
+li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--body);}
+.arrow{color:var(--mark);font-size:22px;align-self:center;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: #F8F6F3;
-  width: 1200px;
-  height: 630px;
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #6B7280; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">onboarding</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 24px; font-weight: 700; color: #2D3436; text-align: center; margin: 20px 0;">
-    New junior onboarding timeline
-  </h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <h1 class="h1"><span class="mark"># </span>New junior onboarding timeline</h1>
 
-  <!-- Timeline -->
-  <div style="display: flex; align-items: flex-start; justify-content: center; gap: 12px; flex: 1; padding: 24px 0;">
-    <!-- Week 1-2 -->
-    <div style="flex: 1; max-width: 320px;">
-      <div style="background: #5F8A5A; color: white; padding: 24px; border-radius: 12px; min-height: 200px;">
-        <div style="font-family: 'Caveat', cursive; font-size: 20px; opacity: 0.9; margin-bottom: 8px;">Week 1-2</div>
-        <div style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">Understand first</div>
-        <ul style="font-size: 14px; line-height: 1.7; opacity: 0.95; list-style: none;">
-          <li>• System architecture deep-dive</li>
-          <li>• Read existing PRs</li>
-          <li>• Explain what they do</li>
-          <li>• Watch AI tools, don't use yet</li>
+    <div style="display:flex;align-items:stretch;gap:14px;">
+      <div class="phase">
+        <div class="lbl">week 1&ndash;2</div>
+        <div class="pt">Understand first</div>
+        <ul>
+          <li><span class="mark">-</span><span>System architecture deep-dive</span></li>
+          <li><span class="mark">-</span><span>Read existing PRs</span></li>
+          <li><span class="mark">-</span><span>Explain what they do</span></li>
+          <li><span class="mark">-</span><span>Watch AI tools, don&rsquo;t use yet</span></li>
+        </ul>
+      </div>
+
+      <span class="arrow">&rarr;</span>
+
+      <div class="phase">
+        <div class="lbl">week 3&ndash;4</div>
+        <div class="pt">Use AI with accountability</div>
+        <ul>
+          <li><span class="mark">-</span><span>Small, well-defined changes</span></li>
+          <li><span class="mark">-</span><span>Ship the feature AND</span></li>
+          <li><span class="mark">-</span><span>Explain every AI-generated line</span></li>
+          <li><span class="mark">-</span><span>Full code review required</span></li>
+        </ul>
+      </div>
+
+      <span class="arrow">&rarr;</span>
+
+      <div class="phase" style="background:var(--ink);">
+        <div class="lbl" style="color:rgba(255,255,255,0.62);">month 2&ndash;3</div>
+        <div class="pt" style="color:var(--on-ink);">Build judgment</div>
+        <ul>
+          <li><span style="color:rgba(255,255,255,0.55);">-</span><span style="color:rgba(255,255,255,0.82);">Progressively harder features</span></li>
+          <li><span style="color:rgba(255,255,255,0.55);">-</span><span style="color:rgba(255,255,255,0.82);">AI helpful but not sufficient</span></li>
+          <li><span style="color:rgba(255,255,255,0.55);">-</span><span style="color:rgba(255,255,255,0.82);">When to trust AI output</span></li>
+          <li><span style="color:rgba(255,255,255,0.55);">-</span><span style="color:rgba(255,255,255,0.82);">When to ignore it entirely</span></li>
         </ul>
       </div>
     </div>
 
-    <div style="width: 48px; height: 2px; background: #D4C5B5; margin-top: 100px;"></div>
-
-    <!-- Week 3-4 -->
-    <div style="flex: 1; max-width: 320px;">
-      <div style="background: #C4716A; color: white; padding: 24px; border-radius: 12px; min-height: 200px;">
-        <div style="font-family: 'Caveat', cursive; font-size: 20px; opacity: 0.9; margin-bottom: 8px;">Week 3-4</div>
-        <div style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">Use AI with accountability</div>
-        <ul style="font-size: 14px; line-height: 1.7; opacity: 0.95; list-style: none;">
-          <li>• Small, well-defined changes</li>
-          <li>• Ship the feature AND</li>
-          <li>• Explain every AI-generated line</li>
-          <li>• Full code review required</li>
-        </ul>
-      </div>
-    </div>
-
-    <div style="width: 48px; height: 2px; background: #D4C5B5; margin-top: 100px;"></div>
-
-    <!-- Month 2-3 -->
-    <div style="flex: 1; max-width: 320px;">
-      <div style="background: #4A8FA0; color: white; padding: 24px; border-radius: 12px; min-height: 200px;">
-        <div style="font-family: 'Caveat', cursive; font-size: 20px; opacity: 0.9; margin-bottom: 8px;">Month 2-3</div>
-        <div style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">Build judgment</div>
-        <ul style="font-size: 14px; line-height: 1.7; opacity: 0.95; list-style: none;">
-          <li>• Progressively harder features</li>
-          <li>• AI helpful but not sufficient</li>
-          <li>• When to trust AI output</li>
-          <li>• When to ignore it entirely</li>
-        </ul>
-      </div>
-    </div>
+    <div style="font-size:15px;color:var(--muted);"><span class="mark">&gt; </span>This takes more senior time. That&rsquo;s unavoidable.</div>
   </div>
 
-  <!-- Annotation -->
-  <div style="font-family: 'Caveat', cursive; font-size: 20px; color: #57606A; text-align: center;">
-    This takes more senior time. That's unavoidable.
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

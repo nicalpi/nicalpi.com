@@ -5,26 +5,26 @@
 <title>Newsletter card (1200×630)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./social.css">
 <script>if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
 <body>
 
-<!-- 1200×630 — newsletter / subscribe card -->
-<div style="width:1200px; height:630px; background:var(--raise); border:1px solid var(--line); display:flex; flex-direction:column; padding:64px; box-sizing:border-box;">
+<!-- 1200×630 — newsletter / subscribe card. The site's "> newsletter" band. -->
+<div class="card" style="width:1200px; height:630px; padding:56px 64px;">
   <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; font-size:20px; color:var(--muted);">
-    <span class="ink" style="font-weight:700;">nicalpi</span>
-    <span>cto field notes · every fortnight</span>
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
+    <span>new writing · straight to your inbox</span>
   </div>
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:24px;">
-    <span class="kicker accent" style="font-size:21px;">one practice, field-tested</span>
-    <h1 style="max-width:26ch; font-size:62px; line-height:1.16; font-weight:700; letter-spacing:-0.03em;">Change one thing. Measure it. Publish the result.</h1>
-    <p style="max-width:52ch; font-size:24px; line-height:1.6; color:var(--body);">Real experiments from a working CTO. Honest results, no pretend certainty — including the ones that fail.</p>
+  <div class="fog" style="flex:1; margin:28px 0; padding:40px 48px; display:flex; flex-direction:column; justify-content:center; gap:22px;">
+    <span class="mark" style="font-size:21px;">&gt; newsletter</span>
+    <h1 style="max-width:26ch; font-size:52px; line-height:1.18; font-weight:700; letter-spacing:-0.025em;">What worked, what failed, and what I'm changing next.</h1>
+    <p style="max-width:52ch; font-size:23px; line-height:1.6; color:var(--body);">Written after the fact, not before. From a working CTO, a couple of times a month.</p>
   </div>
-  <div style="display:flex; align-items:center; gap:16px;">
-    <span style="background:var(--accent); color:var(--on-accent); padding:18px 28px; font-size:22px; font-weight:700;">Get the next field note →</span>
-    <span style="font-size:19px; color:var(--muted);">nicalpi.com · no spam, unsubscribe anytime</span>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; color:var(--muted);">
+    <span class="btn-ink" style="height:52px; padding:0 26px; font-size:19px;">subscribe</span>
+    <span>nicalpi.com · no spam, unsubscribe anytime</span>
   </div>
 </div>
 

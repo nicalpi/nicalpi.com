@@ -61,9 +61,13 @@ For each picked illustration:
 
 1. Write `assets/images/<slug>/<name>.html`: self-contained, 1200×630 unless
    the content wants square, linking `../../social-templates/social.css` for
-   tokens. JetBrains Mono only. Faint `#` marks, thin rules, one accent. Text
-   comes from the post verbatim. Light theme by default (posts render the jpg
-   in both themes; paper surfaces read fine on dark).
+   tokens (`.mark`, `.tag`, `.btn-ink`, `.fog`, `.quote` helpers). JetBrains
+   Mono only. `#` marks in `--mark`, one hairline, fog panels without
+   borders, pills for labels, ink for any solid tile, never a blue fill; the
+   `nicalpi.md` wordmark top left and `nicalpi.com` in the footer line. Rules
+   in `DESIGN.md` → Imagery. Text comes from the post verbatim. Light theme
+   by default (posts render the jpg in both themes; white cards with a
+   hairline frame read fine on dark).
 2. Render: `/opt/homebrew/bin/python3.13 scripts/render-illustration.py assets/images/<slug>/<name>.html`
    (add `--size WxH` for non-default sizes; that Python has Playwright, the
    default `python3` does not; it launches system Chrome, so it runs outside

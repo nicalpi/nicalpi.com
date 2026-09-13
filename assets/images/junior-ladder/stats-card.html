@@ -1,61 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>The junior hiring market has already moved (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.tile{background:var(--side);border-radius:12px;padding:26px 26px;display:flex;flex-direction:column;gap:14px;min-height:236px;}
+.num{font-size:66px;font-weight:700;letter-spacing:-0.04em;line-height:1;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: #2D3436;
-  width: 1200px;
-  height: 630px;
-  padding: 56px 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #9CA3AF; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">the numbers</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 24px; font-weight: 700; color: white; margin: 24px 0; letter-spacing: -0.5px;">
-    The junior hiring market has already moved
-  </h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px;">
+    <h1 class="h1"><span class="mark"># </span>The junior hiring market has already moved</h1>
 
-  <!-- Stats Grid -->
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1; align-content: center;">
-    <div style="text-align: center;">
-      <div style="font-size: 72px; font-weight: 700; color: #8FAE8B; line-height: 1;">60%</div>
-      <div style="font-size: 14px; color: #9CA3AF; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;">Drop in entry-level<br>job postings</div>
-      <div style="font-size: 13px; color: #6B7280; margin-top: 8px;">2022-2024</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="tile">
+        <div class="num">&minus;60%</div>
+        <div style="font-size:15px;font-weight:600;line-height:1.45;">Drop in entry-level<br>job postings</div>
+        <div style="margin-top:auto;font-size:13.5px;color:var(--muted);">2022 <span class="mark">&rarr;</span> <span style="color:var(--accent);">2024</span></div>
+      </div>
+
+      <div class="tile">
+        <div class="num">7%</div>
+        <div style="font-size:15px;font-weight:600;line-height:1.45;">New grads in<br>Big Tech hires</div>
+        <div style="margin-top:auto;font-size:13.5px;color:var(--muted);">~14% <span class="mark">&rarr;</span> <span style="color:var(--accent);">7%</span></div>
+      </div>
+
+      <div class="tile">
+        <div class="num">70%</div>
+        <div style="font-size:15px;font-weight:600;line-height:1.45;">Hiring managers think<br>AI can do intern work</div>
+        <div style="margin-top:auto;font-size:13.5px;color:var(--muted);">perception, not reality</div>
+      </div>
     </div>
 
-    <div style="text-align: center;">
-      <div style="font-size: 72px; font-weight: 700; color: #E8998D; line-height: 1;">7%</div>
-      <div style="font-size: 14px; color: #9CA3AF; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;">New grads in<br>Big Tech hires</div>
-      <div style="font-size: 13px; color: #6B7280; margin-top: 8px;">Down from ~14%</div>
-    </div>
-
-    <div style="text-align: center;">
-      <div style="font-size: 72px; font-weight: 700; color: #89B9C4; line-height: 1;">70%</div>
-      <div style="font-size: 14px; color: #9CA3AF; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;">Hiring managers think<br>AI can do intern work</div>
-      <div style="font-size: 13px; color: #6B7280; margin-top: 8px;">Perception vs reality</div>
-    </div>
+    <div style="font-size:15px;color:var(--muted);"><span class="mark">&gt; </span>This isn&rsquo;t future speculation. This is happening right now.</div>
   </div>
 
-  <!-- Source -->
-  <div style="font-size: 12px; color: #6B7280; text-align: center;">
-    This isn't future speculation. This is happening right now.
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

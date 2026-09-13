@@ -1,71 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>The line (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.panel{border-radius:12px;padding:30px 30px;display:flex;flex-direction:column;gap:16px;min-height:246px;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: #2D3436;
-  width: 1200px;
-  height: 630px;
-  padding: 56px 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #9CA3AF; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">the test</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 32px; font-weight: 700; color: white; text-align: center; margin: 24px 0; letter-spacing: -0.5px;">
-    The line
-  </h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <h1 class="h1"><span class="mark"># </span>The line</h1>
 
-  <!-- Two states -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1; align-items: center; padding: 0 48px;">
-    <!-- Can't explain -->
-    <div style="background: rgba(196, 113, 106, 0.15); border: 2px solid #C4716A; padding: 40px; border-radius: 16px; text-align: center;">
-      <div style="font-size: 14px; font-weight: 600; color: #C4716A; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-        If you can't explain it
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div class="panel" style="background:var(--side);">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="color:var(--faint);font-size:13px;">- [ ]</span>
+          <span class="lbl">if you can&rsquo;t explain it</span>
+        </div>
+        <div style="font-size:23px;font-weight:700;letter-spacing:-0.02em;line-height:1.3;color:var(--muted);">AI is hiding the gap</div>
+        <div style="font-size:15px;line-height:1.75;color:var(--muted);">
+          You moved faster. The diff is bigger.<br>
+          But you didn&rsquo;t gain leverage.<br>
+          <span style="color:var(--ink);font-weight:600;">You lost ownership.</span>
+        </div>
       </div>
-      <div style="font-size: 24px; font-weight: 700; color: white; line-height: 1.3; margin-bottom: 16px;">
-        AI is hiding the gap
-      </div>
-      <div style="font-size: 16px; color: #9CA3AF; line-height: 1.6;">
-        You moved faster. The diff is bigger.<br>But you didn't gain leverage.<br><span style="color: #C4716A; font-weight: 500;">You lost ownership.</span>
+
+      <div class="panel" style="background:var(--ink);">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span class="mark" style="font-size:13px;">- [x]</span>
+          <span class="lbl" style="color:rgba(255,255,255,0.62);">if you can explain it</span>
+        </div>
+        <div style="font-size:23px;font-weight:700;letter-spacing:-0.02em;line-height:1.3;color:var(--on-ink);">AI becomes leverage</div>
+        <div style="font-size:15px;line-height:1.75;color:rgba(255,255,255,0.72);">
+          You keep authorship.<br>
+          You ship faster without guessing.<br>
+          <span style="color:var(--on-ink);font-weight:600;">The code is yours.</span>
+        </div>
       </div>
     </div>
 
-    <!-- Can explain -->
-    <div style="background: rgba(95, 138, 90, 0.15); border: 2px solid #5F8A5A; padding: 40px; border-radius: 16px; text-align: center;">
-      <div style="font-size: 14px; font-weight: 600; color: #5F8A5A; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-        If you can explain it
-      </div>
-      <div style="font-size: 24px; font-weight: 700; color: white; line-height: 1.3; margin-bottom: 16px;">
-        AI becomes leverage
-      </div>
-      <div style="font-size: 16px; color: #9CA3AF; line-height: 1.6;">
-        You keep authorship.<br>You ship faster without guessing.<br><span style="color: #5F8A5A; font-weight: 500;">The code is yours.</span>
-      </div>
-    </div>
+    <div style="font-size:19px;font-weight:600;">AI didn&rsquo;t kill developer value. It <span style="color:var(--accent);">moved</span> it.</div>
   </div>
 
-  <!-- Footer -->
-  <div style="text-align: center;">
-    <p style="font-size: 20px; color: white; font-weight: 600;">
-      AI didn't kill developer value. It <span style="color: #E8998D;">moved</span> it.
-    </p>
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

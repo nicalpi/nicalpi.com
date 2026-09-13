@@ -5,28 +5,33 @@
 <title>OG — homepage (1200×630)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./social.css">
 <script>if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
 <body>
 
 <!-- 1200×630 — bespoke homepage / brand card. Static (no generator slots):
-     it's the site's identity, edit deliberately. Based on the brand-statement
-     card from the Field Notes v3 social artboard. -->
-<div style="width:1200px; height:630px; background:var(--raise); border:1px solid var(--line); display:flex; flex-direction:column; padding:64px; box-sizing:border-box; font-family:'JetBrains Mono', ui-monospace, monospace; color:var(--ink);">
+     it's the site's identity, edit deliberately. The front-matter block is
+     the home hero's own device, reproduced here. -->
+<div class="card" style="width:1200px; height:630px; padding:52px 64px 56px;">
   <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; font-size:20px; color:var(--muted);">
-    <span class="ink" style="font-weight:700;">nicalpi</span>
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
     <span>cto · bristol · writing in public</span>
   </div>
-  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:24px;">
-    <span class="kicker accent" style="font-size:21px;">field notes from a working cto</span>
-    <h1 style="max-width:24ch; font-size:60px; line-height:1.18; font-weight:700; letter-spacing:-0.03em;">AI made output cheap. Good judgement is now the advantage.</h1>
-    <p style="max-width:52ch; font-size:23px; line-height:1.6; color:var(--body);">A public CTO lab: change one thing, measure what happens, publish the result — including the experiments that fail.</p>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:28px;">
+    <div class="fog" style="display:flex; flex-direction:column; padding:20px 26px; border-radius:16px; font-size:19px; line-height:1.8; color:var(--body);">
+      <span class="mark">---</span>
+      <span><span class="muted">name:</span> <span class="ink">Nic Alpi</span></span>
+      <span><span class="muted">role:</span> <span class="ink">CTO · Amba · Bristol</span></span>
+      <span><span class="muted">writing:</span> <span class="ink">[leading teams, AI without losing ownership, useful work without another system]</span></span>
+      <span class="mark">---</span>
+    </div>
+    <h1 style="max-width:26ch; font-size:50px; line-height:1.2; font-weight:700; letter-spacing:-0.025em;"><span class="mark"># </span>AI made output cheap. Good judgement is now the advantage.</h1>
   </div>
-  <div style="display:flex; align-items:center; gap:16px;">
-    <span style="background:var(--accent); color:var(--on-accent); padding:16px 26px; font-size:21px; font-weight:700;">Read the field notes →</span>
-    <span style="font-size:19px; color:var(--muted);">nicalpi.com</span>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; color:var(--muted);">
+    <span class="btn-ink" style="height:52px; padding:0 26px; font-size:19px;">Read the writing →</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 

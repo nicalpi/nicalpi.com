@@ -1,233 +1,180 @@
-# NicAlpi v3 Components — Reference
+# NicAlpi v4 Components — Reference
 
 Every reusable piece of the site, with its class or include and a usage
 snippet. All of them render live at `/styleguide/`. CSS lives in
 `_assets/main.css` (compile with `yarn css`); Liquid components live in
-`_includes/` and `_includes/fn/`.
+`_includes/` and `_includes/fn/`. Visual spec for each: `DESIGN.md`.
 
 Everything is token-driven — components work in light and dark with no
 variants.
 
 ---
 
-## Layout shells
+## Frame
 
-### Site frame
-Applied by `_layouts/default.html`. 1280px `--panel` sheet on the `--canvas`
-surround, side borders above 1280px.
+`_layouts/default.html` wraps every page: `nav-top.html` → `<main
+class="sheet">` (1024px, 880px inner) → `footer.html`. Pages only provide
+what goes inside the sheet. Sections inside the sheet are
+`<section class="sheet-section">` (40px padding, hairline above, first one
+flush).
 
-```html
-<div class="site-frame">…</div>
-```
-
-### Sidebar page
-The inner-page shell: 248px sidebar + main column. Below 900px the sidebar
-becomes the contents drawer automatically.
-
-```liquid
-<div class="with-sidebar" id="main-content">
-  {% include sidebar.html context="post" %}
-  <div class="flex flex-col min-w-0">
-    {% include mobile-bar.html back_url="/blog/" back_label="writing" %}
-    <div class="crumbs hidden md:flex">…</div>
-    <article class="px-5 md:px-10 … max-w-article">…</article>
-    <div class="mt-auto">{% include footer.html %}</div>
-  </div>
-</div>
-```
-
-`sidebar.html` contexts: `notes` (field-notes index), `note` (brief/progress),
-`post`, `writing`, `about`, `drawer` (full-width pages: drawer only). Pass
-`body=content` from `note` and `post` layouts — that powers the "on this
-page" heading list (split on rendered `<h2>`s). The include resolves
-experiments and progress notes from the `field_notes` collection by itself.
-
-Section order inside the sidebar is fixed: context nav ("on this page",
-experiment tree) → field notes → **writing, pinned to the bottom with
-`mt-auto`** → meta links (about / work with me / rss) → theme toggle.
-
-### Top nav (full-width pages)
 ```liquid
 {% include nav-top.html %}
-{% include sidebar.html context="drawer" %}   <!-- powers the mobile drawer -->
+<main id="main-content" class="sheet">{{ content }}</main>
+{% include footer.html %}
 ```
 
-### Mobile bar
-Sticky header on inner pages. `{% include mobile-bar.html back_url="/" back_label="home" label="field notes" %}`
+### Top bar — `nav-top.html`
+Borderless, sticky, 64px (56px on phones). Wordmark `nicalpi` + `.topbar-ext`
+`.md`; `.topbar-nav` holds three nav chips (fog on hover / `aria-current`)
+and the `theme-pill`. Four items fit a phone width, so there is no drawer.
 
-### Breadcrumbs
-```html
-<div class="crumbs hidden md:flex">
-  <span><a href="/">home</a> / <a href="/field-notes/">field notes</a> / exp-01</span>
-  <span class="text-accent">● running · since Aug</span>
-</div>
-```
+### Footer — `footer.html`
+One line above a hairline: © left, `writing · about · linkedin · twitter/x ·
+rss` right, `.eof` last.
 
 ---
 
 ## Primitives
 
-### Links (Aug 2026)
-Inline text links are accent-coloured with a **hairline underline in
-`--accent-line` at rest** (the pre-hover "this is a link" cue), strengthening
-to `--accent` on hover. `.no-underline` opts out at rest; buttons, chips,
-sidebar links and cards are excluded from the hover underline in CSS.
-
-Row/card links use the **block-link pattern** — only the title responds; an
-accent `→` after the title fades and bounces in on hover (space reserved, no
-reflow; disabled under reduced motion):
-```html
-<a href="…" class="link-block no-underline text-ink …">
-  <span class="link-title …">Post or experiment title</span>
-  <span class="…">description, meta — never underlined</span>
-</a>
-```
-`.link-title` also works inside `.fn-card`; `.xcard` titles underline on
-hover without the arrow (their kickers already carry arrows).
+### Links
+Inline text links are `--accent` with a hairline underline in
+`--accent-line` at rest, full accent on hover. `.no-underline` opts out.
+Block links (`.link-block` + `.link-title`) are used by directory rows; in
+v4 the row title simply turns `--accent` on hover (the arrow is suppressed
+inside `.dir-row`).
 
 ### Buttons
 ```html
-<a class="btn" href="…">Get the next field note →</a>
-<a class="btn btn-ghost" href="…">Start reading</a>
-<a class="btn btn-sm" href="…">subscribe</a>
+<a class="btn" href="…">Get new posts by email →</a>   <!-- ink pill, 40px -->
+<a class="btn btn-ghost" href="…">Start reading</a>     <!-- transparent, fog on hover -->
+<a class="btn btn-outline" href="…">Start reading</a>   <!-- hairline edge -->
+<a class="btn btn-sm" href="…">subscribe</a>             <!-- 34px -->
 ```
 
-### Chips / status pills
+### Chips (filters) and tags
 ```html
-<span class="chip chip-solid">running</span>
-<span class="chip">closed</span>
+<button class="chip chip-solid" aria-pressed="true">all</button>  <!-- ink fill -->
+<button class="chip">ai</button>                                  <!-- 30px, hairline -->
 ```
+`.chip-row` lays them out (used on `/blog/` with the topic filter script).
 
 ### Kickers
 ```html
-<span class="kicker">what I've learned</span>
-<span class="kicker kicker-accent">field notes — the public cto lab</span>
+<span class="kicker">worked with</span>
+<span class="kicker kicker-accent">running · since Aug</span>
 ```
 
 ### Markdown marks
-Headings in layouts carry an explicit faint mark; `.prose` h2/h3 get theirs
-from CSS `::before`.
+Headings in layouts carry an explicit mark; `.prose` h2–h4 get theirs from
+CSS `::before`. Both use `--mark`.
 ```html
-<h1><span class="md-mark"># </span>Page title</h1>
-<h2><span class="on-accent-mark">## </span>On accent-soft surfaces</h2>
+<h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
+<h2 class="section-title"><span class="md-mark">## </span>Writing</h2>
 ```
 
-### Status dots
-`<span class="dot-running">●</span>` / `<span class="dot-closed">○</span>`
-
-### Theme controls
-`theme-pill` (nav), `theme-row` (sidebar), `icon-btn` (mobile). All need
-`data-theme-toggle`; a child `[data-theme-label]` gets "light"/"dark".
-
-### Progress bar
+### Section head
 ```html
-<div class="progress-track" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-fill" style="width:23%;"></div>
+<div class="section-head">
+  <h2 class="section-title"><span class="md-mark">## </span>Writing</h2>
+  <span class="section-cmd">ls -t _posts/ · {{ site.posts.size }} files</span>
 </div>
 ```
 
+### Theme toggle
+`theme-pill` in the top bar; needs `data-theme-toggle`, a child
+`[data-theme-label]` gets "light"/"dark". ⌥T also toggles.
+
 ---
 
-## Field-note components (`_includes/fn/`)
+## Devices
 
-Usable inside markdown bodies — Jekyll renders Liquid before kramdown.
-Data lives in front matter; see `_field_notes/README.md` for the schema.
-
-### Meta block — `fn/meta-block.html`
-The "front matter strip" between ink rules. Layouts build it automatically
-for briefs and progress notes; use the include for custom rows.
-```liquid
-{% include fn/meta-block.html rows=page.meta_rows %}
-<!-- row: { label, value, status: true → accent } -->
-```
-
-### Metrics table — `fn/metrics.html`
-before / now / target. Stacks into `before → now` rows under 640px.
-```liquid
-{% include fn/metrics.html rows=page.metrics caption="Small sample." %}
-<!-- row: { label, before, now, target, home: true, home_label } -->
-```
-Rows flagged `home: true` also feed the flagship card on the homepage.
-
-### Checklist — `fn/checklist.html`
-```liquid
-{% include fn/checklist.html items=page.guardrails %}
-<!-- item: { text, done: bool, note: "muted suffix" } -->
-```
-
-### Field log — `fn/field-log.html`
-```liquid
-{% include fn/field-log.html entries=page.field_log %}
-<!-- entry: { date, strong: "lead sentence", text, planned: bool } -->
-```
-
-### Experiment card — `fn/exp-card.html`
-Index card with status strip, title, summary, progress bar and facts column.
-```liquid
-{% include fn/exp-card.html e=experiment_doc %}
-```
-
-### Cross-link card — `fn/xcard.html`
-Prev/next and field-note cross-promotion.
-```liquid
-{% include fn/xcard.html url="…" kicker="← previous · leadership" title="…" %}
-{% include fn/xcard.html url="…" kicker="field note · exp-01" title="…" accent=true %}
-```
-
-### Follow CTA — `fn/follow-cta.html`
-```liquid
-{% include fn/follow-cta.html text="…" button="follow this experiment →" %}
-```
-
-### Queued box
-Renders queued experiments from `_data/field_notes.yml`; guard it so it
-disappears when the queue is empty.
-```liquid
-{% if site.data.field_notes.queued.size > 0 %}
-<div class="queued-box">
-  <span class="kicker">queued</span>
-  <div class="checklist">
-    {% for q in site.data.field_notes.queued %}<span class="check">{{ q.id }} — {{ q.text }}</span>{% endfor %}
-  </div>
+### Front-matter block — `.fm`
+```html
+<div class="fm" aria-label="…">
+  <span class="fm-fence">---</span>
+  <span><span class="fm-k">name:</span> <span class="fm-v">Nic Alpi</span></span>
+  <span><span class="fm-k">contact:</span> <a href="mailto:…" class="fm-v fm-accent no-underline">hi@nicalpi.com</a></span>
+  <span class="fm-fence">---</span>
 </div>
-{% endif %}
 ```
+`.fm-post` is the post variant (13.5px, 44px below). `_layouts/post.html`
+builds it from front matter under a `.post-path` line.
 
----
+### Directory listing — `post-row.html` + `dir-head.html`
+```liquid
+<div class="dir-list">
+  {% include dir-head.html %}
+  {% for post in site.posts %}{% include post-row.html post=post %}{% endfor %}
+</div>
+```
+One row = `a.dir-row.link-block` with `.dir-date`, `.dir-cat` (plain
+`--accent` word), `.dir-title.link-title`, `.dir-read`. Stacks on phones.
 
-## Bands & sections
+### Beliefs
+```html
+<section class="sheet-section beliefs-section">
+  <div class="beliefs-intro">…section-title + section-lead…</div>
+  <ul class="beliefs"><li><strong>Claim.</strong> Support.</li>…</ul>
+</section>
+```
+Two columns above 800px; each item gets a `- [x]` mark from CSS.
 
 ### Newsletter — `newsletter.html`
 ```liquid
 {% include newsletter.html %}
 {% include newsletter.html title="…" text="…" kicker="…" id="newsletter" %}
 ```
-Wired to Kit form 5638226 (plain POST of `email_address`, works without
-JS). `site.js` intercepts `[data-newsletter-form]` for an inline success
-message ("subscribed ✓" + check-your-email note in `[data-newsletter-note]`,
-`aria-live`); on network failure it falls back to the plain POST and Kit's
-hosted confirmation page.
+Fog card, 20px, `> kicker`, pill input (`.news-input`) + `.btn`. Wired to
+Kit form 5638226 (plain POST of `email_address`, works without JS);
+`site.js` intercepts `[data-newsletter-form]` for the inline success note.
 
-### Footer — `footer.html`
-Slim © + links row; used at the bottom of every main column.
+### Cross-link card — `fn/xcard.html`
+```liquid
+{% include fn/xcard.html url="…" kicker="← previous · leadership" title="…" %}
+{% include fn/xcard.html url="…" kicker="field note · exp-01" title="…" accent=true %}
+```
+Post prev/next uses it inside `nav.article-next`.
 
-### Accent band
-The "lab" treatment: `bg-accent-soft border-t border-b border-accent-line`,
-cells separated with `gap-px bg-accent-line` grids.
+### Page head (writing, about, contact, 404)
+```html
+<div class="page-head">
+  <h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
+  <p class="page-lead">…</p>
+  <div class="chip-row">…chips…</div>
+</div>
+```
 
-### Raise band
-Quieter alternate band: `bg-raise border-t border-line` (beliefs, logos).
+### Contact
+`.offer-grid` of `.offer` cards (12px) and the `.email-band` (accent-soft,
+16px, no border).
 
 ---
 
 ## Prose
 
-`.prose` styles rendered markdown: faint `##` marks on h2–h4, accent
-blockquotes, `--raise` code blocks, bordered images with `figcaption`,
-GFM task lists rendered as `- [ ]` text marks, tables in the metrics style.
-`.lead` for the opening paragraph.
+`.prose` styles rendered markdown: mono 600 headings with `##`/`###` marks
+in `--mark` (h2 keeps a hairline below), italic blockquotes with a hanging
+`>`, fog inline code (6px) and `pre` (12px), images with a hairline and 12px
+corners, GFM task lists rendered as `- [ ]`/`- [x]` text marks, hairline
+tables. `.lead` for an opening paragraph.
+
+## Field-note components (`_includes/fn/`) — paused
+
+Usable inside markdown bodies; data lives in front matter (schema in
+`_field_notes/README.md`). `fn/meta-block.html` (hairline rules),
+`fn/metrics.html` (before / now / target; stacks under 640px),
+`fn/checklist.html` (`- [ ]`/`- [x]`), `fn/field-log.html`,
+`fn/exp-card.html` (12px card, fog hover), `fn/follow-cta.html`,
+`.queued-box` (dashed, 12px), `.progress-track/.progress-fill`. All token
+driven; nothing to restyle when the lab returns.
 
 ## Lightbox
 
-`lightbox.html` + images inside post bodies. Unchanged behaviour; backdrop is
-theme-independent black.
+`lightbox.html` + images inside post bodies. Backdrop is theme-independent
+black.
+
+## Retired
+
+`_retired/` holds `sidebar.html`, `mobile-bar.html`, `field-notes.html`
+(v2/v3 shells). Not processed by Jekyll.

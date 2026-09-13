@@ -1,108 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>Rebuilding the junior ladder (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.item{display:flex;gap:12px;align-items:flex-start;}
+.item .bx{font-size:13px;color:var(--mark);padding-top:3px;flex-shrink:0;}
+.item .t{font-size:15.5px;font-weight:600;line-height:1.35;}
+.item .s{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: white;
-  border: 1px solid #E5E7EB;
-  width: 1200px;
-  height: 630px;
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #6B7280; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">the framework</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 28px; font-weight: 700; color: #2D3436; margin: 20px 0; letter-spacing: -0.5px;">
-    Rebuilding the junior ladder: a framework
-  </h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <h1 class="h1"><span class="mark"># </span>Rebuilding the junior ladder: a framework</h1>
 
-  <!-- List -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 48px; flex: 1; align-content: center;">
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #5F8A5A; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">1</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Hire for different fundamentals</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Curiosity, questions, pattern recognition</div>
-      </div>
+    <div style="background:var(--side);border-radius:12px;padding:26px 30px;display:grid;grid-template-columns:1fr 1fr;gap:18px 44px;">
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Hire for different fundamentals</div><div class="s">Curiosity, questions, pattern recognition</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Onboard differently</div><div class="s">Understand first, AI later, explain everything</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Train AI as a teammate</div><div class="s">Junior pair programmer, not code writer</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Redefine &ldquo;junior work&rdquo;</div><div class="s">Tests, docs, refactoring, internal tools</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Create AI-specific learning paths</div><div class="s">Prompting, context, verification, debugging</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Measure learning, not shipping</div><div class="s">Understanding over PR velocity</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Maintain mentorship time</div><div class="s">More time, not less. Non-negotiable.</div></div></div>
+      <div class="item"><span class="bx">- [x]</span><div><div class="t">Plan for tools to change</div><div class="s">Evaluate and adapt, not tool-specific</div></div></div>
     </div>
 
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #5F8A5A; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">2</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Onboard differently</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Understand first, AI later, explain everything</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #C4716A; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">3</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Train AI as a teammate</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Junior pair programmer, not code writer</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #C4716A; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">4</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Redefine "junior work"</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Tests, docs, refactoring, internal tools</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #4A8FA0; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">5</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Create AI-specific learning paths</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Prompting, context, verification, debugging</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #4A8FA0; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">6</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Measure learning, not shipping</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Understanding over PR velocity</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #2D3436; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">7</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Maintain mentorship time</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">More time, not less. Non-negotiable.</div>
-      </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <div style="width: 28px; height: 28px; background: #2D3436; border-radius: 6px; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: 600;">8</div>
-      <div>
-        <span style="font-size: 16px; color: #2D3436; font-weight: 600;">Plan for tools to change</span>
-        <div style="font-size: 13px; color: #6B7280; margin-top: 2px;">Evaluate and adapt, not tool-specific</div>
-      </div>
-    </div>
+    <div style="font-size:15px;color:var(--muted);"><span class="mark">&gt; </span>Judgment over speed. Understanding over shipping. Verification over generation.</div>
   </div>
 
-  <!-- Footer -->
-  <div style="font-family: 'Caveat', cursive; font-size: 20px; color: #57606A; text-align: center;">
-    Judgment over speed. Understanding over shipping. Verification over generation.
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

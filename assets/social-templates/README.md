@@ -1,8 +1,11 @@
-# Social image templates — NicAlpi v3
+# Social image templates — NicAlpi v4 "Graphite notebook"
 
-HTML templates matching the site brand (JetBrains Mono, paper palette, blue
-accent). Same tokens as `assets/main.css`, defined in `social.css`. Two
-groups:
+HTML templates matching the site brand (JetBrains Mono only, graphite
+scale on white, signal blue for the markdown marks, pills for labels and
+CTAs, ink for the one solid card). Same tokens as `_assets/main.css`,
+defined in `social.css`, which also carries the shared helpers: `.mark`,
+`.tag`/`.tag-accent`, `.btn-ink`, `.fog`, `.quote`. Rules: `DESIGN.md` →
+Imagery. Two groups:
 
 ## 1. Generator templates (`{{…}}` placeholders)
 
@@ -18,6 +21,7 @@ produce every `og_image` under `assets/images/og/`.
 
 ```bash
 pip3 install playwright                      # once; uses your installed Chrome
+# on Nic's machine the python with playwright is /opt/homebrew/bin/python3.13
 python3 scripts/generate-og.py               # regenerate every OG jpg
 python3 scripts/generate-og.py intention exp-01   # only these slugs
 python3 scripts/generate-og.py --examples         # render the promo-card gallery
@@ -36,16 +40,24 @@ Add `?theme=dark` to the URL for the dark variant.
 
 | Template | Size | Use |
 |---|---|---|
-| `quote-square.html` | 1080×1080 | Quote card (Instagram, LinkedIn square) |
-| `verdict-square.html` | 1080×1080 | Solid-accent card for when an experiment closes |
-| `post-promo-portrait.html` | 1080×1350 | Blog post promo for portrait feeds |
-| `newsletter-og.html` | 1200×630 | Newsletter / subscribe card |
+| `quote-square.html` | 1080×1080 | Quote card (Instagram, LinkedIn square) — `>` quote, pill label |
+| `verdict-square.html` | 1080×1080 | Ink-filled card for when an experiment closes |
+| `post-promo-portrait.html` | 1080×1350 | Blog post promo for portrait feeds — front-matter block, no cover photo |
+| `newsletter-og.html` | 1200×630 | Newsletter / subscribe card — the `> newsletter` fog band |
+
+Per-post copies live in `assets/images/social/<slug>/` (fix the `social.css`
+href to `../../../social-templates/social.css`); render them with
+`scripts/render-illustration.py --size WxH [--theme dark]`.
 
 ## Conventions
 
-- Keep the header strip / footer rule structure — that's the brand's frame.
-- Metrics always read `before → now` with the "now" in accent.
-- The verdict card is the only solid-accent surface; use it sparingly.
+- Keep the frame: `nicalpi.md` top left, a context label top right, hairline
+  footer with `nicalpi.com`.
+- `# ` mark before headlines in `--mark`; quotes hang off a `>`; labels are
+  pills; CTAs are ink pills. Blue is never a fill.
+- Metrics always read `before → now` with the arrow in `--mark` and the
+  "now" in accent.
+- The verdict card is the only solid surface and it is ink; use it sparingly.
 - OG images ship at 2× (2400×1260) for retina-crisp unfurls.
 
 Full how-to (with a rendered example of every template): `docs/guide.md`.

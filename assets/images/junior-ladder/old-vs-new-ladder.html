@@ -1,99 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>The ladder is changing (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.rung{border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:14.5px;font-weight:600;text-align:center;flex:1;display:flex;align-items:center;justify-content:center;min-height:56px;}
+.arrow{color:var(--mark);font-size:20px;}
+.row{display:flex;align-items:stretch;gap:14px;}
+.note{font-size:14px;color:var(--muted);}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: #F8F6F3;
-  width: 1200px;
-  height: 630px;
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #6B7280; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">the ladder</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 28px; font-weight: 700; color: #2D3436; text-align: center; margin: 20px 0; letter-spacing: -0.5px;">
-    The ladder is changing
-  </h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <h1 class="h1"><span class="mark"># </span>The ladder is changing</h1>
 
-  <!-- Two ladders -->
-  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px;">
-    <!-- Old Ladder -->
-    <div>
-      <div style="font-size: 12px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; text-align: center;">
-        The old ladder
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="lbl">the old ladder</div>
+      <div class="row">
+        <div class="rung" style="color:var(--muted);">Small tickets</div>
+        <span class="arrow" style="align-self:center;color:var(--faint);">&rarr;</span>
+        <div class="rung" style="color:var(--muted);">Bigger features</div>
+        <span class="arrow" style="align-self:center;color:var(--faint);">&rarr;</span>
+        <div class="rung" style="color:var(--muted);">Architecture decisions</div>
+        <span class="arrow" style="align-self:center;color:var(--faint);">&rarr;</span>
+        <div class="rung" style="color:var(--muted);">Tech leadership</div>
       </div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-        <div style="background: #E5E7EB; color: #4B5563; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Small tickets
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #E5E7EB; color: #4B5563; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Bigger features
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #E5E7EB; color: #4B5563; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Architecture decisions
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #E5E7EB; color: #4B5563; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Tech leadership
-        </div>
-      </div>
-      <div style="font-family: 'Caveat', cursive; font-size: 18px; color: #C4716A; text-align: center; margin-top: 8px;">
-        Built fundamentals by writing lots of code
-      </div>
+      <div class="note"><span style="color:var(--faint);">- [ ]</span> Built fundamentals by writing lots of code</div>
     </div>
 
-    <!-- Divider -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-      <div style="height: 2px; background: #E5E7EB; flex: 1;"></div>
-      <span style="font-size: 13px; color: #6B7280; font-weight: 500;">AI changes this</span>
-      <div style="height: 2px; background: #E5E7EB; flex: 1;"></div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="height:1px;background:var(--line);flex:1;"></div>
+      <span style="font-size:13px;color:var(--muted);">AI changes this</span>
+      <div style="height:1px;background:var(--line);flex:1;"></div>
     </div>
 
-    <!-- New Ladder -->
-    <div>
-      <div style="font-size: 12px; font-weight: 600; color: #5F8A5A; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; text-align: center;">
-        The new ladder
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="lbl" style="color:var(--accent);">the new ladder</div>
+      <div class="row">
+        <div class="rung">System understanding</div>
+        <span class="arrow" style="align-self:center;">&rarr;</span>
+        <div class="rung">AI-assisted coding</div>
+        <span class="arrow" style="align-self:center;">&rarr;</span>
+        <div class="rung">Judgment building</div>
+        <span class="arrow" style="align-self:center;">&rarr;</span>
+        <div class="rung" style="background:var(--ink);border-color:var(--ink);color:var(--on-ink);">Tech leadership</div>
       </div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-        <div style="background: #5F8A5A; color: white; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          System understanding
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #C4716A; color: white; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          AI-assisted coding
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #4A8FA0; color: white; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Judgment building
-        </div>
-        <span style="color: #D4C5B5; font-size: 24px;">→</span>
-        <div style="background: #2D3436; color: white; padding: 16px 24px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;">
-          Tech leadership
-        </div>
-      </div>
-      <div style="font-family: 'Caveat', cursive; font-size: 18px; color: #5F8A5A; text-align: center; margin-top: 8px;">
-        Build fundamentals by understanding and verifying
-      </div>
+      <div class="note"><span class="mark">- [x]</span> Build fundamentals by understanding and verifying</div>
     </div>
+  </div>
+
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

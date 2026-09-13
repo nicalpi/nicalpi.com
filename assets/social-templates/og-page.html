@@ -5,22 +5,22 @@
 <title>OG — site page (1200×630)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./social.css">
 <script>if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
 <body>
 
-<!-- 1200×630 — generic site-page card (home, writing, about, contact…).
+<!-- 1200×630 — generic site-page card (writing, about, contact…).
      Generator template: scripts/generate-og.py fills the {{…}} slots. -->
 <div class="card" style="width:1200px; height:630px; padding:56px 64px;">
   <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; font-size:20px; color:var(--muted);">
-    <span class="ink" style="font-weight:700;">nicalpi</span>
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
     <span>{{TOP_RIGHT}}</span>
   </div>
   <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:24px;">
     <span class="kicker accent" style="font-size:21px;">{{KICKER}}</span>
-    <h1 style="max-width:24ch; font-size:56px; line-height:1.2; font-weight:700; letter-spacing:-0.025em;"><span class="faint" style="font-weight:400;"># </span>{{TITLE}}</h1>
+    <h1 style="max-width:24ch; font-size:56px; line-height:1.2; font-weight:700; letter-spacing:-0.025em;"><span class="mark"># </span>{{TITLE}}</h1>
     <p style="max-width:54ch; font-size:23px; line-height:1.6; color:var(--body);">{{DEK}}</p>
   </div>
   <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; border-top:1px solid var(--line); padding-top:24px; font-size:19px; color:var(--muted);">

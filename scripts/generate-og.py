@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the site's OG/social images from the v3 templates.
+"""Generate the site's OG/social images from the v4 "Graphite notebook" templates.
 
 Reads front matter from _posts/ and _field_notes/, fills the generator
 templates in assets/social-templates/ (og-post.html, og-page.html,
@@ -92,7 +92,7 @@ def stat_pair(label, before, now):
         '<div style="display:flex; flex-direction:column; gap:4px;">'
         f'<span style="font-size:15px; color:var(--muted);">{esc(label)}</span>'
         '<span style="font-size:32px; font-weight:700; letter-spacing:-0.02em;">'
-        f'{esc(before)} <span class="faint">→</span> <span class="accent">{esc(now)}</span></span></div>'
+        f'{esc(before)} <span class="mark">→</span> <span class="accent">{esc(now)}</span></span></div>'
     )
 
 
@@ -169,8 +169,8 @@ PAGES = [
      "Fractional CTO and advisory support — a second brain on engineering leadership and AI adoption.", "work with me"),
     ("field-notes", "field notes — the public cto lab", "Change one thing. Measure it. Publish the result.",
      "Experiments with a baseline, a protocol, guardrails, and a verdict published either way — including the failures.", "field notes"),
-    ("styleguide", "styleguide", "The v3 component library, live.",
-     "Every token, type style and component of the Field Notes system — in light and dark.", "styleguide"),
+    ("styleguide", "styleguide", "The v4 component library, live.",
+     "Every token, type style and component of the Graphite notebook system — in light and dark.", "styleguide"),
     ("404", "not found", "Nothing here. That's a finding too.",
      "Every experiment gets published, even the failures — but this URL isn't one of them.", "404"),
 ]
@@ -212,6 +212,8 @@ def check():
     problems = []
 
     def check_fm(path, required=True):
+        if not path.is_file():  # e.g. field-notes.html lives in _retired/ while the lab is paused
+            return
         fm = parse_front_matter(path)
         if fm.get("published") == "false":
             return

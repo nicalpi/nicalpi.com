@@ -1,85 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      width: 1200px;
-      height: 630px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>Verification debt (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.step{border:1px solid var(--line);border-radius:12px;padding:18px 18px;width:196px;min-height:104px;display:flex;flex-direction:column;gap:10px;justify-content:flex-start;}
+.step .n{font-size:11px;font-weight:500;letter-spacing:0.08em;color:var(--faint);}
+.step .t{font-size:15px;font-weight:600;line-height:1.45;color:var(--ink);}
+.arrow{color:var(--mark);font-size:22px;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+</style>
 </head>
 <body>
-<div style="
-  background: #F8F6F3;
-  width: 1200px;
-  height: 630px;
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-">
-  <!-- Brand Mark -->
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <div style="width: 8px; height: 8px; background: #8FAE8B; border-radius: 50%;"></div>
-    <span style="font-size: 12px; font-weight: 500; color: #6B7280; letter-spacing: 0.5px;">THE CALM CTO</span>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">verification debt</span>
   </div>
 
-  <!-- Title -->
-  <h1 style="font-size: 28px; font-weight: 700; color: #2D3436; text-align: center; margin: 20px 0 8px 0; letter-spacing: -0.5px;">
-    Verification debt
-  </h1>
-  <p style="font-size: 15px; color: #6B7280; text-align: center; margin-bottom: 32px;">You borrow certainty now. You pay later.</p>
-
-  <!-- Flow -->
-  <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1;">
-    <div style="background: #5F8A5A; color: white; padding: 20px 20px; border-radius: 10px; text-align: center; width: 180px;">
-      <div style="font-size: 15px; font-weight: 600; line-height: 1.4;">AI generates confident-looking code</div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <h1 class="h1"><span class="mark"># </span>Verification debt</h1>
+      <p style="font-size:16px;color:var(--muted);">You borrow certainty now. You pay later.</p>
     </div>
 
-    <span style="color: #D4C5B5; font-size: 24px;">→</span>
-
-    <div style="background: #5F8A5A; color: white; padding: 20px 20px; border-radius: 10px; text-align: center; width: 180px;">
-      <div style="font-size: 15px; font-weight: 600; line-height: 1.4;">Team lowers their guard</div>
+    <div style="display:flex;align-items:stretch;justify-content:space-between;gap:10px;">
+      <div class="step"><span class="n">01</span><span class="t">AI generates confident-looking code</span></div>
+      <div style="display:flex;align-items:center;"><span class="arrow">&rarr;</span></div>
+      <div class="step"><span class="n">02</span><span class="t">Team lowers their guard</span></div>
+      <div style="display:flex;align-items:center;"><span class="arrow">&rarr;</span></div>
+      <div class="step"><span class="n">03</span><span class="t">Ship without understanding</span></div>
+      <div style="display:flex;align-items:center;"><span class="arrow">&rarr;</span></div>
+      <div class="step" style="background:var(--ink);border-color:var(--ink);"><span class="n" style="color:rgba(255,255,255,0.6);">04</span><span class="t" style="color:var(--on-ink);">3am incident nobody can debug</span></div>
     </div>
 
-    <span style="color: #D4C5B5; font-size: 24px;">→</span>
-
-    <div style="background: #C4716A; color: white; padding: 20px 20px; border-radius: 10px; text-align: center; width: 180px;">
-      <div style="font-size: 15px; font-weight: 600; line-height: 1.4;">Ship without understanding</div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="lbl" style="white-space:nowrap;">what it costs</span>
+      <div style="height:1px;background:var(--line);flex:1;"></div>
     </div>
 
-    <span style="color: #D4C5B5; font-size: 24px;">→</span>
-
-    <div style="background: #C4716A; color: white; padding: 20px 20px; border-radius: 10px; text-align: center; width: 180px;">
-      <div style="font-size: 15px; font-weight: 600; line-height: 1.4;">3am incident nobody can debug</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <div style="background:var(--side);border-radius:12px;padding:16px 20px;font-size:15px;font-weight:600;">Loss of trust in the codebase</div>
+      <div style="background:var(--side);border-radius:12px;padding:16px 20px;font-size:15px;font-weight:600;">Loss of trust in the team</div>
+      <div style="background:var(--side);border-radius:12px;padding:16px 20px;font-size:15px;font-weight:600;">Slow accumulating rework</div>
     </div>
+
+    <div style="font-size:15px;color:var(--muted);"><span class="mark">&gt; </span>AI lets you generate that debt faster than most teams are ready for.</div>
   </div>
 
-  <!-- Bottom row -->
-  <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <span style="color: #D4C5B5; font-size: 24px; transform: rotate(90deg);">→</span>
-    </div>
-  </div>
-
-  <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 16px;">
-    <div style="background: #2D3436; color: white; padding: 16px 24px; border-radius: 10px; text-align: center;">
-      <div style="font-size: 14px; font-weight: 600;">Loss of trust in codebase</div>
-    </div>
-    <div style="background: #2D3436; color: white; padding: 16px 24px; border-radius: 10px; text-align: center;">
-      <div style="font-size: 14px; font-weight: 600;">Loss of trust in team</div>
-    </div>
-    <div style="background: #2D3436; color: white; padding: 16px 24px; border-radius: 10px; text-align: center;">
-      <div style="font-size: 14px; font-weight: 600;">Slow accumulating rework</div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div style="font-family: 'Caveat', cursive; font-size: 20px; color: #C4716A; text-align: center;">
-    AI lets you generate that debt faster than most teams are ready for.
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 </body>

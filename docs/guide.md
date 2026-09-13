@@ -74,7 +74,7 @@ Rendered examples live in `assets/images/social/examples/` (regenerate with
 | | |
 |---|---|
 | `quote-square.html` — 1080×1080 quote card (Instagram, LinkedIn) | ![quote](../assets/images/social/examples/quote-square.jpg) |
-| `verdict-square.html` — 1080×1080 experiment-close card; the only solid-accent surface | ![verdict](../assets/images/social/examples/verdict-square.jpg) |
+| `verdict-square.html` — 1080×1080 experiment-close card; the only solid surface, ink-filled | ![verdict](../assets/images/social/examples/verdict-square.jpg) |
 | `post-promo-portrait.html` — 1080×1350 portrait-feed post promo | ![promo](../assets/images/social/examples/post-promo-portrait.jpg) |
 | `newsletter-og.html` — 1200×630 subscribe card | ![newsletter](../assets/images/social/examples/newsletter-og.jpg) |
 

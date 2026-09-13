@@ -46,15 +46,19 @@ engineers stepping up. Peers, not students.
 
 ## Mechanics
 
-- Headings: `##`, sentence case, short. The site renders a faint `##` mark
-  before them — never number or decorate headings manually.
+- Headings: `##`, sentence case, short. The site renders a signal-blue `##`
+  mark before them — never number or decorate headings manually.
 - One blockquote per piece at most, reserved for the line that should be
   quotable (in field notes: the hypothesis).
 - Lists only when a list is genuinely the shape (protocols, guardrails).
 - Nav, labels, kickers, meta: lowercase ("field notes", "work with me",
   "running · since Aug"). Headings and body: sentence case.
-- Metrics read `before → now → target`. The "now" is the accent. "?" is an
-  acceptable value — it means "not measured yet", which is honest.
+- Metrics read `before → now → target`. The "now" is the accent, the arrow
+  is the mark. "?" is an acceptable value — it means "not measured yet",
+  which is honest.
+- The site's own vocabulary is markdown made literal: `---` front matter,
+  `ls -t _posts/`, `- [x]`, `> newsletter`, `EOF`. Use these devices in
+  images and social copy sparingly and never two in one block.
 - Posts: 800–1800 words; when in doubt, shorter. Field-note briefs follow
   question → hypothesis → protocol → measures → guardrails → field log.
 

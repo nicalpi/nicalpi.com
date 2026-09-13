@@ -5,31 +5,35 @@
 <title>Post promo (1080×1350)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./social.css">
 <script>if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
 <body>
 
 <!-- 1080×1350 — blog post promo (portrait feed).
-     Swap the .cover background-image for the post's cover, or leave the
-     placeholder band. -->
-<div class="card" style="width:1080px; height:1350px;">
-  <div class="cover" style="height:680px; background:var(--raise) center/cover no-repeat; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:21px; border-bottom:1px solid var(--line);">
-    post cover image
+     The top band is the post's front matter as a fog card — the site's own
+     device — so no cover photo is needed. Swap the values for the post. -->
+<div class="card" style="width:1080px; height:1350px; padding:64px;">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; font-size:21px; color:var(--muted);">
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
+    <span>_posts/2026-01-17-if-you-cant-explain-the-code.md</span>
   </div>
-  <div style="flex:1; display:flex; flex-direction:column; padding:52px 64px 44px;">
-    <div style="display:flex; align-items:center; gap:16px; font-size:21px; color:var(--muted);">
-      <span style="background:var(--accent-soft); color:var(--accent); padding:8px 16px;">ai</span>
-      <span>9 min read</span>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:40px;">
+    <div class="fog" style="display:flex; flex-direction:column; padding:26px 30px; font-size:21px; line-height:1.8; color:var(--body);">
+      <span class="mark">---</span>
+      <span><span class="muted">category:</span> <span class="accent">ai</span></span>
+      <span><span class="muted">date:</span> <span class="ink">2026-01-17</span></span>
+      <span><span class="muted">reading_time:</span> <span class="ink">9</span></span>
+      <span class="mark">---</span>
     </div>
-    <h1 style="margin:26px 0 0; font-size:60px; line-height:1.2; font-weight:700; letter-spacing:-0.03em;"><span class="faint" style="font-weight:400;"># </span>If you can't explain the code, AI is not helping you</h1>
-    <p style="margin:26px 0 0; font-size:26px; line-height:1.6; color:var(--body);">Value moved from writing code to owning outcomes — deciding what matters, explaining trade-offs, taking responsibility.</p>
-    <blockquote style="margin:30px 0 0; padding-left:26px; border-left:4px solid var(--accent); font-size:30px; line-height:1.4; font-weight:700; letter-spacing:-0.02em;">If you cannot explain the trade-off you accepted, you did not make a decision.</blockquote>
-    <div style="margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; border-top:1px solid var(--line); padding-top:26px; font-size:21px; color:var(--muted);">
-      <span class="ink" style="font-weight:700;">nicalpi</span>
-      <span>new writing at nicalpi.com</span>
-    </div>
+    <h1 style="font-size:58px; line-height:1.2; font-weight:700; letter-spacing:-0.03em;"><span class="mark"># </span>If you can't explain the code, AI is not helping you</h1>
+    <p style="font-size:26px; line-height:1.6; color:var(--body);">Value moved from writing code to owning outcomes — deciding what matters, explaining trade-offs, taking responsibility.</p>
+    <blockquote class="quote" style="padding-left:44px; font-size:30px; line-height:1.4; font-weight:600; letter-spacing:-0.02em;">If you cannot explain the trade-off you accepted, you did not make a decision.</blockquote>
+  </div>
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; border-top:1px solid var(--line); padding-top:26px; font-size:21px; color:var(--muted);">
+    <span class="btn-ink" style="height:52px; padding:0 26px; font-size:19px;">Read it →</span>
+    <span>nicalpi.com</span>
   </div>
 </div>
 

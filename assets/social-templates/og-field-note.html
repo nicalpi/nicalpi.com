@@ -5,7 +5,7 @@
 <title>OG — field note (1200×630)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./social.css">
 <script>if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
@@ -14,16 +14,17 @@
 <!-- 1200×630 — link card for a field note (OG, LinkedIn, X).
      Generator template: scripts/generate-og.py fills the {{…}} slots from
      the experiment / progress-note front matter. {{STATS}} receives up to
-     three stat blocks (see the script for the block markup). -->
+     three stat blocks (see the script for the block markup).
+     v4: the header strip is a fog band with accent text, not a blue flood. -->
 <div class="card" style="width:1200px; height:630px;">
-  <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 48px; background:var(--accent); color:var(--on-accent); font-size:18px; letter-spacing:0.06em; text-transform:uppercase;">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 48px; background:var(--side); color:var(--accent); font-size:18px; letter-spacing:0.06em; text-transform:uppercase;">
     <span>{{STRIP_LEFT}}</span>
     <span>{{STRIP_RIGHT}}</span>
   </div>
   <div style="flex:1; display:grid; grid-template-columns:minmax(0,1fr) 330px; gap:48px; padding:44px 48px;">
     <div style="display:flex; flex-direction:column;">
       <span style="font-size:19px; color:var(--muted);">nicalpi.com / field notes</span>
-      <h1 style="margin:18px 0 0; font-size:48px; line-height:1.24; font-weight:700; letter-spacing:-0.025em;"><span class="faint" style="font-weight:400;"># </span>{{TITLE}}</h1>
+      <h1 style="margin:18px 0 0; font-size:48px; line-height:1.24; font-weight:700; letter-spacing:-0.025em;"><span class="mark"># </span>{{TITLE}}</h1>
       <p style="margin:20px 0 0; font-size:21px; line-height:1.6; color:var(--body);">{{DEK}}</p>
       <div style="margin-top:auto; display:flex; align-items:center; gap:14px; font-size:19px; color:var(--muted);">
         <span class="ink">Nic Alpi</span>
@@ -31,7 +32,7 @@
       </div>
     </div>
     <div style="display:flex; flex-direction:column; gap:14px; border-left:1px solid var(--line); padding-left:32px;">
-      <span class="kicker muted" style="font-size:16px;">{{STATS_LABEL}}</span>
+      <span class="kicker faint" style="font-size:16px;">{{STATS_LABEL}}</span>
       {{STATS}}
       <span style="margin-top:auto; font-size:15px; line-height:1.6; color:var(--muted);">{{FOOT_NOTE}}</span>
     </div>

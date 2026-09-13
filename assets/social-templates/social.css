@@ -1,19 +1,21 @@
-/* NicAlpi v3 — shared styles for social image templates.
-   Same tokens as the site (assets/main.css). Toggle themes by adding
+/* NicAlpi v4 "Graphite notebook" — shared styles for social image templates.
+   Same tokens as the site (_assets/main.css). Toggle themes by adding
    ?theme=dark to the URL or data-theme="dark" on <html>. */
 
 :root {
-  --canvas: #E4E2DC; --panel: #FCFCFA; --raise: #F5F3ED; --ink: #191917;
-  --body: #4A4A45; --muted: #77776E; --faint: #C4C2B8; --line: #E4E2DA;
-  --line2: #EDEBE4; --accent: #1E4FD8; --accent-soft: #EAF0FE;
-  --accent-line: #BDCDF5; --on-accent: #FFFFFF;
+  --canvas: #FFFFFF; --panel: #FFFFFF; --side: #F0F0F3; --raise: #F7F7F9;
+  --ink: #1C2024; --body: #2A2E34; --muted: #60646C; --faint: #80838D;
+  --line: #D9D9E0; --line2: #D9D9E0;
+  --accent: #0072DE; --mark: #0090FF; --accent-soft: #EAF4FF;
+  --accent-line: #B9DBFF; --on-accent: #FFFFFF; --on-ink: #FFFFFF;
 }
 
 [data-theme="dark"] {
-  --canvas: #0C0E11; --panel: #171A1F; --raise: #1D2127; --ink: #F1F1ED;
-  --body: #BFC2BE; --muted: #8B8F96; --faint: #4B505A; --line: #272B32;
-  --line2: #1F232A; --accent: #82A9FF; --accent-soft: #182339;
-  --accent-line: #2E4368; --on-accent: #0C0E11;
+  --canvas: #0F1114; --panel: #0F1114; --side: #1A1D22; --raise: #15181C;
+  --ink: #F2F3F5; --body: #C9CCD2; --muted: #8B8F98; --faint: #6B6F78;
+  --line: #2A2E35; --line2: #2A2E35;
+  --accent: #6DB8FF; --mark: #3DA5FF; --accent-soft: #14233A;
+  --accent-line: #2B4A73; --on-accent: #0F1114; --on-ink: #0F1114;
 }
 
 * { box-sizing: border-box; }
@@ -23,9 +25,11 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: -0.012em;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Cards fill the whole image, so the hairline is the frame. */
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -40,6 +44,30 @@ p { text-wrap: pretty; }
 
 .kicker { letter-spacing: 0.12em; text-transform: uppercase; }
 .accent { color: var(--accent); }
+.mark { color: var(--mark); font-weight: 400; }   /* #, ##, ---, >, - [x] */
 .muted { color: var(--muted); }
 .faint { color: var(--faint); }
 .ink { color: var(--ink); }
+
+/* Pills — every control is rounded (v4). */
+.tag {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--line); border-radius: 9999px;
+  color: var(--muted); font-weight: 500;
+}
+.tag-accent { border-color: transparent; background: var(--accent-soft); color: var(--accent); }
+.btn-ink {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--ink); color: var(--on-ink);
+  border-radius: 9999px; font-weight: 600;
+}
+
+/* Fog surface: tonal step, no border, 12–20px corners. */
+.fog { background: var(--side); border-radius: 20px; }
+
+/* Quote: italic, the mono "> " hanging in the gutter, no bar. */
+.quote { position: relative; font-style: italic; }
+.quote::before {
+  content: ">"; position: absolute; left: 0; top: 0;
+  font-style: normal; font-weight: 400; color: var(--mark);
+}
