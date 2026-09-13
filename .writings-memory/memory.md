@@ -97,3 +97,12 @@ _Appended by `/writing-post` after each approval. Format:_
 - restructured: entire post reordered from misconception-led (structure B) to chronological. v1 bounced Jan → July → June/July → Jan-April → May-June. v4 flows Jan → Jan-April → May-June → June/July → post-experiment → today. Stuart's question moved from opening to after the evidence. This was the main edit: the timeline is the story when the post covers months of work.
 - kept: the "new team joining" analogy survived all versions. "I assumed, and I was wrong" survived. The honest "no metric" concession survived and got stronger with real numbers. The blockquote placement survived.
 - reader: findings 2 (speed contradiction) and 3 (guru paragraph) accepted and applied. Finding 1 (hypothetical ticket section) partially addressed — reframed from "Say the team…" to pattern in past tense, but no specific named integration available. Reader verdict was NOT YET; Nic approved anyway after the chronological restructure improved the thesis section's positioning.
+
+### 2026-09-13 · about-page (a page, not a post) · edit load: medium (v4 approved)
+- cut: the whole scene opener ("In January 2026 I froze my team's hiring plan… That's roughly how I work"). On the About page he wanted a plain chronological start ("I started CookiesHQ… in 2011"), not a moment. The "open with the moment" rule is for posts; pages can open on the fact.
+- cut (before drafting): co-founder detail, HYROX, kids, hard 4pm, "calm CTO", "public CTO lab". Keep the *idea* of a designed, sustainable pace ("a bad week stays a bad week"), lose the lifestyle specifics.
+- replaced: the old copy's "Catherine" was wrong — never carry a name from old site copy without checking. Years: he confirmed "30 years, 15 of them as a CTO" (homepage said 20+; fixed to match).
+- added: "board advisor to software agencies" (new fact, his words). Blog posts are still called "field notes" even with the lab paused.
+- kept: buyer-facing paragraph once, after the writer identity, ending on the email as the single next step (research-backed; he didn't push back). The fm block carries the CV so the prose never lists credentials.
+- reader: all three findings accepted (pick opening B; cut the receipt-less beliefs section; fix the "this" referent in "I've run teams through this") — then he cut opening B too.
+- method: research agent → plan with his verbatim answers → drafter → humanizer → cold read → three versions. Worked for a page as well as a post.
