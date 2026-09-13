@@ -26,15 +26,16 @@ palette, blue accent, light/dark themes via CSS variables and `data-theme` on
 **Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
 page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 `<main class="sheet">` → one-line `footer`, all on a single panel surface
-(no canvas). Blocks span the sheet's 880px inner width — titles, cards,
-code, images, tables, list rows, the newsletter band — while running text
-(`.prose > p/ul/ol/blockquote/h2…`) caps at `--measure` (640px; prose is
-18px/1.7 IBM Plex Sans ≈ 78 characters a line). Pages and layouts only
+(no canvas). Everything spans the sheet's 880px inner width, posts
+included — Nic's call (2026-09-13); prose is 18px/1.7 IBM Plex Sans. The
+`--measure` token (`none` today) still caps `.prose > p/ul/ol/blockquote/h2…`
+if a narrower reading column is ever wanted again. Pages and layouts only
 provide what goes inside the sheet.
 
 **Direction "Front matter" (chosen 2026-09-13).** The site leans into its
 rendered-markdown idea, one device per section: the wordmark reads
-`nicalpi.md`; the home hero and every post open with a `---` fenced
+`nicalpi.md` (`.md` hidden on phones); the home hero (full width, no
+portrait slot), every post and the 404 open with a `---` fenced
 front-matter block (`.fm`, mono, fences in the accent — the post one is
 built from real front matter: title, subtitle, category, date,
 reading_time, under a `_posts/<file>.md` path line); post lists are a

@@ -25,11 +25,9 @@ og_image: /assets/images/og/about.jpg
   <aside class="about-side">
     {% if site.portrait_image %}
     <img src="{{ site.portrait_image }}" alt="Photo of Nic Alpi" class="about-portrait" width="220" height="260">
-    {% else %}
-    <div class="about-portrait about-portrait-empty" aria-hidden="true">photo of nic</div>
     {% endif %}
 
-    <dl class="about-facts">
+    <dl class="about-facts{% unless site.portrait_image %} about-facts-first{% endunless %}">
       <dt>currently</dt>
       <dd>CTO at Amba · 8-person team</dd>
       <dd>Bristol, UK</dd>
