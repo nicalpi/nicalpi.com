@@ -8,10 +8,17 @@ og_image: /assets/images/og/homepage.jpg
 <!-- ============ HERO ============ -->
 <section class="sheet-section hero" aria-labelledby="hero-heading">
   <div class="hero-text">
-    <span class="hero-kicker">hi, i'm nic — cto, bristol</span>
+    <div class="fm" aria-label="About Nic, as front matter">
+      <span class="fm-fence">---</span>
+      <span><span class="fm-k">name:</span> <span class="fm-v">Nic Alpi</span></span>
+      <span><span class="fm-k">role:</span> <span class="fm-v">CTO · Amba · Bristol</span></span>
+      <span><span class="fm-k">before:</span> <span class="fm-v">co-founded CookiesHQ → 20 people · £1m+ revenue · sold 2021</span></span>
+      <span><span class="fm-k">writing:</span> <span class="fm-v">[leading teams, AI without losing ownership, useful work without another system]</span></span>
+      <span><span class="fm-k">rhythm:</span> <span class="fm-v">HYROX at 5:30am · hard 4pm stop</span></span>
+      <span class="fm-fence">---</span>
+    </div>
     <h1 id="hero-heading" class="hero-title"><span class="md-mark"># </span>AI made output cheap.<br>Good judgement is now the advantage.</h1>
-    <p class="hero-lead">Writing from a working CTO on leading teams, using AI without losing ownership, and getting useful work done without adding another system.</p>
-    <p class="hero-bio">I've been building software for <strong>20+ years</strong>. Co-founded a Rails consultancy, grew it to 20 people and over £1 million in revenue, sold it in 2021. Now I lead engineering at an age-tech company in Bristol. I run practical experiments on AI, attention, management and delivery — then publish <strong>what worked, what failed, and what I'm changing next</strong>.</p>
+    <p class="hero-lead">I've been building software for <strong>20+ years</strong>. I run practical experiments on AI, attention, management and delivery — then publish <strong>what worked, what failed, and what I'm changing next</strong>.</p>
     <div class="hero-actions">
       <a href="#newsletter" class="btn">Get new posts by email →</a>
       <a href="/blog/" class="btn btn-ghost">Start reading</a>
@@ -21,7 +28,7 @@ og_image: /assets/images/og/homepage.jpg
     {% if site.portrait_image %}
     <img src="{{ site.portrait_image }}" alt="Portrait of Nic Alpi" class="hero-portrait" width="300" height="340">
     {% else %}
-    <div class="hero-portrait hero-portrait-empty" aria-hidden="true">portrait of nic</div>
+    <div class="hero-portrait hero-portrait-empty" aria-hidden="true">![portrait of nic]</div>
     {% endif %}
     <span class="hero-side-note">Bristol · HYROX at 5:30am · hard 4pm stop, non-negotiable</span>
   </div>
@@ -31,13 +38,10 @@ og_image: /assets/images/og/homepage.jpg
 <section class="sheet-section" aria-labelledby="writing-heading">
   <div class="section-head">
     <h2 id="writing-heading" class="section-title"><span class="md-mark">## </span>Writing</h2>
-    <span class="section-links">
-      <a href="/blog/" class="no-underline text-accent">all</a>
-      {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
-      {% for cat in cats %}<a href="/blog/#{{ cat | downcase }}" class="no-underline">{{ cat | downcase }}</a>{% endfor %}
-    </span>
+    <span class="section-cmd">ls -t _posts/ · {{ site.posts.size }} files</span>
   </div>
-  <div class="post-list">
+  <div class="dir-list">
+    {% include dir-head.html %}
     {% for post in site.posts limit: 8 %}
       {% include post-row.html post=post %}
     {% endfor %}
@@ -50,7 +54,6 @@ og_image: /assets/images/og/homepage.jpg
 <!-- ============ BELIEFS ============ -->
 <section class="sheet-section beliefs-section" aria-labelledby="beliefs-heading">
   <div class="beliefs-intro">
-    <span class="kicker">what I've learned</span>
     <h2 id="beliefs-heading" class="section-title"><span class="md-mark">## </span>Six things I believe<br>after 20 years</h2>
     <p class="section-lead">Most technical leaders don't need another tool. The bottleneck is usually attention, and what happens after the decision.</p>
   </div>

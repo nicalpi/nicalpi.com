@@ -3,20 +3,20 @@ layout: default
 og_type: article
 ---
 {% assign cat = page.category | downcase %}
+{% assign fname = page.path | split: "/" | last %}
 
 <article class="article">
-  <div class="article-meta">
-    <a href="/blog/#{{ cat }}" class="no-underline text-accent">{{ cat }}</a>
-    <span>{{ page.date | date: "%-d %b %Y" }}</span>
-    {% if page.reading_time %}<span>·</span><span>{{ page.reading_time }} min read</span>{% endif %}
+  <span class="post-path"><a href="/blog/" class="no-underline">_posts/</a><span>{{ fname }}</span></span>
+
+  <div class="fm fm-post" aria-label="Post front matter">
+    <span class="fm-fence">---</span>
+    <span><span class="fm-k">title:</span> <span class="fm-v">"{{ page.title }}"</span></span>
+    {% if page.subtitle %}<span><span class="fm-k">subtitle:</span> <span class="fm-v">"{{ page.subtitle }}"</span></span>{% endif %}
+    <span><span class="fm-k">category:</span> <a href="/blog/#{{ cat }}" class="fm-v fm-accent no-underline">{{ cat }}</a> &nbsp; <span class="fm-k">date:</span> <span class="fm-v">{{ page.date | date: "%Y-%m-%d" }}</span>{% if page.reading_time %} &nbsp; <span class="fm-k">reading_time:</span> <span class="fm-v">{{ page.reading_time }}</span>{% endif %}</span>
+    <span class="fm-fence">---</span>
   </div>
 
   <h1 class="article-title"><span class="md-mark"># </span>{{ page.title }}</h1>
-  {% if page.subtitle or page.description %}
-  <p class="article-dek">{{ page.subtitle | default: page.description }}</p>
-  {% endif %}
-
-  <hr class="article-rule">
 
   {% if page.cover_image %}
   <figure class="m-0 mb-7">

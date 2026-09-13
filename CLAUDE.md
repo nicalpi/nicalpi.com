@@ -29,10 +29,22 @@ page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 (no canvas). Blocks span the sheet's 880px inner width — titles, cards,
 code, images, tables, list rows, the newsletter band — while running text
 (`.prose > p/ul/ol/blockquote/h2…`) caps at `--measure` (640px; prose is
-18px/1.7 IBM Plex Sans ≈ 78 characters a line). Above 800px, post rows put
-meta on the right, the beliefs list goes two-column and the newsletter is
-copy-left/form-right. Pages and layouts only provide what goes inside the
-sheet. There is no sidebar, drawer or breadcrumb bar any more; the old
+18px/1.7 IBM Plex Sans ≈ 78 characters a line). Pages and layouts only
+provide what goes inside the sheet.
+
+**Direction "Front matter" (chosen 2026-09-13).** The site leans into its
+rendered-markdown idea, one device per section: the wordmark reads
+`nicalpi.md`; the home hero and every post open with a `---` fenced
+front-matter block (`.fm`, mono, fences in the accent — the post one is
+built from real front matter: title, subtitle, category, date,
+reading_time, under a `_posts/<file>.md` path line); post lists are a
+directory listing (`post-row` = `.dir-row`: date · category · title · read,
+with `dir-head` column labels and an `ls -t _posts/ · N files` line);
+beliefs are `- [x]` items; the newsletter is a `> newsletter` band with a
+3px accent bar; prose blockquotes get a mono `> `; the footer ends in a
+faint `EOF`. Keep the joke light — never stack two devices in one block.
+Rejected sketches (ledger rail, bands, notebook margin) live on page 2 of
+the design canvas "NicAlpi Field Notes v4". There is no sidebar, drawer or breadcrumb bar any more; the old
 includes live in `_retired/` for reference.
 
 - `_assets/main.css` — token + component CSS **source** (edit this, then `yarn css`)
@@ -40,7 +52,7 @@ includes live in `_retired/` for reference.
 - `tailwind.config.js` — maps Tailwind colours to the CSS variables; `font-mono` / `font-sans`
 - `assets/js/site.js` — theme toggle (⌥T), newsletter form
 - `_layouts/` — `default` (frame), `post`, `field_note`, `progress_note` (the last two are sheet-based but unused while field notes are paused)
-- `_includes/` — `nav-top`, `footer`, `post-row` (one post in a list; home + `/blog/`), `newsletter`, `lightbox`, `head`, and `fn/*` field-note components (metrics, checklist, field-log, exp-card, xcard, follow-cta, meta-block — `xcard` is also the post prev/next card)
+- `_includes/` — `nav-top`, `footer`, `post-row` (one directory-listing row; home + `/blog/`), `dir-head` (its column labels), `newsletter`, `lightbox`, `head`, and `fn/*` field-note components (metrics, checklist, field-log, exp-card, xcard, follow-cta, meta-block — `xcard` is also the post prev/next card)
 - `_retired/` — `field-notes.html`, `sidebar.html`, `mobile-bar.html`: not processed by Jekyll, kept for the day the lab returns
 - `_posts/` — blog posts (`YYYY-MM-DD-title.md`, permalink `/blog/:slug`)
 - `_field_notes/` — the experiments collection, **paused**: `output: false` in `_config.yml` (see below)

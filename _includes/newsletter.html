@@ -1,12 +1,12 @@
 {% comment %}
-  Newsletter signup. Sits inside the sheet as a section. Params:
+  Newsletter signup as a "> quote" band inside the sheet. Params:
     id      — anchor id (default "newsletter")
-    kicker  — small accent label
+    kicker  — the > label (default "newsletter")
     title   — heading
     text    — supporting line
 {% endcomment %}
 <section id="{{ include.id | default: 'newsletter' }}" class="sheet-section newsletter" aria-labelledby="newsletter-heading">
-  <span class="kicker kicker-accent">{{ include.kicker | default: "newsletter" }}</span>
+  <span class="newsletter-kicker"><span aria-hidden="true">&gt; </span>{{ include.kicker | default: "newsletter" }}</span>
   <h2 id="newsletter-heading" class="section-title">{{ include.title | default: "New writing, straight to your inbox" }}</h2>
   <p class="section-lead">{{ include.text | default: "What worked, what failed, and what I'm changing next. Written after the fact, not before." }}</p>
   {% comment %} Kit (ConvertKit) form 5638226 — nicalpi-com.kit.com, uid 932adc3060.

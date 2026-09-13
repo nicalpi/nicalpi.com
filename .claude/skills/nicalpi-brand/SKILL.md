@@ -62,12 +62,24 @@ shown behind the page (Nic found the grey surround flat). Blocks use the
 sheet's 880px inner width; running text caps at `--measure` (640px): prose
 18px/1.7 Plex, about 78 characters a line; `strong` 600; the quotable
 blockquote 18.5px 600 with a 3px accent bar. Code, images and tables run
-the full column. Above 800px, post rows carry meta on the right, the
-beliefs list is two columns, and the newsletter — an `accent-soft` band
-with an `accent-line` edge, the one tinted surface on the page — is
-copy-left/form-right. No sidebar, no drawer, no breadcrumbs. Field notes are paused
-(`output: false`); their layouts and `fn/` components stay in the repo for
-when the lab returns.
+the full column. Above 800px the beliefs block is intro-left/list-right
+and the newsletter is copy-left/form-right. No sidebar, no drawer, no
+breadcrumbs. Field notes are paused (`output: false`); their layouts and
+`fn/` components stay in the repo for when the lab returns.
+
+**Signature devices (direction "Front matter", 13 Sep 2026).** The
+rendered-markdown idea is now literal — one device per section, never two
+stacked: wordmark `nicalpi.md` (`.md` in `--faint`); a `---` fenced
+front-matter block (`.fm`: `--side` fill, hairline, mono 14px, fences in
+the accent, keys muted, values ink) opens the home hero and every post —
+the post block is built from real front matter under a `_posts/<file>.md`
+path line; post lists are a directory listing (date · category · title ·
+read, mono, uppercase column labels, an `ls -t _posts/ · N files` line);
+belief lists use `- [x]` in the accent; the newsletter is a `> newsletter`
+band (`accent-soft` fill, 3px accent left bar, square left edge) — still
+the one tinted surface; prose blockquotes carry a mono `> `; the footer
+ends in a faint `EOF`. Same devices, same restraint, in images and social
+cards.
 
 In the repo, tokens live in `_assets/main.css` (`:root` = light,
 `[data-theme="dark"]` = dark); Tailwind maps them in `tailwind.config.js`

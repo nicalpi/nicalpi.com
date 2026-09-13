@@ -9,7 +9,10 @@ og_image: /assets/images/og/blog.jpg
 {% assign cats = site.posts | map: "category" | uniq | compact | sort %}
 
 <div class="page-head">
-  <h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
+  <div class="section-head">
+    <h1 class="page-title"><span class="md-mark"># </span>Writing</h1>
+    <span class="section-cmd">ls -t _posts/ · <span id="post-count">{{ site.posts.size }}</span> files</span>
+  </div>
   <p class="page-lead">Team management, agency life, AI honestly, and the reality of doing this without performing about it.</p>
   <div class="chip-row" id="topic-filter" role="group" aria-label="Filter by topic">
     <button type="button" class="chip chip-solid" data-topic="all" aria-pressed="true">all</button>
@@ -19,7 +22,8 @@ og_image: /assets/images/og/blog.jpg
   </div>
 </div>
 
-<div class="post-list" id="post-list">
+<div class="dir-list" id="post-list">
+  {% include dir-head.html %}
   {% for post in site.posts %}
     {% include post-row.html post=post %}
   {% endfor %}
@@ -32,6 +36,7 @@ og_image: /assets/images/og/blog.jpg
     var chips = document.querySelectorAll('#topic-filter [data-topic]');
     var rows = document.querySelectorAll('#post-list [data-category]');
     var empty = document.getElementById('no-posts');
+    var count = document.getElementById('post-count');
 
     function apply(topic) {
       var shown = 0;
@@ -41,6 +46,7 @@ og_image: /assets/images/og/blog.jpg
         if (match) shown += 1;
       });
       empty.classList.toggle('hidden', shown > 0);
+      if (count) count.textContent = shown;
       chips.forEach(function (chip) {
         var active = chip.getAttribute('data-topic') === topic;
         chip.classList.toggle('chip-solid', active);

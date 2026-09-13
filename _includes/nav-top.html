@@ -1,12 +1,12 @@
 {% comment %}
   Top bar, on every page via _layouts/default.html.
-  Wordmark left; writing / about / work with me + theme toggle right.
-  No drawer: four short links fit a phone width.
+  Wordmark (with a faint .md) left; writing / about / work with me + theme
+  toggle right. No drawer: four short links fit a phone width.
 {% endcomment %}
 {% assign here = page.url %}
 <header class="topbar">
   <nav class="topbar-inner" role="navigation" aria-label="Main navigation">
-    <a href="/" class="topbar-brand no-underline" aria-label="nicalpi — home">nicalpi</a>
+    <a href="/" class="topbar-brand no-underline" aria-label="nicalpi — home">nicalpi<span class="topbar-ext" aria-hidden="true">.md</span></a>
 
     <div class="topbar-nav">
       <a href="/blog/" class="no-underline"{% if here contains '/blog' %} aria-current="page"{% endif %}>writing</a>

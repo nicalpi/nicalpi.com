@@ -1,9 +1,10 @@
 {% comment %}
-  One post in a list (home, /blog/). Param: post.
-  Meta line, title, description — stacked, so it reads at any width.
+  One post in a list (home, /blog/) as a directory-listing row:
+  date · category · title · read. Param: post.
 {% endcomment %}
-<a href="{{ include.post.url }}" data-category="{{ include.post.category | downcase }}" class="post-row link-block no-underline">
-  <span class="post-row-meta">{{ include.post.category | downcase }} · {{ include.post.date | date: "%-d %b %Y" }} · {{ include.post.reading_time | default: "5" }} min read</span>
-  <span class="post-row-title link-title">{{ include.post.title }}</span>
-  {% if include.post.description %}<span class="post-row-desc">{{ include.post.description | truncate: 150 }}</span>{% endif %}
+<a href="{{ include.post.url }}" data-category="{{ include.post.category | downcase }}" class="dir-row link-block no-underline">
+  <span class="dir-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
+  <span class="dir-cat">{{ include.post.category | downcase }}</span>
+  <span class="dir-title link-title">{{ include.post.title }}</span>
+  <span class="dir-read">{{ include.post.reading_time | default: "5" }} min</span>
 </a>
