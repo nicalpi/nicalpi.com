@@ -44,16 +44,23 @@ one blue accent, warm paper surfaces. Light and dark themes are first-class.
 | `--accent-line` | `#BDCDF5` | `#2E4368` | borders on accent surfaces, at-rest link underlines |
 | `--on-accent` | `#FFFFFF` | `#0C0E11` | text on accent |
 
-**Fonts (since Sep 2026):** two faces, clearly split by role.
+**Fonts (since 13 Sep 2026):** two faces, clearly split by role.
 - **JetBrains Mono** — 400/500/700 — every heading, the wordmark, nav, meta
-  lines, kickers, chips, buttons, footer, code, and the faint `#`/`##`
-  marks. All images and social cards stay mono-only.
-- **IBM Plex Sans** — 400/600/700 — running text only: post prose,
-  descriptions, list descriptions, form help. `strong` in Plex is 600, not
-  700. Never in headings, never in images.
-Mono everywhere was the v3 launch rule; it read as brand in headings and
-as friction in 1,500-word posts, so body copy moved to Plex. v2's DM Sans
-and Caveat stay retired.
+  lines, kickers, chips, buttons, footer, code, front-matter blocks,
+  directory rows, and the `#`/`##` marks (in the accent). All images and
+  social cards stay mono-only.
+- **Source Serif 4** — 400/600 + italic, optical sizes — running text
+  only: post prose at 19.5px/1.7 full width, leads, beliefs, form help.
+  `strong` is 600. Never in headings, never in images. Body ink is
+  `#33332E` light / `#CFD2CE` dark. Default font smoothing (no
+  `antialiased`).
+- In prose, headings are em-based so they keep rank over the serif: h2 is
+  1.32em with a hairline below, h3 1.12em, h4 1em; every level's mark is
+  in the accent.
+History: mono everywhere at the v3 launch read as friction in long posts;
+IBM Plex Sans (Sep 2026) tested worse for Nic when tuned heavier, and the
+serifs won a side-by-side lab — Source Serif 4 first, Spectral a close
+second (20.5px). v2's DM Sans and Caveat stay retired.
 
 **Layout (since Sep 2026):** one sticky top bar (wordmark · writing ·
 about · work with me · theme), then a centred 1024px `.sheet`, then a

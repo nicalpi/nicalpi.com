@@ -18,18 +18,20 @@ with parallel checkouts and caused stale-CSS bugs.)
 ## Architecture
 
 Jekyll 4.4. Brand: **NicAlpi v3 "Field Notes"** — JetBrains Mono for
-headings and chrome, IBM Plex Sans for body copy (since Sep 2026), warm paper
-palette, blue accent, light/dark themes via CSS variables and `data-theme` on
-`<html>`. See `.claude/skills/nicalpi-brand/` for the full system and
+headings and chrome, Source Serif 4 for body copy (since 13 Sep 2026; it
+replaced IBM Plex Sans after a side-by-side lab), warm paper palette, blue
+accent, light/dark themes via CSS variables and `data-theme` on `<html>`. See `.claude/skills/nicalpi-brand/` for the full system and
 `/styleguide/` for live components.
 
 **Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
 page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 `<main class="sheet">` → one-line `footer`, all on a single panel surface
 (no canvas). Everything spans the sheet's 880px inner width, posts
-included — Nic's call (2026-09-13); prose is 18px/1.7 IBM Plex Sans. The
-`--measure` token (`none` today) still caps `.prose > p/ul/ol/blockquote/h2…`
-if a narrower reading column is ever wanted again. Pages and layouts only
+included — Nic's call (2026-09-13); prose is 19.5px/1.7 Source Serif 4,
+prose headings are em-based (h2 1.32em + hairline below) with accent
+`##` marks. The `--measure` token (`none` today) still caps
+`.prose > p/ul/ol/blockquote/h2…` if a narrower reading column is ever
+wanted again. Pages and layouts only
 provide what goes inside the sheet.
 
 **Direction "Front matter" (chosen 2026-09-13).** The site leans into its
