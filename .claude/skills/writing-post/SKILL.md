@@ -114,3 +114,14 @@ Report the approved path, the memory entry you added, and end with: "Run
 - Never invent lived detail to close a marker. Ask.
 - If he approves a draft the reader marked `NOT YET`, freeze it. He
   adjudicates; note the override in the memory entry.
+- **Reframe placement.** When the drafter places a question or reframe at the
+  opening, check: "Does the reader need to see the evidence before the reframe
+  hits?" If yes, move it later. A question with an obvious wrong answer lands
+  harder after the evidence than before it.
+- **Mine the interview for new ideas.** After approval, scan the iteration for
+  claims, analogies or next-steps that aren't covered by this post and could
+  stand alone. Present them: "these came up — worth logging?" One question, not
+  a gate. Log accepted ones to `ideas.md`.
+- **Suggest a new session.** After approval, suggest starting a new session for
+  `/writing-publish` when the conversation is long or the persisted files
+  capture everything needed. One line.

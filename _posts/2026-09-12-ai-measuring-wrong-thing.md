@@ -24,7 +24,7 @@ The output depended a lot on the developer using the tool. Some were extremely s
 
 Reviewing all that output is when we realised the naked approach was going to be the problem for us. These tools are good at writing code, but **they had no idea how we wanted them to work**.
 
-So I approached the workflow almost as if I was documenting for a team of new project managers, business analysts, developers and QA who were about to join us, explaining to each of them how we wanted them to work with us.
+So we spent the next couple of months building a workflow around the agent: a set of structured commands and agents that told it how to scope a ticket, plan delivery, write code to our standards, and hand work back for review. I approached it almost as if I was documenting for a team of new project managers, business analysts, developers and QA who were about to join us, explaining to each of them how we wanted them to work with us.
 
 ## Where the gain actually sits
 
@@ -42,11 +42,7 @@ Then it helps the developer turn that scope into a locked-in delivery plan, tick
 
 ## What better looks like
 
-A few months in, just as the workflow was becoming stable, we had our first real test. We'd had a hunch about one of our partner sensors. Its token refresh logic would sometimes leave a token dead. When that happened the only fix was to regenerate a new one, and we didn't expose any option for customer support to do that, so they had to manually disconnect and reconnect the sensor on our platform.
-
-Within the same couple of days, two things happened. We had the hunch, and then support came to us because they were needing to regenerate tokens regularly. Their problem and ours were the same bug.
-
-The hunch was confirmed when we started looking at exposing a "regenerate token" option. There was a race condition between token generation and consumption, and it could leave tokens dead. It was silent because the sensor kept sending data and we kept ingesting it. What we lost was access to the deeper data through the API, which is the kind of thing nobody notices until someone goes looking.
+A few months in, just as the workflow was becoming stable, we had our first real test. We'd had a hunch about one of our partner sensors: its token refresh logic would sometimes leave a token dead, and the only fix was to regenerate a new one manually. Within the same week, support came to us with the same problem. There was a race condition between token generation and consumption, silent because the sensor kept sending data. What we lost was access to the deeper data through the API, which is the kind of thing nobody notices until someone goes looking.
 
 I used our workflow to expose the issue. I gave it the API endpoints we needed to integrate, and together we traced the problem and decided on a plan of attack: fix the race condition as far as we could, and give support an option in the app to regenerate the token if it ever happened again.
 
@@ -88,7 +84,7 @@ The harder pushback is that I've swapped a bad metric for no metric. That one la
 
 I don't have clear metrics yet, only what's in front of me day to day: the 50-odd tickets we've built with the workflow and the low rejection rate that came with them, and a clear sense from the wider team that we're doing a good job. We're working on embedding those metrics into the workflow now.
 
-Until then, what I see is enough to know the direction is right, and **the time we've saved on writing code is going back into planning what we write**. That was the intent from the start.
+Until then, what I see is enough to know the direction is right, and **the time we've saved on writing code is going back into planning what we write**.
 
 ## Where we are now
 

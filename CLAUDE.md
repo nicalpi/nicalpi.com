@@ -78,6 +78,7 @@ includes live in `_retired/` for reference.
 - `docs/guide.md` — **maintainer guide**: social images, template gallery, components how-to, field-note/progress-note authoring (excluded from the build)
 - `.claude/skills/` — authoring skills: think/write pairs for field notes (`field-note-think`/`field-note-write`) and progress notes (`progress-think`/`progress-write`), the blog-post pipeline (`quick-log` → `writing-outline` → `writing-plan` → `writing-post`, state in `.writings-memory/`, agents `writing-researcher`/`writing-reader`/`writing-drafter` in `.claude/agents/`), plus `social-image`. Re-package for Claude Web with `scripts/package-skills.sh` → `dist/claude-web-skills/`.
 - `.writings-memory/` — committed working state for the post pipeline: `ideas.md` inbox, `memory.md` (Nic's voice + observed edits, read by every drafter), one `<slug>/` per post in flight. See its README.
+- `.promo-memory/` — committed working state for the social promotion pipeline: `memory.md` (social voice + what works), `research/` (platform specs), one `<slug>/` per active promotion calendar. See its README.
 
 ## Field notes collection
 
@@ -179,6 +180,54 @@ Rules that hold across the pipeline:
   redirected to `field-note-think`, not written as an essay.
 
 `post-think` and `post-write` are retired; the pipeline replaces them.
+
+## Promoting posts — the social workflow
+
+After a post ships, the promotion pipeline creates a 10-day calendar of
+platform-specific social content for LinkedIn and Twitter/X. Separate
+`.promo-memory/` root (promotion outlives writing by ~2 weeks).
+
+```
+/promo-plan [slug]       → .promo-memory/<slug>/plan.md    (extract angles, interview, calendar → approve)
+/promo-draft [slug] [day N|all] → .promo-memory/<slug>/drafts/  (platform copy via promo-drafter agent)
+/promo-asset [slug] [day N|all] → .promo-memory/<slug>/assets/  (quote cards, carousels, insight images)
+/promo-status [slug]     → checklist view: drafted / asset ready / posted
+```
+
+Rules:
+
+- **Interview before drafting.** `/promo-plan` extracts promotable angles from
+  the post (thesis, atomic ideas, stats, tensions, quotes, personal angle),
+  presents them, then asks which to lead with, who the social audience is, and
+  what reaction Nic wants. Calendar approved before any copy is written.
+- **Platform-native, not cross-posted.** LinkedIn gets story posts, carousels,
+  polls. Twitter gets hook tweets, threads, engagement bait. Same angle,
+  different shape.
+- **No links in post bodies.** LinkedIn: link in first comment. Twitter: link
+  in last tweet of a thread or a reply.
+- **Assets use v4 templates.** Quote cards from `quote-square.html`, carousels
+  as HTML→PDF. No from-scratch design.
+- **`memory.md` tracks what works.** Which formats and angles got traction,
+  what Nic edited, patterns to repeat. Same learning loop as the writing
+  pipeline.
+- **Humanizer runs on longer LinkedIn posts** (over ~1,000 chars). Tweets,
+  polls and thread tweets are too short for it to improve; the drafter already
+  strips AI-tells via `memory.md`.
+- `.promo-memory/<slug>/` stays until Nic cleans it up (unlike
+  `.writings-memory/<slug>/` which is deleted on publish).
+- `.promo-memory/research/` holds platform format specs and strategy research
+  (LinkedIn formats, Twitter specs, promotion calendars) as reference for the
+  skills. Updated periodically.
+- **Social platform access:** use `/claude-in-chrome` (browser automation) for
+  any task that needs LinkedIn or X.com — reading feeds, checking analytics,
+  competitor analysis, trending topics. No API-based MCP is set up yet;
+  browser automation is the current path.
+- **Marketing research:** the `marketing-researcher` agent (Opus) browses
+  LinkedIn and X.com for content gap analysis, trend scouting, peer watching,
+  and engagement research. Findings go to `.promo-memory/market-research/`.
+  Use it when Nic asks "what should I write about", "what's trending", "how
+  did my post do", or needs social intelligence. It feeds into
+  `/writing-brainstorm` and `/promo-plan`.
 
 ## Creating Posts
 

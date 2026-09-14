@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Carousel — day 2 (8 × 1080×1080)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/social-templates/social.css">
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.get('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  // ?slide=N shows only slide N. Rendering the full 8640px strip at 2x exceeds
+  // Chrome's 16384px texture limit and corrupts the lower slides, so each slide
+  // is rendered on its own.
+  addEventListener('DOMContentLoaded', () => {
+    const n = parseInt(q.get('slide'), 10);
+    if (!n) return;
+    document.querySelectorAll('.slide').forEach((el, i) => {
+      if (i + 1 !== n) el.remove();
+    });
+  });
+</script>
+<style>
+  /* Eight slides stacked. Render one at a time with ?slide=N (see script above). */
+  .slide {
+    width: 1080px; height: 1080px; padding: 76px;
+    background: var(--panel); border: 1px solid var(--line);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .slide-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; font-size: 21px; color: var(--muted);
+  }
+  .slide-body {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; gap: 34px;
+  }
+  .slide-foot {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; border-top: 1px solid var(--line); padding-top: 26px;
+    font-size: 20px; color: var(--muted);
+  }
+  .lede { font-size: 52px; line-height: 1.26; font-weight: 600; letter-spacing: -0.022em; color: var(--ink); }
+  .mid  { font-size: 40px; line-height: 1.36; font-weight: 600; letter-spacing: -0.018em; color: var(--ink); }
+  .note { font-size: 26px; line-height: 1.6; color: var(--body); max-width: 40ch; }
+  .num  { font-size: 112px; line-height: 1; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- 1 — hook -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
+    <span>on measuring AI</span>
+  </div>
+  <div class="slide-body">
+    <span class="kicker accent" style="font-size:23px;">seven months, eight developers</span>
+    <h1 class="lede"><span class="mark">#</span> We stopped measuring AI by speed. Here's what we measured instead.</h1>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+    <span class="tag" style="height:44px; padding:0 20px; font-size:19px;">swipe →</span>
+  </div>
+</div>
+
+<!-- 2 — before -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker" style="font-size:20px; color:var(--faint);">before</span>
+    <span>2 / 8</span>
+  </div>
+  <div class="slide-body">
+    <div class="fog" style="padding:44px; display:flex; flex-direction:column; gap:18px;">
+      <span style="font-size:22px; color:var(--faint);">the whole ticket</span>
+      <span style="font-size:34px; font-weight:600; color:var(--ink); line-height:1.3;">"Integrate with Sensor X"</span>
+      <span style="font-size:25px; color:var(--muted); line-height:1.5;">a link to the API docs, and ten lines on what we knew</span>
+    </div>
+    <p class="note">That was about it.</p>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 3 — the cost of before -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker" style="font-size:20px; color:var(--faint);">before</span>
+    <span>3 / 8</span>
+  </div>
+  <div class="slide-body">
+    <h2 class="mid">Developers got confused midway through. QA had no acceptance criteria and no context.</h2>
+    <p class="note">And we skipped thinking about what the integration meant for the product as a whole.</p>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 4 — now -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker accent" style="font-size:20px;">now</span>
+    <span>4 / 8</span>
+  </div>
+  <div class="slide-body">
+    <h2 class="mid">We give the workflow the sensor, the docs and the blurb.</h2>
+    <p class="note">It reads the documentation with our code as context and builds a multi-card epic:</p>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <span class="tag tag-accent" style="height:52px; padding:0 24px; font-size:24px;">connect</span>
+      <span class="tag tag-accent" style="height:52px; padding:0 24px; font-size:24px;">ingest</span>
+      <span class="tag tag-accent" style="height:52px; padding:0 24px; font-size:24px;">render</span>
+    </div>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 5 — now, part two -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker accent" style="font-size:20px;">now</span>
+    <span>5 / 8</span>
+  </div>
+  <div class="slide-body">
+    <h2 class="mid">It writes user stories for every sub-ticket, and the QA acceptance criteria to go with them.</h2>
+    <p class="note">Then it helps the developer turn that scope into a locked-in delivery plan.</p>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 6 — the line -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker" style="font-size:20px; color:var(--faint);">the point</span>
+    <span>6 / 8</span>
+  </div>
+  <div class="slide-body">
+    <h2 class="lede">Not one line of that is code.</h2>
+    <p class="note">It's the work that used to get done badly, or not at all, before anyone opened an editor.</p>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 7 — the stat -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="kicker" style="font-size:20px; color:var(--faint);">what I have so far</span>
+    <span>7 / 8</span>
+  </div>
+  <div class="slide-body">
+    <span class="num">50<span class="mark" style="font-size:60px;">+</span></span>
+    <h2 class="mid">tickets built this way, and a low rejection rate.</h2>
+    <p class="note">Eight developers, seven months. No clean metric yet, and I say so in the post.</p>
+  </div>
+  <div class="slide-foot">
+    <span class="ink">nicalpi.com</span>
+  </div>
+</div>
+
+<!-- 8 — CTA -->
+<div class="slide">
+  <div class="slide-top">
+    <span class="ink" style="font-weight:700;">nicalpi<span class="faint" style="font-weight:400;">.md</span></span>
+    <span>8 / 8</span>
+  </div>
+  <div class="slide-body">
+    <h2 class="lede">The time we saved writing code went back into planning what we write.</h2>
+    <span class="btn-ink" style="height:64px; padding:0 32px; font-size:24px; align-self:flex-start;">Read the full write-up</span>
+  </div>
+  <div class="slide-foot">
+    <span style="display:flex; flex-direction:column; gap:6px;"><span class="ink">nicalpi.com/blog/ai-measuring-wrong-thing</span><span>link in the first comment</span></span>
+  </div>
+</div>
+
+</body>
+</html>

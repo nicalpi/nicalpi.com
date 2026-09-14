@@ -127,7 +127,8 @@ local server is running, tell him the URL.
 
 Report, then stop: post path, `/blog/<slug>`, OG status, illustrations and
 cards produced (paths), build status, commit hash, and the one line he needs to
-run to push.
+run to push. End with: "Run `/promo-plan <slug>` to build the promotion
+calendar for this post."
 
 ## Judgment
 

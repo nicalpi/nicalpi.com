@@ -33,8 +33,10 @@ From `$ARGUMENTS`:
 
 Then read the **whole** `ideas.md`. Name any neighbour that overlaps, could merge
 in, or should be kept out as a separate post. Grep `_posts/` and `_field_notes/`
-for the topic and name what already exists. Nic decides whether to link, avoid,
-or build on it.
+for the topic and name what already exists. When the grep finds a neighbour,
+read at least its opening and claim section — name the specific overlap or
+distinction before moving on. Two minutes of reading saves a finding at
+cold-read stage. Nic decides whether to link, avoid, or build on it.
 
 **Kill switch.** If the idea is really an experiment (change one thing, measure
 it), say so and hand off to `field-note-think`. Do not write an essay about an
@@ -54,16 +56,23 @@ time, five to eight total, each with a recommended answer where you have one:
    Monday? If nothing changes, it is a diary entry; that is fine, aim it at
    `personal` and say so.
 3. **The receipts.** Two or three concrete moments or numbers from his own work.
-   Push past "sometimes teams…" to a named situation.
+   Push past "sometimes teams…" to a named situation. When a receipt is a
+   pattern ("we always had this problem"), follow up once: "Pick one. A feature
+   name, a sprint, a week — what happened and how much time was lost?" If he
+   genuinely can't name one, mark it `[…]` immediately rather than carrying a
+   vague receipt into the outline.
 4. **The counterargument.** Steelman it. Decide: absorb it, or narrow the claim.
    Also ask: what do people commonly get wrong about this, and which of those
    misconceptions does the post correct? A named misconception is often the
    sharpest way in.
-5. **The shape.** Propose **two structures**, each three to five sections with
-   a one-line note on why that structure serves the claim (for example: scene →
-   pattern → claim → objection → what I do now; or three moments that each earn
-   part of the claim). Story up front in both. He picks or blends. Then two
-   title options, plain-spoken, no clickbait.
+5. **The shape.** Propose **two structures**, each in two lines: the shape and
+   why it serves the claim (for example: scene → pattern → claim → objection →
+   what I do now; or three moments that each earn part of the claim). Save the
+   detail for whichever one is picked. Story up front in both. He picks or
+   blends. Then two title options, plain-spoken, no clickbait.
+   **Timeline test.** After picking a structure, ask: "Is this post a journey
+   with a timeline?" If yes, default to chronological. The drafter should argue
+   for non-chronological, not the other way around.
 6. **Category and links.** ai · leadership · business · career · personal. Field
    notes or older posts to reference.
 
@@ -142,3 +151,10 @@ it in your own words." Do not start the plan.
   his experience and let it be small but true.
 - Never invent a receipt. If he has none yet, the outline says so and the claim
   waits.
+- **Mine the interview for new ideas.** After approval, scan the interview for
+  claims, analogies or next-steps that aren't covered by this post and could
+  stand alone. Present them: "these came up — worth logging?" One question, not
+  a gate. Log accepted ones to `ideas.md`.
+- **Suggest a new session.** After approval, suggest starting a new session for
+  `/writing-plan` when the conversation is long, the plan benefits from clean
+  context, or the persisted files capture everything needed. One line.

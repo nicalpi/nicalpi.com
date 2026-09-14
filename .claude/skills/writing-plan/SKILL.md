@@ -53,6 +53,11 @@ Aim for eight to twelve questions. Stop when every section has at least one
 receipt and the opening moment is concrete. He can always say "enough, draft
 it".
 
+**Thesis receipt check.** Before writing the plan, scan the outline's claim and
+the interview material: does at least one moment directly demonstrate the
+claim? If not, ask for it explicitly. One targeted question now is cheaper than
+a cold-read finding that sends you back to Nic.
+
 ## 3. Write the plan
 
 `.writings-memory/<slug>/plan.md`:
@@ -105,9 +110,10 @@ _pending_
 ```
 
 Front-matter `title`, `subtitle`, `description`, `category` are what
-`/writing-post` copies into the post. Decide them here. Write the `description`
-as the abstract Nic approves before any prose exists: if he cannot approve a
-one-paragraph version of the post, the plan is not ready.
+`/writing-post` copies into the post. Decide them here. Draft the `description`
+silently after the interview — by that point you have everything needed. Present
+it as "here's the description, does this land?" rather than an open question.
+If he cannot approve a one-paragraph version of the post, the plan is not ready.
 
 ## 4. Cold read and approval
 
@@ -125,3 +131,13 @@ Ask for approval of the plan as shown. One gate. On approval, set
 - If the interview overturns the outline's claim, say so, update the outline's
   `## Claim` too, and note it under `## Reader` so the history is honest.
 - Do not write prose for the post here. Verbatim quotes only.
+- **First person in reader-facing front matter.** `description` and `subtitle`
+  use first person — the blog is his. Third person only in internal notes and
+  drafter instructions.
+- **Mine the interview for new ideas.** After approval, scan the interview for
+  claims, analogies or next-steps that aren't covered by this post and could
+  stand alone. Present them: "these came up — worth logging?" One question, not
+  a gate. Log accepted ones to `ideas.md`.
+- **Suggest a new session.** After approval, suggest starting a new session for
+  `/writing-post` when the conversation is long, the plan benefits from clean
+  context, or the persisted files capture everything needed. One line.
