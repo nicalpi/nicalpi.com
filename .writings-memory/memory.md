@@ -56,6 +56,11 @@ day, dated. No three-times threshold for a rule he states himself._
   moment for dramatic effect and then back for context cost three draft
   versions on ai-measuring-wrong-thing. Default to chronological when the
   post is a journey.
+- 2026-09-15 · **Introduce before you reference.** Don't mention a concept
+  (a workflow, a tool, a process) as if the reader already knows what it is.
+  If you name it, you've earned a sentence explaining what it is first.
+  Caught on a LinkedIn post that said "50-odd tickets through the workflow"
+  when no prior line said a workflow had been built.
 - 2026-09-12 · **Real numbers over poetic abstractions.** "The 50-odd tickets
   we've built with the workflow and the low rejection rate" beats "the quality
   of the tickets, the confidence of the team." The first is evidence; the
@@ -76,6 +81,7 @@ oldest when it grows.
 - `_posts/2026-01-17-if-you-cant-explain-the-code-ai-is-not-helping.md` — the
   current register.
 - `_posts/2024-10-03-feeling-like-a-failure.md` — the personal register.
+- `_posts/2026-09-22-nobody-taught-developers-to-delegate.md` — the management-failure register: a scene, a mechanism from his own past, outside evidence handled without judging it, the workflow as what happens.
 
 ## Observed edits
 
@@ -106,3 +112,11 @@ _Appended by `/writing-post` after each approval. Format:_
 - kept: buyer-facing paragraph once, after the writer identity, ending on the email as the single next step (research-backed; he didn't push back). The fm block carries the CV so the prose never lists credentials.
 - reader: all three findings accepted (pick opening B; cut the receipt-less beliefs section; fix the "this" referent in "I've run teams through this") — then he cut opening B too.
 - method: research agent → plan with his verbatim answers → drafter → humanizer → cold read → three versions. Worked for a page as well as a post.
+
+### 2026-09-22 · nobody-taught-developers-to-delegate · edit load: light (v4 approved; four versions, every change sentence-level, no structural move)
+- cut: every optional `[…]` marker rather than filling it (CookiesHQ hand-over, named ticket, restart outcome, start date). When Nic says "can't recall" in the plan, the drafter should not leave a marker for it; cut the line. Also cut "I can't point at one ticket for it, because it was how every feature went" (the plan-sanctioned honesty line) — he prefers to state the pattern and move on rather than confess the missing example. Cut the Business Insider attribution ("What I can say is that when Business Insider followed up with him,") — the source is in the thread link, no need to name the outlet in prose.
+- replaced: "[month or season]" → "In the first few weeks of me introducing our AI workflow" (dates the scene relative to his own action, not the calendar).
+- added: nothing new of his own; every fix came from his markers or the reader.
+- kept: the uncomfortable line "you handed them a subordinate and never taught them to manage one" survived, as did the bet one-liner next to it and the single blockquote "Button-pushers are made, not hired." The "different animal" distinction (senior IC vs someone who has delegated to a human) survived. The workflow written as what happens, not a framework, survived unedited.
+- reader: all three accepted on request ("Fix what the reader found"): removed the judgement of v0xium's managers two sentences after "I can't say anything about his experience"; cut the hedged "Consider a developer… may struggle… may feel overwhelmed" restatement before the blockquote; introduced "two halves" once at the end of section 2 before it is referenced. Kept section 3 as a section (his verbatim words) rather than folding it into section 2 as the reader suggested — he didn't ask for the fold.
+- pattern to watch (2/3): he cuts hedged restatements of the claim that sit just before the blockquote (also cut on ai-measuring-wrong-thing: the guru paragraph before the absorb line). Once more and it goes into Voice: "the paragraph before the quotable line is the first to go".
