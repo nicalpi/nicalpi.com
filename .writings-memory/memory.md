@@ -67,6 +67,19 @@ day, dated. No three-times threshold for a rule he states himself._
   second sounds like a speech. Extends the existing "specific numbers over
   adjectives" rule to lists of proof, not just individual claims.
 
+- 2026-09-22 · **Read it aloud before he does; transitions are part of the
+  draft.** After approval of nobody-taught-developers-to-delegate, Nic re-read
+  the published page and said "overall the post feels a bit strange to read".
+  The specifics: the opening named the workflow, then explained it in the next
+  sentence ("through our new workflow. The workflow is…"), then said the wait
+  twice ("some way into implementation… after more than a week"); and a short
+  reaction sentence ("So I didn't tell them off.") sat on its own between two
+  longer ones. Three causes to check on every version: a thing introduced
+  after it is used, the same beat said twice in one paragraph, and a one-line
+  sentence dropped between paragraphs that don't hand off to it. A flow read
+  (paragraphs, transitions, repetition) is a distinct pass from the claims read
+  and should run before Nic sees v1.
+
 ## Post shape
 
 story → claim earned → counterargument absorbed → last fact.

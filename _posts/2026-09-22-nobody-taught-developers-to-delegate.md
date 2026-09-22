@@ -12,13 +12,13 @@ og_image: /assets/images/og/nobody-taught-developers-to-delegate.jpg
 
 ## The senior who did it by hand
 
-In the first few weeks of me introducing our AI workflow, one of our senior developers was handed a well-formed plan through it. The workflow is the set of commands and agents we built around our coding agent this year to scope tickets, plan delivery and hand work back for review. Some way into implementation, we started asking why it was taking so long to see results. We would have expected to see something within a few days, and after more than a week we were still at the "it's coming together" stage.
+This year we built a workflow around our coding agent: a set of commands and agents that scope a ticket, plan the delivery and hand the work back for review. In the first few weeks of introducing it, one of our senior developers was handed a well-formed plan through it. We expected to see something within a few days. After more than a week we were still at the "it's coming together" stage, and we were starting to ask why.
 
-So I had a catch-up with them, and it was clear that while they were following the plan, they were still doing everything manually. They were very open about it. They were struggling with the idea of forming the plan and delegating, so they had reverted to writing the code by hand.
+So I had a catch-up with them, and it was clear that while they were following the plan, they were still doing everything manually. They were very open about it. They were struggling with the idea of forming the plan and delegating to agents, so they had reverted to writing the code by hand.
 
-That is what resistance to agents has looked like on my team. Nobody refused, and nobody argued about job security. Seniors wanted to feel in control of the process, so they quietly ignored the workflow and the tools and carried on working the way they always had. When it was said out loud, it sounded like "I don't see why we need to change our process, I've been doing it this way for years and it's worked fine."
+This wasn't a discipline problem. The developer had a plan written to be delegated, and they executed it the way a good individual contributor executes a plan: themselves, by hand. There was nothing to tell them off for. What they needed was someone to sit with them, so we did some pair teaching on how to use the workflow, and restarted the ticket from the beginning.
 
-This wasn't a discipline problem. The developer had a plan written to be delegated, and they executed it the way a good individual contributor executes a plan: themselves, by hand. So I didn't tell them off. I sat with them for some pair teaching on how to use the workflow better, and we restarted the ticket from the beginning.
+That catch-up is what resistance to agents has looked like on my team. Nobody refused, and nobody argued about job security. Seniors wanted to feel in control of the process, so they quietly ignored the workflow and the tools and carried on working the way they always had. When one of them said it out loud, it sounded like "I don't see why we need to change our process, I've been doing it this way for years and it's worked fine."
 
 ## People who have managed humans find this natural
 
@@ -28,13 +28,11 @@ My first delegation started as I started to hire developers at CookiesHQ, the ag
 
 With a human colleague, at least some of those missing decisions get asked about. Someone walks over and says "did you mean this or that?" With an agent, they get made silently, and you find out at review, if you find out at all.
 
-That's why I think there is a distinction worth drawing, and it has little to do with seniority. A senior individual contributor has led code, sometimes for decades, but has never led people. Someone who has actually handed work to another human and lived with the result is a different animal, whatever their title. The seniors on my team who quietly resisted were the first kind. The CTOs I see taking to coding agents without much fuss are mostly the second.
+Learning to surface those decisions before you hand over is the skill, and it's why the distinction worth drawing has little to do with seniority. A senior individual contributor has led code, sometimes for decades, but has never led people. Someone who has actually handed work to another human and lived with the result is a different animal, whatever their title. The seniors on my team who quietly resisted were the first kind. The CTOs I see taking to coding agents without much fuss are mostly the second.
 
 What the second group has learned is to formalise a plan and hand it over to other team members to execute. They have learned to trust their team to make decisions and take ownership of the work. And most importantly, they have learned to smell the right touch points, and to know when to step in and when to step back.
 
-They don't delegate by saying "AI, do this for me." They delegate by first thinking hard about the problem, planning their solution, and using the tool to execute the plan.
-
-So delegation has two halves: a plan someone else can run, and checking what comes back at the right moments. A developer who has never handed work to a person has practised neither.
+They don't delegate by saying "AI, do this for me." Delegation has two halves: a plan someone else can run, and checking what comes back at the right moments. A developer who has never handed work to a person has practised neither.
 
 ## Why developers don't have it
 
@@ -44,7 +42,7 @@ They were formalising a plan before, but only to be consumed by themselves. Most
 
 I can see that pattern in how we worked before the workflow. We knew what we wanted to build, but we didn't have a granular plan in place. The developers would start building, and as they went along they would hit new challenges that caused the plan to change. That led to confusion and delays, because the team was constantly adjusting its approach and reworking parts of the codebase. It cost us time.
 
-Delegating, as a developer, is not a natural skill. For a lot of developers, building things is the fun part. It comes out of a desire to create, and the act of creating is what makes the job fun. Delegating is not fun, and it is not taught in school. It's learned through experience, and often too late in a developer's career. The best way to learn it is to be forced to.
+For a lot of developers, building is the fun part, and delegating isn't. It comes out of a desire to create, and handing the creating to someone else works against that. Delegation is learned through experience, often too late in a career, and the best way to learn it is to be forced to.
 
 ## Same tool, opposite experience
 
@@ -54,11 +52,13 @@ I can't say anything about his experience, really. I don't work there. His own d
 
 That is the same tool my team uses, with the opposite experience. The difference I can speak to is what I asked for: a plan before the agents start, and time to check what comes back.
 
-This is why you see a lot of very senior developers and CTOs encouraging everyone to jump on the AI bandwagon and then struggling to understand why their teams aren't as productive as they expected. They have the delegation habit and can't see that it is a habit. Their developers were on the receiving end of instructions for their whole career, and were never asked to delegate.
+The CTOs I mentioned earlier have the delegation habit and can't see that it is a habit. So they encourage everyone to jump on the AI bandwagon and then struggle to understand why their teams aren't as productive as they expected. Their developers were on the receiving end of instructions for their whole career, and were never asked to delegate.
 
 > Button-pushers are made, not hired.
 
-If your team is pressing enter 13 hours a day, you handed them a subordinate and never taught them to manage one. My role as a CTO is to look forward, and my bet (and I accept I can be wrong) is that writing code by hand is a skill that will be less and less valuable. So the last thing I want is for my team to become button-pushers, mindlessly approving what the AI suggests without [being able to explain it](/blog/if-you-cant-explain-the-code-ai-is-not-helping). But it's a fine line to walk.
+If your team is pressing enter 13 hours a day, you handed them a subordinate and never taught them to manage one.
+
+On my own team the pressure runs the other way. My role as a CTO is to look forward, and my bet (and I accept I can be wrong) is that writing code by hand is a skill that will be less and less valuable, so I want the workflow used. But the last thing I want is a team of button-pushers, mindlessly approving what the AI suggests without [being able to explain it](/blog/if-you-cant-explain-the-code-ai-is-not-helping). It's a fine line between the two.
 
 ## What we do instead
 
