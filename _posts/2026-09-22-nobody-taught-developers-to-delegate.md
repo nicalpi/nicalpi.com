@@ -16,7 +16,7 @@ This year we built a workflow around our coding agent: a set of commands and age
 
 So I had a catch-up with them, and it was clear that while they were following the plan, they were still doing everything manually. They were very open about it. They were struggling with the idea of forming the plan and delegating to agents, so they had reverted to writing the code by hand.
 
-This wasn't a discipline problem. The developer had a plan written to be delegated, and they executed it the way a good individual contributor executes a plan: themselves, by hand. There was nothing to tell them off for. What they needed was someone to sit with them, so we did some pair teaching on how to use the workflow, and restarted the ticket from the beginning.
+This wasn't a discipline problem. The developer had a plan written to be delegated, and they executed it the way a good individual contributor executes a plan: themselves, by hand. What they needed was someone to sit with them, so we did some pair teaching on how to use the workflow, and restarted the ticket from the beginning.
 
 That catch-up is what resistance to agents has looked like on my team. Nobody refused, and nobody argued about job security. Seniors wanted to feel in control of the process, so they quietly ignored the workflow and the tools and carried on working the way they always had. When one of them said it out loud, it sounded like "I don't see why we need to change our process, I've been doing it this way for years and it's worked fine."
 
