@@ -24,11 +24,11 @@ That catch-up is what resistance to agents has looked like on my team. Nobody re
 
 The gap I saw in that catch-up is one I recognised, because I had to learn the same thing about 15 years ago.
 
-My first delegation started as I started to hire developers at CookiesHQ, the agency I co-founded. It was a learning experience, delegating things to other people. Most delegation fails, in my opinion, because of a lack of understanding. The person delegating assumes the person receiving the plan will make certain decisions, so those decisions are never surfaced: use this code pattern, achieve X this way. When the person receives the task and implements it, they don't have that context, so they make their own decisions. Most of the time, that creates divergence between what was asked for and what was produced.
+My first delegation began when I started to hire developers at CookiesHQ, the agency I co-founded. It was a learning experience, delegating things to other people. Most delegation fails, in my opinion, because of a lack of understanding. The person delegating assumes the person receiving the plan will make certain decisions, so those decisions are never surfaced: use this code pattern, achieve X this way. When the person receives the task and implements it, they don't have that context, so they make their own decisions. Most of the time, that creates divergence between what was asked for and what was produced.
 
 With a human colleague, at least some of those missing decisions get asked about. Someone walks over and says "did you mean this or that?" With an agent, they get made silently, and you find out at review, if you find out at all.
 
-Learning to surface those decisions before you hand over is the skill, and it's why the distinction worth drawing has little to do with seniority. A senior individual contributor has led code, sometimes for decades, but has never led people. Someone who has actually handed work to another human and lived with the result is a different animal, whatever their title. The seniors on my team who quietly resisted were the first kind. The CTOs I see taking to coding agents without much fuss are mostly the second.
+Learning to surface those decisions before you hand over is the skill, and it's why the distinction worth drawing has little to do with seniority. A senior individual contributor has led code, sometimes for decades, but has never led people. Someone who has handed work to another human and lived with the result is a different animal, whatever their title. The seniors on my team who quietly resisted were the first kind. The CTOs I see taking to coding agents without much fuss are mostly the second.
 
 What the second group has learned is to formalise a plan and hand it over to other team members to execute. They have learned to trust their team to make decisions and take ownership of the work. And most importantly, they have learned to smell the right touch points, and to know when to step in and when to step back.
 
@@ -42,7 +42,7 @@ They were formalising a plan before, but only to be consumed by themselves. Most
 
 I can see that pattern in how we worked before the workflow. We knew what we wanted to build, but we didn't have a granular plan in place. The developers would start building, and as they went along they would hit new challenges that caused the plan to change. That led to confusion and delays, because the team was constantly adjusting its approach and reworking parts of the codebase. It cost us time.
 
-For a lot of developers, building is the fun part, and delegating isn't. It comes out of a desire to create, and handing the creating to someone else works against that. Delegation is learned through experience, often too late in a career, and the best way to learn it is to be forced to.
+For a lot of developers, building is the fun part, and delegating isn't. It comes out of a desire to create, and handing that over to someone else works against it. Delegation is learned through experience, often too late in a career, and the best way to learn it is to be forced to.
 
 ## Same tool, opposite experience
 
