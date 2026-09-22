@@ -50,7 +50,7 @@ On 20 September a developer posting as [v0xium wrote a thread on X](https://x.co
 
 I can't say anything about his experience, really. I don't work there. His own diagnosis pointed at management measuring the team on sprint velocity, PR count and features shipped, without giving engineers time to review the generated code or understand the architecture underneath it.
 
-That is the same tool my team uses, with the opposite experience. The difference I can speak to is what I asked for: a plan before the agents start, and time to check what comes back.
+This is everything I'm trying my hardest to not introduce in my team. It's a management decision. The difference I can speak to is what I asked for: a plan before the agents start, and time to check what comes back.
 
 The CTOs I mentioned earlier have the delegation habit and can't see that it is a habit. So they encourage everyone to jump on the AI bandwagon and then struggle to understand why their teams aren't as productive as they expected. Their developers were on the receiving end of instructions for their whole career, and were never asked to delegate.
 
