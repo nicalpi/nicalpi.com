@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The workflow, step by step (1200×630)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#FFFFFF;--side:#F0F0F3;--ink:#1C2024;--body:#2A2E34;--muted:#60646C;--faint:#80838D;--line:#D9D9E0;--accent:#0072DE;--mark:#0090FF;--on-ink:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.012em;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.card{width:1200px;height:630px;background:var(--canvas);border:1px solid var(--line);padding:40px 52px 30px;display:flex;flex-direction:column;overflow:hidden;}
+.top{display:flex;align-items:center;justify-content:space-between;font-size:16px;}
+.wm{font-weight:700;}.wm span{font-weight:400;color:var(--faint);}
+.ctx{color:var(--muted);font-size:14px;}
+.h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;}
+.mark{color:var(--mark);font-weight:400;}
+.lbl{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+.fog{background:var(--side);border-radius:12px;}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+li{list-style:none;}
+.step{flex:1;padding:18px 16px;display:flex;flex-direction:column;gap:8px;}
+.num{font-size:13px;font-weight:600;color:var(--accent);}
+.name{font-size:15px;font-weight:700;letter-spacing:-0.01em;}
+.desc{font-size:12.5px;line-height:1.5;color:var(--body);}
+.arrow{color:var(--mark);font-size:18px;font-weight:600;align-self:center;padding:0 4px;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <span class="wm">nicalpi<span>.md</span></span>
+    <span class="ctx">delegation, built in</span>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <h1 class="h1"><span class="mark"># </span>What we do instead</h1>
+
+    <div style="display:flex;align-items:stretch;">
+      <div class="fog step">
+        <div class="num">1</div>
+        <div class="name">Scope</div>
+        <div class="desc">A team lead writes what this ticket introduces, for whom, and how we envisage solving it.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="fog step">
+        <div class="num">2</div>
+        <div class="name">Catch-up</div>
+        <div class="desc">Problem, outcome and plan checked out loud, so assumed decisions get surfaced.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="fog step">
+        <div class="num">3</div>
+        <div class="name">/dev-plan</div>
+        <div class="desc">The developer explains how, in what order, and with which patterns, before any agent builds.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="fog step">
+        <div class="num">4</div>
+        <div class="name">Phase stops</div>
+        <div class="desc">Agents stop after each phase and wait for review. No approval, no progress.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="fog step">
+        <div class="num">5</div>
+        <div class="name">Visual QA</div>
+        <div class="desc">One agent checks the implementation, then asks the developer to check it too.</div>
+      </div>
+    </div>
+
+    <div style="font-size:15px;color:var(--muted);"><span class="mark">&gt; </span>We use the tools, but we don&rsquo;t delegate the decision-making to them.</div>
+  </div>
+
+  <div class="foot">
+    <span>Nic Alpi &middot; CTO, Bristol</span>
+    <span>nicalpi.com</span>
+  </div>
+</div>
+</body>
+</html>

@@ -5,7 +5,7 @@ subtitle: "Coding agents didn't make developers into button-pushers. Never being
 short_title: "Developers and delegation"
 description: "A senior developer on my team was handed a plan built for coding agents and spent a week typing it out by hand. Not out of defiance: nobody had ever asked them to delegate. I think that's the skill behind most \"AI turned us into button-pushers\" stories, and why it's a management failure rather than a tooling one."
 category: Leadership
-reading_time: 7
+reading_time: 9
 date: 2026-09-22
 og_image: /assets/images/og/nobody-taught-developers-to-delegate.jpg
 ---
@@ -69,6 +69,8 @@ It starts with a scope. A team lead or I will write a ticket scope: what this ti
 Then the developer runs a command we call /dev-plan on the issue. It requires the developer to explain how they would approach the task, in which order, the gotchas, the things not to miss, and which patterns or libraries they might decide to use. Its job is to encode the developer's thinking before anything is passed to the agents that build. This is the plan written for someone else, the thing an individual contributor never had to produce.
 
 The build then happens in phases. When the agents finish one phase of the plan, they stop and ask the developer to review the code, and they won't progress without approval. This is where the developer steers the shape of the feature, phase by phase. It's also the checking half of delegation, the touch points, built in as a stop rather than left to whoever has the time. In the final part, one agent runs a visual QA of the implementation and asks the developer to check it as well.
+
+![The five steps of the workflow: scope, catch-up, dev-plan, phase stops, visual QA](/assets/images/nobody-taught-developers-to-delegate/workflow.jpg)
 
 We use the tools, but we don't delegate the decision-making to them. The workflow is designed to force some thinking time and input from the person on the ticket. I wrote about the result [in the last post](/blog/ai-measuring-wrong-thing): 50-odd tickets built through it with a low rejection rate, and the seniors who resisted at first saying they are doing a better job with it.
 
