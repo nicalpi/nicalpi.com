@@ -46,8 +46,8 @@ inside `.dir-row`).
 
 ### Buttons
 ```html
-<a class="btn" href="…">Get new posts by email →</a>   <!-- ink pill, 40px -->
-<a class="btn btn-ghost" href="…">Start reading</a>     <!-- transparent, fog on hover -->
+<a class="btn" href="…">Start reading →</a>             <!-- ink pill, 40px -->
+<a class="btn btn-ghost" href="…">Get new posts by email</a>  <!-- transparent, fog on hover -->
 <a class="btn btn-outline" href="…">Start reading</a>   <!-- hairline edge -->
 <a class="btn btn-sm" href="…">subscribe</a>             <!-- 34px -->
 ```
@@ -98,8 +98,29 @@ CSS `::before`. Both use `--mark`.
   <span class="fm-fence">---</span>
 </div>
 ```
-`.fm-post` is the post variant (13.5px, 44px below). `_layouts/post.html`
-builds it from front matter under a `.post-path` line.
+`.fm-post` is the post variant: unfilled, 13px, 28px below, metadata only
+(category, date, reading_time) under a `.post-path` line. `_layouts/post.html`
+then renders the title once as `h1.article-title` and the `subtitle` as
+`p.article-dek` (serif 20px `--muted`). Don't add title/subtitle back into
+the block. The whole post header holds the centred `--measure` column.
+
+On the home page the `.fm` follows the headline, lead and `.hero-actions`
+inside `.hero-text`; the claim is read before the bio.
+
+### Worked with — logo strip
+```html
+<section class="sheet-section worked-with" aria-label="Companies I've worked with">
+  <span class="kicker">worked with</span>
+  <div class="logo-row">
+    <img src="…" alt="…" class="logo-img logo-wide">   <!-- 9:1 wordmark, 17px -->
+    <img src="…" alt="…" class="logo-img logo-mid">    <!-- ~4:1, 24px -->
+    <img src="…" alt="…" class="logo-img logo-block">  <!-- stacked ~4:3, 32px -->
+  </div>
+</section>
+```
+Sits directly after the hero (`.hero + .worked-with` drops the divider).
+Pick the height class by the logo's shape so they read at equal weight;
+grayscale (and inverted in dark) comes from the "Client logos" CSS.
 
 ### Directory listing — `post-row.html` + `dir-head.html`
 ```liquid
@@ -109,7 +130,8 @@ builds it from front matter under a `.post-path` line.
 </div>
 ```
 One row = `a.dir-row.link-block` with `.dir-date`, `.dir-cat` (plain
-`--accent` word), `.dir-title.link-title`, `.dir-read`. Stacks on phones.
+`--accent` word), `.dir-title.link-title` (Source Serif 600 17.5px — the
+only serif in the row), `.dir-read`. Stacks on phones.
 
 ### Beliefs
 ```html
@@ -118,7 +140,8 @@ One row = `a.dir-row.link-block` with `.dir-date`, `.dir-cat` (plain
   <ul class="beliefs"><li><strong>Claim.</strong> Support.</li>…</ul>
 </section>
 ```
-Two columns above 800px; each item gets a `- [x]` mark from CSS.
+Two columns above 800px, with the intro sticky under the top bar; each
+item gets a `- [x]` mark from CSS.
 
 ### Newsletter — `newsletter.html`
 ```liquid

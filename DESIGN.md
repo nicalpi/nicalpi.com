@@ -34,14 +34,14 @@ Visually it borrows from precision developer tools (Expo, Linear, Vercel): a nea
 ## Tokens — Typography
 
 ### JetBrains Mono — chrome and headings · `--font-mono`
-- **Weights:** 400 (marks, meta), 500 (nav, tags, chips, column labels), 600 (buttons, section titles, prose h2–h4, directory titles), 700 (page and post titles, wordmark)
+- **Weights:** 400 (marks, meta), 500 (nav, tags, chips, column labels), 600 (buttons, section titles, prose h2–h4), 700 (page and post titles, wordmark)
 - **Tracking:** `-0.012em` on everything mono; titles tighten to `-0.02em`
 - **Used for:** wordmark, top bar, every heading, front-matter blocks, directory rows, buttons, chips, kickers, footer, code, all social images and illustrations (images are mono-only)
 - **Substitute:** `ui-monospace, SFMono-Regular, Menlo, monospace`
 
 ### Source Serif 4 — reading · `--font-serif`
 - **Weights:** 400, 600 (`strong`), 400 italic (quotes); optical sizes on
-- **Used for:** post prose, leads, beliefs, form help. Never in headings, never in images
+- **Used for:** post prose, leads, deks, beliefs, directory titles (600), form help. Never in headings, never in images
 - **Substitute:** `Georgia, 'Times New Roman', serif`
 - Default font smoothing (no `antialiased`): the thin rendering washed the serif out on Mac
 
@@ -49,8 +49,9 @@ Visually it borrows from precision developer tools (Expo, Linear, Vercel): a nea
 
 | Role | Face / weight | Size / line | Notes |
 |------|---------------|-------------|-------|
-| Hero title (home) | Mono 700 | 30px / 1.25 | `-0.02em`; 25px on phones, `<br>` dropped |
-| Post title (h1) | Mono 700 | 28px / 1.28 | `# ` mark in `--mark`; 25px on phones |
+| Hero title (home) | Mono 700 | 38px / 1.18 | `-0.02em`; the first thing on the page; 28px on phones, `<br>` dropped |
+| Post title (h1) | Mono 700 | 32px / 1.22 | `# ` mark in `--mark`; 26px on phones |
+| Post dek | Serif 400 | 20px / 1.55 | `--muted`, the post `subtitle`; 44px below; 17px on phones |
 | Page title (writing, about, 404) | Mono 700 | 26px / 1.3 | |
 | Section title (h2 in layouts) | Mono 600 | 16px / 1.4 | `## ` mark |
 | Prose h2 | Mono 600 | 1.1em / 1.4 | hairline below, `0.4em` padding |
@@ -60,13 +61,13 @@ Visually it borrows from precision developer tools (Expo, Linear, Vercel): a nea
 | Section lead | Serif 400 | 17px / 1.7 | `--muted` |
 | Beliefs | Serif 400 | 17px / 1.7 | `- [x]` mono 13px in `--mark` |
 | Quote (prose blockquote) | Serif 400 italic | 1.05em / 1.6 | mono `>` hanging left in `--mark`, no bar |
-| Directory title | Mono 600 | 15px / 1.45 | |
+| Directory title | Serif 600 | 17.5px / 1.4 | the one serif in a row of mono columns; 17px on phones |
 | Directory meta, nav, meta lines | Mono 400–500 | 13px | |
 | Front-matter block | Mono 400 | 13.5px / 1.85 | keys `--muted`, values `--ink`, fences `--mark` |
 | Kickers, column labels | Mono 500 | 11px, uppercase, `0.08em` | `--faint` |
 | Footer, fine print | Mono 400 | 11.5–12px | `--muted` |
 
-Hierarchy comes from weight and face before size. The scale is deliberately compact: nothing in chrome exceeds 30px.
+Hierarchy comes from weight and face before size. The scale is deliberately compact: only the hero (38px) and post title (32px) go above 30px.
 
 ## Tokens — Spacing & Shapes
 
@@ -98,8 +99,9 @@ Nothing interactive has a sharp corner. Nothing structural has a shadow.
 ### Layout
 
 - **Frame:** sticky, borderless 64px top bar → centred 1024px `<main class="sheet">` (880px inner) → one-line footer above a hairline. One surface, no canvas behind the page.
-- **Blocks span the sheet.** Titles, cards, code, images, list rows and the newsletter run the full 880px. Running text is uncapped today (`--measure: none`); the token exists to reintroduce a reading column.
-- **Two-column moments above 800px:** beliefs (intro left 0.8fr, list right 1.2fr, 48px gap) and the newsletter (copy left, 380–400px form right).
+- **Home and list pages span the sheet.** Titles, cards, list rows and the newsletter run the full 880px.
+- **Posts read in a centred column.** `--measure: 700px` (~75 characters at 18px) caps the path line, fm, h1, dek, prose, article foot and prev/next cards, centred in the sheet; wide `pre` and tables may break out. Full-width posts (13–23 Sep 2026) ran ~100 characters a line.
+- **Two-column moments above 800px:** beliefs (intro left 0.8fr and sticky under the top bar, list right 1.2fr, 48px gap) and the newsletter (copy left, 380–400px form right).
 - **Phone (≤640px):** 56px top bar with four chips and the theme toggle, 20px side padding, directory rows stack (date · read / title / category), buttons go full-width, hero `<br>` removed.
 
 ---
@@ -116,13 +118,13 @@ Mono 500 13px `--muted`, padding 7×12px, radius 24px. Hover and `aria-current="
 32px pill, 1px mist border, sun icon 12px + "light"/"dark" label (label hidden ≤440px). Hover: fog fill, ink text. Shortcut ⌥T.
 
 ### Front-matter block `.fm`
-The signature device. Fog fill, 12px radius, no border, mono 13.5px/1.85. `---` fences in `--mark`, keys `--muted`, values `--ink`, linked values `--accent`. Home hero uses it as the bio; posts build it from real front matter (title, subtitle, category, date, reading_time) under a `_posts/<file>.md` path line, with 44px below it before the h1.
+The signature device. Fog fill, 12px radius, no border, mono 13.5px/1.85. `---` fences in `--mark`, keys `--muted`, values `--ink`, linked values `--accent`. On the home page it is the credentials card under the headline, lead and buttons (the claim comes first). On posts `.fm-post` is unfilled and metadata only (category, date, reading_time) under a `_posts/<file>.md` path line, 28px above the h1: title and subtitle render once, as the h1 and dek, never repeated in the block.
 
 ### Primary button `.btn`
 40px pill (44px on phones), ink fill, `--on-ink` text, mono 600 13px, padding 0×18px, optional trailing `→`. Hover: 0.9 opacity. The only surface ink fills entirely.
 
 ### Ghost button `.btn-ghost`
-Transparent, no border, `--muted` text. Hover: fog fill, ink text. Pairs with the primary ("Start reading").
+Transparent, no border, `--muted` text. Hover: fog fill, ink text. Pairs with the primary. Home hero: primary "Start reading →", ghost "Get new posts by email" (the newsletter band lower down is the main signup).
 
 ### Outline button `.btn-outline`
 Transparent, 1px mist border, ink text. Used when a secondary action needs an edge (stacked phone CTAs).
@@ -131,7 +133,7 @@ Transparent, 1px mist border, ink text. Used when a secondary action needs an ed
 30px pill, 1px mist border, mono 500 12.5px `--muted`, padding 0×13px. Active `.chip-solid`: ink fill, `--on-ink` text. Hover: fog fill.
 
 ### Directory listing `.dir-row`
-Grid `104px 96px 1fr 64px`, 20px gaps, 13px padding, mist hairline below. Column labels (`.dir-head`) mono 11px uppercase `--faint`. Date `--muted`, **category a plain lowercase word in `--accent`** (not a pill), title mono 600 15px ink, read-time `--faint` right-aligned. Hover: title turns `--accent`, no underline, no arrow. Header line: `ls -t _posts/ · N files` in `--faint`.
+Grid `96px 88px 1fr 56px`, 20px gaps, 13px padding, mist hairline below. Column labels (`.dir-head`) mono 11px uppercase `--faint`. Date `--muted`, **category a plain lowercase word in `--accent`** (not a pill), title **Source Serif 600 17.5px** ink (the columns stay mono so the row still reads as `ls`), read-time `--faint` right-aligned. Hover: title turns `--accent`, no underline, no arrow. Header line: `ls -t _posts/ · N files` in `--faint`.
 
 ### Section head
 `## Title` mono 600 16px with the mark in `--mark`, a mono 12px `--faint` command on the right (`ls -t _posts/ · 9 files`), baseline aligned.
@@ -175,7 +177,8 @@ Metrics table (`before → now → target`, arrow in `--mark`, now in `--accent`
 - Don't put a border on a tinted surface, or a left accent bar on a rounded box.
 - Don't turn the directory category into a pill. It is a word in `--accent`.
 - Don't use `--faint` for copy anyone must read.
-- Don't exceed 30px for any chrome type or drop body copy under 17px.
+- Don't exceed 30px for any chrome type (hero 38px and post h1 32px are the only titles above it) or drop body copy under 17px.
+- Don't repeat the post title or subtitle inside the post front-matter block.
 - Don't reintroduce the warm paper palette (v3) or the sidebar, drawer and breadcrumbs (v2).
 - Don't use a third typeface. Inter, DM Sans and Caveat are all retired.
 
@@ -219,8 +222,8 @@ WCAG AA on white: ink 16.1:1, body 13.4:1, graphite 5.7:1, deep signal 4.9:1. St
 1. A primary button: `#1C2024` fill, white text, JetBrains Mono 600 13px, 40px tall, 0×18px padding, 36px radius, trailing `→`.
 2. A nav chip: JetBrains Mono 500 13px `#60646C`, 7×12px padding, 24px radius; active state `#F0F0F3` fill and `#1C2024` text.
 3. A front-matter block: `#F0F0F3` fill, 12px radius, no border, JetBrains Mono 13.5px/1.85, `---` lines in `#0090FF`, keys `#60646C`, values `#1C2024`.
-4. A directory row: grid `104px 96px 1fr 64px`, 20px gaps, 13px vertical padding, 1px `#D9D9E0` rule below; date `#60646C`, category lowercase `#0072DE`, title Mono 600 15px `#1C2024`, read-time `#80838D` right.
-5. A post page: `_posts/<file>.md` path in Mono 12px `#60646C`, front-matter block, 44px, `# Title` Mono 700 28px with the mark in `#0090FF`, prose Source Serif 4 18px/1.75 `#2A2E34`, h2 Mono 600 1.1em with a `#D9D9E0` rule below.
+4. A directory row: grid `96px 88px 1fr 56px`, 20px gaps, 13px vertical padding, 1px `#D9D9E0` rule below; date `#60646C` mono 13px, category lowercase `#0072DE` mono, title Source Serif 4 600 17.5px `#1C2024`, read-time `#80838D` mono right.
+5. A post page: a centred 700px column. `_posts/<file>.md` path in Mono 12px `#60646C`, an unfilled front-matter block with one meta line (category, date, reading_time), 28px, `# Title` Mono 700 32px with the mark in `#0090FF`, dek Source Serif 4 20px `#60646C`, 44px, prose Source Serif 4 18px/1.75 `#2A2E34`, h2 Mono 600 1.1em with a `#D9D9E0` rule below.
 6. An OG card 1200×630: white card with 1px `#D9D9E0` frame, 56×64px padding, `nicalpi.md` top-left, category as an outlined pill top-right, `# Title` Mono 700 54px, dek Mono 22px `#2A2E34`, hairline footer `Nic Alpi · CTO, Bristol` / `nicalpi.com`.
 
 ## Similar brands

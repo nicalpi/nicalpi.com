@@ -16,8 +16,8 @@ protocol, guardrails and a one-word verdict, published even when the answer
 is "this did nothing".
 
 **Art direction:** rendered markdown, made literal. The wordmark is
-`nicalpi.md`; the home hero and every post open with a `---` front-matter
-block; post lists are a directory listing under `ls -t _posts/`; beliefs are
+`nicalpi.md`; the home hero (after its headline) and every post carry a
+`---` front-matter block; post lists are a directory listing under `ls -t _posts/`; beliefs are
 `- [x]`; the newsletter is a `> newsletter` band; the footer ends in `EOF`.
 Mono for everything that is chrome or heading, a serif for everything read
 at length, one graphite grey scale, and signal blue only where the markdown
@@ -66,13 +66,14 @@ the repo (mockups, artifacts, Claude Web), copy the token block from
 - **JetBrains Mono** 400/500/600/700, `letter-spacing: -0.012em` — wordmark,
   top bar, every heading, front-matter blocks, directory rows, buttons,
   chips, kickers, footer, code, and **every image**. 600 for buttons,
-  section titles, prose h2–h4 and directory titles; 700 for page/post titles.
+  section titles and prose h2–h4; 700 for page/post titles.
 - **Source Serif 4** 400/600 + italic, optical sizes — post prose, leads,
-  beliefs, form help. Never in headings, never in images. Default font
-  smoothing.
-- Scale is compact and weight-led: hero 30px, post h1 28px, page h1 26px,
-  section h2 16px/600, prose 18px/1.75 with h2 at 1.1em/600 plus a hairline,
-  meta 13px, labels 11px uppercase. Nothing in chrome exceeds 30px.
+  the post dek, beliefs, directory titles (600), form help. Never in
+  headings, never in images. Default font smoothing.
+- Scale is compact and weight-led: hero 38px, post h1 32px (dek 20px serif
+  `--muted`), page h1 26px, section h2 16px/600, prose 18px/1.75 with h2 at
+  1.1em/600 plus a hairline, directory titles 17.5px serif, meta 13px,
+  labels 11px uppercase. Only the hero and post h1 go above 30px.
 
 ## Shapes and layout
 
@@ -82,19 +83,29 @@ the repo (mockups, artifacts, Claude Web), copy the token block from
 - Frame: borderless sticky 64px top bar (wordmark left; `writing · about ·
   work with me` chips + theme pill right) → centred 1024px `.sheet` (880px
   inner) → one-line footer over a hairline. One surface, no canvas behind it.
-- Blocks span the sheet; running text is uncapped (`--measure: none`).
-  Beliefs and the newsletter go two-column above 800px. Phone: 20px gutters,
-  directory rows stack, buttons full-width.
+- Home and list pages span the sheet. **Posts read in a centred 700px
+  column** (`--measure`, ~75 characters): path line, fm, h1, dek, prose,
+  article foot and prev/next cards share that edge. (Full-width posts ran
+  13–23 Sep 2026 at ~100 characters a line and were pulled back.)
+- Home order: headline → lead → buttons (primary "Start reading →", ghost
+  email) → fm credentials card → "worked with" logos (per-shape optical
+  heights: `.logo-wide` 17px, `.logo-mid` 24px, `.logo-block` 32px) →
+  writing → beliefs → newsletter. The claim comes before the bio.
+- Beliefs and the newsletter go two-column above 800px; the beliefs intro
+  is sticky. Phone: 20px gutters, directory rows stack, buttons full-width.
 - No sidebar, drawer or breadcrumbs (retired with v2; includes in `_retired/`).
 
 ## Signature devices (one per section, never two stacked)
 
 - Wordmark `nicalpi.md` (`.md` in `--faint`, hidden on phones).
 - `.fm` front-matter block: fog fill, 12px, no border, mono 13.5px/1.85,
-  fences `--mark`, keys `--muted`, values `--ink`. Opens the home hero and
-  every post (built from real front matter under a `_posts/<file>.md` line,
-  44px above the h1).
-- Directory listing: `date · category · title · read`, uppercase `--faint`
+  fences `--mark`, keys `--muted`, values `--ink`. The home credentials card
+  under the headline. On posts `.fm-post` is unfilled and metadata only
+  (category, date, reading_time) under a `_posts/<file>.md` line, 28px
+  above the h1 — **never repeat the title or subtitle in it**; they render
+  once as the h1 and dek.
+- Directory listing: `date · category · title · read` (title in serif 600,
+  the other columns mono), uppercase `--faint`
   column labels, an `ls -t _posts/ · N files` line. **Category is a plain
   lowercase word in `--accent`, not a pill** (Nic tried the pill and reverted
   it, 13 Sep 2026). Title turns `--accent` on hover, no underline, no arrow.
