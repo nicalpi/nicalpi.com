@@ -39,21 +39,24 @@ for the full system and `/styleguide/` for live components.
 **Layout (Sep 2026 simplification):** `_layouts/default.html` wraps every
 page in one frame — sticky top bar (`nav-top`) → a centred 1024px
 `<main class="sheet">` → one-line `footer`, all on a single panel surface
-(no canvas). Everything spans the sheet's 880px inner width, posts
-included — Nic's call (2026-09-13); prose is 18px/1.75 Source Serif 4,
-prose headings are em-based (h2 1.1em/600 + hairline below) with `--mark`
-`##` marks. The top bar is borderless; its links are chips. The `--measure` token (`none` today) still caps
-`.prose > p/ul/ol/blockquote/h2…` if a narrower reading column is ever
-wanted again. Pages and layouts only
-provide what goes inside the sheet.
+(no canvas). Home and list pages span the sheet's 880px inner width.
+Posts read in a centred `--measure` column (700px, ~75 characters; it was
+full width from 13 to 23 Sep 2026): the path line, fm, H1, dek, prose,
+article foot and prev/next cards all hold that edge. Prose is 18px/1.75
+Source Serif 4, prose headings are em-based (h2 1.1em/600 + hairline
+below) with `--mark` `##` marks. The top bar is borderless; its links are
+chips. Pages and layouts only provide what goes inside the sheet.
 
 **Direction "Front matter" (chosen 2026-09-13).** The site leans into its
 rendered-markdown idea, one device per section: the wordmark reads
-`nicalpi.md` (`.md` hidden on phones); the home hero (full width, no
-portrait slot), every post and the 404 open with a `---` fenced
-front-matter block (`.fm`, mono, fences in the accent — the post one is
-built from real front matter: title, subtitle, category, date,
-reading_time, under a `_posts/<file>.md` path line); post lists are a
+`nicalpi.md` (`.md` hidden on phones); the home hero leads
+with the headline, lead and buttons (primary "Start reading"), then the
+`---` fenced front-matter block (`.fm`, mono, fences in the accent) as
+the credentials card, then the "worked with" logo strip; every post and
+the 404 open with a front-matter block too — the post one is unfilled and
+metadata only (category, date, reading_time, under a `_posts/<file>.md`
+path line), since the title and subtitle render once as the H1 and dek;
+list titles are serif 600 while date, category and read stay mono; post lists are a
 directory listing (`post-row` = `.dir-row`: date · category · title · read,
 with `dir-head` column labels and an `ls -t _posts/ · N files` line);
 beliefs are `- [x]` items; the newsletter is a `> newsletter` band with a
@@ -260,7 +263,7 @@ Twitter reuses the OG image — no `-twitter` variants.
 ## Notes
 
 - Every page is a 1024px column under a sticky top bar, on one panel
-  surface; blocks span it, paragraphs cap at `--measure` (640px). Four nav
+  surface; blocks span it; posts cap at `--measure` (700px), centred. Four nav
   links fit a phone width, so there is no drawer.
 - Portrait/photo slots on home + about read `site.portrait_image` from
   `_config.yml`; until it's set they show an on-brand placeholder.

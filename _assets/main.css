@@ -229,8 +229,17 @@ input::placeholder { color: var(--muted); }
 .fm-v.fm-accent:hover, .fm a.fm-accent:hover { color: var(--ink); opacity: 1; }
 .fm > span { min-width: 0; overflow-wrap: anywhere; }
 
-/* Room between the front-matter head and the title (Nic, 13 Sep 2026). */
-.fm-post { margin-bottom: 44px; font-size: 13.5px; }
+/* Room between the front-matter head and the title (Nic, 13 Sep 2026).
+   Now metadata only (title and dek render once, below), so it sits as a
+   quiet line: no fill, fences and keys carry the device. */
+.fm-post {
+  margin-bottom: 28px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
 
 .post-path {
   display: block;
@@ -245,7 +254,7 @@ input::placeholder { color: var(--muted); }
 
 @media (max-width: 640px) {
   .fm { font-size: 12.5px; padding: 14px 16px; line-height: 1.8; }
-  .fm-post { font-size: 12px; }
+  .fm-post { font-size: 12px; padding: 0; }
 }
 
 /* ---- Directory listing (home writing, /blog/) ---- */
@@ -254,7 +263,7 @@ input::placeholder { color: var(--muted); }
 
 .dir-row {
   display: grid;
-  grid-template-columns: 104px 96px minmax(0, 1fr) 64px;
+  grid-template-columns: 96px 88px minmax(0, 1fr) 56px;
   gap: 20px;
   align-items: baseline;
   padding: 13px 0;
@@ -265,7 +274,15 @@ input::placeholder { color: var(--muted); }
 }
 
 .dir-date { color: var(--muted); }
-.dir-title { font-size: 15px; font-weight: 600; letter-spacing: -0.012em; line-height: 1.45; }
+/* Titles in the reading serif: the columns around them stay mono so the
+   row still reads as `ls`, but the thing you scan for scans faster. */
+.dir-title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
 .dir-read { color: var(--faint); text-align: right; white-space: nowrap; }
 
 /* Category: a plain accent word (Nic tried the pill, 13 Sep 2026, and
@@ -304,7 +321,7 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
   }
   .dir-date { grid-area: date; font-size: 11.5px; }
   .dir-read { grid-area: read; font-size: 11.5px; }
-  .dir-title { grid-area: title; font-size: 15px; }
+  .dir-title { grid-area: title; font-size: 17px; }
   .dir-cat { grid-area: cat; font-size: 11.5px; }
 }
 
@@ -339,9 +356,18 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
    (880px inner). Blocks span it — titles, cards, code, images, tables,
    list rows, the newsletter band — while running text (paragraphs, lists,
    quotes) caps at --measure so a line stays around 78 characters. */
-/* Posts run the full inner width by Nic's call (13 Sep 2026); the cap is
-   kept as a token so it can be dialled back in one place. */
-:root { --measure: none; }
+/* Posts ran the full inner width from 13 Sep 2026; at 18px that is ~100
+   characters a line. 700px brings the serif back to ~75. The post header
+   (path, front matter, title, dek) holds the same edge so the column reads
+   as one; code, images and tables still use the full width. */
+:root { --measure: 700px; }
+
+.article > .post-path,
+.article > .fm-post,
+.article > .article-title,
+.article > .article-dek,
+.article > .article-foot,
+.article > .article-next { max-width: var(--measure); margin-left: auto; margin-right: auto; }
 
 .sheet {
   max-width: 1024px;
@@ -403,6 +429,8 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 
 .sheet-section:first-child { border-top: 0; padding-top: 0; }
 .sheet-section:last-child { padding-bottom: 0; }
+/* The newsletter band is a padded card, even when it closes the page. */
+.newsletter.sheet-section:last-child { padding-bottom: 28px; margin-bottom: 0; }
 
 .section-head {
   display: flex;
@@ -452,7 +480,9 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 
 .hero { display: flex; flex-direction: column; }
 .hero-text { display: flex; flex-direction: column; gap: 24px; }
-.hero-text .fm { margin-bottom: 4px; }
+/* The claim leads; the front-matter block follows the actions as the
+   credentials card, so the headline is the first thing read. */
+.hero-text .fm { margin-top: 12px; }
 .hero-lead strong { color: var(--ink); font-weight: 600; }
 
 .hero-kicker {
@@ -462,10 +492,10 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 }
 
 .hero-title {
-  margin: 0;
-  font-size: 30px;
+  margin: 8px 0 0;
+  font-size: 38px;
   text-wrap: initial;
-  line-height: 1.25;
+  line-height: 1.18;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -499,7 +529,7 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 }
 
 @media (max-width: 640px) {
-  .hero-title { font-size: 25px; }
+  .hero-title { font-size: 28px; }
   .hero-title br { display: none; } /* let the title wrap naturally on phones */
   .hero-lead { font-size: 16.5px; }
   .hero-actions .btn { flex: 1 1 auto; }
@@ -610,6 +640,9 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
     align-items: start;
   }
   .beliefs-intro .section-lead { margin-bottom: 0; }
+  /* The intro rides along while the six beliefs scroll past, instead of
+     leaving a tall empty column under it. Clears the 64px top bar. */
+  .beliefs-intro { position: sticky; top: 96px; }
   .beliefs { max-width: none; }
 }
 
@@ -622,15 +655,26 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
   gap: 18px 32px;
 }
 
+/* Sits right under the hero now (proof next to the claim), so it drops
+   its divider and reads as the hero's last line. */
+.hero + .worked-with { border-top: 0; padding-top: 8px; }
+
 .logo-row {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   align-items: center;
+  justify-items: center;
 }
 
-.logo-row .logo-img { height: 32px; width: 100%; object-fit: contain; }
+/* Logos arrive in very different shapes (a 9:1 wordmark, a stacked 4:3
+   badge). Equal heights make the wide one shout, so each shape gets an
+   optical height. Colour treatment: "Client logos" further down. */
+.logo-row .logo-img { width: auto; max-width: 100%; object-fit: contain; }
+.logo-row .logo-wide  { height: 17px; }
+.logo-row .logo-mid   { height: 24px; }
+.logo-row .logo-block { height: 32px; }
 .logo-row .logo-img-sm { height: 22px; }
 
 @media (max-width: 520px) {
@@ -759,21 +803,23 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 }
 
 .article-title {
-  margin: 0 0 24px;
-  font-size: 28px;
-  line-height: 1.28;
+  margin: 0 0 14px;
+  font-size: 32px;
+  line-height: 1.22;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
+/* The dek closes the header and gives the first ## room to start from
+   instead of butting against the H1 (the ## brings its own hairline). */
 .article-dek {
-  margin: 0 0 26px;
-  max-width: 70ch;
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--body);
+  margin: 0 0 44px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--muted);
 }
+.article > .article-title:not(:has(+ .article-dek)) { margin-bottom: 36px; }
 
 .article-rule {
   border: 0;
@@ -808,8 +854,8 @@ a.dir-row:hover .dir-title { color: var(--accent); text-decoration: none; }
 }
 
 @media (max-width: 640px) {
-  .article-title { font-size: 25px; }
-  .article-dek { font-size: 16px; }
+  .article-title { font-size: 26px; }
+  .article-dek { font-size: 17px; margin-bottom: 32px; }
 }
 
 
@@ -1344,6 +1390,18 @@ a.chip-solid:hover, button.chip-solid:hover { background: var(--ink); color: var
 .prose > .lead {
   max-width: var(--measure);
 }
+
+/* Inside a post the capped column is centred, so wide blocks (code,
+   figures, tables) break out evenly on both sides. */
+.article .prose > p,
+.article .prose > ul,
+.article .prose > ol,
+.article .prose > blockquote,
+.article .prose > h2,
+.article .prose > h3,
+.article .prose > h4,
+.article .prose > hr,
+.article .prose > .lead { margin-left: auto; margin-right: auto; }
 
 /* Headings scale with the body (em) so the serif never outranks them.
    Weight (600 mono against 400 serif) establishes rank; h2 keeps its
